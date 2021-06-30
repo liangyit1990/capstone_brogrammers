@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 28, 2021 at 02:32 PM
+-- Generation Time: Jun 30, 2021 at 01:02 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -35,6 +35,13 @@ CREATE TABLE `bento` (
   `bento_calories` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `bento`
+--
+
+INSERT INTO `bento` (`bento_id`, `bento_name`, `bento_price`, `bento_calories`) VALUES
+(1, 'chicken bento', '12.99', 1800);
+
 -- --------------------------------------------------------
 
 --
@@ -43,18 +50,18 @@ CREATE TABLE `bento` (
 
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
-  `cart_totalprice` decimal(10,2) NOT NULL,
   `users_id` int(11) NOT NULL,
-  `food_id` int(11) NOT NULL,
-  `cart_foodqty` int(128) NOT NULL
+  `food_id` int(11) DEFAULT NULL,
+  `cart_foodqty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`cart_id`, `cart_totalprice`, `users_id`, `food_id`, `cart_foodqty`) VALUES
-(1, '15.00', 1, 1, 3);
+INSERT INTO `cart` (`cart_id`, `users_id`, `food_id`, `cart_foodqty`) VALUES
+(1, 1, 1, 1),
+(2, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -83,6 +90,7 @@ CREATE TABLE `food` (
   `food_id` int(11) NOT NULL,
   `food_name` varchar(255) NOT NULL,
   `food_category` varchar(128) NOT NULL,
+  `food_subcategory` varchar(128) NOT NULL,
   `food_vegan` smallint(6) NOT NULL,
   `food_price` decimal(10,2) NOT NULL,
   `food_calories` int(11) NOT NULL
@@ -92,8 +100,11 @@ CREATE TABLE `food` (
 -- Dumping data for table `food`
 --
 
-INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_vegan`, `food_price`, `food_calories`) VALUES
-(1, 'grilled chicken', 'meat', 0, '4.99', 280);
+INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_subcategory`, `food_vegan`, `food_price`, `food_calories`) VALUES
+(1, 'grilled chicken', 'ala carte', 'meat', 0, '4.99', 280),
+(2, 'chicken bento', 'bento', 'meat', 0, '12.99', 1800),
+(3, 'broccoli', 'ala carte', 'vegetables', 1, '1.99', 150),
+(4, 'green tea', 'drinks', 'healthy', 0, '1.99', 300);
 
 -- --------------------------------------------------------
 
@@ -107,8 +118,16 @@ CREATE TABLE `orders` (
   `orders_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `orders_details` text NOT NULL,
   `orders_status` smallint(6) NOT NULL,
-  `users_id` int(11) NOT NULL
+  `users_id` int(11) NOT NULL,
+  `vouchers_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`orders_id`, `orders_totalprice`, `orders_timestamp`, `orders_details`, `orders_status`, `users_id`, `vouchers_id`) VALUES
+(1, '17.98', '2021-06-30 12:42:04', 'structure: food_id, food_id\'s food_name, cart_foodqty, food_price\r\n\r\nExample:\r\n\r\n1 - grilled chicken - 1 - 4.99\r\n2 - chicken bento - 1 - 12.99\r\n\r\nExtra: Total price = Summation(food_price * cart_foodqty)\r\n\r\nExample: (4.99 * 1) + (12.99 * 1) = 17.98', 0, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -118,7 +137,7 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `submission` (
   `submission_id` int(11) NOT NULL,
-  `submission_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `submission_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `submission_screenshot` text NOT NULL,
   `users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -159,9 +178,18 @@ CREATE TABLE `vouchers` (
   `vouchers_id` int(11) NOT NULL,
   `vouchers_code` varchar(128) NOT NULL,
   `vouchers_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `vouchers_expirydate` datetime NOT NULL,
   `vouchers_discount` int(11) NOT NULL,
+  `vouchers_status` smallint(6) NOT NULL DEFAULT '0',
   `users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vouchers`
+--
+
+INSERT INTO `vouchers` (`vouchers_id`, `vouchers_code`, `vouchers_date`, `vouchers_expirydate`, `vouchers_discount`, `vouchers_status`, `users_id`) VALUES
+(3, 'abcd1234\r\nvouchers_status:\r\n0 - available\r\n1 - redeemed\r\n\r\nvouchers_expirydate: populated via a function, +30 or +60 days', '2021-06-30 13:01:47', '2021-07-29 21:00:47', 10, 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -199,7 +227,8 @@ ALTER TABLE `food`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`orders_id`),
-  ADD KEY `users_id` (`users_id`);
+  ADD KEY `users_id` (`users_id`),
+  ADD KEY `vouchers_id` (`vouchers_id`);
 
 --
 -- Indexes for table `submission`
@@ -229,13 +258,13 @@ ALTER TABLE `vouchers`
 -- AUTO_INCREMENT for table `bento`
 --
 ALTER TABLE `bento`
-  MODIFY `bento_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `bento_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -247,13 +276,13 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `submission`
@@ -271,7 +300,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vouchers`
 --
 ALTER TABLE `vouchers`
-  MODIFY `vouchers_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `vouchers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -294,7 +323,8 @@ ALTER TABLE `feedback`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`vouchers_id`) REFERENCES `vouchers` (`vouchers_id`);
 
 --
 -- Constraints for table `submission`
