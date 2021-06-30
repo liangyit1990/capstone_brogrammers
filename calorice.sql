@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 30, 2021 at 01:02 PM
+-- Generation Time: Jun 30, 2021 at 06:51 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -91,6 +91,7 @@ CREATE TABLE `food` (
   `food_name` varchar(255) NOT NULL,
   `food_category` varchar(128) NOT NULL,
   `food_subcategory` varchar(128) NOT NULL,
+  `food_healthierchoice` smallint(6) DEFAULT '0',
   `food_vegan` smallint(6) NOT NULL,
   `food_price` decimal(10,2) NOT NULL,
   `food_calories` int(11) NOT NULL
@@ -100,11 +101,14 @@ CREATE TABLE `food` (
 -- Dumping data for table `food`
 --
 
-INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_subcategory`, `food_vegan`, `food_price`, `food_calories`) VALUES
-(1, 'grilled chicken', 'ala carte', 'meat', 0, '4.99', 280),
-(2, 'chicken bento', 'bento', 'meat', 0, '12.99', 1800),
-(3, 'broccoli', 'ala carte', 'vegetables', 1, '1.99', 150),
-(4, 'green tea', 'drinks', 'healthy', 0, '1.99', 300);
+INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_subcategory`, `food_healthierchoice`, `food_vegan`, `food_price`, `food_calories`) VALUES
+(1, 'grilled chicken', 'ala carte', 'meat', 0, 0, '4.99', 280),
+(2, 'chicken bento rice', 'bento', 'rice', 0, 0, '12.99', 1800),
+(5, 'curry', 'bento', 'gravy', 0, 0, '0.49', 180),
+(6, 'chicken bento noodles', 'bento', 'noodles', 0, 0, '12.99', 1750),
+(7, 'beef bento noodles', 'bento', 'noodles', 0, 0, '14.99', 1950),
+(8, 'curry', 'gravy', 'small container (tbd)', 0, 0, '0.49', 140),
+(9, 'lu zhi', 'gravy', 'large container (tbd)', 0, 0, '3.49', 480);
 
 -- --------------------------------------------------------
 
@@ -276,7 +280,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `orders`
