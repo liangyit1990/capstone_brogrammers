@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 30, 2021 at 06:51 PM
+-- Generation Time: Jul 01, 2021 at 12:48 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -52,16 +52,17 @@ CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `users_id` int(11) NOT NULL,
   `food_id` int(11) DEFAULT NULL,
-  `cart_foodqty` int(11) NOT NULL
+  `cart_foodqty` int(11) NOT NULL,
+  `cart_status` smallint(6) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`cart_id`, `users_id`, `food_id`, `cart_foodqty`) VALUES
-(1, 1, 1, 1),
-(2, 1, 2, 1);
+INSERT INTO `cart` (`cart_id`, `users_id`, `food_id`, `cart_foodqty`, `cart_status`) VALUES
+(1, 1, 1, 1, 0),
+(2, 1, 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -121,6 +122,7 @@ CREATE TABLE `orders` (
   `orders_totalprice` decimal(10,2) NOT NULL,
   `orders_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `orders_details` text NOT NULL,
+  `orders_cartNo` varchar(256) NOT NULL,
   `orders_status` smallint(6) NOT NULL,
   `users_id` int(11) NOT NULL,
   `vouchers_id` int(11) DEFAULT NULL
@@ -130,8 +132,8 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`orders_id`, `orders_totalprice`, `orders_timestamp`, `orders_details`, `orders_status`, `users_id`, `vouchers_id`) VALUES
-(1, '17.98', '2021-06-30 12:42:04', 'structure: food_id, food_id\'s food_name, cart_foodqty, food_price\r\n\r\nExample:\r\n\r\n1 - grilled chicken - 1 - 4.99\r\n2 - chicken bento - 1 - 12.99\r\n\r\nExtra: Total price = Summation(food_price * cart_foodqty)\r\n\r\nExample: (4.99 * 1) + (12.99 * 1) = 17.98', 0, 1, NULL);
+INSERT INTO `orders` (`orders_id`, `orders_totalprice`, `orders_timestamp`, `orders_details`, `orders_cartNo`, `orders_status`, `users_id`, `vouchers_id`) VALUES
+(1, '17.98', '2021-07-01 12:32:46', 'structure: food_id, food_id\'s food_name, cart_foodqty, food_price\r\n\r\nExample:\r\n\r\n1 - grilled chicken - 1 - 4.99\r\n2 - chicken bento - 1 - 12.99\r\n\r\nExtra: Total price = Summation(food_price * cart_foodqty)\r\n\r\nExample: (4.99 * 1) + (12.99 * 1) = 17.98', 'populate all cart ID\r\n\r\nExample\r\n1, 2, ...\r\necho (\"cart_id) . \", \" . echo (cart_id)', 0, 1, NULL);
 
 -- --------------------------------------------------------
 
