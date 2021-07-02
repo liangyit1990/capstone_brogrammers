@@ -1,7 +1,7 @@
 <!-- Header for main pages -->
 <header class="l-header " id="header">
         <nav class="nav bd-container">
-            <a href="#" class="nav_logo"><h1>CALORICE</h1></a>
+            <a href="<?php echo htmlspecialchars(SITE_URL); ?>" class="nav_logo"><h1>CALORICE</h1></a>
 
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
