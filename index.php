@@ -1,3 +1,10 @@
+<?php 
+include "config/config.php";
+include "config/db.php";
+include "config/functions.php"; 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +17,7 @@
     <!-- css here -->
     <link rel="stylesheet" href="css/styles.css">
     
-    <title>Calorice</title>
+    <title><?php echo SITE_NAME; ?></title>
 </head>
 <body>
     <!-- scroll to top -->
@@ -20,26 +27,10 @@
     </a>
 
     <!-- header -->
-    <header class="l-header " id="header">
-        <nav class="nav bd-container">
-            <a href="#" class="nav_logo"><h1>CALORICE</h1></a>
+    <?php
+    include "header.php";
+    ?>
 
-            <div class="nav_menu" id="nav-menu">
-                <ul class="nav_list">
-                    <li class="nav-item"><a href="#home" class="nav_link active-link">Home</a></li>
-                    <li class="nav-item"><a href="#menu" class="nav_link">Menu</a></li>
-                    <li class="nav-item"><a href="#about" class="nav_link">About</a></li>
-                    <li class="nav-item"><a href="#feedback" class="nav_link">Contact Us</a></li>
-                    <li class="nav-item"><a href="#login" class="nav_link">Login</a></li>
-                </ul>
-            </div>
-
-            <div class="nav_toggle" id="nav-toggle">
-                <i class='bx bxs-food-menu' ></i>
-            </div>
-        </nav>
-
-    </header>
     <main class="l-main">
         <!-- Home -->
         <section class="home" id="home">
@@ -47,7 +38,7 @@
                 <div class="home_data">
                     <h1 class="home_title">Wholesomely Prepared Food</h1>
                     <h2 class="home_subtitle">Control your calorie intake with CALORICE</h2>
-                    <a href='#'class="button">View Menu</a>
+                    <a href='#menu'class="button">View Menu</a>
                 </div>
                 <img src="images/bento_home.png" alt="" class="home_img">
             </div>
