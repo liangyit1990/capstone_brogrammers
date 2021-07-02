@@ -144,7 +144,7 @@ include "config/functions.php";
     </footer>
     
 <!-- scroll reveal here -->
-    <script src="https://unpkg.com/scrollreveal"></script>   
+    <!-- <script src="https://unpkg.com/scrollreveal"></script>    -->
 
 <!-- main js here -->
     <script src="js/main.js"></script>
