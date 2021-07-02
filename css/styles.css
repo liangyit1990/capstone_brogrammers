@@ -60,7 +60,10 @@ html{
     scroll-behavior: smooth;
 }
 
-
+.logo{
+    width: 48px;
+    height:48px;
+}
 body{
     margin: var(--header-height) 0 0 0;
     font-family: var(--body-font);
@@ -121,12 +124,16 @@ img{
     gap:1.5rem;
     
 }
+.l-main{
+    padding-top: 50px ;
+}
 .l-header{
     width:100%;
+    
     position: fixed;
     top:0;
     left:0;
-    z-index: var(--z-fixed);
+    
     background-color:var(--primary-color);
 
 }
@@ -178,13 +185,13 @@ img{
     transition: 0.3s;
 }
 .nav_link:hover{
-    color:var(--primary-color);
+    color:grey;
 
 }
 
 .nav_toggle{
     font-size: 1.5rem;
-    cursor:pointe
+    cursor:pointer;
 }
 /* reveal menu */
 .show-menu{
@@ -241,7 +248,9 @@ img{
 /* home */
 .home-container{
     height:calc(100vh-var(var(--header-height)));
-    align-content: center;
+    /* height:100vh; */
+    /* align-content: center; */
+    justify-items: center;
 }
 
 .home_title{
@@ -295,6 +304,7 @@ img{
 .menu_container{
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
+    
 }
 .menu_content{
     position: relative;

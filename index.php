@@ -11,7 +11,8 @@ include "config/functions.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <!-- icons here -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- css here -->
@@ -36,7 +37,7 @@ include "config/functions.php";
         <section class="home" id="home">
             <div class="home_container bd-container bd-grid">
                 <div class="home_data">
-                    <h1 class="home_title">Wholesomely Prepared Food</h1>
+                    <!-- <h1 class="home_title"></h1> -->
                     <h2 class="home_subtitle">Control your calorie intake with CALORICE</h2>
                     <a href='#menu'class="button">View Menu</a>
                 </div>
@@ -53,14 +54,15 @@ include "config/functions.php";
                     <h3 class="menu_name">Rice</h3>
                     <span class="menu_price">$1</span>
                     <span class="menu_calorie">130 Cal</span>
-                    <a href="" class="button menu_button"><i class='bx bxs-cart-download' ></i></a>
+                    
+                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' ></i></a>
                 </div>
                 <div class="menu_content">
                     <img src="images/bento_menu_noodles.png" alt="" class="menu_img">
                     <h3 class="menu_name">Noodle</h3>
                     <span class="menu_price">$1</span>
                     <span class="menu_calorie">174 Cal</span>
-                    <a href="" class="button menu_button"><i class='bx bxs-cart-download' ></i></a>
+                    <a href="" class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' ></i></a>
                 </div>
             </div>
         </section>
@@ -73,7 +75,7 @@ include "config/functions.php";
                     <p class="about_description">We hope that every person is able to control how much calorie they consume. We always 
                     talk about exercising<br> to live a healthy lifestyle. But what is actually a healthy lifestyle if we do not
                     plan our diet? With CALORICE, planning<br> your diet has never been easier and convenient.<br> </p>
-                    <a href="#" class="button">Explore our Menu</a>
+                    <a href="#menu" class="button">Explore our Menu</a>
                 </div>
                 <img src="images/bento_aboutus.png" alt="" class="home_img">
             </div>
@@ -82,6 +84,47 @@ include "config/functions.php";
 
 
     </main>
+
+    <!-- Modal -->
+    <!-- id is linked to data-bs-target value of the button-->
+    <div class="modal fade" id="ricecart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ...
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="modal fade" id="noodlecart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ...
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <?php 
+        include 'register.php';
+    ?>
 
     <!-- footer -->
     <footer class="footer section bd-container">
@@ -105,5 +148,8 @@ include "config/functions.php";
 
 <!-- main js here -->
     <script src="js/main.js"></script>
+<!-- bootstrap jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
 </body>
 </html>
