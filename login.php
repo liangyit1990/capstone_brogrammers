@@ -31,6 +31,23 @@ if(isset($_POST['register'])){
               'users_password' => password_hash($password, PASSWORD_DEFAULT),
               // 'users_registeredDate' => MySQLDate($date)
             ]);
+
+            
+            $userQuery = DB::query("SELECT * FROM users WHERE users_email=%s", $email);
+            foreach($userQuery as $userResult) {
+            $dbId = $userResult['users_id'];
+            $dbPermission = $userResult['users_permission'];
+            $dbName = $userResult['users_name'];
+            $dbEmail = $userResult['users_email'];
+            }
+
+            setcookie("users_id", $dbId, time() + (86400 * 30)); // 86400 = 1 day
+            setcookie("users_permission", $dbPermission, time() + (86400 * 30)); // 86400 = 1 day
+            setcookie("users_name", $dbName, time() + (86400 * 30)); // 86400 = 1 day
+            setcookie("users_email", $dbEmail, time() + (86400 * 30)); // 86400 = 1 day
+            setcookie("isLoggedIn", 1, time() + (86400 * 30)); // 86400 = 1 day
+            
+
             $registerSuccess = 1;
         }
       }else{
@@ -223,13 +240,15 @@ if(isset($_POST['login'])){
 
   //if register is successful
   if($registerSuccess == 1){
-    echo 'swal("Yay!", "You are registered successfully!", "success", {
+    echo 'swal({
+      title: "Register successfully!",
+      text: "Logging in now...",
+      icon: "success",
       buttons: false,
-      timer: 1500,
-    });';
-    echo 'setTimeout(function() {
-      window.location.href = "'. SITE_URL .'login.php";
-    }, 1000);';
+      timer : 2000,
+      }).then(function() {
+      window.location = "index.php";
+     });';
   }
 
   if($loginerror != ""){ 
