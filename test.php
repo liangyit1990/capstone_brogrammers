@@ -1,4 +1,3 @@
-<!--Nav bar for main pages -->
 <header class="l-header " id="header">
         <nav class="nav bd-container">
             <a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
