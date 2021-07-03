@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 01, 2021 at 12:48 PM
+-- Generation Time: Jul 03, 2021 at 06:03 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -55,14 +55,6 @@ CREATE TABLE `cart` (
   `cart_foodqty` int(11) NOT NULL,
   `cart_status` smallint(6) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `users_id`, `food_id`, `cart_foodqty`, `cart_status`) VALUES
-(1, 1, 1, 1, 0),
-(2, 1, 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -128,13 +120,6 @@ CREATE TABLE `orders` (
   `vouchers_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`orders_id`, `orders_totalprice`, `orders_timestamp`, `orders_details`, `orders_cartNo`, `orders_status`, `users_id`, `vouchers_id`) VALUES
-(1, '17.98', '2021-07-01 12:32:46', 'structure: food_id, food_id\'s food_name, cart_foodqty, food_price\r\n\r\nExample:\r\n\r\n1 - grilled chicken - 1 - 4.99\r\n2 - chicken bento - 1 - 12.99\r\n\r\nExtra: Total price = Summation(food_price * cart_foodqty)\r\n\r\nExample: (4.99 * 1) + (12.99 * 1) = 17.98', 'populate all cart ID\r\n\r\nExample\r\n1, 2, ...\r\necho (\"cart_id) . \", \" . echo (cart_id)', 0, 1, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -159,10 +144,10 @@ CREATE TABLE `users` (
   `users_name` varchar(255) NOT NULL,
   `users_email` varchar(255) NOT NULL,
   `users_password` varchar(128) NOT NULL,
-  `users_address` text NOT NULL,
-  `users_phone` varchar(11) NOT NULL,
-  `users_age` int(3) NOT NULL,
-  `users_gender` smallint(6) NOT NULL,
+  `users_address` text,
+  `users_phone` varchar(11) DEFAULT NULL,
+  `users_age` int(3) DEFAULT NULL,
+  `users_gender` smallint(6) DEFAULT NULL,
   `users_permission` smallint(6) NOT NULL DEFAULT '0',
   `users_joindate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -172,7 +157,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`users_id`, `users_name`, `users_email`, `users_password`, `users_address`, `users_phone`, `users_age`, `users_gender`, `users_permission`, `users_joindate`) VALUES
-(1, 'anselm', 'anselm@email.com', '123', '123 Singapore Road', '123', 12, 1, 0, '2021-06-28 13:47:07');
+(2, 'Anselm Sim', 'anselmsim@gmail.com', '$2y$10$T0a/EeWKAN2liNAhURmzbuA0Wt2Lyw2a7gbZEX.VRYaSP.IchQk9.', NULL, NULL, NULL, NULL, 0, '2021-07-03 05:02:41');
 
 -- --------------------------------------------------------
 
@@ -189,13 +174,6 @@ CREATE TABLE `vouchers` (
   `vouchers_status` smallint(6) NOT NULL DEFAULT '0',
   `users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `vouchers`
---
-
-INSERT INTO `vouchers` (`vouchers_id`, `vouchers_code`, `vouchers_date`, `vouchers_expirydate`, `vouchers_discount`, `vouchers_status`, `users_id`) VALUES
-(3, 'abcd1234\r\nvouchers_status:\r\n0 - available\r\n1 - redeemed\r\n\r\nvouchers_expirydate: populated via a function, +30 or +60 days', '2021-06-30 13:01:47', '2021-07-29 21:00:47', 10, 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -300,7 +278,7 @@ ALTER TABLE `submission`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `vouchers`

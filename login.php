@@ -2,6 +2,110 @@
 include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
+// Start of Register PHP Code
+$name = $email = $password = $cfmPassword = $registererror = $registerSuccess = "";
+
+if(isset($_POST['register'])){
+  if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['cfmPassword'])){
+    $registererror = "Please fill up your Name, Email & Password.";
+    // echo $registererror;
+  }else{
+    $email = validateData($_POST['email']);
+    //validate if email is legit
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $name = validateData($_POST['name']);
+      $password = validateData($_POST['password']);
+      $cfmPassword = validateData($_POST['cfmPassword']);
+      //check if password and confirm password are the same
+      if($password == $cfmPassword){
+        //check if email exist in database
+        $checkEmail = DB::query("SELECT * FROM users WHERE users_email=%s", $email);
+        $checkEmailCount = DB::count();
+        //if email already exist
+        if($checkEmailCount > 0){
+          $registererror = "The email you entered has already been used! Please try another email.";
+        }else{
+            DB::insert("users", [
+              'users_name' => $name,
+              'users_email' => $email,
+              'users_password' => password_hash($password, PASSWORD_DEFAULT),
+              // 'users_registeredDate' => MySQLDate($date)
+            ]);
+            $registerSuccess = 1;
+        }
+      }else{
+        $registererror = "Your passwords do not match! Please try again";
+      }
+    }else{
+      $registererror = "Please enter a valid email.";
+    }
+  }
+}
+
+// Start of Login PHP Code
+$loginemail = $loginpassword = $loginerror = $loginsuccess = "";
+
+if(isset($_POST['login'])){
+    if(empty($_POST['loginemail']) || empty($_POST['loginpassword'])){
+        $loginerror = "Please enter both your email & password!";
+        // echo $loginerror;
+    } else{
+        $loginemail = validateData($_POST['loginemail']);
+        $loginpassword = validateData($_POST['loginpassword']);
+
+        if (filter_var($loginemail, FILTER_VALIDATE_EMAIL)) { //validates email legitimacy
+            // is a valid email address
+            $userQuery = DB::query("SELECT * FROM users WHERE users_email=%s", $loginemail);
+            $userCount = DB::count(); 
+            if($userCount == 1){ //user exist in database
+                foreach($userQuery as $userResult){
+                    $dbId = $userResult['users_id'];
+                    $dbPermission = $userResult['users_permission'];
+                    $dbName = $userResult['users_name'];
+                    $dbEmail = $userResult['users_email'];
+                    $dbPassword = $userResult['users_password'];
+                    // $wcId = $dbId;
+                }
+                if(password_verify($loginpassword, $dbPassword)){
+                    setcookie("users_id", $dbId, time() + (86400 * 30)); // 86400 = 1 day
+                    setcookie("users_permission", $dbPermission, time() + (86400 * 30)); // 86400 = 1 day
+                    setcookie("users_name", $dbName, time() + (86400 * 30)); // 86400 = 1 day
+                    setcookie("users_email", $dbEmail, time() + (86400 * 30)); // 86400 = 1 day
+                    setcookie("isLoggedIn", 1, time() + (86400 * 30)); // 86400 = 1 day
+                    $loginsuccess = 1;
+                } else {
+                  $loginerror = "Password is incorrect! Please try again";
+                }
+            }elseif($userCount > 1) {
+                $loginerror = "Login error. Please contact the website administrator";
+                // echo $loginerror;
+            }else {
+                $loginerror = "Please enter a valid email address/password!";
+                // echo $loginerror;
+            }
+          } else {
+            // is not a valid email address
+
+            $loginerror = "Please enter a valid email address";
+            $loginemail = "";
+            $loginpassword = "";
+          }
+    }
+
+
+
+    // if(empty($_POST['email'])){
+    //     $emailError = "Email is required.";
+    // }else{  
+    //     $email = validateData($_POST['email']);      
+    //     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    //         $emailError = "Invalid email format.";
+    //         $email = "";
+    //     }
+    // }
+
+}
+
 
 ?>
 
@@ -35,7 +139,7 @@ include "config/functions.php";
     
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="#">
+            <form action="<?php echo htmlspecialchars(SITE_URL . "login.php"); ?>" method="post">
                 <h1>Create Account</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -43,14 +147,15 @@ include "config/functions.php";
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your account for registration</span>
-                <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button>Sign Up</button>
+                <input type="text" placeholder="Name" name="name" value="<?php echo $_POST['name'] ?>">
+                <input type="email" placeholder="Email" name="email" value="<?php echo $_POST['email'] ?>">
+                <input type="password" placeholder="Password" name="password">
+                <input type="password" placeholder="Retype Password" name="cfmPassword">
+                <button type="submit" name="register">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="<?php echo htmlspecialchars(SITE_URL . "login.php"); ?>" method="post">
                 <h1>Sign in</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -58,10 +163,11 @@ include "config/functions.php";
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your account</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+
+                <input type="email" placeholder="Email" name="loginemail">
+                <input type="password" placeholder="Password" name="loginpassword">
                 <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                <button type="submit" name="login">Sign In</button>
             </form>
         </div>
         <div class="overlay-container">
@@ -107,5 +213,49 @@ include "config/functions.php";
 <!-- bootstrap jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+  <?php
+  //if there is an error
+  if($registererror != ""){
+    echo 'swal("Opps...", "'. $registererror .'", "error");';
+  }
+
+  //if register is successful
+  if($registerSuccess == 1){
+    echo 'swal("Yay!", "You are registered successfully!", "success", {
+      buttons: false,
+      timer: 1500,
+    });';
+    echo 'setTimeout(function() {
+      window.location.href = "'. SITE_URL .'login.php";
+    }, 1000);';
+  }
+
+  if($loginerror != ""){ 
+    echo 'swal("Oops", "' . $loginerror . '", "error");';
+    }
+
+    if($loginerror == "Password is incorrect! Please try again"){
+    echo 'swal("Oops", "' . $loginerror . '", "error");';
+
+    }
+
+    if($loginsuccess == 1){ 
+   //  echo 'swal("Yes!", "Login is successful!", "success");';
+    echo 'swal({
+     title: "Nice!",
+     text: "Logging in now...",
+     icon: "success",
+     buttons: false,
+     timer : 2000,
+     }).then(function() {
+     window.location = "index.php";
+    });';
+    }
+
+  ?>
+</script>
+
 </body>
 </html>
