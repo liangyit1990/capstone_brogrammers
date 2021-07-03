@@ -43,9 +43,9 @@ include "config/functions.php";
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your account for registration</span>
-                <input type="text" placeholder="Name" />
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
+                <input type="password" placeholder="Confirm Password" />
                 <button>Sign Up</button>
             </form>
         </div>
