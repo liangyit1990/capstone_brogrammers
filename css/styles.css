@@ -137,6 +137,17 @@ img{
     background-color:var(--primary-color);
 
 }
+/* cart */
+.item-count {
+    color: #000;
+    font-size: 15px;
+    height: 23px;
+    width: 23px;
+    text-align: center;
+    line-height: 22px;
+    border: 1px solid #ff9a00;
+    border-radius: 50%;
+}
 
 /* Nav */
 

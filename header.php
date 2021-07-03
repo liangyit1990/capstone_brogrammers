@@ -14,10 +14,14 @@
                     <li class="nav-item"><a href="login.php" class="nav_link">Login</a></li>
                 </ul>
             </div>
-            
+            <div class="cart-nav">
+                <i class='bx bx-cart'></i>
+                <div class="item-count">0</div>
+
+            </div>
 
             <div class="nav_toggle" id="nav-toggle">
-                <i class='bx bx-cart'></i>
+                
                 <i class='bx bxs-food-menu' ></i>
                 
             </div>
