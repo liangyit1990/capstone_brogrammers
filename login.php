@@ -147,11 +147,18 @@ if(isset($_POST['login'])){
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your account for registration</span>
+<<<<<<< HEAD
                 <input type="text" placeholder="Name" name="name" value="<?php echo $_POST['name'] ?>">
                 <input type="email" placeholder="Email" name="email" value="<?php echo $_POST['email'] ?>">
                 <input type="password" placeholder="Password" name="password">
                 <input type="password" placeholder="Retype Password" name="cfmPassword">
                 <button type="submit" name="register">Sign Up</button>
+=======
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <input type="password" placeholder="Confirm Password" />
+                <button>Sign Up</button>
+>>>>>>> 31ab0837688c8ed5a00c79a20836393d8ab34c74
             </form>
         </div>
         <div class="form-container sign-in-container">

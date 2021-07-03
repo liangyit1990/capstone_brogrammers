@@ -1,8 +1,8 @@
 <!-- Header for main pages -->
 <header class="l-header " id="header">
-        <nav class="nav bd-container">
+        <nav class="nav container">
             <a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
-            <a href="<?php echo htmlspecialchars(SITE_URL); ?>" class="nav_logo"><h2><strong>CALORICE</strong></h2></a>
+            <a href="<?php echo htmlspecialchars(SITE_URL); ?>" class="nav_logo"><h2 class="brand"><strong>C A L O R I C E</strong></h2></a>
 
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
@@ -15,12 +15,15 @@
 
                 </ul>
             </div>
-            
+            <div class="cart-nav">
+                    <i class='bx bx-cart'></i>
+                    <div class="item-count">0</div>
+
+            </div>
 
             <div class="nav_toggle" id="nav-toggle">
-                <i class='bx bx-cart'></i>
-                <i class='bx bxs-food-menu' ></i>
                 
+                <i class='bx bxs-food-menu' ></i>
             </div>
         </nav>
 </header>
