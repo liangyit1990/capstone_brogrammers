@@ -88,7 +88,13 @@ img{
     max-width: 100%;
     height:auto;
 }
-
+/* .container{
+    max-width: 100%;
+    width: calc(100%-2rem);
+    margin-left:var(--mb-2);
+    margin-right: var(--mb-2);
+    text-align: left;  
+} */
 /* css for class */
 .section{
     padding: 4rem 0 2rem;
@@ -117,8 +123,10 @@ img{
     width: calc(100%-2rem);
     margin-left:var(--mb-2);
     margin-right: var(--mb-2);
-    text-align: center;  
+    text-align: center; 
+    justify-content: center; 
 }
+
 .bd-grid{
     display: grid;
     gap:1.5rem;
@@ -149,6 +157,7 @@ img{
     border-radius: 50%;
 }
 
+
 /* Nav */
 
 .nav{
@@ -156,10 +165,14 @@ img{
     height: var(--header-height);
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
     background-color: var(--primary-color);
     /* margin: 0 0 0 0; */
 
+}
+.brand{
+    justify-content: center;
+    
 }
 /* when screen size is */
 @media screen and (min-width:768px){
@@ -203,6 +216,7 @@ img{
 .nav_toggle{
     font-size: 1.5rem;
     cursor:pointer;
+    
 }
 /* reveal menu */
 .show-menu{
