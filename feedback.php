@@ -19,8 +19,8 @@ include "config/functions.php";
      <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- css here -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/feedback.css">
+    <!-- <link rel="stylesheet" href="css/feedback.css"> -->
     <title><?php echo SITE_NAME; ?>- Feedbacks</title>
 </head>
 <body>
@@ -55,55 +55,37 @@ include "config/functions.php";
 </header>
 
 <!--Form -->
-<div class="l-main ">
-    <section>
-        <div class="container">
-            <div class="row contact-back">
-                
-                <!--Col for Forms -->
-                <div class="col-lg-6 back-two">
-                    <h3>Submit your feedback!</h3>
-                    
-                    <form class="mt-3">
-                        <input placeholder="Name" type="text" />
-                        <input placeholder="Topic" type="email" />
-                        <textarea placeholder="Type your message here" rows="4"></textarea>
-                        <span>Upload Document</span><input type="file" name="fileToUpload" class="form-control img" >
-                        
-                    </form>
-                </div>
-                <!--End of Col for forms -->
-                <div class="col-lg-6 justify-content-center ">
-                    <h3><u>Locate Us</u></h3>
-                    <!--Interactive Google map -->
-                    <div class="row mapouter">
-                        <div class="col gmap_canvas">
-                            <!-- Div to make gogle map response -->
-                            <div class= "map-responsive">
-                                <iframe width="566" height="204" id="gmap_canvas" src="https://maps.google.com/maps?q=paya%20lebar%20square&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                                <a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:204px;width:566px;}</style><a href="https://www.embedgooglemap.net">google map location for website</a>
-                                <style>.gmap_canvas {overflow:hidden;background:none!important;height:204px;width:566px;}</style>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Google map -->
+    <div class="contact-in">
+        
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form>
+                <input placeholder="Name" type="text" class="contact-form-txt"/>
+                <input placeholder="Email" type="email" class="contact-form-txt"/>
+                <textarea placeholder="Message" class="contact-form-textarea"></textarea>
+                <span>Upload Document</span><input type="file" name="fileToUpload" class="form-control img" >
+                <button type="submit" name="feedback" class="contact-form-btn">Submit</button>
+            </form>
 
-                    <!-- Shop Details like address & opening hours -->            
-                    <div class = "row">
-                     <h3 class="mt-3"><u>Address</u></h3>         
-                     <p>Address Address Address Address Address Address Address Address Address Address Address  </p> 
-                    </div>
-                    <div class = "row">
-                     <h3 class="mt-3"><u>Opening Hours</u></h3>         
-                     <p>Monday - Sunday  </p> 
-                     <p>11am - 9pm  </p> 
-                    </div>
-                
-                </div>
+        <div class="contact-map">
+            <div class= "map-responsive">
+                <a href="https://www.embedgooglemap.net" class="location"></a><br>
+                <iframe  id="gmap_canvas" src="https://maps.google.com/maps?q=paya%20lebar%20square&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                <a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:204px;width:566px;}</style>
+                <style>.gmap_canvas {overflow:hidden;background:none!important;height:204px;width:566px;}</style>
             </div>
+        
         </div>
-    </section>
-</div>
+        <!-- Shop Details like address & opening hours -->            
+        <div class = "row">
+            <div class = "row">
+            <h3 class="mt-3"><u>Ordering Hours</u></h3>         
+            <p>Monday - Sunday  </p> 
+            <p>11am - 9pm  </p> 
+        </div>          
+    </div>
+
+
 
 
 <!-- scroll reveal here -->

@@ -88,13 +88,7 @@ img{
     max-width: 100%;
     height:auto;
 }
-/* .container{
-    max-width: 100%;
-    width: calc(100%-2rem);
-    margin-left:var(--mb-2);
-    margin-right: var(--mb-2);
-    text-align: left;  
-} */
+
 /* css for class */
 .section{
     padding: 4rem 0 2rem;
@@ -367,7 +361,4 @@ img{
 
 }
 
-/* Media Queries */
-@media screen and (min-width: 576px){
-    
-}
+
