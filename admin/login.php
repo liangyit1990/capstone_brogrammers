@@ -137,7 +137,7 @@ if(isset($_POST['login'])){
     <!-- icons here -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- css here -->
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="login.css">
     <!-- for icon -->
     <link href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" rel="stylesheet">
     <!-- fonts -->
@@ -155,58 +155,46 @@ if(isset($_POST['login'])){
 <body>
     
     <div class="container" id="container">
-        <div class="form-container sign-up-container">
+        <!-- <div class="form-container sign-up-container">
             <form action="<?php echo htmlspecialchars(SITE_URL . "login.php"); ?>" method="post">
                 <h1>Create Account</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account for registration</span>
+                
                 <input type="text" placeholder="Name" name="name" value="<?php echo $_POST['name'] ?>">
                 <input type="email" placeholder="Email" name="email" value="<?php echo $_POST['email'] ?>">
                 <input type="password" placeholder="Password" name="password">
                 <input type="password" placeholder="Retype Password" name="cfmPassword">
                 <button type="submit" name="register">Sign Up</button>
             </form>
-        </div>
+        </div> -->
         <div class="form-container sign-in-container">
             <form action="<?php echo htmlspecialchars(SITE_URL . "login.php"); ?>" method="post">
                 <h1>Sign in</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account</span>
 
                 <input type="email" placeholder="Email" name="loginemail">
                 <input type="password" placeholder="Password" name="loginpassword">
                 <a href="#">Forgot your password?</a>
                 <button type="submit" name="login">Sign In</button>
-                <p><a href="admin/login.php" class="adminlogin">Sign in as admin here</a></p>
+                <a href="../login.php" class=""><p>Sign in as user here</p></a>
             </form>
         </div>
         <div class="overlay-container">
             <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
-                    <h1>Welcome to Calorice!</h1>
+                <!-- <div class="overlay-panel overlay-left">
+                    
+                    <h1>Welcome back Admin</h1>
                     <p>Stay in touch and login here</p>
                     <button class="ghost" id="signIn">Sign In</button>
-                </div>
+                </div> -->
                 <div class="overlay-panel overlay-right">
-                    <a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
-                    <h1>Hello from Calorice!</h1>
-                    <p>Enter your personal details and start eating better!</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
+                    <h1>Hello Admin!</h1>
+                    <!-- <p></p> -->
+                    <!-- <button class="ghost" id="signUp">Sign Up</button> -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- footer -->
+    <!-- footer
     <footer class="footer section bd-container">
         <div class="footer_container bd-grid">
             <div class="footer_content">
@@ -222,12 +210,12 @@ if(isset($_POST['login'])){
                 </div> 
             </div>
         </div>
-    </footer>
+    </footer> -->
 <body>
 
 
 <!-- main js here -->
-    <script src="js/register.js"></script>
+    <script src="login.js"></script>
 <!-- bootstrap jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
