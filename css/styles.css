@@ -372,6 +372,49 @@ img{
 
 }
 
+/* menu modal details */
+.close{
+    border:none;
+    background-color: var(--primary-color);
+}
+.modal-content{
+    background-color: var(--primary-color);
+    border-radius: 20px;
+}
+.btn-danger{
+    background-color: var(--primary-color-alt);
+    color: var(--text-color);
+    border:none;
+    border-radius: 10px;
+}
+.table-image , thead, td,th {
+        border: 0;
+        color: #666;
+        font-size: 1rem;
+}
+.table-image .qty{
+    width: 70px;
+    justify-self:center;
+    
+}
+.table-image, td, th {
+      vertical-align: middle;
+      text-align: center;
+ }
+.modal_menu img{
+    width: 100px;
+    height: 80px;
+    background-color: var(--primary-color);
+    border:none;
+}
+  
+.price {
+    margin-left: 1rem;
+}
+  
+.modal-footer {
+    padding-top: 0rem;
+}
 
 /* dark theme */
 body.dark-theme{

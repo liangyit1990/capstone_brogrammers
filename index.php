@@ -56,17 +56,235 @@ include "config/functions.php";
                 <div class="menu_content">
                     <img src="images/bento_menu_rice2.png" alt="" class="menu_img">
                     <h3 class="menu_name">Rice</h3>
-                    <span class="menu_price">$1</span>
+                    <span class="menu_price">SGD 1</span>
                     <span class="menu_calorie">130 Cal</span>
-                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' > Choose Base</i></a>
+                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' > Base</i></a>
+                    <div class="modal fade" id="ricecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header border-bottom-0">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                Ingredients
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-image">
+                                <thead>
+                                    <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Ingredient</th>
+                                    <th scope="col">Cal</th>
+                                    <th scope="col">Price(SGD)</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="modal_menu">
+                                        <img src="images/brocolli.png" class="img-fluid img-thumbnail" alt="">
+                                    </td>
+                                    <td>Steamed <br>Brocolli</td>
+                                    <td>34</td>
+                                    <td>1.00</td>
+                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
+                                    <td>178$</td>
+                                    <td>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        <i class='bx bx-plus'></i> 
+                                        
+                                        </a>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        
+                                        <i class='bx bx-minus' ></i>
+                                        </a>
+                                    </td>
+                                    </tr>
+                                
+                                    <tr>
+                                    <td class="modal_menu">
+                                        <img src="images/soy_sauce_egg.png" class="img-fluid img-thumbnail" alt="">
+                                    </td>
+                                    <td>Soy Sauce <br>Egg</td>
+                                    <td>66</td>
+                                    <td>1.50</td>
+                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
+                                    <td>178$</td>
+                                    <td>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        <i class='bx bx-plus'></i> 
+                                        
+                                        </a>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        
+                                        <i class='bx bx-minus' ></i>
+                                        </a>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="modal_menu">
+                                        <img src="images/chicken.jpeg" class="img-fluid img-thumbnail" alt="">
+                                    </td>
+                                    <td>Teriyaki <br>Chicken</td>
+                                    <td>310</td>
+                                    <td>2.50</td>
+                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
+                                    <td>178$</td>
+                                    <td>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        <i class='bx bx-plus'></i> 
+                                        
+                                        </a>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        
+                                        <i class='bx bx-minus' ></i>
+                                        </a>
+                                    </td>
+                                    </tr>
+                                
+                                </tbody>
+                                </table> 
+                                <div class="d-flex justify-content-end">
+                                <h5>Total: <span class="price text-success">89$</span></h5>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-top-0 d-flex justify-content-between">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success">Checkout</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                 </div>
                 <div class="menu_content">
                     <img src="images/bento_menu_noodles.png" alt="" class="menu_img">
                     <h3 class="menu_name">Noodle</h3>
-                    <span class="menu_price">$1</span>
+                    <span class="menu_price">SGD 1</span>
                     <span class="menu_calorie">174 Cal</span>
-                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' > Choose Base</i></a>
+                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' > Base</i></a>
+                    <div class="modal fade" id="noodlecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header border-bottom-0">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                Ingredients
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-image">
+                                <thead>
+                                    <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Ingredient</th>
+                                    <th scope="col">Cal</th>
+                                    <th scope="col">Price(SGD)</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <td class="modal_menu">
+                                        <img src="images/brocolli.png" class="img-fluid img-thumbnail" alt="">
+                                    </td>
+                                    <td>Steamed <br>Brocolli</td>
+                                    <td>34</td>
+                                    <td>1.00</td>
+                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
+                                    <td>178$</td>
+                                    <td>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        <i class='bx bx-plus'></i> 
+                                        
+                                        </a>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        
+                                        <i class='bx bx-minus' ></i>
+                                        </a>
+                                    </td>
+                                    </tr>
+                                
+                                    <tr>
+                                    <td class="modal_menu">
+                                        <img src="images/soy_sauce_egg.png" class="img-fluid img-thumbnail" alt="">
+                                    </td>
+                                    <td>Soy Sauce <br>Egg</td>
+                                    <td>66</td>
+                                    <td>1.50</td>
+                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
+                                    <td>178$</td>
+                                    <td>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        <i class='bx bx-plus'></i> 
+                                        
+                                        </a>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        
+                                        <i class='bx bx-minus' ></i>
+                                        </a>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="modal_menu">
+                                        <img src="images/chicken.jpeg" class="img-fluid img-thumbnail" alt="">
+                                    </td>
+                                    <td>Teriyaki <br>Chicken</td>
+                                    <td>310</td>
+                                    <td>2.50</td>
+                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
+                                    <td>178$</td>
+                                    <td>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        <i class='bx bx-plus'></i> 
+                                        
+                                        </a>
+                                        <a href="" class="btn btn-danger btn-sm">
+                                        
+                                        <i class='bx bx-minus' ></i>
+                                        </a>
+                                    </td>
+                                    </tr>
+                                </tbody>
+                                </table> 
+                                <div class="d-flex justify-content-end">
+                                <h5>Total: <span class="price text-success">89$</span></h5>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-top-0 d-flex justify-content-between">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success">Checkout</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <span class="section-subtitle">OR</span>
+            <span class="section-subtitle">LET US PICK FOR YOU</span>
+            <div class="menu_container bd-grid">
+                <div class="menu_content">
+                    <img src="images/Bento.png" alt="" class="menu_img">
+                    <h3 class="menu_name">Ebi Fry Bento</h3>
+                    <span class="menu_price">SGD 6</span>
+                    <span class="menu_calorie">510 Cal</span>
+                    <a class="button menu_button"><i class='bx bxs-cart-download' > Add to Cart</i></a>
+                </div>
+                <div class="menu_content">
+                    <img src="images/chickenkaraagebento.png" alt="" class="menu_img">
+                    <h3 class="menu_name">Karaage Bento</h3>
+                    <span class="menu_price">SGD 6</span>
+                    <span class="menu_calorie">530 Cal</span>
+                    <a class="button menu_button"><i class='bx bxs-cart-download' > Add to Cart</i></a>
+                </div>
+                
             </div>
         </section>
         <!-- About us -->
@@ -90,7 +308,7 @@ include "config/functions.php";
 
     <!-- Modal -->
     <!-- id is linked to data-bs-target value of the button-->
-    <div class="modal fade" id="ricecart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="ricecart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -98,7 +316,7 @@ include "config/functions.php";
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            ...
+            
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -106,24 +324,8 @@ include "config/functions.php";
             </div>
         </div>
         </div>
-    </div>
-    <div class="modal fade" id="noodlecart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            ...
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-        </div>
-    </div>
+    </div> -->
+    
 
     <?php 
         include 'register.php';

@@ -64,6 +64,11 @@ function scrollTop(){
 }
 window.addEventListener('scroll', scrollTop)
 
+//menu modal
+// $(document).ready(function() {  
+//     $('#noodlecart').modal('show');
+//   });
+
 //add to cart
 
 let count = 0;
