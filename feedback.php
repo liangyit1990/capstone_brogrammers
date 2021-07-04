@@ -78,7 +78,9 @@ include "config/functions.php";
         </div>
         <!-- Shop Details like address & opening hours -->            
         <div class = "row">
-            <div class = "row">
+            <h3 class="mt-3"><u>Pickup Address</u></h3>         
+            <p>Paya Lebar Square Mall, L2-130</p>
+    
             <h3 class="mt-3"><u>Ordering Hours</u></h3>         
             <p>Monday - Sunday  </p> 
             <p>11am - 9pm  </p> 
