@@ -92,7 +92,7 @@ include "config/functions.php";
                                     <td>34</td>
                                     <td>1.00</td>
                                     <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
-                                    <td>178$</td>
+                                    <td>178</td>
                                     <td>
                                         <a href="" class="btn btn-danger btn-sm">
                                         <i class='bx bx-plus'></i> 
@@ -113,7 +113,7 @@ include "config/functions.php";
                                     <td>66</td>
                                     <td>1.50</td>
                                     <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
-                                    <td>178$</td>
+                                    <td>178</td>
                                     <td>
                                         <a href="" class="btn btn-danger btn-sm">
                                         <i class='bx bx-plus'></i> 
@@ -267,22 +267,22 @@ include "config/functions.php";
                     </div>
                 </div>
             </div>
-            <span class="section-subtitle">OR</span>
-            <span class="section-subtitle">LET US PICK FOR YOU</span>
+            <span class="section-subtitle">OR<br></span>
+            <span class="section-title">LET US PICK FOR YOU</span>
             <div class="menu_container bd-grid">
                 <div class="menu_content">
                     <img src="images/Bento.png" alt="" class="menu_img">
                     <h3 class="menu_name">Ebi Fry Bento</h3>
                     <span class="menu_price">SGD 6</span>
                     <span class="menu_calorie">510 Cal</span>
-                    <a class="button menu_button"><i class='bx bxs-cart-download' > Add to Cart</i></a>
+                    <a class="button menu_button"><i class='bx bxs-cart-download' > Add</i></a>
                 </div>
                 <div class="menu_content">
                     <img src="images/chickenkaraagebento.png" alt="" class="menu_img">
                     <h3 class="menu_name">Karaage Bento</h3>
                     <span class="menu_price">SGD 6</span>
                     <span class="menu_calorie">530 Cal</span>
-                    <a class="button menu_button"><i class='bx bxs-cart-download' > Add to Cart</i></a>
+                    <a class="button menu_button"><i class='bx bxs-cart-download' > Add</i></a>
                 </div>
                 
             </div>
@@ -327,9 +327,7 @@ include "config/functions.php";
     </div> -->
     
 
-    <?php 
-        include 'register.php';
-    ?>
+   
 
     <!-- footer -->
     <footer class="footer section bd-container">

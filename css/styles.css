@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+/* @import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap'); */
+
 /* variables  */
 :root{
     --header-height:3rem;
@@ -14,7 +16,8 @@
 
 
 /* font */
-    --body-font: 'Roboto', sans serif;
+    /* --body-font: 'Yellowtail', cursive; */
+    --body-font: 'Roboto', san serif;
     --biggest-font-size: 2.25rem;
     --h1-font-size: 1.5rem;
     --h2-font-size: 1.25rem;
@@ -149,14 +152,16 @@ img{
 }
 /* cart */
 .item-count {
-    color: #000;
+    color: var(--text-color);
     font-size: 15px;
-    height: 23px;
-    width: 23px;
+    height: 13px;
+    width: 13px;
     text-align: center;
-    line-height: 22px;
-    border: 1px solid #ff9a00;
+    /* line-height: 22px; */
+    border: 1px solid var(--primary-color);
     border-radius: 50%;
+    
+    
 }
 
 
@@ -166,8 +171,8 @@ img{
     max-width: 100%;
     height: var(--header-height);
     display: flex;
-    justify-content: space-between;
-    align-items: left;
+    justify-content:space-between;
+    align-items: center;
     background-color: var(--body-color);
     /* margin: 0 0 0 0; */
 
@@ -202,7 +207,16 @@ img{
     color:var(--text-color);
     font-weight: var(--font-medium);
 }
+.nav_cart{
+    color:var(--text-color);
+    font-weight: var(--font-medium);
+    font-size: 1.5rem;
+    cursor:pointer;
+    position:sticky;
+    margin: 0 0 0 auto;
 
+    
+}
 .nav_logo:hover{
     color:var(--primary-color);
 }
@@ -306,8 +320,11 @@ img{
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
     transition:0.3s;
+    font-family: var(--body-font);
+    
 
 }
+
 
 .button:hover{
     background-color: var(--primary-color-alt);
@@ -369,27 +386,32 @@ img{
     border-radius: 0.5rem 0 0.5rem 0; 
     justify-content: center;
     cursor:pointer;
+    
 
+}
+.bx{
+    font-family: var(--body-font);
+    
 }
 
 /* menu modal details */
 .close{
     border:none;
-    background-color: var(--primary-color);
+    background-color: var(--body-color);
 }
 .modal-content{
-    background-color: var(--primary-color);
+    background-color: var(--body-color);
     border-radius: 20px;
 }
 .btn-danger{
-    background-color: var(--primary-color-alt);
+    background-color: var(--body-color);
     color: var(--text-color);
     border:none;
     border-radius: 10px;
 }
 .table-image , thead, td,th {
         border: 0;
-        color: #666;
+        color: var(--text-color);
         font-size: 1rem;
 }
 .table-image .qty{
@@ -404,7 +426,7 @@ img{
 .modal_menu img{
     width: 100px;
     height: 80px;
-    background-color: var(--primary-color);
+    background-color: var(--body-color);
     border:none;
 }
   

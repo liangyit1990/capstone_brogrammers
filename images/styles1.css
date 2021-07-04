@@ -1,0 +1,485 @@
+/* making them all the same in all browsers */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cedarville Cursive', cursive;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+html{
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+body{
+    overflow-x: hidden;
+}
+#head{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 4rem;
+    z-index: 1000;
+}
+#head .fa-pepper-hot{
+    z-index: 10000;
+    color: red;
+    cursor: pointer;
+    font-size: 4rem;
+    display: none;
+}
+#head .logo img{
+        height: 10rem;
+
+}
+#head nav ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        list-style: none;
+}
+#head nav ul li{
+    margin-right:4rem;
+}
+#head nav ul li a{
+    color: #fff;
+    font-size: 2rem;
+    text-decoration: none;
+}
+/* for scrolling color */
+header.theme ul {
+    background-color: #000;
+    
+}
+
+/* for cart */
+.cart {
+    position: relative;
+    cursor: pointer;
+}
+.item-count {
+    color: #fff;
+    font-size: 15px;
+    height: 23px;
+    width: 23px;
+    text-align: center;
+    line-height: 22px;
+    border: 1px solid #ff9a00;
+    border-radius: 50%;
+}
+/* home section */
+#home{
+    background: linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+    position: relative;
+}
+#home .content{
+    margin:auto;
+}
+#home .content h1{
+    font-size: 5rem;
+    font-family: 'Kaushan Script', cursive;
+    font-weight: bolder;
+    text-shadow: 0.1rem 0.1rem 0.3rem #333;
+    color: #ff9a00;
+}
+#home .content h2{
+    font-size: 3.0rem;
+    font-family: 'Kaushan Script', cursive;
+    font-weight: bolder;
+    text-shadow: 0.1rem 0.1rem 0.3rem #333;
+    color: #fff;
+    margin: 1rem 0;
+}
+
+
+#home .content button{
+    outline:none;
+    border:none;
+    border-radius: 3rem;
+    color: #333;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    cursor: pointer;
+    position: relative;
+    z-index:1;
+    overflow: hidden;
+    height: 4rem;
+    width: 14rem;
+    background: #fff;
+    font-family: 'Kaushan Script', cursive;
+}
+#home .content button::before {
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    background: #ff9a00;
+    height: 100%;
+    width:0;
+    transition: 0.2s;
+    z-index: -1;
+}
+#home .content button:hover::before {
+    width:100%;
+}
+#home .video-container{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100vh;
+    width:100%;
+    z-index: -1;
+}
+#home .video-container .vid{
+    position: absolute;
+    height: 100vh;
+    width:100%;
+    object-fit: cover;
+    display: none;
+}
+#home .video-container .vid3{
+    display:block;
+}
+.controls{
+    position: absolute;
+    bottom: 14%;
+    left:50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+.controls .dots{
+    height:2rem;
+    width:2rem;
+    border-radius: 1rem;
+    cursor:pointer;
+    background: #ff9a00;
+    margin: 0 1rem;
+
+}
+
+/* for chili symbol to rotate when clicked */
+.fa-times{
+    -webkit-transform: skew(-180deg) rotate(180deg);
+    transform: skew(-180deg) rotate(180deg)
+}
+
+/* menu section here */
+#menu {
+    background:#000;
+    min-height: 100vh;   
+}
+#menu .heading h1{
+    font-size: 4rem;
+    color: #000;
+    padding-top: 7rem;
+    margin-bottom: 2rem;
+    color:#fff;
+}
+#menu .heading h1 span{
+    color: #ff9a00;
+}
+#menu p{
+    color: #ff9a00;
+    font-size:2rem;
+
+}
+.menu-img {
+    height:50%;
+    width:100%;
+    object-fit: cover;
+    
+}
+#menu .container .row .col-sm {
+    text-align: center;
+    height:30rem;
+    width:25rem;
+    border-radius: 0.5rem;
+    margin:2rem;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+
+}
+#menu .container .row .col-sm p{
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
+}
+#menu .container .row .col-sm button{
+    outline:none;
+    border:none;
+    border-radius: 2rem;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    cursor: pointer;
+    position: relative;
+    z-index:1;
+    overflow: hidden;
+    height: 2rem;
+    width: 10rem;
+    background: #fff;
+    margin:10px 10px 10px 10px;
+}
+.fa-shopping-cart {
+    color: #ff9a00;
+}
+
+/* add to cart */
+
+
+
+/* about us section */
+#about{
+    margin:auto;
+    
+}
+#about .heading h1 {
+    font-size: 4rem;
+    color: #000;
+    padding-top: 7rem;
+    margin-bottom: 2rem;
+   
+}
+#about .heading h1 span{
+    color: #ff9a00;
+}
+#about .space{
+    height: 500px;
+    width:  1320px;
+}
+#about .content {
+    margin: 10rem auto;
+    margin-top: 0;
+}
+#about .content p {
+    font-size: 2rem;
+    font-family: 'Kaushan Script', cursive;
+}
+#about .content p a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Kaushan Script', cursive;
+}
+.container1 {
+    margin-bottom: 40px;
+    font-size: 30px;
+}
+
+/* #about .image{
+    width: 20vw;
+    height: 5vw;
+}
+#about .image img{
+    width:min-content;
+    height:min-content;
+    
+} */
+.skills{
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+.skill-name{
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 20px 0;
+    font-family: 'Kaushan Script', cursive;
+}
+.skill-bar{
+    height:20px;
+    background: #cacaca;
+    border-radius: 8px;
+}
+.skill-per{
+    height: 20px;
+    background-color: #ff9a00;
+    border-radius: 8px;
+    width: 0;
+    transition: 5s linear;
+    position: relative;
+}
+.skill-per::before{
+    content: attr(per);
+    position: absolute;
+    padding: 4px 6px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    top: -35px;
+    right:0;
+    transform: translateX(50%);
+}
+.skill-per::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    top:-16px;
+    right: 0;
+    transform: translateX(50%) rotate(45deg);
+    border-radius: 2px;
+
+}
+#toTop {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #ff9a00; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 30px; /* Rounded corners */
+    font-size: 20px; /* Increase font size */
+  }
+/* footer starts here */
+#footer {
+    background:#000;
+}
+#footer h1{
+    font-size: 2rem;
+    margin: 0;
+    padding: 2rem 0;
+    text-align: center;
+    color: #fff;
+}
+#footer h1 span {
+    color: #ff9a00;
+}
+#footer .brand {
+    text-align: center;
+    margin-top: 2rem;
+}
+#footer .brand a .logo img{
+    height: 4rem;
+}
+#footer .footer-links {
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    margin: 1rem 0;
+}
+
+#footer .footer-links a {
+    color: #fff;
+    font-size: 1.7rem;
+    text-decoration: none;
+}
+#footer .letter h2 {
+    font-size: 2rem;
+    margin: 2rem 0;
+    color: #fff;
+}
+#footer .letter input[type="text"] {
+    border: .2rem solid #fff;
+    outline: none;
+    background: none;
+    height: 4rem;
+    width: 22rem;
+    padding: 0 1rem;
+    font-size: 1.3rem;
+    color: #fff;
+  }
+  
+  #footer .letter input[type="submit"] {
+    outline: none;
+    border: none;
+    border-radius: 5rem;
+    color: #333;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    letter-spacing: .2rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    height: 4rem;
+    width: 12rem;
+    margin: 1rem 0;
+  }
+  
+  #footer .letter input[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ff9a00;
+    height: 100%;
+    width: 0%;
+    -webkit-transition: .2s;
+    transition: .2s;
+    z-index: -1;
+  }
+  
+  #footer .letter input[type="submit"]:hover::before {
+    width: 100%;
+  }
+  
+  #footer .letter input[type="submit"]:hover {
+    color: #333;
+    background: #ff9a00;
+  }
+
+
+/* media query */
+@media (max-width:768px){
+    html{
+        font-size:50%; 
+    }
+    #head .fa-pepper-hot{
+        display: block;
+    }
+    #head nav {
+        position: fixed;
+        top:0;
+        left:-120%;
+        height: 100vh;
+        width: 35rem;
+        background: #000;
+    }
+    #head nav ul {
+        flex-flow: column;
+        justify-content: center;
+        height: 100%;
+
+    }
+    #head nav ul li{
+        margin: 2rem 0;
+    }
+    
+    #head nav ul li a{
+        font-size: 3.5rem;
+        border-radius: 5rem;
+    }
+    #head .nav-toggle{
+        left: 0;
+    }
+    #head .logo img{
+        height: 20rem;
+
+    }
+    #about .image {
+        text-align: center;
+
+    }
+    #about .image img{
+        display: none;
+        
+    }
+}
+

@@ -9,7 +9,7 @@
     --title-color:#393939;
     --text-color:#000000;
     --text-color-light:#A6A6A6;
-    --body-color:#FFFFFF;
+    --body-color:#FFE32C;
     --container-color:#FFFFFF;
 
 
@@ -68,7 +68,7 @@ body{
     margin: var(--header-height) 0 0 0;
     font-family: var(--body-font);
     font-size:var(--normal-font-size);
-    background-color: var(--primary-color);
+    background-color: var(--body-color);
     color: var(--text-color);
     line-height: 1.6;
     width:100%;
@@ -141,7 +141,7 @@ img{
     top:0;
     left:0;
     
-    background-color:var(--primary-color);
+    background-color:var(--body-color);
 
 }
 /* cart */
@@ -164,8 +164,8 @@ img{
     height: var(--header-height);
     display: flex;
     justify-content: space-between;
-    align-items: left;
-    background-color: var(--primary-color);
+    align-items: center;
+    background-color: var(--body-color);
     /* margin: 0 0 0 0; */
 
 }
@@ -182,7 +182,7 @@ img{
         width: 100%;
         padding:1.5rem 0 1rem;
         text-align: center;
-        background-color: var(--primary-color);
+        background-color: var(--body-color);
         transition:0.4s;
         box-shadow: 0 4px 4px rgba(0, 0, 0, .1);
         border-radius: 0 0 1rem 1rem;
@@ -199,9 +199,18 @@ img{
     color:var(--text-color);
     font-weight: var(--font-medium);
 }
+.nav_cart{
+    color:var(--text-color);
+    font-weight: var(--font-medium);
+    font-size: 1.5rem;
+    cursor:pointer;
+    position:sticky;
+    margin: 0 0 0 auto;
 
+    
+}
 .nav_logo:hover{
-    color:var(--primary-color);
+    color:var(--body-color);
 }
 
 .nav_link{
@@ -220,6 +229,7 @@ img{
 /* reveal menu */
 .show-menu{
     top:var(--header-height);
+    background: var(--body-color);
     
 
 }
@@ -261,7 +271,7 @@ img{
 .contact-form-txt{
     width:100%;
     height:40px;
-    color:#000;
+    color:var(--text-color);
     border:1px solid var(--primary-color-alt);
     border-radius: 50px;
     outline: none;
@@ -275,7 +285,7 @@ img{
 .contact-form-textarea{
     width:100%;
     height:130px;
-    color:#000;
+    color:var(--text-color);
     border:1px solid var(--primary-color-alt);
     border-radius: 30px;
     outline: none;
@@ -294,10 +304,27 @@ img{
     border:none;
     outline: none;
     border-radius:50px;
-    background: #000;
-    color: #fff;
+    background: var(--text-color);
+    color: var(--container-color);
     text-transform: uppercase;
     padding:10px 0;
     cursor: pointer;
     
+}
+/* dark theme */
+body.dark-theme{
+    --title-color:#F1F3F2;
+    --text-color:#fff;
+    --body-color:#1D2521;
+    --container-color:#27302C;
+    
+}
+
+/* button dark light */
+.change-theme{
+    position: absolute;
+    right: 1rem;
+    top:1.8rem;
+    color: var(--text-color);
+    cursor:pointer;
 }
