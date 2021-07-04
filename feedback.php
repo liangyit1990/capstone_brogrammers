@@ -29,7 +29,7 @@ include "config/functions.php";
 <header class="l-header " id="header">
         <nav class="nav bd-container">
             <a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
-            <a href="<?php echo htmlspecialchars(SITE_URL); ?>" class="nav_logo"><h2><strong>CALORICE</strong></h2></a>
+            <a href="<?php echo htmlspecialchars(SITE_URL); ?>" class="nav_logo"><h2><strong>C A L O R I C E</strong></h2></a>
 
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
@@ -88,7 +88,22 @@ include "config/functions.php";
     </div>
 
 
+<!-- footer -->
+<footer class="footer section bd-container">
+        <div class="footer_container bd-grid">
+            <div class="footer_content">
+                <a href="" class="footer_logo">CALORICE</a>
+                
+                <div>
+                    <a href="" class="footer_social"><i class='bx bxl-facebook' ></i></a>
+                    <a href="" class="footer_social"><i class='bx bxl-instagram' ></i></a>
+                    <a href="" class="footer_social"><i class='bx bxl-twitter' ></i></a>
+                    
 
+                </div> 
+            </div>
+        </div>
+</footer>
 
 <!-- scroll reveal here -->
 <script src="https://unpkg.com/scrollreveal"></script>   
@@ -97,3 +112,4 @@ include "config/functions.php";
     <script src="js/main.js"></script>
 </body>
 </html>
+

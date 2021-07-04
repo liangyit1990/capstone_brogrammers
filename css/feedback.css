@@ -225,7 +225,7 @@ img{
 }
 
 .contact-in{
-    width:80%;
+    width:50%;
     height:900px;
     margin:auto;
     display: flex;
@@ -236,6 +236,7 @@ img{
     justify-content: center;
     
 }
+
 /* Google map */
 .contact-map{
     width: 100%;
@@ -266,6 +267,7 @@ img{
     outline: none;
     margin-bottom: 20px;
     padding: 15px;
+    
 }
 .contact-form-txt::placeholder{
     color: #aaa;

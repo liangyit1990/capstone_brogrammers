@@ -12,6 +12,8 @@ include "config/functions.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/logo.png">
+    <!-- scroll reveal here
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script> -->
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <!-- icons here -->
@@ -43,7 +45,7 @@ include "config/functions.php";
                     <h2 class="home_subtitle">Control your calorie intake with CALORICE</h2>
                     <a href='#menu'class="button">View Menu</a>
                 </div>
-                <img src="images/bento_home.png" alt="" class="home_img">
+                <img class="img-home" src="images/bento_home.png" alt="" class="home_img">
             </div>
         </section>
         <!-- Menu -->
@@ -56,15 +58,14 @@ include "config/functions.php";
                     <h3 class="menu_name">Rice</h3>
                     <span class="menu_price">$1</span>
                     <span class="menu_calorie">130 Cal</span>
-                    
-                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' ></i></a>
+                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' > Choose Base</i></a>
                 </div>
                 <div class="menu_content">
                     <img src="images/bento_menu_noodles.png" alt="" class="menu_img">
                     <h3 class="menu_name">Noodle</h3>
                     <span class="menu_price">$1</span>
                     <span class="menu_calorie">174 Cal</span>
-                    <a href="" class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' ></i></a>
+                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' > Choose Base</i></a>
                 </div>
             </div>
         </section>
@@ -145,8 +146,7 @@ include "config/functions.php";
         </div>
     </footer>
     
-<!-- scroll reveal here -->
-    <!-- <script src="https://unpkg.com/scrollreveal"></script>    -->
+
 
 <!-- main js here -->
     <script src="js/main.js"></script>
