@@ -158,7 +158,7 @@ if(isset($_POST['login'])){
         <div class="form-container sign-up-container">
             <form action="<?php echo htmlspecialchars(SITE_URL . "login.php"); ?>" method="post">
                 <h1>Create Account</h1>
-                <div class="social-container">
+                <div class="social-container" id="register">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>

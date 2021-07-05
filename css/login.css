@@ -249,10 +249,21 @@ footer p {
 }
 
 footer i {
-    color: #3c97bf;
+    color: #000;
 }
 
 footer a {
-    color: #3c97bf;
+    color: #000;
     text-decoration: none;
+}
+
+/* sweet alert */
+.swal-modal {
+	background-color: #FFE32C;
+	border-radius: 40px;
+}
+.swal-button {
+	background-color: #000;
+	border-radius: 50px;
+	
 }
