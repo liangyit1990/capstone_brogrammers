@@ -66,7 +66,7 @@ include "config/functions.php";
                                 <h5 class="modal-title" id="exampleModalLabel">
                                 Ingredients
                                 </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -153,8 +153,8 @@ include "config/functions.php";
                                 </div>
                             </div>
                             <div class="modal-footer border-top-0 d-flex justify-content-between">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Checkout</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success">Add to Cart</button>
                             </div>
                             </div>
                         </div>
@@ -173,7 +173,7 @@ include "config/functions.php";
                                 <h5 class="modal-title" id="exampleModalLabel">
                                 Ingredients
                                 </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -259,8 +259,8 @@ include "config/functions.php";
                                 </div>
                             </div>
                             <div class="modal-footer border-top-0 d-flex justify-content-between">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Checkout</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success">Add to Cart</button>
                             </div>
                             </div>
                         </div>

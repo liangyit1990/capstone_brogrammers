@@ -26,15 +26,21 @@ function loginAccountLogout(){
     //     <li><a class="nav-link adminpaneltopright active" href="admin.php">Admin Panel</a></li>
     //     <li><a class="nav-link logouttopright" href="logout.php">Logout</a></li>';
     // } else 
-    if((isset($_COOKIE['users_id']) || isset($_COOKIE['isLoggedIn']) && $_COOKIE['users_permission'] == 0)){
+    if((isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn']) && $_COOKIE['users_permission'] == 0)){
         echo '
         <li class="nav-item"><a href="account.php" class="nav_link">Account</a></li>
+        <li class="nav-item"><a href="logout.php" class="nav_link">Logout</a></li>
+        ';
+    } elseif((isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn']) && $_COOKIE['users_permission'] == 1)) {
+        echo '
+        <li class="nav-item"><a href="admin/adminpage.php" class="nav_link">Admin Panel</a></li>
         <li class="nav-item"><a href="logout.php" class="nav_link">Logout</a></li>
         ';
     } else {
         echo '
         <li class="nav-item"><a href="login.php" class="nav_link">Login</a></li>
-        ';}
+        ';
+    } 
 }
 
 ?>
