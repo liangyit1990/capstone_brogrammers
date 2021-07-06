@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 03, 2021 at 06:03 AM
+-- Generation Time: Jul 06, 2021 at 11:54 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -157,7 +157,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`users_id`, `users_name`, `users_email`, `users_password`, `users_address`, `users_phone`, `users_age`, `users_gender`, `users_permission`, `users_joindate`) VALUES
-(2, 'Anselm Sim', 'anselmsim@gmail.com', '$2y$10$T0a/EeWKAN2liNAhURmzbuA0Wt2Lyw2a7gbZEX.VRYaSP.IchQk9.', NULL, NULL, NULL, NULL, 0, '2021-07-03 05:02:41');
+(2, 'anselm sim new', 'anselmsim@gmail.comnewnew', '$2y$10$T0a/EeWKAN2liNAhURmzbuA0Wt2Lyw2a7gbZEX.VRYaSP.IchQk9.', 'anselm add new new', '91839138', 25, 0, 0, '2021-07-06 07:57:57'),
+(6, 'ky', 'ky@gmail.com', '$2y$10$HtGb5WNwO6SBkoY2B/bZOe6QVePW.8ywqgMhmI8LeTV67zy3pQyGu', '', '', NULL, 0, 1, '2021-07-06 08:31:17'),
+(23, 'hy', 'hy@gmail.com', '$2y$10$.SG1sVDt4Rab/ED07pKVdu2bQ/nCsZZ6dUVTHci0.PPXslQQa758O', NULL, NULL, NULL, NULL, 0, '2021-07-06 09:02:16'),
+(24, 'hy', 'hy@gmail.comc', '$2y$10$GsjDp2MdOx.Pr2ljxsGvee9pn6CYIuE8xgP8OF0zB0OrAZuGPme7W', NULL, NULL, NULL, NULL, 0, '2021-07-06 09:05:15');
 
 -- --------------------------------------------------------
 
@@ -248,7 +251,7 @@ ALTER TABLE `bento`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -266,7 +269,7 @@ ALTER TABLE `food`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `submission`
@@ -278,13 +281,13 @@ ALTER TABLE `submission`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `vouchers`
 --
 ALTER TABLE `vouchers`
-  MODIFY `vouchers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `vouchers_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
