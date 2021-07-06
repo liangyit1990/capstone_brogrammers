@@ -16,17 +16,17 @@
                     <?php
                     loginAccountLogout();
                     ?>
-                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                    <li><i class='bx bx-moon bx-sm change-theme' id="theme-button"></i></li>
                 </ul>
             </div>
             <div class="nav_cart" id="nav-cart">
-                <div><i class='bx bx-cart'></i></div>
+                <div><i class='bx bx-cart bx-md'></i></div>
                 <!-- <div class="item-count">0</div> -->
             </div>
             
             <div class="nav_toggle" id="nav-toggle">
                 
-                <i class='bx bxs-food-menu' ></i>
+                <i class='bx bxs-food-menu bx-md' ></i>
                 
             </div>
         </nav>
