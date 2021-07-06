@@ -11,6 +11,7 @@ body{
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
+  
 }
 ::selection{
   color: #fff;
@@ -230,12 +231,17 @@ body{
 .home_content{
   position: absolute;
   height: 100%;
-  width: calc(100% - 78px);
-  left: 78px;
-  background: #E4E9F7;
+  width: 80%;
+  text-align: center;
+  left: 140px;
+  
+  background: none;
   box-shadow: 0 5px 10px rgba(0,0,0,0.2px);
   transition: all 0.5s ease;
+  justify-self: center;
+  
 }
+
 .sidebar.active ~ .home_content{
   z-index: 100;
 }
@@ -273,3 +279,4 @@ button {
 .nav_list{
   padding:0;
 }
+
