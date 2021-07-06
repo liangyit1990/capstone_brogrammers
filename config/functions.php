@@ -33,7 +33,7 @@ function loginAccountLogout(){
         ';
     } elseif((isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn']) && $_COOKIE['users_permission'] == 1)) {
         echo '
-        <li class="nav-item"><a href="admin/adminpage.php" class="nav_link">Admin Panel</a></li>
+        <li class="nav-item"><a href="admin/adminmanagement.php" class="nav_link">Admin Panel</a></li>
         <li class="nav-item"><a href="logout.php" class="nav_link">Logout</a></li>
         ';
     } else {
