@@ -4,6 +4,9 @@ include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
 
+
+
+
 ?>
 
 
@@ -62,14 +65,17 @@ include "config/functions.php";
         
         <div class="contact-form">
             <h2>Contact Us</h2>
-            <form>
+            <form method="post" action="<?php echo htmlspecialchars(SITE_URL . "userupload.php"); ?>" enctype="multipart/form-data">                
+            
                 <input placeholder="Name" type="text" class="contact-form-txt"/>
                 <input placeholder="Email" type="email" class="contact-form-txt"/>
                 <textarea placeholder="Message" class="contact-form-textarea"></textarea>
                 
                 <span>Upload Document</span><input type="file" name="fileToUpload" class="form-control img" >
+
                 <button type="submit" name="feedback" class="contact-form-btn">Submit</button>
             </form>
+        </div>
 
         <div class="contact-map">
             <div class= "map-responsive">
