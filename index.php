@@ -133,7 +133,7 @@ include "config/functions.php";
                                     <td>310</td>
                                     <td>2.50</td>
                                     <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
-                                    <td>178$</td>
+                                    <td>178</td>
                                     <td>
                                         <a href="" class="btn btn-danger btn-sm">
                                         <i class='bx bx-plus'></i> 
@@ -240,7 +240,7 @@ include "config/functions.php";
                                     <td>310</td>
                                     <td>2.50</td>
                                     <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
-                                    <td>178$</td>
+                                    <td>178</td>
                                     <td>
                                         <a href="" class="btn btn-danger btn-sm">
                                         <i class='bx bx-plus'></i> 
@@ -271,7 +271,7 @@ include "config/functions.php";
             <span class="section-title">LET US PICK FOR YOU</span>
             <div class="menu_container bd-grid">
                 <div class="menu_content">
-                    <img src="images/Bento.png" alt="" class="menu_img">
+                    <img src="images/ebifrybento.png" alt="" class="menu_img">
                     <h3 class="menu_name">Ebi Fry Bento</h3>
                     <span class="menu_price">SGD 6</span>
                     <span class="menu_calorie">510 Cal</span>

@@ -66,6 +66,7 @@ include "config/functions.php";
                 <input placeholder="Name" type="text" class="contact-form-txt"/>
                 <input placeholder="Email" type="email" class="contact-form-txt"/>
                 <textarea placeholder="Message" class="contact-form-textarea"></textarea>
+                
                 <span>Upload Document</span><input type="file" name="fileToUpload" class="form-control img" >
                 <button type="submit" name="feedback" class="contact-form-btn">Submit</button>
             </form>
