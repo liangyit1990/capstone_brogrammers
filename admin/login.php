@@ -93,6 +93,8 @@ if(isset($_POST['login'])){
     <!-- css here -->
     <link rel="stylesheet" href="login.css">
     <!-- for icon -->
+    <link rel="icon" href="images/logo.png">
+
     <link href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" rel="stylesheet">
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">

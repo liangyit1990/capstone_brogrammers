@@ -138,6 +138,8 @@ if(isset($_POST['login'])){
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- css here -->
     <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="images/logo.png">
+
     <!-- for icon -->
     <link href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" rel="stylesheet">
     <!-- fonts -->
