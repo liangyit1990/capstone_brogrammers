@@ -214,7 +214,7 @@ if(isset($_POST['login'])){
         buttons: false,
         timer : 2000,
         }).then(function() {
-        window.location = "../index.php";
+        window.location = "../admin/adminmanagement.php";
        });';
        }
 

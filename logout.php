@@ -6,10 +6,10 @@ include 'config/functions.php';
 isLoggedIn();
 
 //unset all cookies
-setcookie("users_id", "", time() - 3600,);
-setcookie("users_permission", "", time() - 3600,);
-setcookie("users_name", "", time() - 3600,);
-setcookie("users_email", "", time() - 3600,);
-setcookie("isLoggedIn", "", time() - 3600,);
+setcookie("users_id", "", time() - 3600, '/');
+setcookie("users_permission", "", time() - 3600, '/');
+setcookie("users_name", "", time() - 3600, '/');
+setcookie("users_email", "", time() - 3600, '/');
+setcookie("isLoggedIn", "", time() - 3600, '/');
 header("Location: " . SITE_URL . "index.php?logoutSuccess=1");
 ?>
