@@ -82,7 +82,7 @@ include "../config/functions.php";
                         <!--Input value for name -->
                         <div class="input-group">
                           <input type="text" name="id" class="form-control id" placeholder="Id" id="id<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getFoodResult['users_id'];?>" hidden>  
-                          <input type="text" name="name" class="form-control name " placeholder="Name" id="name<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getFoodResult['food_name'];?>">
+                          <input type="text" name="name" class="form-control name " placeholder="Name" id="name<?php echo $getFoodResult['food_id'];?>" value="<?php echo ucwords($getFoodResult['food_name']);?>">
                           <div class="input-group-append">
                             <div class="input-group-text">
                             <i class="bi bi-egg"></i>
@@ -117,14 +117,21 @@ include "../config/functions.php";
                         </div>
                         <!--Select option for Sub-category -->
                         <div class="input-group mt-3">
-                          <select class="form-select category<?php echo $getFoodResult['food_id'];?>" aria-label="Default select example">
+                          <select class="form-select subcategory<?php echo $getFoodResult['food_id'];?>" aria-label="Default select example">
                             <option disabled >Sub-Category</option>
-                            <option value="1" <?php if($getFoodResult['food_subcategory'] == 'ala carte') { echo "selected";} ?>>Ala-Carte</option>
-                            <option value="2" <?php if($getFoodResult['food_subcategory'] == 'bento') { echo "selected";} ?>>Bento</option>
-                            <option value="3" <?php if($getFoodResult['food_subcategory'] == 'ala carte') { echo "selected";} ?>>Ala-Carte</option>
-                            <option value="4" <?php if($getFoodResult['food_subcategory'] == 'bento') { echo "selected";} ?>>Bento</option>
+                            <option value="base" <?php if($getFoodResult['food_subcategory'] == 'base') { echo "selected";} ?>>Base</option>
+                            <option value="meat" <?php if($getFoodResult['food_subcategory'] == 'meat') { echo "selected";} ?>>Meat</option>
+                            <option value="vegetable" <?php if($getFoodResult['food_subcategory'] == 'vegetable') { echo "selected";} ?>>Vegetable</option>
+                            <option value="gravy" <?php if($getFoodResult['food_subcategory'] == 'gravy') { echo "selected";} ?>>Gravy</option>
                           </select>
                         </div>
+                        <div class="input-group mt-3">
+                          <input type="file" name="fileToUpload" class="form-control img" >
+                          <img src="<?php echo $getFoodResult['food_img']; ?>">
+                        
+                          
+                        </div>
+
                         
 
                     </form>
@@ -157,60 +164,73 @@ include "../config/functions.php";
         </tfoot>
     </table>
     <!--Button to add new user -->
-    <button type="button" data-bs-toggle="modal" data-bs-target="#addUser" class="btn btn-primary"><i class="bi bi-plus"></i> Add New User</button>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#addFood" class="btn btn-primary"><i class="bi bi-plus"></i> Add New Food</button>
     <!-- Modal for adding new user -->
-    <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addFood" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New User</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Food</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
+                  <!--Modal body -->
                   <div class="modal-body">
-                    <form class="userform" autocomplete="off" >
+                    <form id="fupForm" method="post" class="addfoodform" autocomplete="off"  enctype="multipart/form-data">
                         <!--Input values, with values extracted from databases -->
                         <!--Input value for name -->
-                        <div class="input-group"> 
-                          <input type="text" name="newname" class="form-control newname" placeholder="Name" >
+                        <div class="input-group">
+                          <input type="text" name="newname" class="form-control newname " placeholder="Food Name" >
                           <div class="input-group-append">
                             <div class="input-group-text">
-                              <i class="bi bi-person-fill"></i>
+                            <i class="bi bi-egg"></i>
                             </div>
                           </div>
                         </div>
-                        <!--Input value for Email -->
+                        <!--Input value for Price -->
                         <div class="input-group mt-3">
-                          <input type="email" name="newemail" class="form-control newemail" placeholder="Email">
+                          <input type="number" name="newprice" class="form-control newprice" placeholder="Price">
                           <div class="input-group-append">
                               <div class="input-group-text">
-                                <i class="bi bi-envelope-fill"></i>
+                                <i class="bi bi-cash"></i>
                               </div>
                           </div>
                         </div>
-                        <!--Input value for password -->
+                        <!--Input value for Calories -->
                         <div class="input-group mt-3">
-                          <input type="password" name="newpassword" class="form-control newpassword" placeholder="Password">
+                          <input type="number" name="newcalories" class="form-control newcalories" placeholder="Calories">
                           <div class="input-group-append">
-                            <div class="input-group-text">
-                            <i class="bi bi-file-lock"></i>
-                            </div>
+                              <div class="input-group-text">
+                                 <i class="bi bi-calculator-fill"></i>
+                              </div>
                           </div>
                         </div>
-                        <!--Input value to confirm password -->
+                        <!--Select option for Category -->
                         <div class="input-group mt-3">
-                          <input type="password" name="newcfmpassword" class="form-control newcfmpassword" placeholder="Confirm Password">
-                          <div class="input-group-append">
-                            <div class="input-group-text">
-                            <i class="bi bi-file-lock-fill"></i>
-                            </div>
-                          </div>
+                          <select class="form-select newcategory" aria-label="Default select example">
+                            <option disabled >Category</option>
+                            <option value="1" >Ala-Carte</option>
+                            <option value="2" >Bento</option>
+                          </select>
+                        </div>
+                        <!--Select option for Sub-category -->
+                        <div class="input-group mt-3">
+                          <select class="form-select newsubcategory" aria-label="Default select example">
+                            <option disabled >Sub-Category</option>
+                            <option value="base" >Base</option>
+                            <option value="meat" >Meat</option>
+                            <option value="vegetable" >Vegetable</option>
+                            <option value="gravy" >Gravy</option>
+                          </select>
+                        </div>
+                        <div class="input-group mt-3">
+                          <input type="file" name="fileToUpload" class="form-control newfoodimg" >  
                         </div>
                     </form>
                   </div>
                   <div class="modal-footer">
                     <!--Close and Save btns -->
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary addbtn">Add User</button>
+                    <input name="submit" type="submit" class="btn btn-primary submitBtn" value="Submit">
                   </div>
                 </div>
               </div>
@@ -229,167 +249,148 @@ include "../config/functions.php";
 <script>
 $(document).ready(function(){
 
-  //  let btn = document.querySelector("#btn");
-  //  let sidebar = document.querySelector(".sidebar");
-  //  let searchBtn = document.querySelector(".bx-search");
-
-  //  btn.onclick = function() {
-  //    sidebar.classList.toggle("active");
-  //  }
-  //  searchBtn.onclick = function() {
-  //    sidebar.classList.toggle("active");
-  //  }
+  
   $("#btn").click(function(){
     $(".sidebar").toggleClass("active");
   })
 
-  $('#addUser').on('hidden.bs.modal', function() {
-    location.reload();
-  })
+  // $('#addUser').on('hidden.bs.modal', function() {
+  //   location.reload();
+  // })
 
    
    //Execute functions upon clicking of delete button
-  $(".deleteUser").click(function(){
-    var thisBtn = this;
-    var deleteId = $(this).data('id');
-    var deleteName = $(this).data('name');
-    var userid = `.userdata${deleteId}`;
-    //Alert message before confirm to delete
-    swal({
-      title: `Are you sure you want to delete ${deleteName}`,
-      text: "Once deleted, you will not be able to recover this user!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      //Proceed to delete if user press okay, else do nothing
-      if (willDelete) {
-          swal("Poof! User has been deleted!", {
-          icon: "success",
-        });
-        //Ajax to delete user from database
-        $.ajax({
-          url: 'deleteuser.php', //action
-          method: 'POST', //method
-          data:{
-            deleteId:deleteId
-          },
-          success:function(data){
-            console.log(data);
-            if(data == 1){
-              $(thisBtn).closest('.userdata').remove();
-            } else {
-                    alert(data);
-                  }
-          }
-        });
-      } 
-    });
+  // $(".deleteUser").click(function(){
+  //   var thisBtn = this;
+  //   var deleteId = $(this).data('id');
+  //   var deleteName = $(this).data('name');
+  //   var userid = `.userdata${deleteId}`;
+  //   //Alert message before confirm to delete
+  //   swal({
+  //     title: `Are you sure you want to delete ${deleteName}`,
+  //     text: "Once deleted, you will not be able to recover this user!",
+  //     icon: "warning",
+  //     buttons: true,
+  //     dangerMode: true,
+  //   })
+  //   .then((willDelete) => {
+  //     //Proceed to delete if user press okay, else do nothing
+  //     if (willDelete) {
+  //         swal("Poof! User has been deleted!", {
+  //         icon: "success",
+  //       });
+  //       //Ajax to delete user from database
+  //       $.ajax({
+  //         url: 'deleteuser.php', //action
+  //         method: 'POST', //method
+  //         data:{
+  //           deleteId:deleteId
+  //         },
+  //         success:function(data){
+  //           console.log(data);
+  //           if(data == 1){
+  //             $(thisBtn).closest('.userdata').remove();
+  //           } else {
+  //                   alert(data);
+  //                 }
+  //         }
+  //       });
+  //     } 
+  //   });
                 
-  });
+  // });
 
   //Execute functions upon clicking of save changes
-  $(".savebtn").click(function(){ 
+  // $(".savebtn").click(function(){ 
           
-    //Retrieve values from input boxes
-    var permission = '';
-    var id = $(this).parent().parent().find(".id").val();
-    var name = $(this).parent().parent().find(".name").val();
-    var email = $(this).parent().parent().find(".email").val();
-    var phone = $(this).parent().parent().find(".phone").val();
-    var address = $(this).parent().parent().find(".address").val();
-    var permissionchecked = $(this).parent().parent().find(".permission").prop("checked");
-    //Check for value of radio buttons for gender
-    var genderchecked = $(`input[name='gender${id}']:checked`).val();
-    if(genderchecked == 'male') {
-      gender = 1;
-    } else if (genderchecked == 'female') {
-      gender = 0;
-    }
-    var editUser = $(".editUser").val();
-    //Check for value of permission checkbox
-    if (permissionchecked == true) {
-      var permission = 1;
-    } else {
-      var permission = 0;
-    }
-          // console.log(id);
-          // console.log(name);
-          // console.log(email);
-          // console.log(phone);
-          // console.log(address);
-          // console.log(genderchecked);
-          // console.log(gender);
-          // console.log(permission);
-          // console.log(editUser);
+  //   //Retrieve values from input boxes
+  //   var permission = '';
+  //   var id = $(this).parent().parent().find(".id").val();
+  //   var name = $(this).parent().parent().find(".name").val();
+  //   var email = $(this).parent().parent().find(".email").val();
+  //   var phone = $(this).parent().parent().find(".phone").val();
+  //   var address = $(this).parent().parent().find(".address").val();
+  //   var permissionchecked = $(this).parent().parent().find(".permission").prop("checked");
+  //   //Check for value of radio buttons for gender
+  //   var genderchecked = $(`input[name='gender${id}']:checked`).val();
+  //   if(genderchecked == 'male') {
+  //     gender = 1;
+  //   } else if (genderchecked == 'female') {
+  //     gender = 0;
+  //   }
+  //   var editUser = $(".editUser").val();
+  //   //Check for value of permission checkbox
+  //   if (permissionchecked == true) {
+  //     var permission = 1;
+  //   } else {
+  //     var permission = 0;
+  //   }
+  //         // console.log(id);
+  //         // console.log(name);
+  //         // console.log(email);
+  //         // console.log(phone);
+  //         // console.log(address);
+  //         // console.log(genderchecked);
+  //         // console.log(gender);
+  //         // console.log(permission);
+  //         // console.log(editUser);
           
-    //Ajax to update users info
-    $.ajax({
-      url: 'editusers.php', //action
-      method: 'POST', //method
-      data:{
-      id:id,
-      name:name,
-      email:email,
-      phone:phone,
-      address:address,
-      gender:gender,
-      permission:permission,
-      editUser:editUser
-      },
-      success:function(data){
-        if(data==2){
-          swal("Success!", "User Profile Updated", "success");
-          var userid = `.userdata${id}`;
-          $(userid).find('td').eq(1).text(name);
-          $(userid).find('td').eq(2).text(email);
-        } else {
-            swal("Error!", "Please ensure all sections are filled up", "error");
-        }
+  //   //Ajax to update users info
+  //   $.ajax({
+  //     url: 'editusers.php', //action
+  //     method: 'POST', //method
+  //     data:{
+  //     id:id,
+  //     name:name,
+  //     email:email,
+  //     phone:phone,
+  //     address:address,
+  //     gender:gender,
+  //     permission:permission,
+  //     editUser:editUser
+  //     },
+  //     success:function(data){
+  //       if(data==2){
+  //         swal("Success!", "User Profile Updated", "success");
+  //         var userid = `.userdata${id}`;
+  //         $(userid).find('td').eq(1).text(name);
+  //         $(userid).find('td').eq(2).text(email);
+  //       } else {
+  //           swal("Error!", "Please ensure all sections are filled up", "error");
+  //       }
                   
-      }
-    });       
-  })
+  //     }
+  //   });       
+  // })
 
-  $(".addbtn").click(function(){ 
-
-    var name = $(".newname").val();
-    var email = $(".newemail").val();
-    var password = $(".newpassword").val();
-    var cfmpassword = $(".newcfmpassword").val();
-    var addbtn = $(".addbtn").val();
-
-    // console.log(name);
-    // console.log(email);
-    // console.log(password);
-    // console.log(cfmpassword);
-
-    $.ajax({
-      url: 'insertuser.php', //action
-      method: 'POST', //method
-      data:{
-      name:name,
-      email:email,
-      password : password,
-      cfmpassword : cfmpassword,
-      addbtn : addbtn
-      },
-      success:function(data){
-        if(data==1) {
-          swal("Error!", "Please ensure all sections are filled up properly", "error");
-        } else if (data==2){
-            swal("Error!", "Both of your passwords don't match!", "error");
-        } else if (data==3){
-            swal("Error!", "The email has already been used.", "error");
-        } else if(data==4) {
-            swal("Good job!", "User has been added successfully!", "success");
-        }
-      }
-    }); 
-
-
-  });
+  $("#fupForm").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'foodupload.php',
+            data: new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                $('.statusMsg').html('');
+                if(response.status == 1){
+                    $('#fupForm')[0].reset();
+                    $('.statusMsg').html('<p class="alert alert-success">'+response.message+'</p>');
+                }else{
+                    $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
+                }
+                $('#fupForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+            }
+        });
+    });
+});
 
 
 });
