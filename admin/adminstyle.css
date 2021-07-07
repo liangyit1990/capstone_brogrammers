@@ -5,13 +5,13 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto" , sans serif;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 body{
   position: relative;
   min-height: 100vh;
   width: 100%;
-  overflow: hidden;
+  overflow: scroll;
   
 }
 ::selection{
