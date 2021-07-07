@@ -149,6 +149,7 @@ include "../config/functions.php";
         <?php 
         }
         ?>
+        
         </tbody>
         <tfoot>
           <tr>
