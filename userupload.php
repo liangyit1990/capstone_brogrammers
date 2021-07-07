@@ -59,7 +59,7 @@ if(isset($_POST["upload"])) {
                     buttons: false,
                     timer : 3000,
                     }).then(function() {
-                    window.location = "admin.php";
+                    window.location = "feedback.php";
                 });
                 </script>'; 
         }

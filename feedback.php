@@ -29,36 +29,9 @@ include "config/functions.php";
 <body>
 
 <!--Nav Bar -->
-<header class="l-header " id="header">
-        <nav class="nav bd-container">
-            <a href="index.php" class="logo"><img src="images/logo.png" alt=""></a>
-            <a href="<?php echo htmlspecialchars(SITE_URL); ?>" class="nav_logo"><h2><strong>C A L O R I C E</strong></h2></a>
-
-            <div class="nav_menu" id="nav-menu">
-                <ul class="nav_list">
-                    <li class="nav-item"><a href="index.php" class="nav_link active-link">Home</a></li>
-                    <li class="nav-item"><a href="index.php#menu" class="nav_link">Menu</a></li>
-                    <li class="nav-item"><a href="index.php#about" class="nav_link">About</a></li>
-                    <li class="nav-item"><a href="<?php echo htmlspecialchars(SITE_URL . "feedback.php"); ?>" class="nav_link">Contact Us</a></li>
-                    <!-- <li class="nav-item"><a class="nav_link" data-bs-toggle="modal" data-bs-target="#register">Login/Register</a></li> -->
-                    <?php
-                    loginAccountLogout();
-                    ?>
-                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
-                </ul>
-            </div>
-            
-            <div class="nav_cart" id="nav-cart">
-                <div><i class='bx bx-cart'></i></div>
-                <!-- <div class="item-count">0</div> -->
-            </div>
-            <div class="nav_toggle" id="nav-toggle">
-                
-                <i class='bx bxs-food-menu' ></i>
-                
-            </div>
-        </nav>
-</header>
+<?php 
+    include "header.php";
+?>
 
 <!--Form -->
     <div class="contact-in">

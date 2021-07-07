@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 06, 2021 at 11:54 AM
+-- Generation Time: Jul 07, 2021 at 06:12 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -87,21 +87,18 @@ CREATE TABLE `food` (
   `food_healthierchoice` smallint(6) DEFAULT '0',
   `food_vegan` smallint(6) NOT NULL,
   `food_price` decimal(10,2) NOT NULL,
-  `food_calories` int(11) NOT NULL
+  `food_calories` int(11) NOT NULL,
+  `food_img` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `food`
 --
 
-INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_subcategory`, `food_healthierchoice`, `food_vegan`, `food_price`, `food_calories`) VALUES
-(1, 'grilled chicken', 'ala carte', 'meat', 0, 0, '4.99', 280),
-(2, 'chicken bento rice', 'bento', 'rice', 0, 0, '12.99', 1800),
-(5, 'curry', 'bento', 'gravy', 0, 0, '0.49', 180),
-(6, 'chicken bento noodles', 'bento', 'noodles', 0, 0, '12.99', 1750),
-(7, 'beef bento noodles', 'bento', 'noodles', 0, 0, '14.99', 1950),
-(8, 'curry', 'gravy', 'small container (tbd)', 0, 0, '0.49', 140),
-(9, 'lu zhi', 'gravy', 'large container (tbd)', 0, 0, '3.49', 480);
+INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_subcategory`, `food_healthierchoice`, `food_vegan`, `food_price`, `food_calories`, `food_img`) VALUES
+(1, 'grilled chicken', 'ala carte', 'meat', 0, 0, '4.99', 280, '..\\images\\chicken.jpeg'),
+(2, 'chicken Karaage bento', 'bento', 'rice', 0, 0, '12.99', 1800, '..\\images\\chickenkaraagebento.png'),
+(5, 'Cuttlefish Bento', 'bento', 'gravy', 0, 0, '13.99', 1300, '..\\images\\cuttlefishbento.png');
 
 -- --------------------------------------------------------
 

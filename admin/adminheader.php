@@ -26,6 +26,13 @@
         <span class="tooltip">User</span>
       </li>
       <li>
+        <a href="<?php echo htmlspecialchars(SITE_URL . "admin/foodmanagement.php"); ?>">
+          <i class='bx bx-basket' ></i>
+          <span class="links_name">Foods</span>
+        </a>
+        <span class="tooltip">Foods</span>
+      </li>
+      <li>
         <a href="#">
           <i class='bx bx-chat' ></i>
           <span class="links_name">Messages</span>
