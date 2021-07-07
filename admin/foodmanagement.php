@@ -29,7 +29,7 @@ include "../config/functions.php";
   ?>
 
   <div class="home_content">
-    <div class="text">Foot Management </div>
+    <div class="text">Food Management </div>
     
     <table class="table table-hover">
         <thead>
