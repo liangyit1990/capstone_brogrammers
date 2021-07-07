@@ -280,3 +280,12 @@ button {
   padding:0;
 }
 
+/* food management page */
+.foodsimg{
+  width:100px;
+  height:100px;
+}
+img{
+  width:100px;
+  height:100px;
+}
