@@ -16,7 +16,7 @@ include "../config/functions.php";
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!--Bootstrap Latest compiled and minified CSS -->
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,63 +81,51 @@ include "../config/functions.php";
                         <!--Input values, with values extracted from databases -->
                         <!--Input value for name -->
                         <div class="input-group">
-                          <input type="text" name="id" class="form-control id" placeholder="Id" id="id<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getUserResult['users_id'];?>" hidden>  
-                          <input type="text" name="name" class="form-control name " placeholder="Name" id="name<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getUserResult['food_name'];?>">
+                          <input type="text" name="id" class="form-control id" placeholder="Id" id="id<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getFoodResult['users_id'];?>" hidden>  
+                          <input type="text" name="name" class="form-control name " placeholder="Name" id="name<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getFoodResult['food_name'];?>">
                           <div class="input-group-append">
                             <div class="input-group-text">
-                              <i class="bi bi-person-fill"></i>
+                            <i class="bi bi-egg"></i>
                             </div>
                           </div>
                         </div>
-                        <!--Input value for Email -->
+                        <!--Input value for Price -->
                         <div class="input-group mt-3">
-                          <input type="email" name="email" class="form-control email" placeholder="Email" id="email<?php echo $getUserResult['users_email'];?>" value="<?php echo $getUserResult['users_email'] ?>">
+                          <input type="number" name="price" class="form-control price" placeholder="Price" id="price<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getFoodResult['food_price'] ?>">
                           <div class="input-group-append">
                               <div class="input-group-text">
-                                <i class="bi bi-envelope-fill"></i>
+                                <i class="bi bi-cash"></i>
                               </div>
                           </div>
                         </div>
-                        <!--Input value for Phone -->
+                        <!--Input value for Calories -->
                         <div class="input-group mt-3">
-                          <input type="text" name="phone" class="form-control phone" placeholder="Phone" id="phone<?php echo $getUserResult['users_id'];?>" value="<?php echo $getUserResult['users_phone'] ?>">
+                          <input type="number" name="calories" class="form-control calories" placeholder="Calories" id="calories<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getFoodResult['food_calories'] ?>">
                           <div class="input-group-append">
                               <div class="input-group-text">
-                                <i class="bi bi-telephone-fill"></i>
+                                 <i class="bi bi-calculator-fill"></i>
                               </div>
                           </div>
                         </div>
-                        <!--Radio buttons for Gender-->
+                        <!--Select option for Category -->
                         <div class="input-group mt-3">
-                          <div class="form-check">
-                            <input class="form-check-input gender" type="radio" name="gender<?php echo $getUserResult['users_id']; ?>"  value="male" <?php if($getUserResult['users_gender'] == 1) { echo "checked";} ?>>
-                            <label class="form-check-label" for="flexRadioDefault1">
-                              Male
-                            </label>
-                          </div>
-                          <div class="form-check ">
-                            <input class="form-check-input gender" type="radio" name="gender<?php echo $getUserResult['users_id']; ?>"  value="female"  <?php if($getUserResult['users_gender'] == 0) { echo "checked";} ?>>
-                            <label class="form-check-label" for="flexRadioDefault2">
-                              Female
-                            </label>
-                          </div>
+                          <select class="form-select category<?php echo $getFoodResult['food_id'];?>" aria-label="Default select example">
+                            <option disabled >Category</option>
+                            <option value="1" <?php if($getFoodResult['food_category'] == 'ala carte') { echo "selected";} ?>>Ala-Carte</option>
+                            <option value="2" <?php if($getFoodResult['food_category'] == 'bento') { echo "selected";} ?>>Bento</option>
+                          </select>
                         </div>
-                        <!--Input value for Address -->
+                        <!--Select option for Sub-category -->
                         <div class="input-group mt-3">
-                          <textarea class="form-control address" id="exampleFormControlTextarea1<?php echo $getUserResult['users_id'];?>" rows="3" id="address<?php echo $getUserResult['users_id'];?>" name="newadd" ><?php echo $getUserResult['users_address'] ?></textarea>
-                          <div class="input-group-append">
-                            <div class="input-group-text">
-                              <i class="bi bi-house-door-fill"></i>
-                            </div>
-                          </div>
+                          <select class="form-select category<?php echo $getFoodResult['food_id'];?>" aria-label="Default select example">
+                            <option disabled >Sub-Category</option>
+                            <option value="1" <?php if($getFoodResult['food_subcategory'] == 'ala carte') { echo "selected";} ?>>Ala-Carte</option>
+                            <option value="2" <?php if($getFoodResult['food_subcategory'] == 'bento') { echo "selected";} ?>>Bento</option>
+                            <option value="3" <?php if($getFoodResult['food_subcategory'] == 'ala carte') { echo "selected";} ?>>Ala-Carte</option>
+                            <option value="4" <?php if($getFoodResult['food_subcategory'] == 'bento') { echo "selected";} ?>>Bento</option>
+                          </select>
                         </div>
-                        <!--Input value for permission -->
-                        <div class="input-group mt-3">
-                          <div class="form-check form-switch">
-                            <input class="form-check-input permission" type="checkbox" id="flexSwitchCheckChecked<?php echo $getUserResult['users_id'];?>" id="permission<?php echo $getUserResult['users_id'];?>" <?php if($getUserResult['users_permission'] == 1){echo "checked"; }?>>
-                            <label class="form-check-label" for="flexSwitchCheckChecked<?php echo $getUserResult['users_id'];?>">Admin Permission</label>
-                          </div>
-                        </div>
+                        
 
                     </form>
                   </div>
