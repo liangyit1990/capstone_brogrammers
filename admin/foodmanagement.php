@@ -29,7 +29,7 @@ include "../config/functions.php";
   ?>
 
   <div class="home_content">
-    <div class="text">Admin Management </div>
+    <div class="text">Food Management </div>
     
     <table class="table table-hover">
         <thead>
@@ -55,34 +55,34 @@ include "../config/functions.php";
             <!-- Output users data in table forms -->
             <tr class="fooddata fooddata<?php echo $getFoodResult['food_id']; ?>">
               <td class="foodid"><?php echo $getFoodResult['food_id']; ?></td>
-              <td class="foodname"><?php echo $getFoodResult['food_name']; ?></td>
+              <td class="foodname"><?php echo ucwords($getFoodResult['food_name']); ?></td>
               <td class="foodname"><?php echo $getFoodResult['food_price']; ?></td>
               <td class="foodcalories"><?php echo $getFoodResult['food_calories']; ?></td>
-              <td class="foodcategory"><?php echo $getFoodResult['food_category']; ?></td>
-              <td class="foodsubcategory"><?php echo $getFoodResult['food_subcategory']; ?></td>
+              <td class="foodcategory"><?php echo ucwords($getFoodResult['food_category']); ?></td>
+              <td class="foodsubcategory"><?php echo ucwords($getFoodResult['food_subcategory']); ?></td>
               <td class="foodsimg"><img src="<?php echo $getFoodResult['food_img']; ?>"></td>
               <td><button type="button" class="btn btn-primary btn-sm editFood" id="editFood" value="editFood" data-id="<?php echo $getFoodResult['food_id']; ?>" data-bs-toggle="modal" data-bs-target="#foodinfo<?php echo $getFoodResult['food_id']; ?>" >View/Edit</button>
                   <button type="button" class="btn btn-danger btn-sm deleteFood" data-id="<?php echo $getUserResult['food_id']; ?>" data-name="<?php echo $getFoodResult['food_name']; ?>">Delete</button>
               </td>  
             </tr>
             <!-- Modals for each user's View/Edit button -->
-            <div class="modal fade" id="userinfo<?php echo $getUserResult['users_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="foodinfo<?php echo $getFoodResult['food_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">User Id No : <?php echo $getUserResult['users_id']; ?></h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Food Id No : <?php echo $getFoodResult['food_id']; ?></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                       <!--Form body -->
                     
-                    <p>Member Since : <?php echo $getUserResult['users_joindate'];  ?></p>
-                    <form class="userform" autocomplete="off" >
+                   
+                    <form class="foodform" autocomplete="off" >
                         <!--Input values, with values extracted from databases -->
                         <!--Input value for name -->
                         <div class="input-group">
-                          <input type="text" name="id" class="form-control id" placeholder="Id" id="id<?php echo $getUserResult['users_id'];?>" value="<?php echo $getUserResult['users_id'];?>" hidden>  
-                          <input type="text" name="name" class="form-control name " placeholder="Name" id="name<?php echo $getUserResult['users_id'];?>" value="<?php echo $getUserResult['users_name'];?>">
+                          <input type="text" name="id" class="form-control id" placeholder="Id" id="id<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getUserResult['users_id'];?>" hidden>  
+                          <input type="text" name="name" class="form-control name " placeholder="Name" id="name<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getUserResult['food_name'];?>">
                           <div class="input-group-append">
                             <div class="input-group-text">
                               <i class="bi bi-person-fill"></i>

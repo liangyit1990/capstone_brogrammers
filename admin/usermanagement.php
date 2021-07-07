@@ -270,7 +270,7 @@ $(document).ready(function(){
         });
         //Ajax to delete user from database
         $.ajax({
-          url: 'deleteuser.php', //action
+          url: 'admindelete.php', //action
           method: 'POST', //method
           data:{
             deleteId:deleteId
