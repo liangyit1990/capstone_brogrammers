@@ -11,7 +11,7 @@ include "../config/functions.php";
     <meta charset="UTF-8">
     <title> Admin | CALORICE </title>
     <link rel="stylesheet" href="adminstyle.css">
-    <link rel="icon" href="images/logo.png">
+    <link rel="icon" href="../images/logo.png">
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>

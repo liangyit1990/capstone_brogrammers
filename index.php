@@ -297,7 +297,7 @@ include "config/functions.php";
                     <p class="about_description">We hope that every person is able to control how much calorie they consume. We always 
                     talk about exercising<br> to live a healthy lifestyle. But what is actually a healthy lifestyle if we do not
                     plan our diet? With CALORICE, planning<br> your diet has never been easier and convenient.<br> </p>
-                    <a href="#menu" class="button">Explore our Menu</a>
+                    <a href="menu.php" class="button">Explore our Full Menu</a>
                 </div>
                 <img src="images/bento_aboutus.png" alt="" class="home_img">
             </div>
