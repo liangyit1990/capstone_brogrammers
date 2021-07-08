@@ -270,13 +270,13 @@ $(document).ready(function(){
         });
         //Ajax to delete user from database
         $.ajax({
-          url: 'admindelete.php', //action
+          url: 'deleteuser.php', //action
           method: 'POST', //method
           data:{
             deleteId:deleteId
           },
           success:function(data){
-            console.log(data);
+            
             if(data == 1){
               $(thisBtn).closest('.userdata').remove();
             } else {
@@ -326,7 +326,7 @@ $(document).ready(function(){
           
     //Ajax to update users info
     $.ajax({
-      url: 'editusers.php', //action
+      url: 'adminedit.php', //action
       method: 'POST', //method
       data:{
       id:id,
@@ -366,7 +366,7 @@ $(document).ready(function(){
     // console.log(cfmpassword);
 
     $.ajax({
-      url: 'insertuser.php', //action
+      url: 'admininsert.php', //action
       method: 'POST', //method
       data:{
       name:name,
