@@ -71,9 +71,9 @@
 
         <a href="#">
           <i class='bx bx-cog' ></i>
-          <span class="links_name">Setting</span>
+          <span class="links_name">Settings</span>
         </a>
-        <span class="tooltip">Setting</span>
+        <span class="tooltip">Settings</span>
 
       </li>
     </ul>
@@ -81,6 +81,8 @@
       <div class="profile">
         <a href="<?php echo htmlspecialchars(SITE_URL . "admin/adminlogout.php"); ?>">
           <i class='bx bx-log-out adminlogout' id="log_out" ></i>
+          <!-- Logout -->
+
         </a>
         <span class="tooltip">Logout</span>
 

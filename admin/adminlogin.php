@@ -112,7 +112,7 @@ if(isset($_POST['login'])){
     <div class="container" id="container">
         <div class="form-container sign-in-container">
             <form action="<?php echo htmlspecialchars(SITE_URL . "admin/adminlogin.php"); ?>" method="post">
-                <h1>Sign in</h1>
+                <h1>Admin Sign in</h1>
 
                 <input type="email" placeholder="Email" name="loginemail" value="<?php echo $_POST['loginemail'] ?>">
                 <input type="password" placeholder="Password" name="loginpassword">
@@ -197,7 +197,7 @@ if(isset($_POST['login'])){
       //  echo 'swal("Yes!", "Login is successful!", "success");';
        echo 'swal({
         title: "Welcome Admin!",
-        text: "Directing you to Admin panel",
+        text: "Directing you to Admin panel...",
         icon: "success",
         buttons: false,
         timer : 2000,

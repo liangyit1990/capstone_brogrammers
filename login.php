@@ -97,7 +97,7 @@ if(isset($_POST['login'])){
                 $loginerror = "Login error. Please contact the website administrator";
                 // echo $loginerror;
             } else {
-                $loginerror = "You are an admin! Please login as an admin!";
+                $loginerror = "You are an admin! Please login as an admin";
                 // echo $loginerror;
             }
           } else {
@@ -187,7 +187,7 @@ if(isset($_POST['login'])){
                 <input type="password" placeholder="Password" name="loginpassword">
                 <a href="#">Forgot your password?</a>
                 <button type="submit" name="login">Sign In</button>
-                <p><a href="admin/login.php" class="adminlogin">Sign in as admin here</a></p>
+                <p><a href="admin/adminlogin.php" class="adminlogin">Sign in as admin here</a></p>
             </form>
         </div>
         <div class="overlay-container">

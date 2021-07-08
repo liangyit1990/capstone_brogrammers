@@ -27,7 +27,6 @@ include "config/functions.php";
     <!-- scroll to top -->
     <a href="#" class="scrolltop " id="scroll-top">
         <i class='bx bx-chevron-up-circle scrolltop_icon' ></i>
-
     </a>
 
     <!-- header -->
