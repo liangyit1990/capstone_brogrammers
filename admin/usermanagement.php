@@ -379,11 +379,15 @@ $(document).ready(function(){
         if(data==1) {
           swal("Error!", "Please ensure all sections are filled up properly", "error");
         } else if (data==2){
-            swal("Error!", "Both of your passwords don't match!", "error");
+          swal("Error!", "Please ensure all sections are filled up properly", "error");
         } else if (data==3){
-            swal("Error!", "The email has already been used.", "error");
+          swal("Error!", "The email has already been used.", "error");
         } else if(data==4) {
-            swal("Good job!", "User has been added successfully!", "success");
+          swal("Good job!", "User has been added successfully!", "success");
+          $(".newname").val("");
+          $(".newemail").val("");
+          $(".newpassword").val("");
+          $(".newcfmpassword").val("");
         }
       }
     }); 
