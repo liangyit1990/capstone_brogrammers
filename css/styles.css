@@ -219,8 +219,9 @@ img{
 
     
 }
+
 .nav_logo:hover{
-    color:var(--primary-color);
+    color:var(--text-color);
 }
 
 .nav_link{
