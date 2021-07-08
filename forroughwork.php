@@ -217,3 +217,14 @@ if(isset($_POST["upload"])) {
 } 
 //END OF UPLOAD IMAGE FILE SOURCE CODE
 ?>
+        <!-- <div class="form-container sign-up-container">
+            <form action="<?php echo htmlspecialchars(SITE_URL . "admin/login.php"); ?>" method="post">
+                <h1>Create Account</h1>
+                
+                <input type="text" placeholder="Name" name="name" value="<?php echo $_POST['name'] ?>">
+                <input type="email" placeholder="Email" name="email" value="<?php echo $_POST['email'] ?>">
+                <input type="password" placeholder="Password" name="password">
+                <input type="password" placeholder="Retype Password" name="cfmPassword">
+                <button type="submit" name="register">Sign Up</button>
+            </form>
+        </div> -->

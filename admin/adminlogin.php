@@ -5,7 +5,7 @@ include "../config/functions.php";
 
 
 // Start of Register PHP Code
-$name = $email = $password = $cfmPassword = $registererror = $registerSuccess = "";
+// $name = $email = $password = $cfmPassword = $registererror = $registerSuccess = "";
 
 // Start of Login PHP Code
 $loginemail = $loginpassword = $loginerror = $loginsuccess = "";
@@ -20,9 +20,9 @@ if(isset($_POST['login'])){
 
         if (filter_var($loginemail, FILTER_VALIDATE_EMAIL)) { //validates email legitimacy
             // is a valid email address
-            $userQuery = DB::query("SELECT * FROM users WHERE users_email=%s", $loginemail);
+            $userQuery = DB::query("SELECT * FROM users WHERE users_email=%s AND users_permission=1", $loginemail);
             $userCount = DB::count(); 
-            if($userCount == 1){ //user exist in database
+            if($userCount == 1) { //user exist in database
                 foreach($userQuery as $userResult){
                     $dbId = $userResult['users_id'];
                     $dbPermission = $userResult['users_permission'];
@@ -31,7 +31,7 @@ if(isset($_POST['login'])){
                     $dbPassword = $userResult['users_password'];
                     // $wcId = $dbId;
                 }
-                if($dbPermission == 1) {
+                
                   if(password_verify($loginpassword, $dbPassword)){
                 
                     setcookie("users_id", $dbId, time() + (86400 * 30), "/"); // 86400 = 1 day
@@ -43,21 +43,20 @@ if(isset($_POST['login'])){
                 } else {
                   $loginerror = "Password is incorrect! Please try again";
                 }
-                } else {
-                  $adminerror = 1;
-                }
-                
+                // else {
+                //   $adminerror = 1;
+                // }
             } elseif($userCount > 1) {
                 $loginerror = "Login error. Please contact the website administrator";
                 // echo $loginerror;
-            }else {
-                $loginerror = "Please enter a valid email address/password!";
+            } else {
+                $loginerror = "This account has no admin access! Please login as a user";
                 // echo $loginerror;
             }
           } else {
             // is not a valid email address
 
-            $loginerror = "Please enter a valid email address";
+            $loginerror = "Please enter a valid email address/password!";
             $loginemail = "";
             $loginpassword = "";
           }
@@ -111,22 +110,11 @@ if(isset($_POST['login'])){
 <body>
     
     <div class="container" id="container">
-        <!-- <div class="form-container sign-up-container">
-            <form action="<?php echo htmlspecialchars(SITE_URL . "admin/login.php"); ?>" method="post">
-                <h1>Create Account</h1>
-                
-                <input type="text" placeholder="Name" name="name" value="<?php echo $_POST['name'] ?>">
-                <input type="email" placeholder="Email" name="email" value="<?php echo $_POST['email'] ?>">
-                <input type="password" placeholder="Password" name="password">
-                <input type="password" placeholder="Retype Password" name="cfmPassword">
-                <button type="submit" name="register">Sign Up</button>
-            </form>
-        </div> -->
         <div class="form-container sign-in-container">
-            <form action="<?php echo htmlspecialchars(SITE_URL . "admin/login.php"); ?>" method="post">
+            <form action="<?php echo htmlspecialchars(SITE_URL . "admin/adminlogin.php"); ?>" method="post">
                 <h1>Sign in</h1>
 
-                <input type="email" placeholder="Email" name="loginemail">
+                <input type="email" placeholder="Email" name="loginemail" value="<?php echo $_POST['loginemail'] ?>">
                 <input type="password" placeholder="Password" name="loginpassword">
                 <a href="#">Forgot your password?</a>
                 <button type="submit" name="login">Sign In</button>
@@ -179,22 +167,22 @@ if(isset($_POST['login'])){
 <script>
   <?php
   //if there is an error
-  if($registererror != ""){
-    echo 'swal("Opps...", "'. $registererror .'", "error");';
-  }
+//   if($registererror != ""){
+//     echo 'swal("Opps...", "'. $registererror .'", "error");';
+//   }
 
-  //if register is successful
-  if($registerSuccess == 1){
-    echo 'swal({
-      title: "Register successfully!",
-      text: "Logging in now...",
-      icon: "success",
-      buttons: false,
-      timer : 2000,
-      }).then(function() {
-      window.location = "index.php";
-     });';
-  }
+//   //if register is successful
+//   if($registerSuccess == 1){
+//     echo 'swal({
+//       title: "Register successfully!",
+//       text: "Logging in now...",
+//       icon: "success",
+//       buttons: false,
+//       timer : 2000,
+//       }).then(function() {
+//       window.location = "index.php";
+//      });';
+//   }
 
   if($loginerror != ""){ 
     echo 'swal("Oops", "' . $loginerror . '", "error");';
@@ -209,7 +197,7 @@ if(isset($_POST['login'])){
       //  echo 'swal("Yes!", "Login is successful!", "success");';
        echo 'swal({
         title: "Welcome Admin!",
-        text: "Directing to Admin panel",
+        text: "Directing you to Admin panel",
         icon: "success",
         buttons: false,
         timer : 2000,
@@ -227,7 +215,7 @@ if(isset($_POST['login'])){
         buttons: false,
         timer : 2000,
         }).then(function() {
-        window.location = "../login.php";
+        window.location = "../adminlogin.php";
        });';
        }
 

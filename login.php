@@ -19,7 +19,7 @@ if(isset($_POST['register'])){
       //check if password and confirm password are the same
       if($password == $cfmPassword){
         //check if email exist in database
-        $checkEmail = DB::query("SELECT * FROM users WHERE users_email=%s", $email);
+        $checkEmail = DB::query("SELECT * FROM users WHERE users_email=%s AND users_permission=0", $email);
         $checkEmailCount = DB::count();
         //if email already exist
         if($checkEmailCount > 0){
@@ -33,7 +33,7 @@ if(isset($_POST['register'])){
             ]);
 
             
-            $userQuery = DB::query("SELECT * FROM users WHERE users_email=%s", $email);
+            $userQuery = DB::query("SELECT * FROM users WHERE users_email=%s AND users_permission=0", $email);
             foreach($userQuery as $userResult) {
             $dbId = $userResult['users_id'];
             $dbPermission = $userResult['users_permission'];
@@ -53,7 +53,7 @@ if(isset($_POST['register'])){
       }else{
         $registererror = "Your passwords do not match! Please try again";
       }
-    }else{
+    } else{
       $registererror = "Please enter a valid email.";
     }
   }
@@ -72,7 +72,7 @@ if(isset($_POST['login'])){
 
         if (filter_var($loginemail, FILTER_VALIDATE_EMAIL)) { //validates email legitimacy
             // is a valid email address
-            $userQuery = DB::query("SELECT * FROM users WHERE users_email=%s", $loginemail);
+            $userQuery = DB::query("SELECT * FROM users WHERE users_email=%s AND users_permission=0", $loginemail);
             $userCount = DB::count(); 
             if($userCount == 1){ //user exist in database
                 foreach($userQuery as $userResult){
@@ -96,14 +96,14 @@ if(isset($_POST['login'])){
             }elseif($userCount > 1) {
                 $loginerror = "Login error. Please contact the website administrator";
                 // echo $loginerror;
-            }else {
-                $loginerror = "Please enter a valid email address/password!";
+            } else {
+                $loginerror = "You are an admin! Please login as an admin!";
                 // echo $loginerror;
             }
           } else {
             // is not a valid email address
 
-            $loginerror = "Please enter a valid email address";
+            $loginerror = "You are an admin! Please login as an admin!";
             $loginemail = "";
             $loginpassword = "";
           }
@@ -244,11 +244,11 @@ if(isset($_POST['login'])){
   //if register is successful
   if($registerSuccess == 1){
     echo 'swal({
-      title: "Register successfully!",
-      text: "Logging in now...",
+      title: "Your registration is successful!",
+      text: "Please wait while we log you in...",
       icon: "success",
       buttons: false,
-      timer : 2000,
+      timer : 3000,
       }).then(function() {
       window.location = "index.php";
      });';

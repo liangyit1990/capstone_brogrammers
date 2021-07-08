@@ -290,3 +290,9 @@ img{
   width:100px;
   height:100px;
 }
+
+
+.adminlogout {
+  text-decoration: none;
+  color: white;
+}

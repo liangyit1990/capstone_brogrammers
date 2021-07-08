@@ -21,16 +21,16 @@
       <li>
         <a href="<?php echo htmlspecialchars(SITE_URL . "admin/usermanagement.php"); ?>">
           <i class='bx bx-user' ></i>
-          <span class="links_name">User</span>
+          <span class="links_name">Users</span>
         </a>
-        <span class="tooltip">User</span>
+        <span class="tooltip">Users</span>
       </li>
       <li>
         <a href="<?php echo htmlspecialchars(SITE_URL . "admin/foodmanagement.php"); ?>">
           <i class='bx bx-basket' ></i>
-          <span class="links_name">Foods</span>
+          <span class="links_name">Food</span>
         </a>
-        <span class="tooltip">Foods</span>
+        <span class="tooltip">Food</span>
       </li>
       <li>
         <a href="#">
@@ -68,16 +68,22 @@
         <span class="tooltip">Saved</span>
       </li>
       <li>
+
         <a href="#">
           <i class='bx bx-cog' ></i>
           <span class="links_name">Setting</span>
         </a>
         <span class="tooltip">Setting</span>
+
       </li>
     </ul>
     <div class="profile_content">
       <div class="profile">
-        <i class='bx bx-log-out' id="log_out" ></i>
+        <a href="<?php echo htmlspecialchars(SITE_URL . "admin/adminlogout.php"); ?>">
+          <i class='bx bx-log-out adminlogout' id="log_out" ></i>
+        </a>
+        <span class="tooltip">Logout</span>
+
       </div>
     </div>
   </div>
