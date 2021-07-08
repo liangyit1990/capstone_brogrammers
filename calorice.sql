@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 07, 2021 at 06:12 AM
+-- Generation Time: Jul 08, 2021 at 06:44 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -157,7 +157,10 @@ INSERT INTO `users` (`users_id`, `users_name`, `users_email`, `users_password`, 
 (2, 'anselm sim new', 'anselmsim@gmail.comnewnew', '$2y$10$T0a/EeWKAN2liNAhURmzbuA0Wt2Lyw2a7gbZEX.VRYaSP.IchQk9.', 'anselm add new new', '91839138', 25, 0, 0, '2021-07-06 07:57:57'),
 (6, 'ky', 'ky@gmail.com', '$2y$10$HtGb5WNwO6SBkoY2B/bZOe6QVePW.8ywqgMhmI8LeTV67zy3pQyGu', '', '', NULL, 0, 1, '2021-07-06 08:31:17'),
 (23, 'hy', 'hy@gmail.com', '$2y$10$.SG1sVDt4Rab/ED07pKVdu2bQ/nCsZZ6dUVTHci0.PPXslQQa758O', NULL, NULL, NULL, NULL, 0, '2021-07-06 09:02:16'),
-(24, 'hy', 'hy@gmail.comc', '$2y$10$GsjDp2MdOx.Pr2ljxsGvee9pn6CYIuE8xgP8OF0zB0OrAZuGPme7W', NULL, NULL, NULL, NULL, 0, '2021-07-06 09:05:15');
+(24, 'hy', 'hy@gmail.comc', '$2y$10$GsjDp2MdOx.Pr2ljxsGvee9pn6CYIuE8xgP8OF0zB0OrAZuGPme7W', NULL, NULL, NULL, NULL, 0, '2021-07-06 09:05:15'),
+(25, 'dummy', 'dummy@dummy.com', '$2y$10$XRRwWWc3VyYhI.f63mpBH.r4Ik1qnUW8upNLnIx5kWHioku0i92mm', NULL, NULL, NULL, NULL, 0, '2021-07-08 12:44:05'),
+(26, 'dummy2', 'dummy2@dummy.com', '$2y$10$7hXYxyg7MLL3pGS2x8FmwuE1me0kHl2EFEMBAihWJtK.EeKc5AIUW', NULL, NULL, NULL, NULL, 0, '2021-07-08 18:03:15'),
+(27, 'dummy3', 'dummy3@dummy.com', '$2y$10$VyTdq8LcHLiXuWZtC6r1feGPnRZU2KhP8KATm9IaYf1.65z5ERSl.', NULL, NULL, NULL, NULL, 0, '2021-07-08 18:05:15');
 
 -- --------------------------------------------------------
 
@@ -278,7 +281,7 @@ ALTER TABLE `submission`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `vouchers`
