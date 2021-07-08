@@ -58,7 +58,7 @@ include "config/functions.php";
                     <h3 class="menu_name">Rice</h3>
                     <span class="menu_price">SGD 1</span>
                     <span class="menu_calorie">130 Cal</span>
-                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' > Base</i></a>
+                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
                     <div class="modal fade" id="ricecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -165,7 +165,7 @@ include "config/functions.php";
                     <h3 class="menu_name">Noodle</h3>
                     <span class="menu_price">SGD 1</span>
                     <span class="menu_calorie">174 Cal</span>
-                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' > Base</i></a>
+                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
                     <div class="modal fade" id="noodlecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -275,14 +275,14 @@ include "config/functions.php";
                     <h3 class="menu_name">Ebi Fry Bento</h3>
                     <span class="menu_price">SGD 6</span>
                     <span class="menu_calorie">510 Cal</span>
-                    <a class="button menu_button"><i class='bx bxs-cart-download' > Add</i></a>
+                    <a class="button menu_button"><i class='bx bxs-cart-download' ><span class="addandbase"> Add</span></i></a>
                 </div>
                 <div class="menu_content">
                     <img src="images/chickenkaraagebento.png" alt="" class="menu_img">
                     <h3 class="menu_name">Karaage Bento</h3>
                     <span class="menu_price">SGD 6</span>
                     <span class="menu_calorie">530 Cal</span>
-                    <a class="button menu_button"><i class='bx bxs-cart-download' > Add</i></a>
+                    <a class="button menu_button"><i class='bx bxs-cart-download' ><span class="addandbase"> Add</i></a>
                 </div>
                 
                 

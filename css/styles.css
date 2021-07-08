@@ -379,6 +379,7 @@ img{
 .menu_price{
     font-size:var(--small-font-size);
 }
+
 .menu_button{
     position: inherit;
     bottom:0;
@@ -389,9 +390,14 @@ img{
     border-radius: 0.5rem 0 0.5rem 0; 
     justify-content: center;
     cursor:pointer;
-    
 
 }
+
+.addandbase {
+    font-family: var(--body-font);
+
+}
+
 .bx{
     font-family: var(--body-font);
     
@@ -458,4 +464,13 @@ body.dark-theme{
     top:1.8rem;
     color: var(--text-color);
     cursor:pointer;
+}
+
+footer i {
+    color: #000;
+}
+
+footer a {
+    color: #000;
+    text-decoration: none;
 }
