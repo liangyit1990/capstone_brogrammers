@@ -77,7 +77,7 @@ include "../config/functions.php";
                       <!--Form body -->
                     
                    
-                    <form class="foodform" autocomplete="off" >
+                    <form class="foodform" autocomplete="off" method="post" enctype="multipart/form-data" >
                         <!--Input values, with values extracted from databases -->
                         <!--Input value for name -->
                         <div class="input-group">
@@ -109,15 +109,15 @@ include "../config/functions.php";
                         </div>
                         <!--Select option for Category -->
                         <div class="input-group mt-3">
-                          <select class="form-select category<?php echo $getFoodResult['food_id'];?>" aria-label="Default select example">
+                          <select class="form-select category category<?php echo $getFoodResult['food_id'];?>" aria-label="Default select example">
                             <option disabled >Category</option>
-                            <option value="1" <?php if($getFoodResult['food_category'] == 'ala carte') { echo "selected";} ?>>Ala-Carte</option>
-                            <option value="2" <?php if($getFoodResult['food_category'] == 'bento') { echo "selected";} ?>>Bento</option>
+                            <option value="ala carte" <?php if($getFoodResult['food_category'] == 'ala carte') { echo "selected";} ?>>Ala-Carte</option>
+                            <option value="bento" <?php if($getFoodResult['food_category'] == 'bento') { echo "selected";} ?>>Bento</option>
                           </select>
                         </div>
                         <!--Select option for Sub-category -->
                         <div class="input-group mt-3">
-                          <select class="form-select subcategory<?php echo $getFoodResult['food_id'];?>" aria-label="Default select example">
+                          <select class="form-select subcategory subcategory<?php echo $getFoodResult['food_id'];?>" aria-label="Default select example">
                             <option disabled >Sub-Category</option>
                             <option value="base" <?php if($getFoodResult['food_subcategory'] == 'base') { echo "selected";} ?>>Base</option>
                             <option value="meat" <?php if($getFoodResult['food_subcategory'] == 'meat') { echo "selected";} ?>>Meat</option>
@@ -126,21 +126,17 @@ include "../config/functions.php";
                           </select>
                         </div>
                         <div class="input-group mt-3">
-                          <input type="file" name="fileToUpload" class="form-control img" >
+                          <input type="file" id="replaceImg" name="fileToUpload" class="form-control img" >
                           <img src="<?php echo $getFoodResult['food_img']; ?>">
-                        
-                          
                         </div>
-
-                        
-
+                        <div class="modal-footer">
+                         <!--Close and Save btns -->
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary updateBtn">Save changes</button>
+                        </div>
                     </form>
                   </div>
-                  <div class="modal-footer">
-                    <!--Close and Save btns -->
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary savebtn">Save changes</button>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -303,6 +299,7 @@ $(document).ready(function(){
                     $('.newname').val("");
                     $('.newprice').val("");
                     $('.newcalories').val("");
+                    $('#file').val("");
                     
                  }else if (data == 2) {
                     swal("Error!", "Image with duplicate same file name has been found.", "error");
@@ -325,41 +322,83 @@ $(document).ready(function(){
     var deleteUrl = $(this).data('url');
 
             
-            //Display alert message before confirming to delete
-            swal({
-                title: `Are you sure you want to delete ${deleteName}?`,
-                text: "Once deleted, you will not be able to recover this food listing!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-                })
-                .then((willDelete) => {
-                    //Proceed to delete if user confirms
-                    if (willDelete) {
-                        swal("Poof! Food listing has been deleted!", {
-                        icon: "success",
-                        });
-                        $.ajax({
-                        url: 'admindelete.php', //action
-                        method: 'POST', //method
-                        data:{
-                            foodId:deleteId,
-                            foodImg:deleteUrl
-                        },
-                        //Remove data from website
-                        success:function(data){
-                          console.log(deleteUrl);
-                            if(data = 1){
-                                $(thisBtn).closest('.fooddata').remove();
-                            } else if (data = 2) {
-                                swal("Error!", "There is an error deleting the listing", "error");
-                        }
-                    }
-                });
-                    } 
-                    });
-                
-        });
+    //Display alert message before confirming to delete
+    swal({
+      title: `Are you sure you want to delete ${deleteName}?`,
+      text: "Once deleted, you will not be able to recover this food listing!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      })
+      .then((willDelete) => {
+        //Proceed to delete if user confirms
+         if (willDelete) {
+            swal("Poof! Food listing has been deleted!", {
+            icon: "success",
+            });
+            $.ajax({
+            url: 'fooddelete.php', //action
+            method: 'POST', //method
+            data:{
+              foodId:deleteId,
+              foodImg:deleteUrl
+              },
+              //Remove data from website
+              success:function(data){
+                if(data = 1){
+                    $(thisBtn).closest('.fooddata').remove();
+                } else if (data = 2) {
+                    swal("Error!", "There is an error deleting the listing", "error");
+                  }
+              }
+            });
+          } 
+      });            
+  });
+
+
+        $(".updateBtn").click(function(){
+          
+        
+        var replace = new FormData();
+        var files = $('#replaceImg')[0].files;
+        var id = $(this).parent().parent().find(".id").val();
+        var name = $(this).parent().parent().find(".name").val();
+        var price = $(this).parent().parent().find(".price").val();
+        var calories = $(this).parent().parent().find(".calories").val();
+        var category = $(this).parent().parent().find(".category").val();
+        var subcategory = $(this).parent().parent().find(".subcategory").val();
+        
+
+        console.log(files);
+        console.log(name);    
+        console.log(price);
+        console.log(calories);
+        console.log(category);
+        console.log(subcategory);
+
+           replace.append('file',files[0]);
+           replace.append('name',name);
+           replace.append('price',price);
+           replace.append('calories',calories);
+           replace.append('category',category);
+           replace.append('subcategory',subcategory);
+           
+
+           $.ajax({
+              url: 'foodupdate.php',
+              type: 'post',
+              data: replace,
+              contentType: false,
+              processData: false,
+              success:function(data){
+                console.log(data);
+              }
+            });
+    
+
+
+  });
 
   
 
