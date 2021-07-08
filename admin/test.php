@@ -11,7 +11,7 @@ include "../config/functions.php";
     <meta charset="UTF-8">
     <title> Admin | CALORICE </title>
     <link rel="stylesheet" href="adminstyle.css">
-    <link rel="icon" href="../images/logo.png">
+    <link rel="icon" href="images/logo.png">
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -62,7 +62,7 @@ include "../config/functions.php";
               <td class="foodsubcategory"><?php echo ucwords($getFoodResult['food_subcategory']); ?></td>
               <td class="foodsimg"><img src="<?php echo $getFoodResult['food_img']; ?>"></td>
               <td><button type="button" class="btn btn-primary btn-sm editFood" id="editFood" value="editFood" data-id="<?php echo $getFoodResult['food_id']; ?>" data-bs-toggle="modal" data-bs-target="#foodinfo<?php echo $getFoodResult['food_id']; ?>" >View/Edit</button>
-                  <button type="button" class="btn btn-danger btn-sm deleteFood" data-id="<?php echo $getFoodResult['food_id']; ?>" data-url="<?php echo $getFoodResult['food_img'] ?>" data-name="<?php echo $getFoodResult['food_name']; ?>" >Delete</button>
+                  <button type="button" class="btn btn-danger btn-sm deleteFood" data-id="<?php echo $getUserResult['food_id']; ?>" data-name="<?php echo $getFoodResult['food_name']; ?>">Delete</button>
               </td>  
             </tr>
             <!-- Modals for each user's View/Edit button -->
@@ -176,7 +176,7 @@ include "../config/functions.php";
                   </div>
                   <!--Modal body -->
                   <div class="modal-body">
-                    <form id="fupForm" method="post" enctype="multipart/form-data">
+                    <form id="fupForm" enctype="multipart/form-data">
                         <!--Input values, with values extracted from databases -->
                         <!--Input value for name -->
                         <div class="input-group form-group">
@@ -189,7 +189,7 @@ include "../config/functions.php";
                         </div>
                         <!--Input value for Price -->
                         <div class="input-group form-group mt-3">
-                          <input type="text" name="newprice" class="form-control newprice" placeholder="Price">
+                          <input type="number" name="newprice" class="form-control newprice" placeholder="Price">
                           <div class="input-group-append">
                               <div class="input-group-text">
                                 <i class="bi bi-cash"></i>
@@ -209,8 +209,8 @@ include "../config/functions.php";
                         <div class="input-group form-group mt-3">
                           <select class="form-select newcategory" aria-label="Default select example">
                             <option disabled >Category</option>
-                            <option value="ala carte" >Ala-Carte</option>
-                            <option value="bento" >Bento</option>
+                            <option value="1" >Ala-Carte</option>
+                            <option value="2" >Bento</option>
                           </select>
                         </div>
                         <!--Select option for Sub-category -->
@@ -226,14 +226,13 @@ include "../config/functions.php";
                         <div class="input-group form-group mt-3">
                           <input type="file" class="form-control" id="file" name="file" required />
                         </div>
-                        <div class="modal-footer">
-                        <!--Close and Save btns -->
-                        <button type="button" class="btn btn-secondary closebtn" data-bs-dismiss="modal">Close</button>
-                          <input type="button" id="but_upload" class="btn btn-success submitBtn" value="SUBMIT"/>
-                        </div> 
                     </form>
                   </div>
-                 
+                  <div class="modal-footer">
+                    <!--Close and Save btns -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" name="submit" class="btn btn-success submitBtn" value="SUBMIT"/>
+                  </div>
                 </div>
               </div>
             </div>
@@ -254,115 +253,36 @@ $(document).ready(function(){
   
   $("#btn").click(function(){
     $(".sidebar").toggleClass("active");
-  });
-
-  $('#addFood').on('hidden.bs.modal', function() {
-    location.reload();
   })
 
-  $("#file").change(function() {
-    var file = this.files[0];
-    var fileType = file.type;
-    var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office', 'image/jpeg', 'image/png', 'image/jpg'];
-    if(!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]) || (fileType == match[3]) || (fileType == match[4]) || (fileType == match[5]))){
-        swal("Error!", "Please only upload image format such as 'jpeg', 'png' or 'jpg' ", "error");
-        $("#file").val('');
-       
-    }
-  });
-
-  $(".submitBtn").click(function(){
+  $("#fupForm").on('submit', function(){
+      console.log('log');
         
-        var fd = new FormData();
-        var files = $('#file')[0].files;
-        var name = $('.newname').val();
-        var price = $('.newprice').val();
-        var calories = $('.newcalories').val();
-        var category = $('.newcategory').val();
-        var subcategory = $('.newsubcategory').val();
-        
-        
-
-           fd.append('file',files[0]);
-           fd.append('name',name);
-           fd.append('price',price);
-           fd.append('calories',calories);
-           fd.append('category',category);
-           fd.append('subcategory',subcategory);
-           
-
-           $.ajax({
-              url: 'foodupload.php',
-              type: 'post',
-              data: fd,
-              contentType: false,
-              processData: false,
-              success: function(data){
-                 if(data == 1){
-                    swal("Good job!", "User has been added successfully!", "success");
-                    $('.newname').val("");
-                    $('.newprice').val("");
-                    $('.newcalories').val("");
-                    
-                 }else if (data == 2) {
-                    swal("Error!", "Image with duplicate same file name has been found.", "error");
-                 } else if (data == 3) {
-                    swal("Error!", "Please fill up all the sections", "error");
-                 }
-              }
-           });
-        
-    
-
-
-  });
-
-  $(".deleteFood").click(function(){
-            
-    var thisBtn = this;
-    var deleteId = $(this).data('id');
-    var deleteName = $(this).data('name');
-    var deleteUrl = $(this).data('url');
-
-            
-            //Display alert message before confirming to delete
-            swal({
-                title: `Are you sure you want to delete ${deleteName}?`,
-                text: "Once deleted, you will not be able to recover this food listing!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-                })
-                .then((willDelete) => {
-                    //Proceed to delete if user confirms
-                    if (willDelete) {
-                        swal("Poof! Food listing has been deleted!", {
-                        icon: "success",
-                        });
-                        $.ajax({
-                        url: 'admindelete.php', //action
-                        method: 'POST', //method
-                        data:{
-                            foodId:deleteId,
-                            foodImg:deleteUrl
-                        },
-                        //Remove data from website
-                        success:function(data){
-                          console.log(deleteUrl);
-                            if(data = 1){
-                                $(thisBtn).closest('.fooddata').remove();
-                            } else if (data = 2) {
-                                swal("Error!", "There is an error deleting the listing", "error");
-                        }
-                    }
-                });
-                    } 
-                    });
-                
+        $.ajax({
+            type: 'POST',
+            url: 'submit.php',
+            data: new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                $('.statusMsg').html('');
+                if(response.status == 1){
+                    $('#fupForm')[0].reset();
+                    $('.statusMsg').html('<p class="alert alert-success">'+response.message+'</p>');
+                }else{
+                    $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
+                }
+                $('#fupForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+            }
         });
-
-  
-
+    });
 });
 
 

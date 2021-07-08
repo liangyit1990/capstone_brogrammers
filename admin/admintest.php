@@ -1,7 +1,5 @@
 <?php
 
-print_r($_POST);
-print_r($_FILES);
 
 ?>
 
@@ -14,12 +12,20 @@ print_r($_FILES);
   <title>Document</title>
 </head>
 <body>
-<form id="data" method="post" enctype="multipart/form-data">
-    <input type="text" name="first" value="Bob" />
-    <input type="text" name="middle" value="James" />
-    <input type="text" name="last" value="Smith" />
-    <input name="image" type="file" />
-    <button>Submit</button>
+<form id="fupForm" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required />
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required />
+    </div>
+    <div class="form-group">
+        <label for="file">File</label>
+        <input type="file" class="form-control" id="file" name="file" required />
+    </div>
+    <input type="submit" name="submit" class="btn btn-success submitBtn" value="SUBMIT"/>
 </form>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -28,20 +34,47 @@ print_r($_FILES);
 
 
 <script>
-$("form#data").submit(function(e) {
-    e.preventDefault();    
-    var formData = new FormData(this);
+$(document).ready(function(e){
 
-    $.ajax({
-        url: window.location.pathname,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-            alert(data)
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+    $("#file").change(function() {
+    var file = this.files[0];
+    var fileType = file.type;
+    var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office', 'image/jpeg', 'image/png', 'image/jpg'];
+    if(!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]) || (fileType == match[3]) || (fileType == match[4]) || (fileType == match[5]))){
+        alert('Sorry, only PDF, DOC, JPG, JPEG, & PNG files are allowed to upload.');
+        $("#file").val('');
+        return false;
+    }
+});
+    
+    // Submit form data via Ajax
+    $("#fupForm").on('submit', function(e){
+        console.log('12');
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'submit.php',
+            data: new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                $('.statusMsg').html('');
+                if(response.status == 1){
+                    $('#fupForm')[0].reset();
+                    $('.statusMsg').html('<p class="alert alert-success">'+response.message+'</p>');
+                }else{
+                    $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
+                }
+                $('#fupForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+            }
+        });
     });
 });
 </script>
