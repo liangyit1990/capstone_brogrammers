@@ -71,7 +71,7 @@ if(isset($_FILES['file']['name'])){
     }
 
    /* Check file extension */
-   if($priceChecked = $nameChecked = $uploadOk == 0 &&  in_array(strtolower($imageFileType), $valid_extensions)) { 
+   if($priceChecked == 0 && $nameChecked == 0 && $caloriesChecked == 0 &&  $uploadOk == 0 &&  in_array(strtolower($imageFileType), $valid_extensions)) { 
       /* Upload file */
       if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
          DB::insert("food", [

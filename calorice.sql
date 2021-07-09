@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 08, 2021 at 06:44 PM
+-- Generation Time: Jul 09, 2021 at 12:46 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -85,7 +85,7 @@ CREATE TABLE `food` (
   `food_category` varchar(128) NOT NULL,
   `food_subcategory` varchar(128) NOT NULL,
   `food_healthierchoice` smallint(6) DEFAULT '0',
-  `food_vegan` smallint(6) NOT NULL,
+  `food_vegan` smallint(6) DEFAULT NULL,
   `food_price` decimal(10,2) NOT NULL,
   `food_calories` int(11) NOT NULL,
   `food_img` varchar(256) DEFAULT NULL
@@ -97,8 +97,10 @@ CREATE TABLE `food` (
 
 INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_subcategory`, `food_healthierchoice`, `food_vegan`, `food_price`, `food_calories`, `food_img`) VALUES
 (1, 'grilled chicken', 'ala carte', 'meat', 0, 0, '4.99', 280, '..\\images\\chicken.jpeg'),
-(2, 'chicken Karaage bento', 'bento', 'rice', 0, 0, '12.99', 1800, '..\\images\\chickenkaraagebento.png'),
-(5, 'Cuttlefish Bento', 'bento', 'gravy', 0, 0, '13.99', 1300, '..\\images\\cuttlefishbento.png');
+(2, 'chicken Karaage bento', 'bento', 'base', 0, 0, '12.99', 1800, '..\\images\\chickenkaraagebento.png'),
+(5, 'Cuttlefish Bento', 'bento', 'base', 0, 0, '13.99', 1300, '..\\images\\cuttlefishbento.png'),
+(26, 'test', 'ala carte', 'base', 0, NULL, '9.90', 1234, 'uploads/brownies.jpg'),
+(28, 'soon kueh', 'ala carte', 'base', 0, NULL, '12.30', 1234, 'uploads/soonkueh.jpg');
 
 -- --------------------------------------------------------
 
@@ -156,11 +158,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`users_id`, `users_name`, `users_email`, `users_password`, `users_address`, `users_phone`, `users_age`, `users_gender`, `users_permission`, `users_joindate`) VALUES
 (2, 'anselm sim new', 'anselmsim@gmail.comnewnew', '$2y$10$T0a/EeWKAN2liNAhURmzbuA0Wt2Lyw2a7gbZEX.VRYaSP.IchQk9.', 'anselm add new new', '91839138', 25, 0, 0, '2021-07-06 07:57:57'),
 (6, 'ky', 'ky@gmail.com', '$2y$10$HtGb5WNwO6SBkoY2B/bZOe6QVePW.8ywqgMhmI8LeTV67zy3pQyGu', '', '', NULL, 0, 1, '2021-07-06 08:31:17'),
-(23, 'hy', 'hy@gmail.com', '$2y$10$.SG1sVDt4Rab/ED07pKVdu2bQ/nCsZZ6dUVTHci0.PPXslQQa758O', NULL, NULL, NULL, NULL, 0, '2021-07-06 09:02:16'),
-(24, 'hy', 'hy@gmail.comc', '$2y$10$GsjDp2MdOx.Pr2ljxsGvee9pn6CYIuE8xgP8OF0zB0OrAZuGPme7W', NULL, NULL, NULL, NULL, 0, '2021-07-06 09:05:15'),
-(25, 'dummy', 'dummy@dummy.com', '$2y$10$XRRwWWc3VyYhI.f63mpBH.r4Ik1qnUW8upNLnIx5kWHioku0i92mm', NULL, NULL, NULL, NULL, 0, '2021-07-08 12:44:05'),
-(26, 'dummy2', 'dummy2@dummy.com', '$2y$10$7hXYxyg7MLL3pGS2x8FmwuE1me0kHl2EFEMBAihWJtK.EeKc5AIUW', NULL, NULL, NULL, NULL, 0, '2021-07-08 18:03:15'),
-(27, 'dummy3', 'dummy3@dummy.com', '$2y$10$VyTdq8LcHLiXuWZtC6r1feGPnRZU2KhP8KATm9IaYf1.65z5ERSl.', NULL, NULL, NULL, NULL, 0, '2021-07-08 18:05:15');
+(8, 'hy', 'hy@gmail.com', '$2y$10$93fTm7vsxDe8B1WY/1w/YO2j36KvcHEnlRy..VYXy02gxWy5fjgVy', NULL, NULL, NULL, NULL, 0, '2021-07-08 11:45:23'),
+(15, 'tky', 'tky@gmail.com', '$2y$10$CpUgeO/P9NEE4rComYRp7ObDZLkwCe6vAtYP8WijdlCfLPnVWesgu', '', '', NULL, 0, 0, '2021-07-09 10:59:02');
 
 -- --------------------------------------------------------
 
@@ -263,7 +262,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -281,7 +280,7 @@ ALTER TABLE `submission`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `vouchers`
