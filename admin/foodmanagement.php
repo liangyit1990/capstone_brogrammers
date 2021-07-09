@@ -66,7 +66,7 @@ include "../config/functions.php";
               </td>  
             </tr>
             <!-- Modals for each user's View/Edit button -->
-            <div class="modal fade" id="foodinfo<?php echo $getFoodResult['food_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade foodinfo" id="foodinfo<?php echo $getFoodResult['food_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -81,7 +81,7 @@ include "../config/functions.php";
                         <!--Input values, with values extracted from databases -->
                         <!--Input value for name -->
                         <div class="input-group">
-                          <input type="text" name="id" class="form-control id" placeholder="Id" id="id<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getFoodResult['users_id'];?>" hidden>  
+                          <input type="text" name="id" class="form-control id" placeholder="Id" id="id<?php echo $getFoodResult['food_id'];?>" value="<?php echo $getFoodResult['food_id'];?>" hidden>  
                           <input type="text" name="name" class="form-control name " placeholder="Name" id="name<?php echo $getFoodResult['food_id'];?>" value="<?php echo ucwords($getFoodResult['food_name']);?>">
                           <div class="input-group-append">
                             <div class="input-group-text">
@@ -126,7 +126,7 @@ include "../config/functions.php";
                           </select>
                         </div>
                         <div class="input-group mt-3">
-                          <input type="file" id="replaceImg" name="fileToUpload" class="form-control img" >
+                          <input type="file" id="imgreplace<?php echo $getFoodResult['food_id'];?>" name="file" class="form-control imgreplace" >
                           <img src="<?php echo $getFoodResult['food_img']; ?>">
                         </div>
                         <div class="modal-footer">
@@ -256,13 +256,19 @@ $(document).ready(function(){
     location.reload();
   })
 
-  $("#file").change(function() {
+  $('.foodinfo').on('hidden.bs.modal', function() {
+    location.reload();
+  })
+
+  $("#file, .imgreplace").change(function() {
     var file = this.files[0];
     var fileType = file.type;
     var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office', 'image/jpeg', 'image/png', 'image/jpg'];
     if(!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]) || (fileType == match[3]) || (fileType == match[4]) || (fileType == match[5]))){
         swal("Error!", "Please only upload image format such as 'jpeg', 'png' or 'jpg' ", "error");
         $("#file").val('');
+        $(".img").val('');
+
        
     }
   });
@@ -276,6 +282,7 @@ $(document).ready(function(){
         var calories = $('.newcalories').val();
         var category = $('.newcategory').val();
         var subcategory = $('.newsubcategory').val();
+        
         
         
 
@@ -295,7 +302,7 @@ $(document).ready(function(){
               processData: false,
               success: function(data){
                  if(data == 1){
-                    swal("Good job!", "User has been added successfully!", "success");
+                    swal("Good job!", "Food has been added successfully!", "success");
                     $('.newname').val("");
                     $('.newprice').val("");
                     $('.newcalories').val("");
@@ -361,7 +368,8 @@ $(document).ready(function(){
           
         
         var replace = new FormData();
-        var files = $('#replaceImg')[0].files;
+        
+        var files = $(this).parent().parent().find('.imgreplace')[0].files;
         var id = $(this).parent().parent().find(".id").val();
         var name = $(this).parent().parent().find(".name").val();
         var price = $(this).parent().parent().find(".price").val();
@@ -369,15 +377,16 @@ $(document).ready(function(){
         var category = $(this).parent().parent().find(".category").val();
         var subcategory = $(this).parent().parent().find(".subcategory").val();
         
-
+        // console.log(id);
         console.log(files);
-        console.log(name);    
-        console.log(price);
-        console.log(calories);
-        console.log(category);
-        console.log(subcategory);
-
+        // console.log(name);    
+        // console.log(price);
+        // console.log(calories);
+        // console.log(category);
+        // console.log(subcategory);
+            
            replace.append('file',files[0]);
+           replace.append('id',id);
            replace.append('name',name);
            replace.append('price',price);
            replace.append('calories',calories);
@@ -392,7 +401,13 @@ $(document).ready(function(){
               contentType: false,
               processData: false,
               success:function(data){
-                console.log(data);
+                if(data==1){
+                  swal("Error!", "Please ensure all sections are filled up properly", "error");
+                } else if (data == 2) {
+                  swal("Success", "Changes Saved", "success");
+                }
+                // console.log(data);
+                
               }
             });
     

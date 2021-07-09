@@ -6,7 +6,7 @@ include '../config/functions.php';
 //Check if user supposed to be here
 if(isset($_POST['editUser'])){
    if(empty($_POST['name']) || empty($_POST['email'])) {
-
+      echo 1;
       
    } else {
       $name = validateData($_POST['name']);
