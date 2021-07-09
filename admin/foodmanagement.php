@@ -127,7 +127,7 @@ include "../config/functions.php";
                         </div>
                         <div class="input-group mt-3">
                           <input type="file" id="imgreplace<?php echo $getFoodResult['food_id'];?>" name="file" class="form-control imgreplace" >
-                          <img src="<?php echo $getFoodResult['food_img']; ?>">
+                          <img class="originalimg" src="<?php echo $getFoodResult['food_img']; ?>">
                         </div>
                         <div class="modal-footer">
                          <!--Close and Save btns -->
@@ -263,11 +263,11 @@ $(document).ready(function(){
   $("#file, .imgreplace").change(function() {
     var file = this.files[0];
     var fileType = file.type;
-    var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office', 'image/jpeg', 'image/png', 'image/jpg'];
+    var match = ['image/jpeg', 'image/png', 'image/jpg'];
     if(!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]) || (fileType == match[3]) || (fileType == match[4]) || (fileType == match[5]))){
         swal("Error!", "Please only upload image format such as 'jpeg', 'png' or 'jpg' ", "error");
         $("#file").val('');
-        $(".img").val('');
+        $(".imgreplace").val('');
 
        
     }
@@ -370,15 +370,17 @@ $(document).ready(function(){
         var replace = new FormData();
         
         var files = $(this).parent().parent().find('.imgreplace')[0].files;
+        var imgpath = "uploads/" +  $(this).parent().parent().find('.imgreplace').val().split('\\').pop();
         var id = $(this).parent().parent().find(".id").val();
         var name = $(this).parent().parent().find(".name").val();
         var price = $(this).parent().parent().find(".price").val();
         var calories = $(this).parent().parent().find(".calories").val();
         var category = $(this).parent().parent().find(".category").val();
         var subcategory = $(this).parent().parent().find(".subcategory").val();
+        var img = $(this).parent().parent().find(".originalimg").attr('src');
         
         // console.log(id);
-        console.log(files);
+        // console.log(imgpath);
         // console.log(name);    
         // console.log(price);
         // console.log(calories);
@@ -392,6 +394,7 @@ $(document).ready(function(){
            replace.append('calories',calories);
            replace.append('category',category);
            replace.append('subcategory',subcategory);
+           replace.append('img',img);
            
 
            $.ajax({
@@ -405,6 +408,17 @@ $(document).ready(function(){
                   swal("Error!", "Please ensure all sections are filled up properly", "error");
                 } else if (data == 2) {
                   swal("Success", "Changes Saved", "success");
+                } else if (data == 3) {
+                  swal("Error!", "Image with duplicate same file name has been found.", "error");
+                } else if (data == 4) {
+                  swal("Error!", "Error uploading the image", "error");
+                }  else if (data == 5 ) {
+                  swal("Success", "Changes Saved", "success")
+                      .then((value) => {
+                        location.reload();
+                      });
+                  // console.log(imgpath);
+
                 }
                 // console.log(data);
                 
