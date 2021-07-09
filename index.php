@@ -274,14 +274,14 @@ include "config/functions.php";
                     <h3 class="menu_name">Ebi Fry Bento</h3>
                     <span class="menu_price">SGD 6</span>
                     <span class="menu_calorie">510 Cal</span>
-                    <a class="button menu_button"><i class='bx bxs-cart-download' ><span class="addandbase"> Add</span></i></a>
+                    <a class="button menu_button add-cart cart1"><i class='bx bxs-cart-download' ><span class="addandbase"> Add</span></i></a>
                 </div>
                 <div class="menu_content">
                     <img src="images/chickenkaraagebento.png" alt="" class="menu_img">
                     <h3 class="menu_name">Karaage Bento</h3>
                     <span class="menu_price">SGD 6</span>
                     <span class="menu_calorie">530 Cal</span>
-                    <a class="button menu_button"><i class='bx bxs-cart-download' ><span class="addandbase"> Add</i></a>
+                    <a class="button menu_button add-cart cart2"><i class='bx bxs-cart-download' ><span class="addandbase"> Add</i></a>
                 </div>
                 
                 

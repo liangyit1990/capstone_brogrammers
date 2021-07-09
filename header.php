@@ -19,8 +19,8 @@
                     <li><i class='bx bx-moon bx-sm change-theme' id="theme-button"></i></li>
                 </ul>
             </div>
-            <div class="nav_cart" id="nav-cart">
-                <div><i class='bx bx-cart bx-md'></i></div>
+            <div class="nav_cart cart" id="nav-cart">
+                <div><i class='bx bx-cart bx-md'></i><span class="count">0</span></div>
                 <!-- <div class="item-count">0</div> -->
             </div>
             

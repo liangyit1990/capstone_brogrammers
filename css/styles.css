@@ -153,18 +153,10 @@ img{
 
 }
 /* cart */
-.item-count {
-    color: var(--text-color);
-    font-size: 15px;
-    height: 13px;
-    width: 13px;
-    text-align: center;
-    /* line-height: 22px; */
-    border: 1px solid var(--primary-color);
-    border-radius: 50%;
-    
-    
+.count {
+    font-size:13px;
 }
+
 
 
 /* Nav */
@@ -467,10 +459,10 @@ body.dark-theme{
 }
 
 footer i {
-    color: #000;
+    color: var(--text-color);
 }
 
 footer a {
-    color: #000;
+    color: var(--text-color);
     text-decoration: none;
 }

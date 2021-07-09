@@ -144,16 +144,10 @@ img{
     background-color:var(--body-color);
 
 }
+
 /* cart */
-.item-count {
-    color: #000;
-    font-size: 15px;
-    height: 23px;
-    width: 23px;
-    text-align: center;
-    line-height: 22px;
-    border: 1px solid #ff9a00;
-    border-radius: 50%;
+.count {
+    font-size:13px;
 }
 
 
@@ -327,4 +321,13 @@ body.dark-theme{
     top:1.8rem;
     color: var(--text-color);
     cursor:pointer;
+}
+
+footer i {
+    color: var(--text-color);
+}
+
+footer a {
+    color: var(--text-color);
+    text-decoration: none;
 }
