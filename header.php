@@ -6,7 +6,7 @@
 
             <div class="nav_menu" id="nav-menu">
                 <ul class="nav_list">
-                    <li class="nav-item"><a href="<?php echo htmlspecialchars(SITE_URL); ?>" class="nav_link active-link">Home</a></li>
+                    <li class="nav-item"><a href="<?php echo htmlspecialchars(SITE_URL); ?>#home" class="nav_link active-link">Home</a></li>
                     <li class="nav-item"><a href="<?php echo htmlspecialchars(SITE_URL); ?>#menu" class="nav_link">Menu</a></li>
                     <li class="nav-item"><a href="<?php echo htmlspecialchars(SITE_URL); ?>#about" class="nav_link">About</a></li>
                     <li class="nav-item"><a href="<?php echo htmlspecialchars(SITE_URL . "feedback.php"); ?>" class="nav_link">Contact Us</a></li>
