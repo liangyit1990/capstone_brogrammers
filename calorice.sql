@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 09, 2021 at 12:46 PM
+-- Generation Time: Jul 10, 2021 at 08:20 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -76,6 +76,33 @@ CREATE TABLE `feedback` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `feedbackothers`
+--
+
+CREATE TABLE `feedbackothers` (
+  `feedbackothers_id` int(11) NOT NULL,
+  `feedbackothers_name` varchar(128) NOT NULL,
+  `feedbackothers_email` varchar(256) NOT NULL,
+  `feedbackothers_topic` varchar(128) NOT NULL,
+  `feedbackothers_message` text NOT NULL,
+  `feedbackothers_file` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `feedbackothers`
+--
+
+INSERT INTO `feedbackothers` (`feedbackothers_id`, `feedbackothers_name`, `feedbackothers_email`, `feedbackothers_topic`, `feedbackothers_message`, `feedbackothers_file`) VALUES
+(1, 'kenny', 'kenny@gmail.com', 'test topic', 'test message', NULL),
+(2, 'kenny', 'tky@gmail.com', 'test msg', 'test msg 2', NULL),
+(3, 'kenny', 'kenny@gmail.com', 'topic 3', 'msg 3', NULL),
+(4, 'tky', 'tky@gmail.com', 'topic 4', 'topic 4 with attachement', 'submittedfile/100721-soonkueh.jpg'),
+(5, 'tky', 'tky@gmail.com', 'topic 5', 'msg 5', 'submittedfile/100721-soonkueh.jpg1'),
+(6, 'kenny', 'kenny@gmail.com', 'topic 6', 'topic 6', 'submittedfile/100721-1-soonkueh.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `food`
 --
 
@@ -100,7 +127,7 @@ INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_subcategory`,
 (2, 'chicken Karaage bento', 'bento', 'base', 0, 0, '12.99', 1800, '..\\images\\chickenkaraagebento.png'),
 (5, 'Cuttlefish Bento', 'bento', 'base', 0, 0, '13.99', 1300, '..\\images\\cuttlefishbento.png'),
 (26, 'test', 'ala carte', 'base', 0, NULL, '9.90', 1234, 'uploads/brownies.jpg'),
-(28, 'soon kueh', 'ala carte', 'base', 0, NULL, '12.30', 1234, 'uploads/soonkueh.jpg');
+(33, 'test', 'ala carte', 'base', 0, NULL, '10.10', 1234, 'uploads/muffins.jpg');
 
 -- --------------------------------------------------------
 
@@ -203,6 +230,12 @@ ALTER TABLE `feedback`
   ADD KEY `users_id` (`users_id`);
 
 --
+-- Indexes for table `feedbackothers`
+--
+ALTER TABLE `feedbackothers`
+  ADD PRIMARY KEY (`feedbackothers_id`);
+
+--
 -- Indexes for table `food`
 --
 ALTER TABLE `food`
@@ -259,10 +292,16 @@ ALTER TABLE `feedback`
   MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `feedbackothers`
+--
+ALTER TABLE `feedbackothers`
+  MODIFY `feedbackothers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `orders`
