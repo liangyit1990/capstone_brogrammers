@@ -100,6 +100,17 @@ include "config/functions.php";
 <script>
 $(document).ready(function(){
 
+    $("#file").change(function() {
+    var file = this.files[0];
+    var fileType = file.type;
+    var match = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf'];
+    if(!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]) || (fileType == match[3])  )){
+        swal("Error!", "Please only upload file format such as 'jpeg', 'png', 'jpg' or 'pdf' ", "error");
+        $("#file").val('');
+       
+    }
+  });
+
     $(".contact-form-btn").click(function(){
         
         var fd = new FormData();

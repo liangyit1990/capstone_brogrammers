@@ -18,7 +18,7 @@ if(isset($_POST['name'])){
         $location = "submittedfile/".$filename;
         $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
         $imageFileType = strtolower($imageFileType);
-        $valid_extensions = array("jpg","jpeg","png");
+        $valid_extensions = array("jpg","jpeg","png","pdf");
          while (file_exists($location)) {
             $count++;
             $filename = date("dmy").'-'.$count.'-'.$_FILES['file']['name'] ;
