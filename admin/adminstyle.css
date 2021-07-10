@@ -296,3 +296,8 @@ img{
   text-decoration: none;
   color: white;
 }
+
+.form-check{
+  padding-right: 5px;
+  
+}

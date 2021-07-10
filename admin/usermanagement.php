@@ -104,7 +104,7 @@ include "../config/functions.php";
                           <div class="form-check">
                             <input class="form-check-input gender" type="radio" name="gender<?php echo $getUserResult['users_id']; ?>"  value="male" <?php if($getUserResult['users_gender'] == 1) { echo "checked";} ?>>
                             <label class="form-check-label" for="flexRadioDefault1">
-                              Male
+                              Male 
                             </label>
                           </div>
                           <div class="form-check ">
