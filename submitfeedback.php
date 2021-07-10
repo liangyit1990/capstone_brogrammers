@@ -81,8 +81,9 @@ if(isset($_POST['name'])){
 
    /* Check file extension */
    if($nameChecked == 0 && $emailChecked == 0 && $topicChecked == 0 && $messageChecked == 0 && $uploadOk == 0) { 
-      /* Upload file */
+      //Check and see if there is any file to upload
       if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
+          //if yes, upload all values and file to DB
             DB::insert("feedbackothers", [
             'feedbackothers_name' => strtolower($name),
             'feedbackothers_email' => strtolower($email),
@@ -97,12 +98,14 @@ if(isset($_POST['name'])){
         // echo ($nameChecked);
         // echo ($caloriesChecked);
          } else {
+             //Else only insert data values to DB
             DB::insert("feedbackothers", [
                 'feedbackothers_name' => strtolower($name),
                 'feedbackothers_email' => strtolower($email),
                 'feedbackothers_topic' => strtolower($topic),
                 'feedbackothers_message' => strtolower($message),
             ]);
+            //Echo "success"
             echo 1;
      }
         
