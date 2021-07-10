@@ -79,6 +79,8 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                 </div> -->
             </div>
             <div class="col-sm-9 modernproductblocks accountrightbody">
+                <!-- Start of Basic Info Row - Contains basic info, send feedback, change email and change password -->
+                <div>
                 <div class="row row-cols-2 accrow basicinforow">
                     <div class="col-lg-6 basicinfobox">
                         <div class="row">
@@ -123,7 +125,6 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                     </div>
                 </div>
 
-
                 <div class="row accrow emailrow">
                     <h4>Email</h4><hr>
                     
@@ -144,7 +145,6 @@ foreach($updateUserPassword as $updateUserPassword_result) {
 
                 </div>
 
-
                 <div class="row accrow passwordrow">
                     <h4>Password</h4><hr>
                     <h5>Change Your Password</h5>
@@ -162,6 +162,12 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                     </form>
                 </div>
 
+
+                </div>
+
+
+
+                <!-- Start of Orders Row - WIP -->
                 <div class="row accrow ordersplacedrow" id="orders">
                     <div>
                         <h4>Orders Placed</h4>
@@ -171,6 +177,9 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                     </div>
 
                 </div>
+
+                <!-- Start of Addresses Row - WIP -->
+
                 <div class="row accrow addressrow" id="addresses">
                     <h4>Addresses</h4><br>
                 </div>
