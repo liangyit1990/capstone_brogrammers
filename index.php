@@ -49,7 +49,7 @@ include "config/functions.php";
         </section>
         <!-- Menu -->
         <section class="menu section bd-container" id="menu">
-            <span class="section-title">Menu</span>
+            <span class="section-title">Customise your meal</span>
             <span class="section-subtitle">Choose Your Base</span>
             <div class="menu_container bd-grid">
                 <div class="menu_content">
@@ -266,23 +266,9 @@ include "config/functions.php";
                     </div>
                 </div>
             </div>
-            <span class="section-subtitle">OR<br></span>
-            <span class="section-title">LET US PICK FOR YOU</span>
-            <div class="menu_container bd-grid">
-                <div class="menu_content">
-                    <img src="images/ebifrybento.png" alt="" class="menu_img">
-                    <h3 class="menu_name">Ebi Fry Bento</h3>
-                    <span class="menu_price">SGD 6</span>
-                    <span class="menu_calorie">510 Cal</span>
-                    <a class="button menu_button add-cart cart1"><i class='bx bxs-cart-download' ><span class="addandbase"> Add</span></i></a>
-                </div>
-                <div class="menu_content">
-                    <img src="images/chickenkaraagebento.png" alt="" class="menu_img">
-                    <h3 class="menu_name">Karaage Bento</h3>
-                    <span class="menu_price">SGD 6</span>
-                    <span class="menu_calorie">530 Cal</span>
-                    <a class="button menu_button add-cart cart2"><i class='bx bxs-cart-download' ><span class="addandbase"> Add</i></a>
-                </div>
+            <span class="section-subtitle"><br>OR<br></span>
+            <span class="section-title"><a href= "<?php echo htmlspecialchars(SITE_URL . "menu.php"); ?>">Let us customise for YOU<a></span>
+            
                 
                 
             </div>
@@ -306,34 +292,11 @@ include "config/functions.php";
 
     </main>
 
-    <!-- Modal -->
-    <!-- id is linked to data-bs-target value of the button-->
-    <!-- <div class="modal fade" id="ricecart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-        </div>
-    </div> -->
-    
-
-   
-
     <!-- footer -->
     <footer class="footer section bd-container">
         <div class="footer_container bd-grid">
             <div class="footer_content">
-                <a href="" class="footer_logo">CALORICE</a>
+                <a href="index.php" class="footer_logo">CALORICE</a>
                 
                 <div>
                     <a href="" class="footer_social"><i class='bx bxl-facebook' ></i></a>
