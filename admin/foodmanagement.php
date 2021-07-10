@@ -9,7 +9,7 @@ include "../config/functions.php";
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Admin | CALORICE </title>
+    <title><?php echo SITE_NAME; ?> - Food Management</title>
     <link rel="stylesheet" href="adminstyle.css">
     <link rel="icon" href="../images/logo.png">
 

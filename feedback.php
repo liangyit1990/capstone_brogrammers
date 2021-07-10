@@ -37,16 +37,18 @@ include "config/functions.php";
     <div class="contact-in">
         
         <div class="contact-form">
-            <h2>Contact Us</h2>
-            <form method="post" action="<?php echo htmlspecialchars(SITE_URL . "userupload.php"); ?>" enctype="multipart/form-data">                
+            <h2>Contact Us or Give us your feedback! </h2>
+            <form method="post" enctype="multipart/form-data">                
             
-                <input placeholder="Name" type="text" class="contact-form-txt"/>
-                <input placeholder="Email" type="email" class="contact-form-txt"/>
-                <textarea placeholder="Message" class="contact-form-textarea"></textarea>
+                <input placeholder="Name" type="text" class="contact-form-txt name" required/>
+                <input placeholder="Email" type="email" class="contact-form-txt email" required/>
+                <input placeholder="Topic" type="text" class="contact-form-txt topic" required/>
+                <textarea placeholder="Message" class="contact-form-textarea message" required></textarea>
                 
-                <span>Upload Document</span><input type="file" name="fileToUpload" class="form-control img" >
 
-                <button type="submit" name="feedback" class="contact-form-btn">Submit</button>
+                <span>Upload Document</span><input type="file" id="file" name="file" class="form-control" >
+
+                <button type="button" name="feedback" class="contact-form-btn">Submit</button>
             </form>
         </div>
 
@@ -90,9 +92,75 @@ include "config/functions.php";
 
 <!-- scroll reveal here -->
 <script src="https://unpkg.com/scrollreveal"></script>   
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- main js here -->
-    <script src="js/main.js"></script>
+<script src="js/main.js"></script>
+<script>
+$(document).ready(function(){
+
+    $(".contact-form-btn").click(function(){
+        
+        var fd = new FormData();
+        var files = $('#file')[0].files;
+        var name = $('.name').val();
+        var email = $('.email').val();
+        var topic = $('.topic').val();
+        var message = $('.message').val();
+
+        console.log(name);
+        console.log(email);
+        console.log(topic);
+        console.log(message);
+        console.log(files);
+        
+        
+
+           fd.append('file',files[0]);
+           fd.append('name',name);
+           fd.append('email',email);
+           fd.append('topic',topic);
+           fd.append('message',message);
+           
+
+           $.ajax({
+              url: 'submitfeedback.php',
+              type: 'post',
+              data: fd,
+              contentType: false,
+              processData: false,
+              success: function(data){
+                 if(data == 1){
+                    swal("Thank you for your feedback/query.", "Our team will get back to you shortly", "success");
+                    $('.name').val("");
+                    $('.email').val("");
+                    $('.topic').val("");
+                    $('.message').val("");
+                    $('#file').val("");
+                    
+                 }else if (data == 2) {
+                    swal("Error!", "Please fill up all the sections correctly", "error");
+                 } 
+                console.log(data);
+              }
+           });
+        
+    
+
+
+  });
+
+
+
+});
+
+
+
+
+
+
+</script>
 </body>
 </html>
 

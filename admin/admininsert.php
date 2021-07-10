@@ -25,14 +25,12 @@ if(isset($_POST['addbtn'])){
     }
 
     if(empty($_POST['email'])){
-        $emailError = "Email is required.";
         $emailChecked = 1;
     }else{  
         #Validate values for comment and passed into variable
         $email = validateData($_POST['email']);    
         $emailChecked = 0;  
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $emailError = "Invalid email format.";
             $email = "";
             $emailChecked = 1;  
         }
