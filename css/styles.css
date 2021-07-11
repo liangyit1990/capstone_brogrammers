@@ -496,7 +496,7 @@ footer a {
     top:50px;
     right:200px;
     left:350px;
-    height:100%;
+    padding-bottom: 50px;
     /* width:0; */
     opacity: 0;
     transition: all ease-in 0s;
