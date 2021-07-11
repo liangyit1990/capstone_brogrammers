@@ -138,6 +138,7 @@ if(isset($_POST['login'])){
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- css here -->
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/passtrength.css">
     <link rel="icon" href="images/logo.png">
 
     <!-- for icon -->
@@ -168,7 +169,7 @@ if(isset($_POST['login'])){
                 <span>or use your account for registration</span>
                 <input type="text" placeholder="Name" name="name" value="<?php echo $_POST['name'] ?>">
                 <input type="email" placeholder="Email" name="email" value="<?php echo $_POST['email'] ?>">
-                <input type="password" placeholder="Password" name="password">
+                <input id="Password" type="password" placeholder="Password" name="password">
                 <input type="password" placeholder="Retype Password" name="cfmPassword">
                 <button type="submit" name="register">Sign Up</button>
             </form>
@@ -230,6 +231,7 @@ if(isset($_POST['login'])){
 
 <!-- main js here -->
     <script src="js/register.js"></script>
+    <script src="js/jquery.passtrength.js"></script>
 <!-- bootstrap jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
