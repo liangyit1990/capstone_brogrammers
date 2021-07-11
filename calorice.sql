@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 10, 2021 at 08:20 AM
+-- Generation Time: Jul 11, 2021 at 10:13 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -54,6 +54,21 @@ CREATE TABLE `cart` (
   `food_id` int(11) DEFAULT NULL,
   `cart_foodqty` int(11) NOT NULL,
   `cart_status` smallint(6) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cartbatch`
+--
+
+CREATE TABLE `cartbatch` (
+  `cartbatch_id` int(11) NOT NULL,
+  `cartbatch_no` int(11) NOT NULL,
+  `cartbatch_foodqty` int(11) NOT NULL,
+  `cartbatch_status` tinyint(4) NOT NULL,
+  `users_id` int(11) NOT NULL,
+  `food_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -126,8 +141,10 @@ INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_subcategory`,
 (1, 'grilled chicken', 'ala carte', 'meat', 0, 0, '4.99', 280, '..\\images\\chicken.jpeg'),
 (2, 'chicken Karaage bento', 'bento', 'base', 0, 0, '12.99', 1800, '..\\images\\chickenkaraagebento.png'),
 (5, 'Cuttlefish Bento', 'bento', 'base', 0, 0, '13.99', 1300, '..\\images\\cuttlefishbento.png'),
-(26, 'test', 'ala carte', 'base', 0, NULL, '9.90', 1234, 'uploads/brownies.jpg'),
-(33, 'test', 'ala carte', 'base', 0, NULL, '10.10', 1234, 'uploads/muffins.jpg');
+(34, 'broccoli', 'ala carte', 'vegetable', 0, NULL, '0.90', 50, 'uploads/brocolli.png'),
+(35, 'soy sauce egg', 'ala carte', 'meat', 0, NULL, '1.30', 150, 'uploads/soy_sauce_egg.png'),
+(36, 'rice', 'ala carte', 'base', 0, NULL, '0.50', 130, 'uploads/bento_menu_rice2.png'),
+(37, 'noodle', 'ala carte', 'base', 0, NULL, '0.50', 80, 'uploads/bento_menu_noodles.png');
 
 -- --------------------------------------------------------
 
@@ -186,7 +203,8 @@ INSERT INTO `users` (`users_id`, `users_name`, `users_email`, `users_password`, 
 (2, 'anselm sim new', 'anselmsim@gmail.comnewnew', '$2y$10$T0a/EeWKAN2liNAhURmzbuA0Wt2Lyw2a7gbZEX.VRYaSP.IchQk9.', 'anselm add new new', '91839138', 25, 0, 0, '2021-07-06 07:57:57'),
 (6, 'ky', 'ky@gmail.com', '$2y$10$HtGb5WNwO6SBkoY2B/bZOe6QVePW.8ywqgMhmI8LeTV67zy3pQyGu', '', '', NULL, 0, 1, '2021-07-06 08:31:17'),
 (8, 'hy', 'hy@gmail.com', '$2y$10$93fTm7vsxDe8B1WY/1w/YO2j36KvcHEnlRy..VYXy02gxWy5fjgVy', NULL, NULL, NULL, NULL, 0, '2021-07-08 11:45:23'),
-(15, 'tky', 'tky@gmail.com', '$2y$10$CpUgeO/P9NEE4rComYRp7ObDZLkwCe6vAtYP8WijdlCfLPnVWesgu', '', '', NULL, 0, 0, '2021-07-09 10:59:02');
+(15, 'tky', 'tky@gmail.com', '$2y$10$CpUgeO/P9NEE4rComYRp7ObDZLkwCe6vAtYP8WijdlCfLPnVWesgu', '', '', NULL, 0, 0, '2021-07-09 10:59:02'),
+(16, 'kenny', 'kenny@outlook.com', '$2y$10$EtHv/A7Sx1EKJlnh8JefyO5wv443goMi5nEfFAWm1dSByiGzZw2mm', NULL, NULL, NULL, NULL, 0, '2021-07-10 08:34:49');
 
 -- --------------------------------------------------------
 
@@ -219,6 +237,14 @@ ALTER TABLE `bento`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `food_id` (`food_id`),
+  ADD KEY `users_id` (`users_id`);
+
+--
+-- Indexes for table `cartbatch`
+--
+ALTER TABLE `cartbatch`
+  ADD PRIMARY KEY (`cartbatch_id`),
   ADD KEY `food_id` (`food_id`),
   ADD KEY `users_id` (`users_id`);
 
@@ -301,7 +327,7 @@ ALTER TABLE `feedbackothers`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -319,7 +345,7 @@ ALTER TABLE `submission`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `vouchers`
@@ -337,6 +363,13 @@ ALTER TABLE `vouchers`
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`),
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`);
+
+--
+-- Constraints for table `cartbatch`
+--
+ALTER TABLE `cartbatch`
+  ADD CONSTRAINT `cartbatch_ibfk_1` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`),
+  ADD CONSTRAINT `cartbatch_ibfk_2` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`);
 
 --
 -- Constraints for table `feedback`

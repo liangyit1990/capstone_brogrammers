@@ -3,7 +3,15 @@ include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
 
+if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
+
+}
+
+
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,15 +63,15 @@ include "config/functions.php";
                 <div class="menu_content">
                     <img src="images/bento_menu_rice2.png" alt="" class="menu_img">
                     <h3 class="menu_name">Rice</h3>
-                    <span class="menu_price">SGD 1</span>
+                    <span class="menu_price">SGD 0.50</span>
                     <span class="menu_calorie">130 Cal</span>
-                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
+                    <a class="button menu_button addbtn" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
                     <div class="modal fade" id="ricecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                             <div class="modal-content">
                             <div class="modal-header border-bottom-0">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                Ingredients
+                                Base - Rice
                                 </h5>
                                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -78,77 +86,69 @@ include "config/functions.php";
                                     <th scope="col">Cal</th>
                                     <th scope="col">Price(SGD)</th>
                                     <th scope="col">Qty</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Actions</th>
+                                    <th scope="col">Total Calories</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php 
+                                
+                                $getRiceQuery = DB::query("SELECT * FROM food WHERE food_name=%s","rice");
+                                foreach($getRiceQuery as $getRiceResult){ 
+                                    $rice_name = $getRiceResult['food_name'];
+                                    $rice_price = $getRiceResult['food_price'];
+                                    $rice_calories = $getRiceResult['food_calories'];
+                                    $rice_img = $getRiceResult['food_img'];
+                                
+                                }
+                                ?>
+                                <!--Display rice information -->
                                 <tr>
                                     <td class="modal_menu">
-                                        <img src="images/brocolli.png" class="img-fluid img-thumbnail" alt="">
+                                        <img src="admin/<?php echo $rice_img; ?>" class="img-fluid img-thumbnail" alt="">
                                     </td>
-                                    <td>Steamed <br>Brocolli</td>
-                                    <td>34</td>
-                                    <td>1.00</td>
-                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
-                                    <td>178</td>
-                                    <td>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        <i class='bx bx-plus'></i> 
-                                        
-                                        </a>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        
-                                        <i class='bx bx-minus' ></i>
-                                        </a>
-                                    </td>
-                                    </tr>
+                                    <td><?php echo ucwords($rice_name); ?></td>
+                                    <td class="ricecalories"><?php echo $rice_calories; ?></td>
+                                    <td class="riceprice"><?php echo $rice_price; ?></td>
+                                    <td class="qty"><input type="number" class="form-control testinput" id="input1" min="1" value="1" disabled></td>
+                                    <td><?php echo $rice_calories; ?></td>
+                                    
+                                </tr>
+
+                                <?php 
+                                $count=0;
+                                $getFoodQuery = DB::query("SELECT * FROM food WHERE food_category=%s AND food_name!=%s AND food_name!=%s" ,"ala carte","rice",'noodle');
+                                foreach($getFoodQuery as $getFoodResult){ 
                                 
-                                    <tr>
+                                ?>
+                                <tr>
                                     <td class="modal_menu">
-                                        <img src="images/soy_sauce_egg.png" class="img-fluid img-thumbnail" alt="">
+                                        <img src="admin/<?php echo $getFoodResult['food_img']; ?>" class="img-fluid img-thumbnail" alt="">
                                     </td>
-                                    <td>Soy Sauce <br>Egg</td>
-                                    <td>66</td>
-                                    <td>1.50</td>
-                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
-                                    <td>178</td>
-                                    <td>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        <i class='bx bx-plus'></i> 
-                                        
-                                        </a>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        
-                                        <i class='bx bx-minus' ></i>
-                                        </a>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                    <td class="modal_menu">
-                                        <img src="images/chicken.jpeg" class="img-fluid img-thumbnail" alt="">
-                                    </td>
-                                    <td>Teriyaki <br>Chicken</td>
-                                    <td>310</td>
-                                    <td>2.50</td>
-                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
-                                    <td>178</td>
-                                    <td>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        <i class='bx bx-plus'></i> 
-                                        
-                                        </a>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        
-                                        <i class='bx bx-minus' ></i>
-                                        </a>
-                                    </td>
-                                    </tr>
+                                    <td><?php echo ucwords($getFoodResult['food_name']); ?></td>
+                                    <td class="calories<?php echo $count?>"><?php echo $getFoodResult['food_calories']; ?></td>
+                                    <td class="price<?php echo $count?>"><?php echo $getFoodResult['food_price']; ?></td>
+                                    <td><input type="number" class="form-control inputqty ricebaseqty<?php echo $count?>" id="input1 ricebaseqty<?php echo $count?>" min="0" value="0" oninput="validity.valid||(value='');" ></td>
+                                    <td class="subcalories<?php echo $count?> ">-</td>
+                                   
+                                    
+                                    
+                                </tr>
+
+                                <?php 
+                                 $count++;
+                                }
+                                ?>
+                                
+                                
+                                    
                                 
                                 </tbody>
                                 </table> 
                                 <div class="d-flex justify-content-end">
-                                <h5>Total: <span class="price text-success">89$</span></h5>
+                                <h5>Total Price: $<span class="riceTotalPrice text-success"><?php echo $rice_price ?></span></h5><br>
+                                </div>
+                                 <div class="d-flex justify-content-end">
+                                <h5>Total Calories: <span class="riceTotalCalories text-success"><?php echo $rice_calories ?></span></h5>
                                 </div>
                             </div>
                             <div class="modal-footer border-top-0 d-flex justify-content-between">
@@ -162,7 +162,7 @@ include "config/functions.php";
                 <div class="menu_content">
                     <img src="images/bento_menu_noodles.png" alt="" class="menu_img">
                     <h3 class="menu_name">Noodle</h3>
-                    <span class="menu_price">SGD 1</span>
+                    <span class="menu_price">SGD 0.50</span>
                     <span class="menu_calorie">174 Cal</span>
                     <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
                     <div class="modal fade" id="noodlecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -180,81 +180,72 @@ include "config/functions.php";
                                 <table class="table table-image">
                                 <thead>
                                     <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Ingredient</th>
-                                    <th scope="col">Cal</th>
-                                    <th scope="col">Price(SGD)</th>
-                                    <th scope="col">Qty</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Actions</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Ingredient</th>
+                                        <th scope="col">Cal</th>
+                                        <th scope="col">Price(SGD)</th>
+                                        <th scope="col">Qty</th>
+                                        <th scope="col">Total Calories</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php 
+                                    
+                                    $getNoodleQuery = DB::query("SELECT * FROM food WHERE food_name=%s","noodle");
+                                    foreach($getNoodleQuery as $getNoodleResult){ 
+                                        $noodle_name = $getNoodleResult['food_name'];
+                                        $noodle_price = $getNoodleResult['food_price'];
+                                        $noodle_calories = $getNoodleResult['food_calories'];
+                                        $noodle_img = $getNoodleResult['food_img'];
+                                    }
+                                    ?>
+                                    <!--Display rice information -->
                                     <tr>
                                     <td class="modal_menu">
-                                        <img src="images/brocolli.png" class="img-fluid img-thumbnail" alt="">
+                                        <img src="admin/<?php echo $noodle_img; ?>" class="img-fluid img-thumbnail" alt="">
                                     </td>
-                                    <td>Steamed <br>Brocolli</td>
-                                    <td>34</td>
-                                    <td>1.00</td>
-                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
-                                    <td>178$</td>
-                                    <td>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        <i class='bx bx-plus'></i> 
-                                        
-                                        </a>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        
-                                        <i class='bx bx-minus' ></i>
-                                        </a>
-                                    </td>
+                                    <td><?php echo ucwords($noodle_name); ?></td>
+                                    <td class="noodlecalories"><?php echo $noodle_calories; ?></td>
+                                    <td class="noodleprice"><?php echo $noodle_price; ?></td>
+                                    <td class="qty"><input type="number" class="form-control testinput" id="input1" min="1" value="1" disabled></td>
+                                    <td><?php echo $noodle_calories; ?></td>
+                                    
                                     </tr>
+
+                                    <?php 
+                                    $noodlecount=0;
+                                    $getNQuery = DB::query("SELECT * FROM food WHERE food_category=%s AND food_name!=%s AND food_name!=%s" ,"ala carte","rice",'noodle');
+                                    foreach($getNQuery as $getNResult){ 
+                                    
+                                    
+                                    ?>
+                                    <tr>
+                                    <td class="modal_menu">
+                                        <img src="admin/<?php echo $getNResult['food_img']; ?>" class="img-fluid img-thumbnail" alt="">
+                                    </td>
+                                    <td><?php echo ucwords($getNResult['food_name']); ?></td>
+                                    <td class="ncalories<?php echo $noodlecount?>"><?php echo $getNResult['food_calories']; ?></td>
+                                    <td class="nprice<?php echo $noodlecount?>"><?php echo $getNResult['food_price']; ?></td>
+                                    <td><input type="number" class="form-control noodlebaseqty noodlebaseqty<?php echo $noodlecount?>" id="input1 noodlebaseqty<?php echo $noodlecount?>" min="0" value="0" oninput="validity.valid||(value='');" ></td>
+                                    <td class="nsubcalories<?php echo $noodlecount?> ">-</td>
+                                   
+                                    
+                                    
+                                    </tr>
+
+                                    <?php 
+                                    $noodlecount++;
+                                    }
+                                    ?>
                                 
-                                    <tr>
-                                    <td class="modal_menu">
-                                        <img src="images/soy_sauce_egg.png" class="img-fluid img-thumbnail" alt="">
-                                    </td>
-                                    <td>Soy Sauce <br>Egg</td>
-                                    <td>66</td>
-                                    <td>1.50</td>
-                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
-                                    <td>178$</td>
-                                    <td>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        <i class='bx bx-plus'></i> 
-                                        
-                                        </a>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        
-                                        <i class='bx bx-minus' ></i>
-                                        </a>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                    <td class="modal_menu">
-                                        <img src="images/chicken.jpeg" class="img-fluid img-thumbnail" alt="">
-                                    </td>
-                                    <td>Teriyaki <br>Chicken</td>
-                                    <td>310</td>
-                                    <td>2.50</td>
-                                    <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
-                                    <td>178</td>
-                                    <td>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        <i class='bx bx-plus'></i> 
-                                        
-                                        </a>
-                                        <a href="" class="btn btn-danger btn-sm">
-                                        
-                                        <i class='bx bx-minus' ></i>
-                                        </a>
-                                    </td>
-                                    </tr>
+                                    
                                 </tbody>
                                 </table> 
                                 <div class="d-flex justify-content-end">
-                                <h5>Total: <span class="price text-success">89$</span></h5>
+                                <h5>Total Price: $<span class="noodleTotalPrice text-success"><?php echo $noodle_price ?></span></h5><br>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                <h5>Total Calories: <span class="noodleTotalCalories text-success"><?php echo $noodle_calories ?></span></h5>
                                 </div>
                             </div>
                             <div class="modal-footer border-top-0 d-flex justify-content-between">
@@ -323,6 +314,85 @@ include "config/functions.php";
         echo 'swal("Logged Out.", "You have logged out successfully.", "success");';
       }
     ?>
+
+    //Reload page on closing of modal windows
+    $('#ricecart, #noodlecart').on('hidden.bs.modal', function() {
+    location.reload();
+    })
+    
+
+    //Detect for any change in input value for ingredients
+    $(".inputqty").change( function() {
+        //Count the number of class with the name "input"
+        var count = $('.inputqty').length;
+        var i = 0;
+        var total_calories = parseInt($(`.ricecalories`).text());
+        var total_price = parseFloat($(`.riceprice`).text());
+        //To loop through all the different row of items and retrieve the value, based on the count
+        while(i<count) {
+            //Get the individual price * number of quantity entered
+            count_price = parseFloat($(`.price${i}`).text()) * parseInt($(`.ricebaseqty${i}`).val());
+            //Get the individual calories * number of quantity entered
+            count_calories = parseInt($(`.calories${i}`).text()) * parseInt($(`.ricebaseqty${i}`).val());
+            console.log(count_price);
+            if(count_calories == 0) {
+                sub_calories = "-";
+            } else {
+                sub_calories = count_calories;
+            }
+            total_calories += count_calories;
+            total_price += parseFloat(count_price);
+            //Amend the html text to reflect latest subcategory values
+            $(`.subcalories${i}`).text(sub_calories);
+            
+            
+            
+            i++;
+        }
+        // Change to reflect latest total calories and total price
+        $(".riceTotalCalories").text(total_calories);
+        $(".riceTotalPrice").text(total_price.toFixed(2));
+       
+        
+    }); 
+
+    //Detect if there is any change in the input in noodle base modal form
+    $(".noodlebaseqty").change(function(){
+        //Count how many input with the class name "noodleabaseqty"
+       var count = $(".noodlebaseqty").length;
+       var x = 0;
+       //Convert html data into numerical figures
+       var noodleTotalCalories = parseInt($(`.noodlecalories`).text());
+       var noodleTotal_price = parseFloat($(`.noodleprice`).text());
+       //To loop through all the different row of items and retrieve the value, based on the count
+       while (x < count) {
+           //Get the individual price * number of quantity entered
+            noodlecount_price = parseFloat($(`.nprice${x}`).text()) * parseInt($(`.noodlebaseqty${x}`).val()); 
+            //Get the individual calories * number of quantity entered
+            noodlecount_calories = parseInt($(`.ncalories${x}`).text()) * parseInt($(`.noodlebaseqty${x}`).val());
+            if(noodlecount_calories == 0) {
+                noodlesub_calories = "-";
+            } else {
+                noodlesub_calories = noodlecount_calories;
+            }
+
+            noodleTotalCalories += noodlecount_calories;
+            noodleTotal_price += parseFloat(noodlecount_price);
+            //Amend the html text to reflect latest subcategory values
+            $(`.nsubcalories${x}`).text(noodlesub_calories);
+
+            // console.log(noodlecount_price);
+            // console.log(noodlecount_calories);
+            x++;
+       }
+       // Change to reflect latest total calories and total price
+        $(".noodleTotalCalories").text(noodleTotalCalories);
+        $(".noodleTotalPrice").text(noodleTotal_price.toFixed(2));
+    })
+
+
+    
+
     </script>
 
 </body>
