@@ -88,13 +88,13 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                         <a href="account.php#giftcards">Gift Cards</a>
                     </div> -->
                 </div>
-                <div class="col modernproductblocks accountrightbody">
+                <div class="col-sm-9 modernproductblocks accountrightbody">
                     <!-- Start of Basic Info Row - Contains basic info, send feedback, change email and change password -->
                     <section id="account" class="accountpage">
-                        <div class="row row-cols-3 accrow basicinforow">
+                        <div class="row accrow basicinforow">
                             <div class="col-lg-6 basicinfobox">
                                 <div class="row">
-                                    <h4>Basic Info</h4><hr>
+                                    <h4 class="accheader">Basic Info</h4><hr>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -119,9 +119,9 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5 accsendfeedbackbox feed">
+                            <div class="col-lg-6 accsendfeedbackbox">
                                 <div class="row">
-                                    <h4>Send Feedback</h4><hr>
+                                    <h4 class="accheader">Send Feedback</h4><hr>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
@@ -136,7 +136,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                         </div>
 
                         <div class="row accrow emailrow">
-                            <h4>Email</h4><hr>
+                            <h4 class="accheader">Email</h4><hr>
                             
                             <h5>Current Email</h5>
                             <p class="p"><?php echo $return_email; ?></p>
@@ -156,7 +156,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                         </div>
 
                         <div class="row accrow passwordrow">
-                            <h4>Password</h4><hr>
+                            <h4 class="accheader">Password</h4><hr>
                             <h5>Change Your Password</h5>
 
                             <form>
@@ -180,7 +180,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                     <!-- Start of Orders Row - WIP -->
                     <section class="row accrow ordersplacedrow accountpage" id="orders" class="accountpage">
                         <div>
-                            <h4>Orders Placed</h4>
+                            <h4 class="accheader">Orders Placed</h4>
                         </div>
                         <div>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate blanditiis aperiam asperiores sint aliquam nihil adipisci earum eos delectus quam nam facere ipsum doloribus iusto, similique dignissimos quisquam molestiae quia.</p>
@@ -192,7 +192,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
 
                     <section class="row accrow addressrow accountpage" id="addresses" class="accountpage">
                         <div>
-                            <h4>Addresses</h4>
+                            <h4 class="accheader">Addresses</h4>
                         </div>
                     </section>
 
