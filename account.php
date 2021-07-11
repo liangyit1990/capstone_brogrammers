@@ -102,7 +102,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                                         <p><?php 
                                         echo $return_name;
                                         ?>
-                                        </p>
+                                        </p><br>
                                     </div>
                                     <div class="col-lg-6">
                                         <h5>Email</h5>
@@ -139,18 +139,18 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                             <h4>Email</h4><hr>
                             
                             <h5>Current Email</h5>
-                            <p><?php echo $return_email; ?></p><hr>
+                            <p class="p"><?php echo $return_email; ?></p>
 
                             <h5>Change Your Email</h5>
                             
                             <form>
                             <!-- <form method="POST" action="php echo htmlspecialchars(SITE_URL . "account.php?id=" . $_COOKIE['users_id']); "> -->
                                 <label for="emailUpdate">New Email<span class="redasterisk">*</span></label><br>
-                                <input type="email" class="form-control emailUpdate" id="emailUpdate" placeholder="Enter Your New Email" name="emailUpdate" value="<?php echo $dBEmail; ?>"><br>
+                                <input type="email" class="form-control emailUpdate" id="emailUpdate" placeholder="Enter Your New Email" name="emailUpdate" value="<?php echo $dBEmail; ?>">
                                 
-                                <input type="text" class="form-control idUpdate d-none" name="users_id" value="<?php echo $dBId; ?>"><br>
+                                <input type="text" class="form-control idUpdate d-none" name="users_id" value="<?php echo $dBId; ?>">
 
-                                <input type="button" value="Change Email" name="updateUserEmail" class="updateUserEmail">
+                                <button type="button" value="Change Email" name="updateUserEmail" class="updateUserEmail">Change Email</button>
                             </form>
 
                         </div>
@@ -161,12 +161,12 @@ foreach($updateUserPassword as $updateUserPassword_result) {
 
                             <form>
                                 <label for="passwordCurrent">Current Password<span class="redasterisk">*</span></label><br>
-                                <input type="password" class="form-control currentpassword" id="passwordCurrent" name="passwordCurrent">
+                                <input type="password" class="form-control currentpassword" id="passwordCurrent" name="passwordCurrent" placeholder="Current password">
                                 <label for="passwordUpdate">New Password<span class="redasterisk">*</span></label><br>
-                                <input type="password" class="form-control passwordUpdate" id="passwordUpdate" name="passwordUpdate">
-                                <label for="cfmpasswordUpdate">Confirm New Password<span class="redasterisk">*</span></label><br>
-                                <input type="password" class="form-control cfmpasswordUpdate" id="cfmpasswordUpdate" name="cfmpasswordUpdate"><br>
-                                <input type="text" class="form-control passwordidUpdate d-none" name="passwordusers_id" value="<?php echo $dBId; ?>"><br>
+                                <input type="password" class="form-control passwordUpdate" id="passwordUpdate" name="passwordUpdate" placeholder="New password">
+                                <label for="cfmpasswordUpdate">Confirm New Password<span class="redasterisk">*</span></label>
+                                <input type="password" class="form-control cfmpasswordUpdate" id="cfmpasswordUpdate" name="cfmpasswordUpdate" placeholder="Confirm new password">
+                                <input type="text" class="form-control passwordidUpdate d-none" name="passwordusers_id" value="<?php echo $dBId; ?>">
 
                                 <input type="button" value="Change Password" name="updateUserPassword" class="updateUserPassword">
                             </form>

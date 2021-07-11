@@ -532,3 +532,18 @@ footer a {
 @keyframes fadeIn{
     100%{opacity:1;}
 }
+
+.emailUpdate, .currentpassword, .passwordUpdate, .cfmpasswordUpdate{
+    width:250px;
+}
+
+.passwordrow, .emailrow {
+    margin-top: 30px;
+}
+
+.p{
+    margin-bottom:10px;
+}
+.updateUserEmail, .updateUserPassword{
+    margin-top:5px;
+}
