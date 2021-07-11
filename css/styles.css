@@ -457,6 +457,12 @@ body.dark-theme{
     color: var(--text-color);
     cursor:pointer;
 }
+.symbol{
+    position: absolute;
+    top:370px;
+    color: var(--text-color);
+    cursor:pointer;
+}
 /* footer */
 footer i {
     color: var(--text-color);
@@ -473,6 +479,7 @@ footer a {
 .container{
     padding:30px;
 }
+
 .row1{
     padding-top: 15px;
     padding-bottom:15px;
@@ -487,13 +494,15 @@ footer a {
 .accountpage{
     position: absolute;
     top:50px;
+    right:200px;
+    left:350px;
     height:100%;
     /* width:0; */
     opacity: 0;
     transition: all ease-in .5s;
     display:flex;
-    /* justify-content: center;
-    align-items: center; */
+    /* justify-content: center; */
+    /* align-items: center; */
     flex-direction: column;
 }
 

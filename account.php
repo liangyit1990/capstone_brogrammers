@@ -82,7 +82,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                         <a href="<?php echo SITE_URL; ?>logout.php" ><i class='bx bx-log-out'></i>Logout</a>
                     </div>
                     <div>
-                        <i class='bx bx-moon bx-sm change-theme' id="theme-button"></i>
+                        <i class='bx bx-moon bx-sm symbol' id="theme-button"></i>
                     </div>
                     <!-- <div class="row">
                         <a href="account.php#giftcards">Gift Cards</a>
@@ -91,7 +91,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                 <div class="col modernproductblocks accountrightbody">
                     <!-- Start of Basic Info Row - Contains basic info, send feedback, change email and change password -->
                     <section id="account" class="accountpage">
-                        <div class="row row-cols-2 accrow basicinforow">
+                        <div class="row row-cols-3 accrow basicinforow">
                             <div class="col-lg-6 basicinfobox">
                                 <div class="row">
                                     <h4>Basic Info</h4><hr>
