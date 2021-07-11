@@ -32,7 +32,6 @@ foreach($updateUserPassword as $updateUserPassword_result) {
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,157 +39,164 @@ foreach($updateUserPassword as $updateUserPassword_result) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/logo.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
-    <title><?php echo SITE_NAME; ?> - My Account</title>
+    <!-- scroll reveal here
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script> -->
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- icons here -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- css here -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <title><?php echo SITE_NAME; ?></title>
 </head>
-
-
-<?php
-    // include "header.php";
-    // include header here
-?>
-
 <body>
+    <!-- scroll to top -->
+    <a href="#" class="scrolltop " id="scroll-top">
+        <i class='bx bx-chevron-up-circle scrolltop_icon' ></i>
+    </a>
 
-    <div class="container accountcontainer">
-        <div class="row">
-            <div class="col-sm-3 accountleftlov">
-                <!-- <div class="row">
-                </div> -->
-                <div class="row">
-                    <a href="account.php#account">Account Info</a>
-                </div>
-                <div class="row">
-                    <a href="account.php#orders">Orders</a>
-                </div>
-                <div class="row">
-                    <a href="account.php#addresses">Addresses</a>
-                </div>
-                <div class="row">
-                    <a href="<?php echo SITE_URL; ?>">Back to Home</a>
-                </div>
-                <div class="row">
-                    <a href="<?php echo SITE_URL; ?>logout.php">Logout</a>
-                </div>
-                <!-- <div class="row">
-                    <a href="account.php#giftcards">Gift Cards</a>
-                </div> -->
-            </div>
-            <div class="col-sm-9 modernproductblocks accountrightbody">
-                <!-- Start of Basic Info Row - Contains basic info, send feedback, change email and change password -->
-                <div>
-                <div class="row row-cols-2 accrow basicinforow">
-                    <div class="col-lg-6 basicinfobox">
-                        <div class="row">
-                            <h4>Basic Info</h4><hr>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <h5>Name</h5>
-                                <p><?php 
-                                echo $return_name;
-                                ?>
-                                </p>
-                            </div>
-                            <div class="col-lg-6">
-                                <h5>Email</h5>
-                                <p><?php 
-                                echo $return_email;
-                                ?>
-                                </p>
-                            </div>
-                            <div class="col-12">
-                                <h5>Member Since</h5>
-                                <p><?php 
-                                echo displayDate($return_memberSince);
-                                ?></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 accsendfeedbackbox">
-                        <div class="row">
-                            <h4>Send Feedback</h4><hr>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <p>Found something about the site that you don't like? Click below to send us feedback.</p>
-                            </div>
-                            <div class="col-12">
-                                <a href="<?php echo SITE_URL; ?>feedback.php">Send Feedback</a>
-                            </div>
-                        </div>
+    <!-- header -->
+    
 
-                    </div>
-                </div>
 
-                <div class="row accrow emailrow">
-                    <h4>Email</h4><hr>
+    
+        
+        <div class="container accountcontainer">
+            <div class="row">
+                <div class="col-sm-3 accountleftlov navi">
                     
-                    <h5>Current Email</h5>
-                    <p><?php echo $return_email; ?></p><hr>
-
-                    <h5>Change Your Email</h5>
-                    
-                    <form>
-                    <!-- <form method="POST" action="php echo htmlspecialchars(SITE_URL . "account.php?id=" . $_COOKIE['users_id']); "> -->
-                        <label for="emailUpdate">New Email<span class="redasterisk">*</span></label><br>
-                        <input type="email" class="form-control emailUpdate" id="emailUpdate" placeholder="Enter Your New Email" name="emailUpdate" value="<?php echo $dBEmail; ?>"><br>
-                        
-                        <input type="text" class="form-control idUpdate d-none" name="users_id" value="<?php echo $dBId; ?>"><br>
-
-                        <input type="button" value="Change Email" name="updateUserEmail" class="updateUserEmail">
-                    </form>
-
-                </div>
-
-                <div class="row accrow passwordrow">
-                    <h4>Password</h4><hr>
-                    <h5>Change Your Password</h5>
-
-                    <form>
-                        <label for="passwordCurrent">Current Password<span class="redasterisk">*</span></label><br>
-                        <input type="password" class="form-control currentpassword" id="passwordCurrent" name="passwordCurrent">
-                        <label for="passwordUpdate">New Password<span class="redasterisk">*</span></label><br>
-                        <input type="password" class="form-control passwordUpdate" id="passwordUpdate" name="passwordUpdate">
-                        <label for="cfmpasswordUpdate">Confirm New Password<span class="redasterisk">*</span></label><br>
-                        <input type="password" class="form-control cfmpasswordUpdate" id="cfmpasswordUpdate" name="cfmpasswordUpdate"><br>
-                        <input type="text" class="form-control passwordidUpdate d-none" name="passwordusers_id" value="<?php echo $dBId; ?>"><br>
-
-                        <input type="button" value="Change Password" name="updateUserPassword" class="updateUserPassword">
-                    </form>
-                </div>
-
-
-                </div>
-
-
-
-                <!-- Start of Orders Row - WIP -->
-                <div class="row accrow ordersplacedrow" id="orders">
-                    <div>
-                        <h4>Orders Placed</h4>
+                    <div class="row1">
+                        <a href="#account" ><i class='bx bxs-user-account'></i>Account</a>
                     </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate blanditiis aperiam asperiores sint aliquam nihil adipisci earum eos delectus quam nam facere ipsum doloribus iusto, similique dignissimos quisquam molestiae quia.</p>
+                    <div class="row1">
+                        <a href="#orders" ><i class='bx bxs-dish'></i>Orders</a>
                     </div>
-
+                    <div class="row1">
+                        <a href="#addresses" ><i class='bx bx-building-house' ></i>Addresses</a>
+                    </div>
+                    <div class="row1">
+                        <a href="<?php echo SITE_URL; ?>" ><i class='bx bx-arrow-back' ></i>Back to Home</a>
+                    </div>
+                    <div class="row1">
+                        <a href="<?php echo SITE_URL; ?>logout.php" ><i class='bx bx-log-out'></i>Logout</a>
+                    </div>
+                    <!-- <div class="row">
+                        <a href="account.php#giftcards">Gift Cards</a>
+                    </div> -->
                 </div>
+                <div class="col-sm-9 modernproductblocks accountrightbody">
+                    <!-- Start of Basic Info Row - Contains basic info, send feedback, change email and change password -->
+                    <section id="account" class="accountpage">
+                        <div class="row row-cols-2 accrow basicinforow">
+                            <div class="col-lg-6 basicinfobox">
+                                <div class="row">
+                                    <h4>Basic Info</h4><hr>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h5>Name</h5>
+                                        <p><?php 
+                                        echo $return_name;
+                                        ?>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h5>Email</h5>
+                                        <p><?php 
+                                        echo $return_email;
+                                        ?>
+                                        </p>
+                                    </div>
+                                    <div class="col-12">
+                                        <h5>Member Since</h5>
+                                        <p><?php 
+                                        echo displayDate($return_memberSince);
+                                        ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 accsendfeedbackbox">
+                                <div class="row">
+                                    <h4>Send Feedback</h4><hr>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p>Found something about the site that you don't like? Click below to send us feedback.</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <a href="<?php echo SITE_URL; ?>feedback.php">Send Feedback</a>
+                                    </div>
+                                </div>
 
-                <!-- Start of Addresses Row - WIP -->
+                            </div>
+                        </div>
 
-                <div class="row accrow addressrow" id="addresses">
-                    <h4>Addresses</h4><br>
-                </div>
+                        <div class="row accrow emailrow">
+                            <h4>Email</h4><hr>
+                            
+                            <h5>Current Email</h5>
+                            <p><?php echo $return_email; ?></p><hr>
+
+                            <h5>Change Your Email</h5>
+                            
+                            <form>
+                            <!-- <form method="POST" action="php echo htmlspecialchars(SITE_URL . "account.php?id=" . $_COOKIE['users_id']); "> -->
+                                <label for="emailUpdate">New Email<span class="redasterisk">*</span></label><br>
+                                <input type="email" class="form-control emailUpdate" id="emailUpdate" placeholder="Enter Your New Email" name="emailUpdate" value="<?php echo $dBEmail; ?>"><br>
+                                
+                                <input type="text" class="form-control idUpdate d-none" name="users_id" value="<?php echo $dBId; ?>"><br>
+
+                                <input type="button" value="Change Email" name="updateUserEmail" class="updateUserEmail">
+                            </form>
+
+                        </div>
+
+                        <div class="row accrow passwordrow">
+                            <h4>Password</h4><hr>
+                            <h5>Change Your Password</h5>
+
+                            <form>
+                                <label for="passwordCurrent">Current Password<span class="redasterisk">*</span></label><br>
+                                <input type="password" class="form-control currentpassword" id="passwordCurrent" name="passwordCurrent">
+                                <label for="passwordUpdate">New Password<span class="redasterisk">*</span></label><br>
+                                <input type="password" class="form-control passwordUpdate" id="passwordUpdate" name="passwordUpdate">
+                                <label for="cfmpasswordUpdate">Confirm New Password<span class="redasterisk">*</span></label><br>
+                                <input type="password" class="form-control cfmpasswordUpdate" id="cfmpasswordUpdate" name="cfmpasswordUpdate"><br>
+                                <input type="text" class="form-control passwordidUpdate d-none" name="passwordusers_id" value="<?php echo $dBId; ?>"><br>
+
+                                <input type="button" value="Change Password" name="updateUserPassword" class="updateUserPassword">
+                            </form>
+                        </div>
 
 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Launch demo modal
-                    </button>
-  
+                    </section>
+
+
+
+                    <!-- Start of Orders Row - WIP -->
+                    <section class="row accrow ordersplacedrow accountpage" id="orders" class="accountpage">
+                        <div>
+                            <h4>Orders Placed</h4>
+                        </div>
+                        <div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate blanditiis aperiam asperiores sint aliquam nihil adipisci earum eos delectus quam nam facere ipsum doloribus iusto, similique dignissimos quisquam molestiae quia.</p>
+                        </div>
+
+                    </section>
+
+                    <!-- Start of Addresses Row - WIP -->
+
+                    <section class="row accrow addressrow accountpage" id="addresses" class="accountpage">
+                        <h4>Addresses</h4>
+                    </section>
+
+
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Launch demo modal
+                        </button>-->
                         <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -207,21 +213,52 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                             </div>
                         </div>
                         </div>
-                    </div>
+                    </div> -->
 
 
                     <!-- <div class="row accrow giftcardsrow" id="giftcards">
                     <h4>Gift Cards</h4>
-                    <p><i>Available Soon!</i></p> -->
-
+                    <p><i>Available Soon!</i></p>
+                    </div> -->
             </div>
         </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript">      
+
+    
+
+    <!-- footer -->
+    <!-- <footer class="footer section bd-container">
+        <div class="footer_container bd-grid">
+            <div class="footer_content">
+                <a href="index.php" class="footer_logo">CALORICE</a>
+                
+                <div>
+                    <a href="" class="footer_social"><i class='bx bxl-facebook' ></i></a>
+                    <a href="" class="footer_social"><i class='bx bxl-instagram' ></i></a>
+                    <a href="" class="footer_social"><i class='bx bxl-twitter' ></i></a>
+                    
+
+                </div> 
+            </div>
+        </div>
+    </footer> -->
+    
+
+
+<!-- main js here -->
+    <script src="js/main.js"></script>
+<!-- bootstrap jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+    <?php
+    if($_GET['logoutSuccess'] == 1){
+        echo 'swal("Logged Out.", "You have logged out successfully.", "success");';
+      }
+    ?>
+    </script>
+<script type="text/javascript">      
 
         $(document).ready(function(){
 

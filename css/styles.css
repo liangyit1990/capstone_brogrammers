@@ -457,7 +457,7 @@ body.dark-theme{
     color: var(--text-color);
     cursor:pointer;
 }
-
+/* footer */
 footer i {
     color: var(--text-color);
 }
@@ -465,4 +465,59 @@ footer i {
 footer a {
     color: var(--text-color);
     text-decoration: none;
+}
+
+
+
+/* user account */
+
+.row1{
+    padding-top: 15px;
+    padding-bottom:15px;
+    position:initial;
+    
+}
+.row1 a{
+    color: var(--text-color);
+    
+}
+
+.accountpage{
+    position: absolute;
+    top:50px;
+    height:100%;
+    /* width:0; */
+    opacity: 0;
+    transition: all ease-in .5s;
+    display:flex;
+    /* justify-content: center;
+    align-items: center; */
+    flex-direction: column;
+}
+
+.accountpage div{
+    opacity: 0;
+    top:50px;
+
+}
+.accountpage:target{
+    opacity:1;
+    top:50px;
+    position:absolute;
+    /* left:0;
+    
+    width:100%;
+    height:100%; */
+    /* z-index: 10; */
+}
+.accountpage:target div{
+    opacity:0;
+    animation: 1s fadeIn forwards .5s;
+    top:50px;
+    
+
+}
+
+@keyframes fadeIn{
+    100%{opacity:1;}
 }

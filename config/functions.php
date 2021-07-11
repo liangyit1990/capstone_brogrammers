@@ -28,7 +28,7 @@ function loginAccountLogout(){
     // } else 
     if((isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn']) && $_COOKIE['users_permission'] == 0)){
         echo '
-        <li class="nav-item"><a href="account.php" class="nav_link">Account</a></li>
+        <li class="nav-item"><a href="account.php#account" class="nav_link">Account</a></li>
         <li class="nav-item"><a href="logout.php" class="nav_link">Logout</a></li>
         ';
     } elseif((isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn']) && $_COOKIE['users_permission'] == 1)) {
