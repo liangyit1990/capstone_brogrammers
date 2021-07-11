@@ -37,7 +37,7 @@ include "config/functions.php";
     <div class="contact-in">
         
         <div class="contact-form">
-            <h2>Contact Us or Give us your feedback! </h2>
+            <h2>Submit your feedback! </h2>
             <form method="post" enctype="multipart/form-data">                
             
                 <input placeholder="Name" type="text" class="contact-form-txt name" required/>
