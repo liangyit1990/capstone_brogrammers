@@ -499,7 +499,7 @@ footer a {
     height:100%;
     /* width:0; */
     opacity: 0;
-    transition: all ease-in .5s;
+    transition: all ease-in 0s;
     display:flex;
     /* justify-content: center; */
     /* align-items: center; */
@@ -523,7 +523,7 @@ footer a {
 }
 .accountpage:target div{
     opacity:0;
-    animation: 1s fadeIn forwards .5s;
+    animation: 0s fadeIn forwards 0s;
     top:50px;
     
 
