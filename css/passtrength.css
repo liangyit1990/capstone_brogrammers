@@ -56,10 +56,11 @@
   width: 20px;
   top: calc(50% - 10px);
   right: 10px;
+  
 }
 
 .passtrengthMeter .showPassword.active{
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .passtrengthMeter .showPassword img{

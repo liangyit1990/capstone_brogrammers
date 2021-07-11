@@ -2,14 +2,14 @@
 
   var pluginName = "passtrength",
       defaults = {
-        minChars: 8,
+        minChars: 2,
         passwordToggle: true,
         tooltip: true,
-        textWeak: "Weak",
-        textMedium: "Medium",
+        textWeak: "Weak af",
+        textMedium: "Okla",
         textStrong: "Strong",
-        textVeryStrong: "Very Strong",
-        eyeImg : "img/eye.svg"
+        textVeryStrong: "Sibeh Strong",
+        eyeImg : "images/eye.svg"
       };
 
   function Plugin(element, options){
@@ -26,14 +26,15 @@
     init: function(){
       var _this    = this,
           meter    = jQuery("<div/>", {class: "passtrengthMeter"}),
-          tooltip = jQuery("<div/>", {class: "tooltip", text: "Min " + this.options.minChars + " chars"});
+          tooltip = jQuery("<div/>", {class: "tooltip", text: "use symbols and capitals"});
+          // tooltip = jQuery("<div/>", {class: "tooltip", text: "Min " + this.options.minChars + " chars"});
 
       meter.insertAfter(this.element);
       $(this.element).appendTo(meter);
 
       if(this.options.tooltip){
         tooltip.appendTo(meter);
-        var tooltipWidth = tooltip.outerWidth() / 2;
+        var tooltipWidth = tooltip.outerWidth() ;
         tooltip.css("margin-left", -tooltipWidth);
       }
 
@@ -153,9 +154,7 @@
           }
       });
   };
-  // $('#Password').passtrength({
-  //   minChars: 6
-  // });
+  
   $('#Password').passtrength({
     passwordToggle: true,
     eyeImg : "images/eye.svg" // toggle icon
@@ -167,4 +166,5 @@
     textStrong: "Strong",
     textVeryStrong: "Very Strong",
   });
+  
 })(jQuery, window, document);

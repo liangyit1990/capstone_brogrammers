@@ -170,7 +170,7 @@ if(isset($_POST['login'])){
                 <input type="text" placeholder="Name" name="name" value="<?php echo $_POST['name'] ?>">
                 <input type="email" placeholder="Email" name="email" value="<?php echo $_POST['email'] ?>">
                 <input id="Password" type="password" placeholder="Password" name="password">
-                <input type="password" placeholder="Retype Password" name="cfmPassword">
+                <input id="Password" type="password" placeholder="Retype Password" name="cfmPassword">
                 <button type="submit" name="register">Sign Up</button>
             </form>
         </div>
