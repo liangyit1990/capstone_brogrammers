@@ -119,13 +119,13 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5 accsendfeedbackbox">
+                            <div class="col-lg-5 accsendfeedbackbox feed">
                                 <div class="row">
                                     <h4>Send Feedback</h4><hr>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <p>Found something about the site that you don't like? Click below to send us feedback.</p>
+                                        <p>Found something about the site that you don't like? Click below to send us feedback.</p><br>
                                     </div>
                                     <div class="col-12">
                                         <a href="<?php echo SITE_URL; ?>feedback.php">Send Feedback</a>

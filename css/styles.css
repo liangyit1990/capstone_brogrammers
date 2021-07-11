@@ -528,6 +528,12 @@ footer a {
     
 
 }
+.feed{
+    position:absolute;
+    margin-left: 350px;
+    margin-top:-50px;
+    z-index:-1;
+}
 
 @keyframes fadeIn{
     100%{opacity:1;}
