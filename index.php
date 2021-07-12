@@ -8,6 +8,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 }
 
 
+
 ?>
 
 
@@ -96,6 +97,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                                 
                                 $getRiceQuery = DB::query("SELECT * FROM food WHERE food_name=%s","rice");
                                 foreach($getRiceQuery as $getRiceResult){ 
+                                    $rice_id = $getRiceResult['food_id'];
                                     $rice_name = $getRiceResult['food_name'];
                                     $rice_price = $getRiceResult['food_price'];
                                     $rice_calories = $getRiceResult['food_calories'];
@@ -108,6 +110,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                                     <td class="modal_menu">
                                         <img src="admin/<?php echo $rice_img; ?>" class="img-fluid img-thumbnail" alt="">
                                     </td>
+                                    <td class="riceid" style="display:none;"><?php echo $rice_id; ?></td>
                                     <td><?php echo ucwords($rice_name); ?></td>
                                     <td class="ricecalories"><?php echo $rice_calories; ?></td>
                                     <td class="riceprice"><?php echo $rice_price; ?></td>
@@ -126,7 +129,8 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                                     <td class="modal_menu">
                                         <img src="admin/<?php echo $getFoodResult['food_img']; ?>" class="img-fluid img-thumbnail" alt="">
                                     </td>
-                                    <td><?php echo ucwords($getFoodResult['food_name']); ?></td>
+                                    <td class="id<?php echo $count; ?>" style="display:none;"><?php echo $getFoodResult['food_id']; ?></td>
+                                    <td class="name<?php echo $count?>"><?php echo ucwords($getFoodResult['food_name']); ?></td>
                                     <td class="calories<?php echo $count?>"><?php echo $getFoodResult['food_calories']; ?></td>
                                     <td class="price<?php echo $count?>"><?php echo $getFoodResult['food_price']; ?></td>
                                     <td><input type="number" class="form-control inputqty ricebaseqty<?php echo $count?>" id="input1 ricebaseqty<?php echo $count?>" min="0" value="0" oninput="validity.valid||(value='');" ></td>
@@ -155,7 +159,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                             </div>
                             <div class="modal-footer border-top-0 d-flex justify-content-between">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Add to Cart</button>
+                                <button type="button" class="btn btn-success riceAddCart" value="riceAddCart">Add to Cart</button>
                             </div>
                             </div>
                         </div>
@@ -225,7 +229,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                                     <td class="modal_menu">
                                         <img src="admin/<?php echo $getNResult['food_img']; ?>" class="img-fluid img-thumbnail" alt="">
                                     </td>
-                                    <td><?php echo ucwords($getNResult['food_name']); ?></td>
+                                    <td class="nname<?php echo $noodlecount?>"><?php echo ucwords($getNResult['food_name']); ?></td>
                                     <td class="ncalories<?php echo $noodlecount?>"><?php echo $getNResult['food_calories']; ?></td>
                                     <td class="nprice<?php echo $noodlecount?>"><?php echo $getNResult['food_price']; ?></td>
                                     <td><input type="number" class="form-control noodlebaseqty noodlebaseqty<?php echo $noodlecount?>" id="input1 noodlebaseqty<?php echo $noodlecount?>" min="0" value="0" oninput="validity.valid||(value='');" ></td>
@@ -252,7 +256,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                             </div>
                             <div class="modal-footer border-top-0 d-flex justify-content-between">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Add to Cart</button>
+                                <button type="button" class="btn btn-success noodleAddCart">Add to Cart</button>
                             </div>
                             </div>
                         </div>
@@ -392,6 +396,65 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
         $(".noodleTotalPrice").text(noodleTotal_price.toFixed(2));
     })
 
+
+    $('.riceAddCart').click(function(){
+        
+        var totalRiceCount = $('.inputqty').length;
+        var riceBaseCount = 0;
+        var riceFoodId="";
+        var riceFoodQty="";
+        var riceid = $('.riceid').text();
+        var riceAddCart = $('.riceAddCart').val();
+        var riceSidesCounter = 0;
+
+        while(riceBaseCount < totalRiceCount ) {
+            if(parseInt($(`.ricebaseqty${riceBaseCount}`).val()) > 0 ) {
+                
+                 riceFoodId += $(`.id${riceBaseCount}`).text() + " ";
+                 riceFoodQty += $(`.ricebaseqty${riceBaseCount}`).val() + " ";
+                 riceSidesCounter++;
+
+
+
+            }
+            riceBaseCount++;
+            
+        }
+        
+        
+        // console.log( riceFoodId);
+        // console.log( riceFoodQty);
+        // console.log( riceSidesCounter);
+
+        
+
+        $.ajax({
+            url: 'batchaddcart.php', //action
+            method: 'POST', //method
+            data:{
+                riceid:riceid,
+                riceAddCart:riceAddCart,
+                riceFoodId:riceFoodId,
+                riceFoodQty:riceFoodQty,
+                riceSidesCounter:riceSidesCounter
+            },
+            success:function(data){
+                console.log(data);
+                if(data==1){
+                    swal("Success", "Item added to cart", "success")
+                      .then((value) => {
+                        location.reload();
+                      });
+                        
+                 }
+                
+            }   
+
+
+        });
+        
+
+    });
 
     
 

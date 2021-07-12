@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 11, 2021 at 10:13 AM
+-- Generation Time: Jul 12, 2021 at 02:22 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -66,10 +66,25 @@ CREATE TABLE `cartbatch` (
   `cartbatch_id` int(11) NOT NULL,
   `cartbatch_no` int(11) NOT NULL,
   `cartbatch_foodqty` int(11) NOT NULL,
-  `cartbatch_status` tinyint(4) NOT NULL,
+  `cartbatch_status` tinyint(4) NOT NULL DEFAULT '0',
   `users_id` int(11) NOT NULL,
   `food_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cartbatch`
+--
+
+INSERT INTO `cartbatch` (`cartbatch_id`, `cartbatch_no`, `cartbatch_foodqty`, `cartbatch_status`, `users_id`, `food_id`) VALUES
+(1, 1, 1, 0, 15, 36),
+(2, 2, 1, 0, 15, 36),
+(3, 2, 1, 0, 15, 1),
+(4, 2, 2, 0, 15, 34),
+(5, 2, 3, 0, 15, 35),
+(6, 3, 1, 0, 15, 36),
+(7, 3, 1, 0, 15, 1),
+(8, 3, 1, 0, 15, 35),
+(9, 4, 1, 0, 15, 36);
 
 -- --------------------------------------------------------
 
@@ -310,6 +325,12 @@ ALTER TABLE `bento`
 --
 ALTER TABLE `cart`
   MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cartbatch`
+--
+ALTER TABLE `cartbatch`
+  MODIFY `cartbatch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `feedback`

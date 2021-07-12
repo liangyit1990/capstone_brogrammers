@@ -43,6 +43,18 @@ function loginAccountLogout(){
     } 
 }
 
+// function cartCounter() {
+//     if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])){
+//         $userCartCount = 0;
+//         $userCartQuery = DB::query("SELECT cartbatch_no FROM cartbatch where users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
+//         foreach($userCartQuery as $userCartResult){
+//             if($userCartCount < $userResult['cartbatch_no']){
+//                 $userCartCount = $userResult['cartbatch_no'];
+//             } 
+//         }
+        
+//     }
+// }
 
 
 

@@ -1,3 +1,17 @@
+<?php 
+
+if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])){
+    $userCartCount = 0;
+    $userCartQuery = DB::query("SELECT cartbatch_no FROM cartbatch where users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
+    foreach($userCartQuery as $userCartResult){
+        if($userCartCount < $userCartResult['cartbatch_no']){
+            $userCartCount = $userCartResult['cartbatch_no'];
+        } 
+    }
+    
+}
+
+?>
 <!--Nav bar for main pages -->
 <header class="l-header " id="header">
         <nav class="nav bd-container">
@@ -20,7 +34,7 @@
                 </ul>
             </div>
             <div class="nav_cart cart" id="nav-cart">
-                <div><i class='bx bx-cart bx-md'></i><span class="count">0</span></div>
+                <div><i class='bx bx-cart bx-md'></i><span class="count"><?php echo $userCartCount ?></span></div>
                 <!-- <div class="item-count">0</div> -->
             </div>
             
