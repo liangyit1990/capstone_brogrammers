@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 12, 2021 at 02:22 PM
+-- Generation Time: Jul 13, 2021 at 02:31 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -154,12 +154,18 @@ CREATE TABLE `food` (
 
 INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_subcategory`, `food_healthierchoice`, `food_vegan`, `food_price`, `food_calories`, `food_img`) VALUES
 (1, 'grilled chicken', 'ala carte', 'meat', 0, 0, '4.99', 280, '..\\images\\chicken.jpeg'),
-(2, 'chicken Karaage bento', 'bento', 'base', 0, 0, '12.99', 1800, '..\\images\\chickenkaraagebento.png'),
-(5, 'Cuttlefish Bento', 'bento', 'base', 0, 0, '13.99', 1300, '..\\images\\cuttlefishbento.png'),
 (34, 'broccoli', 'ala carte', 'vegetable', 0, NULL, '0.90', 50, 'uploads/brocolli.png'),
 (35, 'soy sauce egg', 'ala carte', 'meat', 0, NULL, '1.30', 150, 'uploads/soy_sauce_egg.png'),
 (36, 'rice', 'ala carte', 'base', 0, NULL, '0.50', 130, 'uploads/bento_menu_rice2.png'),
-(37, 'noodle', 'ala carte', 'base', 0, NULL, '0.50', 80, 'uploads/bento_menu_noodles.png');
+(37, 'noodle', 'ala carte', 'base', 0, NULL, '0.50', 80, 'uploads/bento_menu_noodles.png'),
+(38, 'Chicken Karaage Bento', 'bento', 'meat', 0, NULL, '12.00', 500, 'uploads/chickenkaraagebento.png'),
+(39, 'Cuttlefish Bento', 'bento', 'meat', 0, NULL, '12.00', 500, 'uploads/cuttlefishbento.png'),
+(40, 'Deep Fried Ham Bento', 'bento', 'meat', 0, NULL, '12.00', 500, 'uploads/deepfriedhambento.png'),
+(41, 'Ebi Fry Bento', 'bento', 'meat', 0, NULL, '12.00', 500, 'uploads/ebifrybento.png'),
+(42, 'Inari Bento', 'bento', 'meat', 0, NULL, '12.00', 500, 'uploads/inaribento.png'),
+(43, 'Salmon Slice Bento', 'bento', 'meat', 0, NULL, '12.00', 500, 'uploads/salmonslicebento.png'),
+(45, 'Sausage Bento', 'bento', 'meat', 0, NULL, '13.99', 501, 'uploads/sausagebento.png'),
+(46, 'carrot juice', 'ala carte', 'drinks', 0, NULL, '2.50', 150, 'uploads/carrotjuice.png');
 
 -- --------------------------------------------------------
 
@@ -219,7 +225,8 @@ INSERT INTO `users` (`users_id`, `users_name`, `users_email`, `users_password`, 
 (6, 'ky', 'ky@gmail.com', '$2y$10$HtGb5WNwO6SBkoY2B/bZOe6QVePW.8ywqgMhmI8LeTV67zy3pQyGu', '', '', NULL, 0, 1, '2021-07-06 08:31:17'),
 (8, 'hy', 'hy@gmail.com', '$2y$10$93fTm7vsxDe8B1WY/1w/YO2j36KvcHEnlRy..VYXy02gxWy5fjgVy', NULL, NULL, NULL, NULL, 0, '2021-07-08 11:45:23'),
 (15, 'tky', 'tky@gmail.com', '$2y$10$CpUgeO/P9NEE4rComYRp7ObDZLkwCe6vAtYP8WijdlCfLPnVWesgu', '', '', NULL, 0, 0, '2021-07-09 10:59:02'),
-(16, 'kenny', 'kenny@outlook.com', '$2y$10$EtHv/A7Sx1EKJlnh8JefyO5wv443goMi5nEfFAWm1dSByiGzZw2mm', NULL, NULL, NULL, NULL, 0, '2021-07-10 08:34:49');
+(16, 'kenny', 'kenny@outlook.com', '$2y$10$EtHv/A7Sx1EKJlnh8JefyO5wv443goMi5nEfFAWm1dSByiGzZw2mm', NULL, NULL, NULL, NULL, 0, '2021-07-10 08:34:49'),
+(17, 'james', 'james@james.com', '$2y$10$fV.Gr2sveaRd0asxWJ7Us..eM9skXH.tYLXHV7jrc76eFtjV2X23u', NULL, NULL, NULL, NULL, 0, '2021-07-13 10:40:25');
 
 -- --------------------------------------------------------
 
@@ -330,7 +337,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `cartbatch`
 --
 ALTER TABLE `cartbatch`
-  MODIFY `cartbatch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cartbatch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -348,7 +355,7 @@ ALTER TABLE `feedbackothers`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -366,7 +373,7 @@ ALTER TABLE `submission`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `vouchers`

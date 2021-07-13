@@ -259,3 +259,25 @@ if(isset($_POST["upload"])) {
 
     </main>
 
+
+
+    <!-- anselm bento div box -->
+            <div class="col-4 menubox">
+                <div class="row">
+                    <p class="text-center">
+                        <img src="images/menu/bento/chickenkaraagebento.png" alt="" class="menu_img">
+                    </p>
+                </div>
+                <div class="row namerow">
+                    <h4 class="text-center">Ebi Fry Bento</h4>
+                </div>
+                <div class="row pricerow">
+                    <span class="text-center">SGD 6</span>
+                </div>
+                <div class="row caloriesrow">
+                    <span class="text-center">510 Cal</span>
+                </div>
+                <div class="row addbuttonrow">
+                    <a class="addbutton text-center"><i class='bx bxs-cart-download' ></i>Add</a>
+                </div>
+            </div>

@@ -88,7 +88,8 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                         <a href="account.php#giftcards">Gift Cards</a>
                     </div> -->
                 </div>
-                <div class="col-sm-9 modernproductblocks accountrightbody">
+                
+                <div class="col-sm-9 accountrightbody">
                     <!-- Start of Basic Info Row - Contains basic info, send feedback, change email and change password -->
                     <section id="account" class="accountpage">
                         <div class="row accrow basicinforow">
