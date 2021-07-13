@@ -23,7 +23,7 @@
                </div> 
                <div class="card-footer">
                <span>ProArt Lenovo</span>
-                    <span>&#8377;&nbsp;35,000.00 </span>
+                    <span>35,000.00 </span>
                     <input type="submit" name="submit" value="check-in" class="buy_now"/>
                     <input type="hidden" name="price"  id="price" value="35,000.00"/>
                     <input type="hidden" name="item_name" id="item_name" value="ProArt Lenovo"/>   
