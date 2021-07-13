@@ -56,7 +56,7 @@ include "config/functions.php";
                     echo "SGD" . $bento_result['food_price'];
                     echo '</span></div><div class="row caloriesrow"><span class="text-center">';
                     echo $bento_result['food_calories'] . "Cal";
-                    echo '</span></div><div class="row addbuttonrow"><a class="addbutton text-center"><i class="bx bxs-cart-download"></i>Add</a></div></div>
+                    echo '</span></div><div class="row addbuttonrow"><a class="addbutton text-center"><i class="bx bxs-cart-download buy_now"></i>Add</a></div></div>
                     ';
                 }
             ?>

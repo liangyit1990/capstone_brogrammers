@@ -100,6 +100,9 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
 
+//payment
+
+
 
 // //cart
 // let carts = document.querySelectorAll('.add-cart');
