@@ -122,6 +122,7 @@ include "../config/functions.php";
                             <option value="base" <?php if($getFoodResult['food_subcategory'] == 'base') { echo "selected";} ?>>Base</option>
                             <option value="meat" <?php if($getFoodResult['food_subcategory'] == 'meat') { echo "selected";} ?>>Meat</option>
                             <option value="vegetable" <?php if($getFoodResult['food_subcategory'] == 'vegetable') { echo "selected";} ?>>Vegetable</option>
+                            <option value="drinks" <?php if($getFoodResult['food_subcategory'] == 'drinks') { echo "selected";} ?>>Drinks</option>
                             <option value="gravy" <?php if($getFoodResult['food_subcategory'] == 'gravy') { echo "selected";} ?>>Gravy</option>
                           </select>
                         </div>
@@ -216,6 +217,7 @@ include "../config/functions.php";
                             <option value="base" >Base</option>
                             <option value="meat" >Meat</option>
                             <option value="vegetable" >Vegetable</option>
+                            <option value="drinks" >Drinks</option>
                             <option value="gravy" >Gravy</option>
                           </select>
                         </div>

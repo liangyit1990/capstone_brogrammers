@@ -348,7 +348,7 @@ img{
 }
 
 .menu_content{
-    /* position: relative; */
+    position: relative;
     display: flex;
     flex-direction: column;
     border-radius: .5rem;
@@ -356,11 +356,12 @@ img{
 }
 
 .menu_img{
-    width:200px;
+    width:250px;
     align-self:center;
     margin-bottom: var(--mb-2);
 
 }
+
 
 .menu_name, .menu_price{
     font-weight: var(--font-semi-bold);
@@ -386,15 +387,14 @@ img{
 
 }
 
-.addandbase {
+.addandbase{
     font-family: var(--body-font);
-
 }
+
+
 
 .bx{
     font-family: var(--body-font);
-    
-    
 }
 
 /* menu modal details */
@@ -559,3 +559,8 @@ footer a {
 .accheader {
     font-weight: bold;
 }
+
+.accountcontainer {
+    padding-top: 1em;
+}
+
