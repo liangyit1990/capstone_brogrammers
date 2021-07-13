@@ -34,13 +34,36 @@ include "config/functions.php";
     include "header.php";
     ?>
 
+    <!-- anselm -->
+    <div class="container">
+        <div class="row">
+            <span class="text-center">Our Full Menu</span>
+            <div class="col-4">
+                <img src="images/ebifrybento.png" alt="" class="menu_img">
+                <h3 class="menu_name">Ebi Fry Bento</h3>
+                <span class="menu_price">SGD 6</span>
+                <span class="menu_calorie">510 Cal</span>
+                <a class="button menu_button add-cart cart1"><i class='bx bxs-cart-download' ><span class="addandbase"> Add</span></i></a>
+            </div>
+        </div>
 
-    <main class="l-main">
+        <div class="row">
+            <h1 class="text-center">Bento</h1>
+        </div>
+        <div class="row">
+            <h1 class="text-center">Drinks</h1>
+        </div>
+        <div class="row">
+            <h1 class="text-center">Gravy</h1>
+        </div>
+
+    </div>
+
+
+    <!-- <main class="l-main">
         
-        <!-- Menu -->
         <section class="menu section bd-container" id="menu">
-            <span class="section-title">Menu</span>
-            
+            <h1>Menu</h1>
             <div class="menu_container bd-grid">
                 <div class="menu_content">
                     <img src="images/ebifrybento.png" alt="" class="menu_img">
@@ -62,7 +85,7 @@ include "config/functions.php";
         </section>
 
 
-    </main>
+    </main> -->
 
     <!-- footer -->
     <footer class="footer section bd-container">
