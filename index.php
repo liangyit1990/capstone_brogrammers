@@ -199,6 +199,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                                     
                                     $getNoodleQuery = DB::query("SELECT * FROM food WHERE food_name=%s","noodle");
                                     foreach($getNoodleQuery as $getNoodleResult){ 
+                                        $noodle_id = $getNoodleResult['food_id'];
                                         $noodle_name = $getNoodleResult['food_name'];
                                         $noodle_price = $getNoodleResult['food_price'];
                                         $noodle_calories = $getNoodleResult['food_calories'];
@@ -210,6 +211,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                                     <td class="modal_menu">
                                         <img src="admin/<?php echo $noodle_img; ?>" class="img-fluid img-thumbnail" alt="">
                                     </td>
+                                    <td class="noodleid" style="display:none;"><?php echo $noodle_id; ?></td>
                                     <td><?php echo ucwords($noodle_name); ?></td>
                                     <td class="noodlecalories"><?php echo $noodle_calories; ?></td>
                                     <td class="noodleprice"><?php echo $noodle_price; ?></td>
@@ -229,6 +231,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                                     <td class="modal_menu">
                                         <img src="admin/<?php echo $getNResult['food_img']; ?>" class="img-fluid img-thumbnail" alt="">
                                     </td>
+                                    <td class="nid<?php echo $noodlecount; ?>" style="display:none;" ><?php echo $getNResult['food_id']; ?></td>
                                     <td class="nname<?php echo $noodlecount?>"><?php echo ucwords($getNResult['food_name']); ?></td>
                                     <td class="ncalories<?php echo $noodlecount?>"><?php echo $getNResult['food_calories']; ?></td>
                                     <td class="nprice<?php echo $noodlecount?>"><?php echo $getNResult['food_price']; ?></td>
@@ -396,17 +399,20 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
         $(".noodleTotalPrice").text(noodleTotal_price.toFixed(2));
     })
 
-
+    //Trigger functions on click of adding to cart for Rice base
     $('.riceAddCart').click(function(){
         
+        //Count the number of input in the menu modal for rice
         var totalRiceCount = $('.inputqty').length;
+        //set counter for while loop
         var riceBaseCount = 0;
+        //Set various variables for assigning values
         var riceFoodId="";
         var riceFoodQty="";
         var riceid = $('.riceid').text();
         var riceAddCart = $('.riceAddCart').val();
         var riceSidesCounter = 0;
-
+        //While loop to check if input box is > 0, if yes, append the value into the variables
         while(riceBaseCount < totalRiceCount ) {
             if(parseInt($(`.ricebaseqty${riceBaseCount}`).val()) > 0 ) {
                 
@@ -422,12 +428,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
         }
         
         
-        // console.log( riceFoodId);
-        // console.log( riceFoodQty);
-        // console.log( riceSidesCounter);
-
-        
-
+        //Ajax to post variables into batchaddcart.php
         $.ajax({
             url: 'batchaddcart.php', //action
             method: 'POST', //method
@@ -438,14 +439,76 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                 riceFoodQty:riceFoodQty,
                 riceSidesCounter:riceSidesCounter
             },
+            
             success:function(data){
-                console.log(data);
+                
+                //display successful msg if success
                 if(data==1){
                     swal("Success", "Item added to cart", "success")
                       .then((value) => {
                         location.reload();
                       });
                         
+                 } else if(data==2){ //display error msg if user is not logged in
+                    swal("Error", "Please login/register an account to start adding to cart", "error");
+                      
+                 }
+                
+            }   
+
+
+        });
+        
+    });
+    //Trigger functions on click of adding to cart for Rice base
+    $('.noodleAddCart').click(function(){
+       //Count the number of input in the menu modal for noodle
+        var totalNoodleCount = $('.noodlebaseqty').length;
+        //set counter for while loop
+        var noodleBaseCount = 0;
+        //set variables to assign values 
+        var noodleFoodId="";
+        var noodleFoodQty="";
+        var noodleid = $('.noodleid').text();
+        var noodleAddCart = $('.noodleAddCart').val();
+        var noodleSidesCounter = 0;
+        //While loop to check if input box is > 0, if yes, append the value into the variables
+        while(noodleBaseCount < totalNoodleCount ) {
+            if(parseInt($(`.noodlebaseqty${noodleBaseCount}`).val()) > 0 ) {
+                
+                 noodleFoodId += $(`.nid${noodleBaseCount}`).text() + " ";
+                 noodleFoodQty += $(`.noodlebaseqty${noodleBaseCount}`).val() + " ";
+                 noodleSidesCounter++;
+
+
+
+            }
+            
+            noodleBaseCount++;
+            
+        }
+        //Ajax to post variables into batchaddcart.php
+        $.ajax({
+            url: 'batchaddcart.php', //action
+            method: 'POST', //method
+            data:{
+                noodleid:noodleid,
+                noodleAddCart:noodleAddCart,
+                noodleFoodId:noodleFoodId,
+                noodleFoodQty:noodleFoodQty,
+                noodleSidesCounter:noodleSidesCounter
+            },
+            success:function(data){
+                
+                if(data==1){
+                    //display successful msg if success
+                    swal("Success", "Item added to cart", "success")
+                      .then((value) => {
+                        location.reload();
+                      });
+                        
+                 } else if (data ==2) {//display error msg if user is not logged in
+                    swal("Error", "Please login/register an account to start adding to cart", "error");
                  }
                 
             }   
@@ -455,7 +518,6 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
         
 
     });
-
     
 
     </script>
