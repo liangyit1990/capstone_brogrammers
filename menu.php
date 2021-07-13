@@ -38,6 +38,7 @@ include "config/functions.php";
     <div class="container">
         <div class="row">
             <span class="text-center">Our Full Menu</span>
+            <!-- fix this liang yit -->
             <div class="col-4">
                 <img src="images/ebifrybento.png" alt="" class="menu_img">
                 <h3 class="menu_name">Ebi Fry Bento</h3>
