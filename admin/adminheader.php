@@ -33,7 +33,7 @@
         <span class="tooltip">Food</span>
       </li>
       <li>
-        <a href="#">
+        <a href="<?php echo htmlspecialchars(SITE_URL . "admin/messages.php"); ?>">
           <i class='bx bx-chat' ></i>
           <span class="links_name">Messages</span>
         </a>
