@@ -50,6 +50,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
     
     <title><?php echo SITE_NAME; ?></title>
 </head>
+
 <body>
     <!-- scroll to top -->
     <a href="#" class="scrolltop " id="scroll-top">
@@ -57,11 +58,9 @@ foreach($updateUserPassword as $updateUserPassword_result) {
     </a>
 
     <!-- header -->
-        
         <div class="container accountcontainer">
-            <div class="row">
-                <div class="col-sm-3 accountleftlov navi">
-                    
+            <div class="row justify-content-md-center">
+                <div class="container col-3 accountleftlov navi">
                     <div class="row1">
                         <a href="#account" ><i class='bx bxs-user-account'></i>Account</a>
                     </div>
@@ -85,9 +84,9 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                     </div> -->
                 </div>
                 
-                <div class="col-sm-9 accountrightbody">
+                <div class="container col-xl-9 accountrightbody">
                     <!-- Start of Basic Info Row - Contains basic info, send feedback, change email and change password -->
-                    <section id="account" class="accountpage">
+                    <div id="account" class="row accountpage">
                         <div class="row accrow basicinforow">
                             <div class="col-lg-6 basicinfobox">
                                 <div class="row">
@@ -169,29 +168,27 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                             </form>
                         </div>
 
-
-                    </section>
+                    </div>
 
 
 
                     <!-- Start of Orders Row - WIP -->
-                    <section class="row accrow ordersplacedrow accountpage" id="orders" class="accountpage">
+                    <div class="row accrow ordersplacedrow accountpage" id="orders" class="row accountpage">
                         <div>
                             <h4 class="accheader">Orders Placed</h4>
                         </div>
                         <div>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate blanditiis aperiam asperiores sint aliquam nihil adipisci earum eos delectus quam nam facere ipsum doloribus iusto, similique dignissimos quisquam molestiae quia.</p>
                         </div>
-
-                    </section>
+                    </div>
 
                     <!-- Start of Addresses Row - WIP -->
 
-                    <section class="row accrow addressrow accountpage" id="addresses" class="accountpage">
+                    <div class="row accrow addressrow accountpage" id="addresses" class="row accountpage">
                         <div>
                             <h4 class="accheader">Addresses</h4>
                         </div>
-                    </section>
+                    </div>
 
 
                         <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -222,7 +219,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                     <h4>Gift Cards</h4>
                     <p><i>Available Soon!</i></p>
                     </div> -->
-                </div>
+            </div>
         </div>
 
 
@@ -247,12 +244,12 @@ foreach($updateUserPassword as $updateUserPassword_result) {
     
 
 
-<!-- main js here -->
+    <!-- main js here -->
     <script src="js/main.js"></script>
-<!-- bootstrap jquery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- bootstrap jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
     <?php
     if($_GET['logoutSuccess'] == 1){
@@ -260,7 +257,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
       }
     ?>
     </script>
-<script type="text/javascript">      
+    <script type="text/javascript">      
 
         $(document).ready(function(){
 
