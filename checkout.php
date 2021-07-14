@@ -5,6 +5,16 @@ include "config/functions.php";
 
 if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 
+$getuserQuery = DB::query("SELECT cartbatch_no FROM cartbatch where users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
+$getUserBatchCount = DB::count();
+$batchItemNo = 0;
+if($getUserBatchCount > 0) {
+    foreach ($getuserQuery as $getUserResult){
+        if($batchItemNo < $getUserResult['cartbatch_no']) {
+            $batchItemNo = $getUserResult['cartbatch_no'];
+         }
+    } 
+}
 }
 
 ?>
@@ -37,7 +47,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
     
         <div class="container">
             <div>
-                <div class="py-5 text-center">
+                <div class="py-5 ">
                 
                 <h2>Checkout form</h2>
 
@@ -45,41 +55,75 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                 <div class="col-md-5 col-lg-4 order-md-last">
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-primary">Your cart</span>
-                    <span class="badge bg-primary rounded-pill">3</span>
+                    <span class="badge bg-primary rounded-pill"><?php echo $batchItemNo ?></span>
                     </h4>
                     <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                        <h6 class="my-0">Product name</h6>
-                        <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$12</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                        <h6 class="my-0">Second product</h6>
-                        <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$8</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                        <h6 class="my-0">Third item</h6>
-                        <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">$5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between bg-light">
-                        <div class="text-success">
-                        <h6 class="my-0">Promo code</h6>
-                        <small>EXAMPLECODE</small>
-                        </div>
-                        <span class="text-success">−$5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (USD)</span>
-                        <strong>$20</strong>
-                    </li>
+                        <?php 
+                        if($batchItemNo > 0){
+                            $count = 1;
+                            while($count <= $batchItemNo ){
+                                $subprice = 0;
+                                echo '<li class="list-group-item d-flex justify-content-between lh-sm">
+                                        <div>';
+                                $getBatchQuery = DB::query("SELECT * FROM cartbatch 
+                                    INNER JOIN food 
+                                    ON cartbatch.food_id = food.food_id
+                                    where users_id=%i AND cartbatch_status=%i AND cartbatch_no=%i"  , $_COOKIE['users_id'],0,$count);
+                                    foreach($getBatchQuery as $getBatchQueryResult) {
+                                        
+                                        if($getBatchQueryResult['food_subcategory'] == 'base'){
+                                            echo "<h6 class='my-0'>".ucwords($getBatchQueryResult['food_name'])."</h6>";
+                                        } else {
+                                            echo '<small class="text-muted">'.ucwords($getBatchQueryResult['food_name']).'</small> x '.$getBatchQueryResult['cartbatch_foodqty'].'<br>';
+                                        }
+
+                                        $subprice = $getBatchQueryResult['cartbatch_foodqty'] * $getBatchQueryResult['food_price'];
+                                        $totalprice += $subprice;
+                                        $totalcartprice += $subprice;
+                                        
+
+                                    }
+                                    echo "</div>";
+                                    echo "<span class='text-muted'>".$totalprice."</span>";
+                                    $totalprice = 0;
+                                    $count++;
+                            }
+                        }
+                        
+                        ?>
+                        
+                        <!-- <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                            <h6 class="my-0">Product name</h6>
+                            <small class="text-muted">Brief description</small>
+                            </div>
+                            <span class="text-muted">$12</span>
+                        </li> -->
+                        <!-- <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                            <h6 class="my-0">Second product</h6>
+                            <small class="text-muted">Brief description</small>
+                            </div>
+                            <span class="text-muted">$8</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                            <h6 class="my-0">Third item</h6>
+                            <small class="text-muted">Brief description</small>
+                            </div>
+                            <span class="text-muted">$5</span>
+                        </li> -->
+                        <li class="list-group-item d-flex justify-content-between bg-light">
+                            <div class="text-success">
+                            <h6 class="my-0">Promo code</h6>
+                            <small>EXAMPLECODE</small>
+                            </div>
+                            <span class="text-success">-</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (SGD)</span>
+                            <strong><?php echo $totalcartprice; ?></strong>
+                        </li>
                     </ul>
 
                     <form class="card p-2">

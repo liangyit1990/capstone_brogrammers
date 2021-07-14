@@ -17,7 +17,7 @@ include "config/functions.php";
 <body>
 <br/>
    <?php
-     $itemNo = 1;
+     
     
      $getuserQuery = DB::query("SELECT cartbatch_no FROM cartbatch where users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
      $getUserBatchCount = DB::count();
@@ -41,6 +41,7 @@ include "config/functions.php";
                   foreach($getBatchQuery as $getBatchQueryResult) {
                        echo "Food Name :" . ucwords($getBatchQueryResult['food_name']) . "--";
                        echo  $getBatchQueryResult['cartbatch_foodqty'] . "<br>";
+
                        $subcalories = $getBatchQueryResult['cartbatch_foodqty'] * $getBatchQueryResult['food_calories'];
                        $totalsubcalories += $subcalories;
                        $subprice = $getBatchQueryResult['cartbatch_foodqty'] * $getBatchQueryResult['food_price'];
