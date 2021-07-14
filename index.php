@@ -163,7 +163,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                             </div>
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
                 <div class="menu_content">
                     <img src="images/bento_menu_noodles.png" alt="" class="menu_img">
@@ -510,15 +510,11 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                  } else if (data ==2) {//display error msg if user is not logged in
                     swal("Error", "Please login/register an account to start adding to cart", "error");
                  }
-                
             }   
-
 
         });
         
-
     });
-    
 
     </script>
 
