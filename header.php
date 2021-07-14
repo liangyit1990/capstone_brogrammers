@@ -34,7 +34,7 @@ if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])){
                 </ul>
             </div>
             <div class="nav_cart cart" id="nav-cart">
-                <div><i class='bx bx-cart bx-md'></i><span class="count"><?php echo $userCartCount ?></span></div>
+                <div><a href="checkout.php"><i class='bx bx-cart bx-md'></i><span class="count"><?php echo $userCartCount ?></span></a></div>
                 <!-- <div class="item-count">0</div> -->
             </div>
             
