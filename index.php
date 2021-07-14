@@ -7,13 +7,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 
 }
 
-
-
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,10 +46,10 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
             <div class="home_container bd-container bd-grid">
                 <div class="home_data">
                     <!-- <h1 class="home_title"></h1> -->
-                    
+                    <h1 class="calorice"><span>C A L O </span><span>R I C E</span></h1>
                     <!-- <img class="rotate_01" src="images/donut-icon.png"> -->
                     <img src="images/watermelon.png" class="rotate_01">
-                    <h2 class="home_subtitle">Control your calorie intake with CALORICE</h2>
+                    <h2 class="home_subtitle">Control your calorie intake</h2>
                     <a href='#menu'class="button">View Menu</a>
                     
                 </div>

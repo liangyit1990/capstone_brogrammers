@@ -77,17 +77,37 @@ body{
     color: var(--text-color);
     line-height: 1.6;
 }
-
+/* animation on calorice */
+.calorice span{
+    transition: .5s linear
+  }
+  .calorice:hover span:nth-child(1){
+    margin-right: 5px
+  }
+  .calorice:hover span:nth-child(1):after{
+    content: "";
+  }
+  .calorice:hover span:nth-child(2){
+    margin-left: 30px
+  }
+  .calorice:hover span{
+    color: #000;
+    text-shadow: 0 0 10px #fff,
+                 0 0 20px #fff, 
+                 0 0 40px #fff;
+  }
 /* rotate image */
 .rotate_01{
-    display: block;
+    display: flex;
     position: relative;
+    justify-self: center;
+    margin:auto;
     /* top:50%;
     left: 50%;
     width:100px;
     height:100px;
     margin: -20px 0 0 -500px; */
-    transition: -webkit-transform 1s;
+    transition: -webkit-transform 2s;
 }
 .rotate_01:hover{
     transform: rotate(360deg) translateZ(0);
@@ -312,20 +332,38 @@ img{
     color: var(--text-color);
     margin-bottom: var(--mb-1);
 }
-
+/* typing effect */
 .home_subtitle{
     font-size: var(--h1-font-size);
     color:var(--title-colour);
     margin-bottom: var(--mb-4);
+    width: 21ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
 
 }
+@keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
 
 .home_img{
     width:400px;
     justify-self: center;
 
 }
-
+/* .home_data{
+    justify-self: center;
+} */
 .button{
     display:inline-block;
     background-color: #000;
