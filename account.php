@@ -57,10 +57,6 @@ foreach($updateUserPassword as $updateUserPassword_result) {
     </a>
 
     <!-- header -->
-    
-
-
-    
         
         <div class="container accountcontainer">
             <div class="row">
