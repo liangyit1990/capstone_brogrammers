@@ -84,7 +84,7 @@ if($getUserBatchCount > 0) {
 
                                     }
                                     echo "</div>";
-                                    echo "<span class='text-muted'>".$totalprice."</span>";
+                                    echo "<span class='text-muted'>".number_format((float)$totalprice, 2, '.', '')."</span>";
                                     $totalprice = 0;
                                     $count++;
                             }
@@ -122,7 +122,7 @@ if($getUserBatchCount > 0) {
                         </li> -->
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (SGD)</span>
-                            <strong><?php echo $totalcartprice; ?></strong>
+                            <strong><?php echo number_format((float)$totalcartprice, 2, '.', ''); ?></strong>
                         </li>
                     </ul>
 
