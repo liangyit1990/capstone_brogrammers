@@ -56,8 +56,9 @@ include "config/functions.php";
                     echo "SGD" . $bento_result['food_price'];
                     echo '</span></div><div class="row caloriesrow"><span class="text-center">';
                     echo $bento_result['food_calories'] . "Cal";
-                    echo '</span></div><div class="row addbuttonrow"><a class="addbutton text-center"><i class="bx bxs-cart-download buy_now"></i>Add</a></div></div>
+                    echo '</span></div><div class="row addbuttonrow"><a class="addbutton text-center" data-id="'.$bento_result['food_id'].'" ><i class="bx bxs-cart-download buy_now"></i>Add</a></div></div>
                     ';
+                    
                 }
             ?>
 
@@ -78,7 +79,7 @@ include "config/functions.php";
                     echo "SGD" . $drinks_result['food_price'];
                     echo '</span></div><div class="row caloriesrow"><span class="text-center">';
                     echo $drinks_result['food_calories'] . "Cal";
-                    echo '</span></div><div class="row addbuttonrow"><a class="addbutton text-center"><i class="bx bxs-cart-download"></i>Add</a></div></div>
+                    echo '</span></div><div class="row addbuttonrow"><a class="addbutton text-center" data-id="'.$drinks_result['food_id'].'"><i class="bx bxs-cart-download"></i>Add</a></div></div>
                     ';
                 }
             ?>
@@ -98,7 +99,7 @@ include "config/functions.php";
                     echo "SGD" . $gravy_result['food_price'];
                     echo '</span></div><div class="row caloriesrow"><span class="text-center">';
                     echo $gravy_result['food_calories'] . "Cal";
-                    echo '</span></div><div class="row addbuttonrow"><a class="addbutton text-center"><i class="bx bxs-cart-download"></i>Add</a></div></div>
+                    echo '</span></div><div class="row addbuttonrow"><a class="addbutton text-center" data-id="'.$gravy_result['food_id'].'"><i class="bx bxs-cart-download"></i>Add</a></div></div>
                     ';
                 }
             ?>
@@ -166,6 +167,50 @@ include "config/functions.php";
         echo 'swal("Logged Out.", "You have logged out successfully.", "success");';
       }
     ?>
+
+    $('.addbutton').click(function(){
+        var addFoodId = $(this).data('id');
+        
+        $.ajax({
+            url: 'cart.php', //action
+            method: 'POST', //method
+            data:{
+            addFoodId:addFoodId,
+          
+            },
+            success:function(data){
+                console.log(data);
+                if(data==1){
+                    swal({
+                        title: "Hurray!",
+                        text: "Item added Successfully",
+                        icon: "success",
+                        buttons: false,
+                        timer : 3000,
+                        })
+                        cartCount = parseInt($(".count").text()) + 1;
+                        $(".count").text(cartCount);
+                        
+                 } else if (data ==2) {
+                        swal({
+                            title: "Hurray!",
+                            text: "Item added Successfully",
+                            icon: "success",
+                            buttons: false,
+                            timer : 3000,
+                        })
+
+                    
+                 } else if(data == 3) {
+                    swal("Error", "Please login/register an account to start adding to cart", "error");
+                 }
+                        
+            }
+            });   
+
+    })
+
+
     </script>
 
 </body>

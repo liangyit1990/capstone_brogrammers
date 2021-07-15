@@ -5,17 +5,29 @@ include "config/functions.php";
 
 if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 
-$getuserQuery = DB::query("SELECT cartbatch_no FROM cartbatch where users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
-$getUserBatchCount = DB::count();
-$batchItemNo = 0;
-if($getUserBatchCount > 0) {
-    foreach ($getuserQuery as $getUserResult){
-        if($batchItemNo < $getUserResult['cartbatch_no']) {
-            $batchItemNo = $getUserResult['cartbatch_no'];
-         }
-    } 
+    $getuserQuery = DB::query("SELECT cartbatch_no FROM cartbatch WHERE users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
+    $getUserBatchCount = DB::count();
+    $totalCartItem = 0;
+    $batchItemNo = 0;
+    if($getUserBatchCount > 0) {
+        foreach ($getuserQuery as $getUserResult){
+            if($batchItemNo < $getUserResult['cartbatch_no']) {
+                $batchItemNo = $getUserResult['cartbatch_no'];
+            }
+        } $totalCartItem += $batchItemNo;
+    }
+
+    $getUserCartQuery = DB::query("SELECT * FROM cart 
+    INNER JOIN food
+    ON cart.food_id = food.food_id
+    WHERE users_id=%i AND cart_status=%i" , $_COOKIE['users_id'],0);
+    $getUserCartCount = DB::count();
+    if($getUserCartCount > 0){
+        $totalCartItem += $getUserCartCount;
+    }
 }
-}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -55,7 +67,7 @@ if($getUserBatchCount > 0) {
                 <div class="col-md-5 col-lg-4 order-md-last">
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-primary">Your cart</span>
-                    <span class="badge bg-primary rounded-pill"><?php echo $batchItemNo ?></span>
+                    <span class="badge bg-primary rounded-pill"><?php echo $totalCartItem ?></span>
                     </h4>
                     <ul class="list-group mb-3">
                         <?php 
@@ -87,6 +99,20 @@ if($getUserBatchCount > 0) {
                                     echo "<span class='text-muted'>".number_format((float)$totalprice, 2, '.', '')."</span>";
                                     $totalprice = 0;
                                     $count++;
+                            }
+                        }
+
+                        if($getUserCartCount > 0) {
+                            
+                            foreach($getUserCartQuery as $getUserCartResult) {
+                                echo '<li class="list-group-item d-flex justify-content-between lh-sm">
+                                        <div>';
+                                echo "<h6 class='my-0'>".ucwords($getUserCartResult['food_name'])." x ".$getUserCartResult['cart_foodqty']."</h6> ";   
+                                echo "</div>";
+                                $subCartPrice = $getUserCartResult['food_price'] * $getUserCartResult['cart_foodqty'];
+                                echo "<span class='text-muted'>".number_format((float)$subCartPrice, 2, '.', '')."</span>";
+                                $totalcartprice += $subCartPrice;
+
                             }
                         }
                         
@@ -196,8 +222,18 @@ if($getUserBatchCount > 0) {
                         </div>
                         </div>
                     </div>
+                    <?php 
+                    $getOrderQuery = DB::query("SELECT * FROM orders");
+                    $getOrderCount = DB::count();
+                    if($getOrderCount > 0) {
+                        $orderCount = $getOrderCount + 1;
+                    } else {
+                        $orderCount = 1;
+                    }
+                    ?>
+                    
                     <input type="hidden" name="amount" value="<?php echo number_format((float)$totalcartprice, 2, '.', '') * 100; ?>">
-                    <input type="hidden" name="product_name" value="Calorice">
+                    <input type="hidden" name="product_name" value="Calorice - Order#<?php echo $orderCount?>">
 
                     <hr class="my-4">
                     <script
