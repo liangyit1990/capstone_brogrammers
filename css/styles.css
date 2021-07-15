@@ -387,7 +387,7 @@ img{
     border-radius: 0.5rem;
     transition:0.3s;
     font-family: var(--body-font);
-    height:25px;
+    height:30px;
     width:65px;
     
 
@@ -655,3 +655,8 @@ footer a {
     padding-top: 1em;
 } */
 
+/* checkout */
+.btncheckout{
+    background-color: var(--text-color);
+    border: var(--text-color)
+}
