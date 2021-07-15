@@ -59,6 +59,9 @@ foreach($updateUserPassword as $updateUserPassword_result) {
 
     <!-- header -->
         <div class="navi">
+            
+            <a href="index.php" class="logo"><img class="img-logo" src="images/logo.png" alt=""></a>
+                
             <div class="row1">
                 <a href="#account" ><i class='bx bxs-user-account'></i>Account</a>
             </div>
@@ -74,7 +77,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
             <div class="row1">
                 <a href="<?php echo SITE_URL; ?>logout.php" ><i class='bx bx-log-out'></i>Logout</a>
             </div>
-            <div>
+            <div class="moon">
                 <i class='bx bx-moon bx-sm symbol' id="theme-button"></i>
             </div>
             <!-- <div class="row">
@@ -178,7 +181,26 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                             <h4 class="accheader">Orders Placed</h4>
                         </div>
                         <div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate blanditiis aperiam asperiores sint aliquam nihil adipisci earum eos delectus quam nam facere ipsum doloribus iusto, similique dignissimos quisquam molestiae quia.</p>
+                            <div class="date-container">
+                                <div class="date-order">
+                                    <div class="date-header">
+                                        <h5>July 15th, 2021</h5>
+                                    </div>
+                                    <div class="order-id">
+                                        <h6>Order ID:</h6> 
+                                    </div>
+                                </div>
+                                <div class="ship-id">
+                                    <h6><strong>Ship To:</strong></h6> 
+                                </div>
+                                <div class="order-stat">
+                                    <h6><strong>Order Status:</strong></h6> 
+                                </div>
+                                <div class="order-total">
+                                    <h6><strong>Total Price:</strong></h6> 
+                                </div>
+                                
+                            </div>
                         </div>
                     </div>
 
