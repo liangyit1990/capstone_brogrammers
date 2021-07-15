@@ -1,0 +1,38 @@
+.addaddressbutton{
+    display:inline-block;
+    background-color: #000;
+    color:#FFF;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition:0.3s;
+    font-family: var(--body-font);
+    cursor:pointer;
+    width: auto;
+}
+
+.fa-plus {
+    text-align: center;
+}
+
+.addaddressdiv {
+    border: solid black;
+    padding: 1em;
+}
+
+.redasterisk {
+    color: red;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+/* .menu_button{
+    position: inherit;
+    bottom:0;
+    right:0;
+    display: flex;
+    margin-left: 180px;
+    margin-right: 180px;
+    border-radius: 0.5rem 0 0.5rem 0; 
+    justify-content: center;
+
+} */
