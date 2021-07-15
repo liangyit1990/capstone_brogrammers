@@ -24,8 +24,6 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
     <!-- css here -->
     <link rel="stylesheet" href="css/styles.css">
     
-
-    
     <title><?php echo SITE_NAME; ?></title>
 </head>
 <body>

@@ -239,8 +239,8 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                     <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="pk_test_51JC3VwF77heEa3oFtz0HzRPEOVUxvY1thI3QJlIi4QY4DLd6U7NiwR3DMJZlNqjTLg9iVamxN9AvcheBkGJ3WzJX00PnoxuKvI"
-                    data-amount=<?php echo number_format((float)$totalcartprice, 2, '.', '') * 100; ?>
-                    data-name="Calorice"
+                    data-amount=<?php echo number_format((float)$totalcartprice, 2, '.', ''); ?>
+                    data-name="C A L O R I C E"
                     data-currency="sgd"
                     data-locale="auto">
                     </script>
