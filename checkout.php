@@ -196,8 +196,18 @@ if($getUserBatchCount > 0) {
                         </div>
                         </div>
                     </div>
+                    <?php 
+                    $getOrderQuery = DB::query("SELECT * FROM orders");
+                    $getOrderCount = DB::count();
+                    if($getOrderCount > 0) {
+                        $orderCount = $getOrderCount + 1;
+                    } else {
+                        $orderCount = 1;
+                    }
+                    ?>
+                    
                     <input type="hidden" name="amount" value="<?php echo number_format((float)$totalcartprice, 2, '.', '') * 100; ?>">
-                    <input type="hidden" name="product_name" value="Calorice">
+                    <input type="hidden" name="product_name" value="Calorice - Order#<?php echo $orderCount?>">
 
                     <hr class="my-4">
                     <script
