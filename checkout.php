@@ -44,6 +44,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
     <!-- icons here -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- css here -->
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/checkout.css">
  
     <title><?php echo SITE_NAME; ?></title>
@@ -55,6 +56,11 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
     <a href="#" class="scrolltop " id="scroll-top">
         <i class='bx bx-chevron-up-circle scrolltop_icon' ></i>
     </a>
+
+    <!-- header -->
+    <?php 
+    // include "header.php";
+    ?>
 
     
         <div class="container">
@@ -151,6 +157,9 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                             <strong><?php echo number_format((float)$totalcartprice, 2, '.', ''); ?></strong>
                         </li>
                     </ul>
+                    <button type="button" class="btn btn-primary btn-sm clearCart" id="clearCart" value="clearCart" data-id="" data-bs-toggle="modal" data-bs-target="" >Clear Cart</button>
+                    <a href="<?php echo SITE_URL; ?>"><button type="button" class="btn btn-primary btn-sm backtohome" id="backtohome" value="backtohome" data-id="" data-bs-toggle="modal" data-bs-target="" >Back to Home</button></a>
+
 
                     <!-- <form class="card p-2">
                     <div class="input-group">
@@ -165,7 +174,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                     <div class="row g-3">
                         <div class="col-sm-12">
                         <label for="firstName" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="<?php echo ucwords($_COOKIE['users_name']); ?>" required="">
                         <div class="invalid-feedback">
                             Name is required.
                         </div>

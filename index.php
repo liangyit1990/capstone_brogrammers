@@ -121,7 +121,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 
                                 <?php 
                                 $count=0;
-                                $getFoodQuery = DB::query("SELECT * FROM food WHERE food_category=%s AND food_name!=%s AND food_name!=%s" ,"ala carte","rice",'noodle');
+                                $getFoodQuery = DB::query("SELECT * FROM food WHERE food_category=%s AND food_name!=%s AND food_subcategory!='drinks' AND food_name!='noodle'" ,"ala carte","rice",'noodle');
                                 foreach($getFoodQuery as $getFoodResult){ 
                                 
                                 ?>
@@ -222,7 +222,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 
                                     <?php 
                                     $noodlecount=0;
-                                    $getNQuery = DB::query("SELECT * FROM food WHERE food_category=%s AND food_name!=%s AND food_name!=%s" ,"ala carte","rice",'noodle');
+                                    $getNQuery = DB::query("SELECT * FROM food WHERE food_category=%s AND food_name!=%s AND food_subcategory!='drinks'" ,"ala carte","rice",'noodle');
                                     foreach($getNQuery as $getNResult){ 
                                     
                                     
