@@ -1,13 +1,21 @@
 <?php 
 
 if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])){
-    $userCartCount = 0;
-    $userCartQuery = DB::query("SELECT cartbatch_no FROM cartbatch where users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
-    foreach($userCartQuery as $userCartResult){
-        if($userCartCount < $userCartResult['cartbatch_no']){
-            $userCartCount = $userCartResult['cartbatch_no'];
-        } 
+    $batchCount = 0;
+    $userBatchCartQuery = DB::query("SELECT cartbatch_no FROM cartbatch where users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
+    $userBatchCartCount = DB::count();
+    if($userBatchCartCount > 0 ) {
+        foreach($userBatchCartQuery as $userBatchCartResult){
+            if($userCartCount < $userBatchCartResult['cartbatch_no']){
+                $batchCount = $userBatchCartResult['cartbatch_no'];
+            } 
+        }
+
     }
+    $cartCount = 0;
+    $userCartQuery = DB::query("SELECT * FROM cart where users_id=%i AND cart_status=%i" , $_COOKIE['users_id'],0);
+    $userCartCount = DB::count();
+    $totalCartCount = $userCartCount + $batchCount;    
     
 }
 
@@ -34,7 +42,7 @@ if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])){
                 </ul>
             </div>
             <div class="nav_cart cart" id="nav-cart">
-                <div><a href="checkout.php"><i class='bx bx-cart bx-md'></i><span class="count"><?php echo $userCartCount ?></span></a></div>
+                <div><a href="checkout.php"><i class='bx bx-cart bx-md'></i><span class="count"><?php echo $totalCartCount ?></span></a></div>
                 <!-- <div class="item-count">0</div> -->
                 
             </div>
