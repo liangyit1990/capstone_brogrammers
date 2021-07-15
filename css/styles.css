@@ -383,7 +383,7 @@ img{
     display:inline-block;
     background-color:#000;
     color:#FFF;
-    justify-items: center;
+    
     border-radius: 0.5rem;
     transition:0.3s;
     font-family: var(--body-font);
