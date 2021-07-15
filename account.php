@@ -59,6 +59,9 @@ foreach($updateUserPassword as $updateUserPassword_result) {
 
     <!-- header -->
         <div class="navi">
+            
+            <a href="index.php" class="logo"><img class="img-logo" src="images/logo.png" alt=""></a>
+                
             <div class="row1">
                 <a href="#account" ><i class='bx bxs-user-account'></i>Account</a>
             </div>
@@ -74,7 +77,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
             <div class="row1">
                 <a href="<?php echo SITE_URL; ?>logout.php" ><i class='bx bx-log-out'></i>Logout</a>
             </div>
-            <div>
+            <div class="moon">
                 <i class='bx bx-moon bx-sm symbol' id="theme-button"></i>
             </div>
             <!-- <div class="row">
