@@ -77,47 +77,6 @@ body{
     color: var(--text-color);
     line-height: 1.6;
 }
-/* animation on calorice */
-.calorice{
-    padding-bottom: 15px;
-    padding-top: 15px;
-}
-.calorice span{
-    transition: .5s linear;
-    cursor: pointer;
-  }
-  .calorice:hover span:nth-child(1){
-    margin-right: 5px
-  }
-  .calorice:hover span:nth-child(1):after{
-    content: "";
-  }
-  .calorice:hover span:nth-child(2){
-    margin-left: 30px
-  }
-  .calorice:hover span{
-    color: #000;
-   
-  }
-/* rotate image */
-.rotate_01{
-    display: flex;
-    position: relative;
-    justify-self: center;
-    margin:auto;
-    /* top:50%;
-    left: 50%;
-    width:100px;
-    height:100px;
-    margin: -20px 0 0 -500px; */
-    transition: -webkit-transform 2s;
-}
-.rotate_01:hover{
-    transform: rotate(360deg) translateZ(0);
-}
-
-
-/* end */
 h1,h2,h3,p,ul{
     margin:0;
 }
@@ -185,7 +144,7 @@ img{
 }
 .l-header{
     width:100%;
-    z-index: 2;
+    
     position: fixed;
     top:0;
     left:0;
@@ -335,38 +294,20 @@ img{
     color: var(--text-color);
     margin-bottom: var(--mb-1);
 }
-/* typing effect */
+
 .home_subtitle{
     font-size: var(--h1-font-size);
     color:var(--title-colour);
     margin-bottom: var(--mb-4);
-    width: 21ch;
-    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid;
 
 }
-@keyframes typing {
-    from {
-      width: 0
-    }
-  }
-      
-  @keyframes blink {
-    50% {
-      border-color: transparent
-    }
-  }
 
 .home_img{
     width:400px;
     justify-self: center;
 
 }
-/* .home_data{
-    justify-self: center;
-} */
+
 .button{
     display:inline-block;
     background-color: #000;
@@ -378,20 +319,7 @@ img{
     
 
 }
-/* clear cart */
-.clear-cart{
-    display:inline-block;
-    background-color:#000;
-    color:#FFF;
-    
-    border-radius: 0.5rem;
-    transition:0.3s;
-    font-family: var(--body-font);
-    height:30px;
-    width:65px;
-    
 
-}
 
 .button:hover{
     background-color: var(--primary-color-alt);
@@ -415,28 +343,23 @@ img{
 .menu_container{
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
-    z-index: 1;
     
     
 }
-
 .menu_content{
-    position: relative;
+    /* position: relative; */
     display: flex;
     flex-direction: column;
     border-radius: .5rem;
     padding:0.75rem;
-    /* z-index: 1; */ /*cannot use this for modal*/
-    
 }
 
 .menu_img{
-    width:250px;
+    width:200px;
     align-self:center;
     margin-bottom: var(--mb-2);
 
 }
-
 
 .menu_name, .menu_price{
     font-weight: var(--font-semi-bold);
@@ -462,14 +385,15 @@ img{
 
 }
 
-.addandbase{
+.addandbase {
     font-family: var(--body-font);
+
 }
-
-
 
 .bx{
     font-family: var(--body-font);
+    
+    
 }
 
 /* menu modal details */
@@ -552,13 +476,8 @@ footer a {
 
 
 /* user account */
-.navi{
-    margin: auto;
-    display: grid;
-    justify-content: center;
-    width: 300px;
-    margin-left: 10px;
-    
+.container{
+    padding:30px;
 }
 
 .row1{
@@ -609,23 +528,12 @@ footer a {
     
 
 }
-.feed{
-    display:grid;
+/* .feed{
+    position:absolute;
     margin-left: 350px;
-    margin-top:-195px;
-    z-index: index 100;
-}
-.basicinfo{
-    display: flex;
-    width:350px;
-
-}
-.modal-backdrop{
-
-    z-index: -1;
-    
-}
-
+    margin-top:-50px;
+    z-index:-1;
+} */
 
 @keyframes fadeIn{
     100%{opacity:1;}
@@ -649,14 +557,4 @@ footer a {
 
 .accheader {
     font-weight: bold;
-}
-
-/* .accountcontainer {
-    padding-top: 1em;
-} */
-
-/* checkout */
-.btncheckout{
-    background-color: var(--text-color);
-    border: var(--text-color)
 }

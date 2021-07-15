@@ -58,31 +58,31 @@ foreach($updateUserPassword as $updateUserPassword_result) {
     </a>
 
     <!-- header -->
+        <div class="navi">
+            <div class="row1">
+                <a href="#account" ><i class='bx bxs-user-account'></i>Account</a>
+            </div>
+            <div class="row1">
+                <a href="#orders" ><i class='bx bxs-dish'></i>Orders</a>
+            </div>
+            <div class="row1">
+                <a href="#addresses" ><i class='bx bx-building-house' ></i>Addresses</a>
+            </div>
+            <div class="row1">
+                <a href="<?php echo SITE_URL; ?>" ><i class='bx bx-arrow-back' ></i>Back to Home</a>
+            </div>
+            <div class="row1">
+                <a href="<?php echo SITE_URL; ?>logout.php" ><i class='bx bx-log-out'></i>Logout</a>
+            </div>
+            <div>
+                <i class='bx bx-moon bx-sm symbol' id="theme-button"></i>
+            </div>
+            <!-- <div class="row">
+                <a href="account.php#giftcards">Gift Cards</a>
+            </div> -->
+        </div>
         <div class="container accountcontainer">
             <div class="row justify-content-md-center">
-                <div class="container col-3 accountleftlov navi">
-                    <div class="row1">
-                        <a href="#account" ><i class='bx bxs-user-account'></i>Account</a>
-                    </div>
-                    <div class="row1">
-                        <a href="#orders" ><i class='bx bxs-dish'></i>Orders</a>
-                    </div>
-                    <div class="row1">
-                        <a href="#addresses" ><i class='bx bx-building-house' ></i>Addresses</a>
-                    </div>
-                    <div class="row1">
-                        <a href="<?php echo SITE_URL; ?>" ><i class='bx bx-arrow-back' ></i>Back to Home</a>
-                    </div>
-                    <div class="row1">
-                        <a href="<?php echo SITE_URL; ?>logout.php" ><i class='bx bx-log-out'></i>Logout</a>
-                    </div>
-                    <div>
-                        <i class='bx bx-moon bx-sm symbol' id="theme-button"></i>
-                    </div>
-                    <!-- <div class="row">
-                        <a href="account.php#giftcards">Gift Cards</a>
-                    </div> -->
-                </div>
                 
                 <div class="container col-xl-9 accountrightbody">
                     <!-- Start of Basic Info Row - Contains basic info, send feedback, change email and change password -->
@@ -92,7 +92,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                                 <div class="row">
                                     <h4 class="accheader">Basic Info</h4><hr>
                                 </div>
-                                <div class="row">
+                                <div class="row basicinfo">
                                     <div class="col-lg-6">
                                         <h5>Name</h5>
                                         <p><?php 
@@ -115,13 +115,13 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 accsendfeedbackbox">
+                            <div class="col-lg-6 accsendfeedbackbox feed ">
                                 <div class="row">
-                                    <h4 class="accheader">Send Feedback</h4><hr>
+                                    <h4 class="accheader">Send Feedback</h4>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <p>Found something about the site that you don't like? Click below to send us feedback.</p><br>
+                                        <p>Found something about the site that you don't like? Click here to send us feedback.</p><br>
                                     </div>
                                     <div class="col-12">
                                         <a href="<?php echo SITE_URL; ?>feedback.php">Send Feedback</a>
@@ -184,11 +184,11 @@ foreach($updateUserPassword as $updateUserPassword_result) {
 
                     <!-- Start of Addresses Row - WIP -->
 
-                    <div class="row accrow addressrow accountpage" id="addresses" class="row accountpage">
+                    <div class="row accrow addressrow accountpage" id="addresses">
                         <div>
                             <h4 class="accheader">Addresses</h4>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col">
                                     <a class="button menu_button addbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Address</a>
 
                                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -199,7 +199,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                            ...
+                                            
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
