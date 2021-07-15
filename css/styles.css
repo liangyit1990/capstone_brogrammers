@@ -607,10 +607,10 @@ footer a {
     width:350px;
 
 }
-.modal-content{
-    opacity: 0.9 !important;
+.modal-backdrop{
+
+    z-index: -1;
     
-    z-index: 100 !important;
 }
 
 
