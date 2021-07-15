@@ -18,7 +18,7 @@ if(isset($_POST['addFoodId'])) {
             'cart_foodqty' => $foodCount,
             
         ], "cart_id=%i", $cartId);
-        echo 1;
+        echo 2;
     } else {
         $foodCount = 1;
         DB::insert("cart", [
@@ -31,7 +31,7 @@ if(isset($_POST['addFoodId'])) {
     
 
     } else {
-        echo 2;
+        echo 3;
       }
 } else {
     header("Location: " . SITE_URL);

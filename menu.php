@@ -188,8 +188,20 @@ include "config/functions.php";
                         buttons: false,
                         timer : 3000,
                         })
+                        cartCount = parseInt($(".count").text()) + 1;
+                        $(".count").text(cartCount);
                         
-                 } else if (data ==2) {//display error msg if user is not logged in
+                 } else if (data ==2) {
+                        swal({
+                            title: "Hurray!",
+                            text: "Item added Successfully",
+                            icon: "success",
+                            buttons: false,
+                            timer : 3000,
+                        })
+
+                    
+                 } else if(data == 3) {
                     swal("Error", "Please login/register an account to start adding to cart", "error");
                  }
                         
