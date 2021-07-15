@@ -25,6 +25,7 @@
                ?>
             <h3>Your Transaction has been Successfully Completed</h3>
           <?php
+        //   header("Location: " . SITE_URL . "index.php?TransactionSuccess=1");
            }
         ?>
       </div>  
