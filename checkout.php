@@ -44,7 +44,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
     <!-- icons here -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- css here -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/checkout.css">
  
     <title><?php echo SITE_NAME; ?></title>
 </head>
@@ -61,7 +61,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
             <div>
                 <div class="py-5 ">
                 
-                <h2>Checkout form</h2>
+                <h2>Checkout form</h2><br>
 
                 <div class="row g-5">
                 <div class="col-md-5 col-lg-4 order-md-last">
@@ -160,7 +160,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                     </form> -->
                 </div>
                 <div class="col-md-7 col-lg-8">
-                    <h4 class="mb-3">Billing address</h4>
+                    
                     <form class="needs-validation" action="checkout-charge.php" method="POST" novalidate="">
                     <div class="row g-3">
                         <div class="col-sm-12">
@@ -196,14 +196,14 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                         <label for="country" class="form-label">Country</label>
                         <select class="form-select" id="country" required="">
                             <option value="">Choose...</option>
-                            <option>United States</option>
+                            <option>Singapore</option>
                         </select>
                         <div class="invalid-feedback">
                             Please select a valid country.
                         </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                         <label for="state" class="form-label">State</label>
                         <select class="form-select" id="state" required="">
                             <option value="">Choose...</option>
@@ -212,7 +212,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                         <div class="invalid-feedback">
                             Please provide a valid state.
                         </div>
-                        </div>
+                        </div> -->
 
                         <div class="col-md-3">
                         <label for="zip" class="form-label">Zip</label>
