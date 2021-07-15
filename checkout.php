@@ -135,7 +135,7 @@ if($getUserBatchCount > 0) {
                 </div>
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">Billing address</h4>
-                    <form class="needs-validation" novalidate="">
+                    <form class="needs-validation" action="checkout-charge.php" method="POST" novalidate="">
                     <div class="row g-3">
                         <div class="col-sm-12">
                         <label for="firstName" class="form-label">Name</label>
@@ -196,11 +196,32 @@ if($getUserBatchCount > 0) {
                         </div>
                         </div>
                     </div>
+                    <?php 
+                    $getOrderQuery = DB::query("SELECT * FROM orders");
+                    $getOrderCount = DB::count();
+                    if($getOrderCount > 0) {
+                        $orderCount = $getOrderCount + 1;
+                    } else {
+                        $orderCount = 1;
+                    }
+                    ?>
+                    
+                    <input type="hidden" name="amount" value="<?php echo number_format((float)$totalcartprice, 2, '.', '') * 100; ?>">
+                    <input type="hidden" name="product_name" value="Calorice - Order#<?php echo $orderCount?>">
 
                     <hr class="my-4">
+                    <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_51JC3VwF77heEa3oFtz0HzRPEOVUxvY1thI3QJlIi4QY4DLd6U7NiwR3DMJZlNqjTLg9iVamxN9AvcheBkGJ3WzJX00PnoxuKvI"
+                    data-amount=<?php echo number_format((float)$totalcartprice, 2, '.', '') * 100; ?>
+                    data-name="Calorice"
+                    data-currency="sgd"
+                    data-locale="auto">
+                    </script>
 
-                    <button class="w-100 btn btn-primary btn-lg btncheckout" type="submit">Continue to checkout</button>
+                    <!-- <button class="w-100 btn btn-primary btn-lg checkout"  >Continue to checkout</button> -->
                     </form>
+                    
                 </div>
                 </div>
             </div>
