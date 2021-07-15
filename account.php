@@ -210,20 +210,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                     </div>
 
                     <!-- Start of Addresses Row - WIP -->
-
-                    <div class="row accrow addressrow accountpage" id="addresses">
-                        <div>
-                            <h4 class="accheader">My Addresses</h4>
-                            <div class="row">
-                                <div class="col-4 addaddressdiv">
-                                    <div class="row">
-                                        <i class="fa fa-plus" style="font-size: 48px"></i>
-                                    </div>
-                                    <div class="row">
-                                        <a class="addaddressbutton addbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Address</a>
-                                    </div>
-
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -289,6 +276,21 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                                             </div>
                                         </div>
                                     </div>
+
+
+                    <div class="row accrow addressrow accountpage" id="addresses">
+                        <div>
+                            <h4 class="accheader">My Addresses</h4>
+                            <div class="row">
+                                <div class="col-4 addaddressdiv">
+                                    <div class="row">
+                                        <i class="fa fa-plus" style="font-size: 48px"></i>
+                                    </div>
+                                    <div class="row">
+                                        <a class="addaddressbutton addbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Address</a>
+                                    </div>
+
+                                    
                                     
                                 </div>
                                 <div class="col-4">1</div>
