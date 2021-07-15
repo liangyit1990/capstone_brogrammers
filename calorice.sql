@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 15, 2021 at 10:46 AM
+-- Generation Time: Jul 15, 2021 at 07:31 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -21,6 +21,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `calorice`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `addresses`
+--
+
+CREATE TABLE `addresses` (
+  `addresses_id` int(128) NOT NULL,
+  `users_id` int(128) NOT NULL,
+  `addresses_default` tinyint(4) NOT NULL DEFAULT '0',
+  `addresses_fullName` varchar(256) NOT NULL,
+  `addresses_companyName` varchar(256) DEFAULT NULL,
+  `addresses_line1` varchar(256) NOT NULL,
+  `addresses_line2` varchar(256) DEFAULT NULL,
+  `addresses_unitNo` varchar(128) NOT NULL,
+  `addresses_country` varchar(256) NOT NULL,
+  `addresses_zipCode` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `addresses`
+--
+
+INSERT INTO `addresses` (`addresses_id`, `users_id`, `addresses_default`, `addresses_fullName`, `addresses_companyName`, `addresses_line1`, `addresses_line2`, `addresses_unitNo`, `addresses_country`, `addresses_zipCode`) VALUES
+(27, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670237');
 
 -- --------------------------------------------------------
 
@@ -121,7 +147,8 @@ INSERT INTO `feedbackothers` (`feedbackothers_id`, `feedbackothers_name`, `feedb
 (3, 'kenny', 'kenny@gmail.com', 'topic 3', 'msg 3', NULL),
 (4, 'tky', 'tky@gmail.com', 'topic 4', 'topic 4 with attachment', 'submittedfile/100721-soonkueh.jpg'),
 (5, 'tky', 'tky@gmail.com', 'topic 5', 'msg 5', 'submittedfile/100721-soonkueh.jpg1'),
-(6, 'kenny', 'kenny@gmail.com', 'topic 6', 'topic 6', 'submittedfile/100721-1-soonkueh.jpg');
+(6, 'kenny', 'kenny@gmail.com', 'topic 6', 'topic 6', 'submittedfile/100721-1-soonkueh.jpg'),
+(7, 'anselm sim', 'anselmsim@gmail.com', 'abc', 'abc', 'submittedfile/150721-oolong_tea-removebg-preview.png');
 
 -- --------------------------------------------------------
 
@@ -161,7 +188,11 @@ INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_subcategory`,
 (46, 'carrot juice', 'ala carte', 'drinks', 0, NULL, '2.50', 150, 'uploads/carrotjuice.png'),
 (47, 'curry gravy', 'ala carte', 'gravy', 0, NULL, '2.99', 300, 'uploads/gravycurry.png'),
 (48, 'braised soy gravy', 'ala carte', 'gravy', 0, NULL, '2.29', 250, 'uploads/gravybraisedsoy.png'),
-(49, 'mushroom gravy', 'ala carte', 'gravy', 0, NULL, '4.99', 375, 'uploads/gravymushroom.png');
+(49, 'mushroom gravy', 'ala carte', 'gravy', 0, NULL, '4.99', 375, 'uploads/gravymushroom.png'),
+(50, 'lemon ginger green tea', 'ala carte', 'drinks', 0, NULL, '2.99', 45, 'uploads/lemon_ginger_green_tea-removebg-preview.png'),
+(51, 'black tea', 'ala carte', 'drinks', 0, NULL, '2.99', 35, 'uploads/black_tea-removebg-preview.png'),
+(52, 'oolong tea', 'ala carte', 'drinks', 0, NULL, '1.99', 60, 'uploads/oolong_tea-removebg-preview.png'),
+(53, 'red tea', 'ala carte', 'drinks', 0, NULL, '1.99', 77, 'uploads/red_tea-removebg-preview.png');
 
 -- --------------------------------------------------------
 
@@ -217,13 +248,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`users_id`, `users_name`, `users_email`, `users_password`, `users_address`, `users_phone`, `users_age`, `users_gender`, `users_permission`, `users_joindate`) VALUES
-(2, 'anselm sim new', 'anselmsim@gmail.comnewnew', '$2y$10$T0a/EeWKAN2liNAhURmzbuA0Wt2Lyw2a7gbZEX.VRYaSP.IchQk9.', 'anselm add new new', '91839138', 25, 0, 0, '2021-07-06 07:57:57'),
 (6, 'ky', 'ky@gmail.com', '$2y$10$HtGb5WNwO6SBkoY2B/bZOe6QVePW.8ywqgMhmI8LeTV67zy3pQyGu', '', '', NULL, 0, 1, '2021-07-06 08:31:17'),
 (8, 'hy', 'hy@gmail.com', '$2y$10$93fTm7vsxDe8B1WY/1w/YO2j36KvcHEnlRy..VYXy02gxWy5fjgVy', NULL, NULL, NULL, NULL, 0, '2021-07-08 11:45:23'),
 (15, 'tky', 'tky@gmail.com', '$2y$10$CpUgeO/P9NEE4rComYRp7ObDZLkwCe6vAtYP8WijdlCfLPnVWesgu', '', '', NULL, 0, 0, '2021-07-09 10:59:02'),
 (16, 'kenny', 'kenny@outlook.com', '$2y$10$EtHv/A7Sx1EKJlnh8JefyO5wv443goMi5nEfFAWm1dSByiGzZw2mm', NULL, NULL, NULL, NULL, 0, '2021-07-10 08:34:49'),
 (17, 'james', 'james@james.com', '$2y$10$fV.Gr2sveaRd0asxWJ7Us..eM9skXH.tYLXHV7jrc76eFtjV2X23u', NULL, NULL, NULL, NULL, 0, '2021-07-13 10:40:25'),
-(18, '14jul', '123@123.com', '$2y$10$VJ1smfBeaIPbqFF0QUt7Y.UK39vtKYERt.cA0jWci0tl9CjC8FU9O', NULL, NULL, NULL, NULL, 0, '2021-07-14 13:30:41');
+(19, 'anselm sim', 'anselmsim@gmail.com', '$2y$10$JXp5Vzx0DBRgySHpup3RIeRlxDAWlUokaVtXE01BLepDAlPpeC27K', '', '', NULL, 1, 0, '2021-07-15 18:25:00');
 
 -- --------------------------------------------------------
 
@@ -244,6 +274,12 @@ CREATE TABLE `vouchers` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `addresses`
+--
+ALTER TABLE `addresses`
+  ADD PRIMARY KEY (`addresses_id`);
 
 --
 -- Indexes for table `bento`
@@ -319,6 +355,12 @@ ALTER TABLE `vouchers`
 --
 
 --
+-- AUTO_INCREMENT for table `addresses`
+--
+ALTER TABLE `addresses`
+  MODIFY `addresses_id` int(128) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- AUTO_INCREMENT for table `bento`
 --
 ALTER TABLE `bento`
@@ -328,13 +370,13 @@ ALTER TABLE `bento`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `cartbatch`
 --
 ALTER TABLE `cartbatch`
-  MODIFY `cartbatch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cartbatch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -346,13 +388,13 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `feedbackothers`
 --
 ALTER TABLE `feedbackothers`
-  MODIFY `feedbackothers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `feedbackothers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -370,7 +412,7 @@ ALTER TABLE `submission`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `vouchers`
