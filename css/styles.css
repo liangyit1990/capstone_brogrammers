@@ -660,3 +660,28 @@ footer a {
     background-color: var(--text-color);
     border: var(--text-color)
 }
+
+/* orders page */
+.date-container{
+    display: grid;
+    width:100%;
+    height: 250px;
+    background:var(--text-color-light);
+    border-radius: 20px;
+    margin-top:10px;
+}
+
+.date-order{
+    display: grid;
+    width:100%;
+    height:60px;
+    background: #000;
+    color: #fff;
+    padding-left:5px;
+}
+.order-id{
+    justify-self: right;
+}
+.ship-id, .order-stat, .order-total{
+    padding-left: 5px;
+}
