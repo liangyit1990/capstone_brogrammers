@@ -70,7 +70,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                     <span class="menu_calorie">130 Cal</span>
                     <a class="button menu_button addbtn" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
                     <div class="modal fade" id="ricecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
                             <div class="modal-content">
                             <div class="modal-header border-bottom-0">
                                 <h5 class="modal-title" id="exampleModalLabel">
@@ -172,7 +172,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                     <span class="menu_calorie">174 Cal</span>
                     <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
                     <div class="modal fade" id="noodlecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
                             <div class="modal-content">
                             <div class="modal-header border-bottom-0">
                                 <h5 class="modal-title" id="exampleModalLabel">
