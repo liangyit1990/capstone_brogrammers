@@ -315,3 +315,26 @@ if(isset($_POST["upload"])) {
     }
 
 ?>
+
+<!-- address division for responsiveness -->
+
+<div class="col-4 responsivenessneeded">
+                                    <div class="row responsivenessneeded">
+                                        <h5>Anselm Sim</h5>
+                                        <p>BLK 237 Bukit Panjang Ring Road</p>
+                                        <p>Line 2</p>
+                                        <p>#13-75</p>
+                                        <p>Singapore 670237</p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <button type="button" class="btn btn-primary btn-sm editAdd">View/Edit</button>
+              
+                                        </div>
+                                        <div class="col-3">
+                                            <button type="button" class="btn btn-danger btn-sm deleteAdd">Delete</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                

@@ -298,35 +298,28 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                                     
                                     
                                 </div>
-
-                                <div class="col-4">
-                                    <div class="row">
-                                        <h5>Anselm Sim</h5>
-                                        <p>BLK 237 Bukit Panjang Ring Road</p>
-                                        <p>Line 2</p>
-                                        <p>#13-75</p>
-                                        <p>Singapore 670237</p>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <button type="button" class="btn btn-primary btn-sm editAdd" id="editUser" value="editUser" data-id="<?php echo $_COOKIE['users_id']; ?>" data-bs-toggle="modal" data-bs-target="#addressinfo<?php echo $getUserResult['users_id']; ?>" >View/Edit</button>
-              
-                                        </div>
-                                        <div class="col-3">
-                                            <button type="button" class="btn btn-danger btn-sm deleteAdd" data-id="<?php echo $_COOKIE['users_id']; ?>" data-name="<?php echo $_COOKIE['users_name']; ?>">Delete</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">2</div>
-                                <div class="col-4">3</div>
-                                <!-- <div class="col-4">
-                                    abc
-                                </div>
-                                <div class="col-4">
-                                    abc
-                                </div> -->
-
+                                <?php 
+                                    $address = DB::query("SELECT * FROM addresses WHERE users_id=%i " , $_COOKIE['users_id']);
+                                        foreach($address as $address_result){
+                                            echo '<div class="col-4 responsivenessneeded"><div class="row responsivenessneeded"><h5>';
+                                            echo $address_result['addresses_fullName']; echo '</h5><p>';
+                                            echo $address_result['addresses_line1']; echo '</p><p>';
+                                            echo $address_result['addresses_line2']; echo '</p><p>';
+                                            echo $address_result['addresses_unitNo']; echo '</p><p>';
+                                            echo $address_result['addresses_country'] . " " . $address_result['addresses_zipCode'];
+                                            echo '</p></div>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <button type="button" class="btn btn-primary btn-sm editAdd">View/Edit</button>
+                                                </div>
+                                                <div class="col-3">
+                                                    <button type="button" class="btn btn-danger btn-sm deleteAdd">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>';     
+                                        }
+                                
+                                ?>
 
                             </div>
                         </div>
