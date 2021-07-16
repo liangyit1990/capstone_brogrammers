@@ -58,7 +58,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
             </div>
         <div class="line">   
             
-                <img class="sunny filter-green" src="images/sunny2.svg">
+                <img class="sunny filter-green" src="images/sun2.svg">
                 
             
         </div>
