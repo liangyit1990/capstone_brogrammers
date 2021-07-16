@@ -139,9 +139,9 @@ body{
     margin: -20px 0 0 -500px; */
     transition: -webkit-transform 2s;
 }
-.rotate_01:hover{
+/* .rotate_01:hover{
     transform: rotate(360deg) translateZ(0);
-}
+} */
 
 
 /* end */

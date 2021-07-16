@@ -109,6 +109,13 @@ $win.on('scroll', function () {
     $sunny.css('transform', 'rotate(' + top + 'deg )');
 });
 
+var $pan = $('.pan');
+var $win = $(window);
+
+$win.on('scroll', function () {
+    var top = $win.scrollTop() ;
+    $pan.css('transform', 'translate(' + top + 'px )');
+});
 
 
 $(".clear-cart").click(function () {

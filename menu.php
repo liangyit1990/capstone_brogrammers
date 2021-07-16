@@ -36,26 +36,29 @@ include "config/functions.php";
     ?>
 
     <!-- anselm -->
+    <div class="panline">   
+                <img class="pan filter-green" src="images/pan.svg">
+        </div>
     <div class="container">
         <div class="row">
-            <h1 class="text-center">Our Full Menu</h1>
+            <h1 class="text-center">Customised Menu</h1>
 
         </div>
 
         <div class="row bentodiv">
             <h1 class="text-center">Bento</h1>
             <p class="text-center">
-                Description: Our Bentos are...
+                <!-- Description: Our Bentos are... -->
             </p>
-            <div>
-                <div class="sortbyoptions"><b>Show Only:</b>
+            <div class="searchmenu">
+                <div class="sortbyoptions">
+                    <b>Show Only:</b>
                     <select class="drinksoptionsbox">
                         <option><span>-</span></option>
                         <option>Chicken</option>
                         <option>Seafood</option>
                         <option>Others</option>
                     </select>
-                    <br>
                     <b>Sort By:</b>
                     <select class="drinkssort">
                         <option><span class="text-center">-</span></option>
@@ -89,9 +92,9 @@ include "config/functions.php";
         <div class="row drinksdiv">
             <h1 class="text-center">Drinks</h1>
             <p class="text-center">
-                Description
+                <!-- Description -->
             </p>
-            <div>
+            <!-- <div>
                 <div class="sortbyoptions"><b>Show Only:</b>
                     <select class="drinksoptionsbox">
                         <option><span>-</span></option>
@@ -108,7 +111,7 @@ include "config/functions.php";
                         <option>Alphabetically</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
 
             <?php
                 $drinks = DB::query('SELECT * FROM food WHERE food_subcategory = "drinks"');
@@ -130,7 +133,7 @@ include "config/functions.php";
         <div class="row gravydiv">
             <h1 class="text-center">Gravy</h1>
             <p class="text-center">
-                Description
+                <!-- Description -->
             </p>
 
             <?php

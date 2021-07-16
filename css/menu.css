@@ -19,7 +19,20 @@
     transition:0.3s;
     font-family: var(--body-font);
     cursor:pointer;
+}
 
+.searchmenu{
+    max-width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content:space-between;
+    margin-top:40px;
+}
+
+.sortbyoptions{
+    margin-right:0px;
+    margin-left:auto;
+    display:block;
 }
 
 .addbutton:hover{
@@ -32,4 +45,21 @@
 
 .addbuttonrow {
     padding-top: 0.5em;
+}
+
+/* scroll animation */
+.panline{
+    max-width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content:space-between;
+}
+.pan{
+    width: 150px;
+    height:150px;
+    margin-left:100px;
+    margin-right:auto;
+    display:block;
+    margin-top:60px;
+    
 }
