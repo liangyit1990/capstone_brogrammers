@@ -286,18 +286,24 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
         
 
 
-    <!-- main js here -->
-        <script src="js/main.js"></script>
+    
     <!-- bootstrap jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- main js here -->
+    <script src="js/main.js"></script>
         <script>
         <?php
         if($_GET['logoutSuccess'] == 1){
             echo 'swal("Logged Out.", "You have logged out successfully.", "success");';
         }
         ?>
+
+        $(".clearCart").click(function(){
+            console.log('1');
+        })
+
         </script>
 </body>
 </html>
