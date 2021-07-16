@@ -318,7 +318,7 @@ if(isset($_POST["upload"])) {
 
 <!-- address division for responsiveness -->
 
-<div class="col-4 responsivenessneeded">
+                                <div class="col-4 responsivenessneeded">
                                     <div class="row responsivenessneeded">
                                         <h5>Anselm Sim</h5>
                                         <p>BLK 237 Bukit Panjang Ring Road</p>

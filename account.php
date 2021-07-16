@@ -31,6 +31,11 @@ foreach($updateUserPassword as $updateUserPassword_result) {
 }
 
 // For Addresses
+$address = DB::query("SELECT * FROM addresses WHERE users_id=%i", $_COOKIE['users_id']);
+foreach($address as $address_result) {
+    $dBId = $address_result['users_id'];
+    $dBPassword = $address_result['users_password'];
+}
 
 
 ?>
@@ -209,8 +214,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                         </div>
                     </div>
 
-                    <!-- Start of Addresses Row - WIP -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -310,50 +314,141 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                                             echo '</p></div>
                                             <div class="row">
                                                 <div class="col-3">
-                                                    <button type="button" class="btn btn-primary btn-sm editAdd">View/Edit</button>
+                                                    <button type="button" class="btn btn-primary btn-sm editAdd" value="editAdd" data-bs-toggle="modal" data-bs-target="#addressinfo';
+
+                                                    echo $address_result['addresses_id'];
+
+                                                    echo '">Edit</button>
                                                 </div>
                                                 <div class="col-3">
-                                                    <button type="button" class="btn btn-danger btn-sm deleteAdd">Delete</button>
+                                                    <button type="button" class="btn btn-danger btn-sm deleteAdd" data-id="';
+
+                                            echo $address_result['addresses_id'];
+                                                    
+                                            echo '">Delete</button>
                                                 </div>
                                             </div>
-                                        </div>';     
+                                        </div>';
+                                        // start of modal for individual address box
+                                        echo '
+                                        <div class="modal fade" id="addressinfo';
+                                        
+                                        echo $address_result['addresses_id'];
+
+
+                                        echo'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Edit your Address</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    
+                                                </div>
+
+                                                <div class="modal-body">
+
+                                                    <form class="row g-3">
+                                                        <div class="form-group col-12">
+                                                            <label for="fullName">Full Name<span class="redasterisk">*</span></label>
+                                                            <input type="text" class="form-control fullName' . $address_result['addresses_id']; echo'" placeholder="" name="fullName" value="';
+
+                                                            echo $address_result['addresses_fullName'];
+
+                                                            echo'">
+                                                        </div>
+                                                        <div class="form-group col-12">
+                                                            <label for="companyName">Company/Organization</label>
+                                                            <input type="text" class="form-control company' . $address_result['addresses_id']; echo'" placeholder="" name="companyName" value="';
+
+                                                            echo $address_result['addresses_companyName'];
+
+                                                            echo'">
+                                                        </div>
+                                                        <div class="form-group col-12">
+                                                            <label for="line1">Address Line 1<span class="redasterisk">*</span></label>
+                                                            <input type="text" class="form-control line1' . $address_result['addresses_id']; echo'" placeholder="" name="line1" value="';
+
+                                                            echo $address_result['addresses_line1'];
+
+                                                            echo'">
+                                                        </div>
+                                                        <div class="form-group col-12">
+                                                            <label for="line2">Address Line 2</label>
+                                                            <input type="text" class="form-control line2' . $address_result['addresses_id']; echo'" placeholder="" name="line2" value="';
+
+
+                                                            echo $address_result['addresses_line2'];
+
+
+                                                            echo'">
+                                                        </div>
+                                                        <div class="form-group col-12">
+                                                            <label for="unitNo">Unit Number<span class="redasterisk">*</span></label>
+                                                            <input type="text" class="form-control unitNo' . $address_result['addresses_id']; echo'" placeholder="" name="unitNo" value="';
+
+                                                            echo $address_result['addresses_unitNo'];
+
+
+                                                            echo'">
+                                                        </div>
+
+                                                        <div class="form-group col-md-6">
+                                                            <label for="country">Country<span class="redasterisk">*</span></label>
+                                                            <select class="form-control country' . $address_result['addresses_id']; echo'" placeholder="" name="country" value="';
+
+                                                            echo $address_result['addresses_country'];
+
+
+                                                            echo'">
+                                                                <option value="Singapore">Singapore</option>
+                                                                <option value="Malaysia">Malaysia</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="zipCode">Zip Code<span class="redasterisk">*</span></label>
+                                                            <input type="text" class="form-control zipCode' . $address_result['addresses_id']; echo'" placeholder="" name="zipCode" value="';
+
+                                                            echo $address_result['addresses_zipCode'];
+
+
+                                                            echo'">
+                                                            <input type="text" class="form-control hiddenusersid d-none" name="users_id" value="';
+
+                                                            echo $_COOKIE['users_id'];
+
+                                                            echo'">
+                                                        </div>
+
+                                                        <div class="form-group requiredfields">
+                                                            <p>Fields marked with a<span class="redasterisk"> * </span> are required.</p>
+                                                        </div>
+                                                    </form>
+
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary saveAddressChanges" name="saveAddressChanges" data-id="';
+
+                                                        echo $address_result['addresses_id'];
+                                                                
+                                                        echo '>Save Changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        ';     
                                         }
                                 
                                 ?>
+
 
                             </div>
                         </div>
                     </div>
 
 
-                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Launch demo modal
-                        </button>-->
-                        <!-- Modal -->
-                    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            abcd
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Submit</button>
-
-                            </div>
-                        </div>
-                        </div>
-                    </div> -->
-
-
-                    <!-- <div class="row accrow giftcardsrow" id="giftcards">
-                    <h4>Gift Cards</h4>
-                    <p><i>Available Soon!</i></p>
-                    </div> -->
             </div>
         </div>
 
@@ -379,13 +474,15 @@ foreach($updateUserPassword as $updateUserPassword_result) {
     
 
 
-    <!-- main js here -->
-    <script src="js/main.js"></script>
     <!-- bootstrap jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- main js here -->
+        <script src="js/main.js"></script>
+
     <script>
+        
     <?php
     if($_GET['logoutSuccess'] == 1){
         echo 'swal("Logged Out.", "You have logged out successfully.", "success");';
@@ -495,6 +592,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
         })
 
         $(".saveAddress").click(function(){
+            
             var thisBtn = this;
             var users_id = $(".hiddenusersid").val();
             var fullName = $(".fullName").val();
@@ -504,17 +602,6 @@ foreach($updateUserPassword as $updateUserPassword_result) {
             var unitNo = $(".unitNo").val();
             var country = $(".country").val();
             var zipCode = $(".zipCode").val();
-
-            // console.log(`User Id : ${users_id}`);
-            // console.log(`Full name : ${fullName}`);
-            // console.log(`Company : ${company}`);
-            // console.log(`line1 : ${line1}`);
-            // console.log(`line2 : ${line2}`);
-            // console.log(`unitNo : ${unitNo}`);
-            // console.log(`country : ${country}`);
-            // console.log(`Zip code : ${zipCode}`);
-            // console.log(`saveAddress : ${saveAddress}`);
-           
 
             $.ajax({
                 url: 'address.php',
@@ -553,45 +640,107 @@ foreach($updateUserPassword as $updateUserPassword_result) {
             })
         })
 
-        // $(".deleteAdd").click(function(){
-        //     var thisBtn = this;
-        //     var deleteId = $(this).data('id');
-        //     var deleteName = $(this).data('name');
-        //     var userid = `.userdata${deleteId}`;
-        //     //Alert message before confirm to delete
-        //     swal({
-        //     title: `Are you sure you want to delete ${deleteName}`,
-        //     text: "Once deleted, you will not be able to recover this user!",
-        //     icon: "warning",
-        //     buttons: true,
-        //     dangerMode: true,
-        //     })
-        //     .then((willDelete) => {
-        //     //Proceed to delete if user press okay, else do nothing
-        //     if (willDelete) {
-        //         swal("Poof! User has been deleted!", {
-        //         icon: "success",
-        //         });
-        //         //Ajax to delete user from database
-        //         $.ajax({
-        //         url: 'deleteuser.php', //action
-        //         method: 'POST', //method
-        //         data:{
-        //             deleteId:deleteId
-        //         },
-        //         success:function(data){
-                    
-        //             if(data == 1){
-        //             $(thisBtn).closest('.userdata').remove();
-        //             } else {
-        //                     alert(data);
-        //                 }
-        //         }
-        //         });
-        //     } 
-        //     });
+
+        $(".saveAddressChanges").click(function(){
+            var saveId = $(this).data('id'); //data-id class
+            // var users_id = $(".hiddenusersid").val();
+            var fullName = $(`.fullName${saveId}`).val();
+            var company = $(`.company${saveId}`).val();
+            var line1 = $(`.line1${saveId}`).val();
+            var line2 = $(`.line2${saveId}`).val();
+            var unitNo = $(`.unitNo${saveId}`).val();
+            var country = $(`.country${saveId}`).val();
+            var zipCode = $(`.zipCode${saveId}`).val();
+            var editAdd = $(".editAdd").val();
+                // console.log(fullName);
+                // console.log(company);
+                // console.log(line1);
+                // console.log(line2);
+                // console.log(unitNo);
+                // console.log(country);
+                // console.log(zipCode);
+                // console.log(editAdd);
                 
-        // });
+          //Ajax to update users info
+          $.ajax({
+            // url: 'adminedit.php', 
+            // method: 'POST', 
+            // data:{
+            // id:id,
+            // name:name,
+            // email:email,
+            // phone:phone,
+            // address:address,
+            // gender:gender,
+            // permission:permission,
+            // editUser:editUser
+            // },
+            // success:function(data){
+            //   if(data==2){
+            //     swal("Success!", "User Profile Updated", "success");
+            //     var userid = `.userdata${id}`;
+            //     $(userid).find('td').eq(1).text(name);
+            //     $(userid).find('td').eq(2).text(email);
+            //   } else {
+            //       swal("Error!", "Please ensure all sections are filled up", "error");
+            //   }
+                        
+            // }
+          });       
+        })
+      
+
+
+
+
+        $(".deleteAdd").click(function(){
+            var thisBtn = this;
+            var deleteId = $(this).data('id'); //data-id class
+            // var userid = `.userdata${deleteId}`;
+            //Alert message before confirm to delete
+            swal({
+            title: `Are you sure you want to delete?`,
+            text: "Once deleted, you will not be able to recover the address!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            //Proceed to delete if user press okay, else do nothing
+            if (willDelete) {
+
+                //Ajax to delete user from database
+                $.ajax({
+                url: 'deleteaddress.php', //action
+                method: 'POST', //method
+                data:{
+                    deleteId:deleteId
+                },
+
+
+                success:function(data){
+                    
+                    if(data == 1){
+                        swal("Address deleted successfully", {
+                        icon: "success",
+                        timer : 2000
+
+                        }).then(function() {
+                                location.reload();
+                        });
+
+                        // location.reload();
+                    } 
+                    
+                    // else {
+                    //         alert(data);
+                    //     }
+                }
+                });
+            } 
+            });
+                
+        });
 
 
         });

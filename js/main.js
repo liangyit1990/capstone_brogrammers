@@ -1,12 +1,12 @@
 // to reveal menu
-const showMenu = (toggleId, navId) =>{
+const showMenu = (toggleId, navId) => {
     const toggle = document.getElementById(toggleId),
-    nav= document.getElementById(navId)
+        nav = document.getElementById(navId)
 
     // Variable validation
-    if (toggle && nav){
+    if (toggle && nav) {
         // add show-menu class to the div tagged with nav_menu class
-        toggle.addEventListener('click', ()=>{
+        toggle.addEventListener('click', () => {
             nav.classList.toggle('show-menu')
         })
     }
@@ -15,13 +15,13 @@ showMenu('nav-toggle', 'nav-menu')
 
 // when one of the nav_link is clicked, remove the show-menu
 
-const navLink= document.querySelectorAll('.nav_link')
+const navLink = document.querySelectorAll('.nav_link')
 
-function linkAction(){
-    const navMenu= document.getElementById('nav-menu')
+function linkAction() {
+    const navMenu = document.getElementById('nav-menu')
     navMenu.classList.remove('show-menu')
 }
-navLink.forEach(n=>n.addEventListener('click', linkAction))
+navLink.forEach(n => n.addEventListener('click', linkAction))
 
 // scroll to active section
 
@@ -46,20 +46,20 @@ const sections = document.querySelectorAll('section[id]')
 // window.addEventListener('scroll', scrollActive)
 
 // change background header
-function scrollHeader(){
+function scrollHeader() {
     const nav = document.getElementById('header')
     //when scroll is above than 200 viewport height, add scroll-header class to header tag
-    if(this.scrollY >= 200) nav.classList.add('scroll-header');
+    if (this.scrollY >= 200) nav.classList.add('scroll-header');
     else nav.classList.remove('scroll-header')
 }
 window.addEventListener('scroll', scrollHeader)
 
 //show scrollTop
 
-function scrollTop(){
+function scrollTop() {
     const scrollTop = document.getElementById('scroll-top')
     //when scroll is above than 550 viewport height, add scroll-header class to header tag
-    if(this.scrollY >= 300) scrollTop.classList.add('scroll-top');
+    if (this.scrollY >= 300) scrollTop.classList.add('scroll-top');
     else scrollTop.classList.remove('scroll-top')
 }
 window.addEventListener('scroll', scrollTop)
@@ -85,9 +85,9 @@ const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-moo
 
 // We validate if the user previously chose a theme
 if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-  themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme)
+    // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+    themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme)
 }
 
 // Activate / deactivate the theme manually with the button
@@ -104,21 +104,23 @@ themeButton.addEventListener('click', () => {
 var $sunny = $('.sunny, .egg, .rotate_01');
 var $win = $(window);
 
-$win.on('scroll', function(){
-    var top = $win.scrollTop()/2;
+$win.on('scroll', function () {
+    var top = $win.scrollTop() / 2;
     $sunny.css('transform', 'rotate(' + top + 'deg )');
 });
 
-$(".clear-cart").click(function(){
-    if($(".count").text() == 0){
+
+
+$(".clear-cart").click(function () {
+    if ($(".count").text() == 0) {
         swal("Cart is already empty!", {
             buttons: false,
             timer: 2000,
-          });
+        });
 
     } else {
         var deleteCartUserId = $(this).data('id');
-         
+
 
         swal({
             title: `Are you sure you want to empty cart?`,
@@ -126,33 +128,33 @@ $(".clear-cart").click(function(){
             icon: "warning",
             buttons: true,
             dangerMode: true,
-            })
+        })
 
             .then((willDelete) => {
-            //Proceed to delete if user press okay, else do nothing
+                //Proceed to delete if user press okay, else do nothing
                 if (willDelete) {
                     swal("Poof! Cart has been emptied!", {
-                    icon: "success",
+                        icon: "success",
                     });
                     $.ajax({
-                    url: 'deletecart.php', //action
-                    method: 'POST', //method
-                    data:{
-                        deleteCartUserId:deleteCartUserId
-                    },
-                    success:function(data){
-                        console.log(data);
-                        if(data == 1){
-                            $(".count").text("0");
-                        } else {
-                            alert(data);
-                    }
+                        url: 'deletecart.php', //action
+                        method: 'POST', //method
+                        data: {
+                            deleteCartUserId: deleteCartUserId
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if (data == 1) {
+                                $(".count").text("0");
+                            } else {
+                                alert(data);
+                            }
+                        }
+                    });
                 }
             });
-                } 
-                });
-        }
-    
+    }
+
 
 
 
@@ -201,7 +203,7 @@ $(".clear-cart").click(function(){
 // }
 
 // function cartNumbers(products){
-    
+
 //     let productNumbers = localStorage.getItem('cartNumbers');
 
 //     productNumbers = parseInt(productNumbers);
@@ -218,7 +220,7 @@ $(".clear-cart").click(function(){
 //     function setItems(products){
 //         let cartItems = localStorage.getItem('productsInCart');
 //         cartItems = JSON.parse(cartItems);
-        
+
 
 //         if(cartItems !=null){
 //             if (cartItems[products.tag] == undefined){
@@ -236,14 +238,14 @@ $(".clear-cart").click(function(){
 //             }
 //         }
 
-        
-        
+
+
 //         localStorage.setItem("productsInCart", JSON.stringify (cartItems));
 //     }
 //     function totalCost(products){
 //         //console.log("price is", products.price);
 //         let cartCost = localStorage.getItem("totalCost");
-        
+
 
 //         if(cartCost != null){
 //             cartCost = parseInt(cartCost);
@@ -252,7 +254,7 @@ $(".clear-cart").click(function(){
 //             localStorage.setItem("totalCost", products.price);
 //         }
 
-        
+
 //     }
 
 // onLoadCartNumbers();

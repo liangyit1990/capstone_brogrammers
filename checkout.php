@@ -27,7 +27,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
     }
 }
 
-$address = DB::query('SELECT * FROM addresses WHERE users_id=%i', $_COOKIE['users_id']);
+$address = DB::query('SELECT * FROM addresses WHERE users_id=%i AND addresses_default = 1', $_COOKIE['users_id']);
 foreach($address as $address_result) {
     // $return_address = $address_result['users_email'];
 }
