@@ -19,6 +19,27 @@ if((empty($_POST['fullName']) || empty($_POST['line1'])) || (empty($_POST['count
     $checkAddress = DB::query("SELECT * FROM addresses WHERE users_id=%i", $_COOKIE['users_id']);
     $checkAddressCount = DB::count();
 
+    if($checkAddressCount > 0){
+        foreach($checkAddress as $checkAddressResult){
+            if($unitNo == $checkAddressResult['addresses_unitNo'] && $zipCode == $checkAddressResult['addresses_zipCode']){
+                echo "Please enter a different address";
+            } else {
+                DB::insert("addresses", [
+                    'users_id' => $_COOKIE['users_id'],
+                    'addresses_fullName' => $fullName,
+                    'addresses_companyName' => $company,
+                    'addresses_line1' => $line1,
+                    'addresses_line2' => $line2,
+                    'addresses_unitNo' => $unitNo,
+                    'addresses_country' => $country,
+                    'addresses_zipCode' => $zipCode,
+                ]);
+                echo 1;        
+        
+            }
+        } 
+    // header("Location: " . SITE_URL . "account.php#addresses?saveAddSuccess=1");
+    }  else {
         DB::insert("addresses", [
             'users_id' => $_COOKIE['users_id'],
             'addresses_fullName' => $fullName,
@@ -30,26 +51,20 @@ if((empty($_POST['fullName']) || empty($_POST['line1'])) || (empty($_POST['count
             'addresses_zipCode' => $zipCode,
         ]);
         echo 1;        
-    // else if($checkAddressCount > 0){
-    //     foreach($checkAddress as $checkAddressResult){
-    //         if($unitNo == $checkAddressResult['addresses_unitNo'] && $zipCode == $checkAddressResult['addresses_zipCode']){
-    //             echo "Please enter a different address";
-    //         } else {
-    //             DB::insert("addresses", [
-    //                 'users_id' => $_COOKIE['users_id'],
-    //                 'addresses_fullName' => $fullName,
-    //                 'addresses_companyName' => $company,
-    //                 'addresses_line1' => $line1,
-    //                 'addresses_line2' => $line2,
-    //                 'addresses_unitNo' => $unitNo,
-    //                 'addresses_country' => $country,
-    //                 'addresses_zipCode' => $zipCode,
-    //             ]);
-    //             echo 1;        
-    //         }
-    //     } 
-    // // header("Location: " . SITE_URL . "account.php#addresses?saveAddSuccess=1");
-    // }         
+    }       
+
+
+        // DB::insert("addresses", [
+        //     'users_id' => $_COOKIE['users_id'],
+        //     'addresses_fullName' => $fullName,
+        //     'addresses_companyName' => $company,
+        //     'addresses_line1' => $line1,
+        //     'addresses_line2' => $line2,
+        //     'addresses_unitNo' => $unitNo,
+        //     'addresses_country' => $country,
+        //     'addresses_zipCode' => $zipCode,
+        // ]);
+        // echo 1;        
     
 }
 

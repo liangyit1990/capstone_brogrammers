@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 15, 2021 at 07:31 PM
+-- Generation Time: Jul 16, 2021 at 10:39 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -46,7 +46,11 @@ CREATE TABLE `addresses` (
 --
 
 INSERT INTO `addresses` (`addresses_id`, `users_id`, `addresses_default`, `addresses_fullName`, `addresses_companyName`, `addresses_line1`, `addresses_line2`, `addresses_unitNo`, `addresses_country`, `addresses_zipCode`) VALUES
-(27, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670237');
+(28, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670237'),
+(31, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670236'),
+(32, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670236'),
+(33, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670237'),
+(34, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670237');
 
 -- --------------------------------------------------------
 
@@ -358,7 +362,7 @@ ALTER TABLE `vouchers`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `addresses_id` int(128) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `addresses_id` int(128) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `bento`

@@ -534,7 +534,8 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                             buttons: false,
                             timer : 2000,
                             }).then(function() {
-                            window.location = "account.php#addresses";
+                                location.reload();
+                            // window.location = "account.php#addresses";
                             });
 
                     } else if (data == "Please enter all the required fields"){
