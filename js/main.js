@@ -100,6 +100,16 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
 
+// scroll animation
+var $sunny = $('.sunny, .egg');
+var $win = $(window);
+
+$win.on('scroll', function(){
+    var top = $win.scrollTop()/3;
+    $sunny.css('transform', 'rotate(' + top + 'deg )');
+});
+
+
 //payment
 
 

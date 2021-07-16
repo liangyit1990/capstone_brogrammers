@@ -24,6 +24,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
     <!-- css here -->
     <link rel="stylesheet" href="css/styles.css">
     
+    
     <title><?php echo SITE_NAME; ?></title>
 </head>
 <body>
@@ -55,6 +56,13 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                 <img class="img-home" src="images/bento_home.png" alt="" class="home_img">
                 
             </div>
+        <div class="line">   
+            
+                <img class="sunny filter-green" src="images/sunny2.svg">
+                
+            
+        </div>
+
         </section>
         <!-- Menu -->
         <section class="menu section bd-container" id="menu">
@@ -266,13 +274,15 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
             </div>
             <span class="section-subtitle"><br>OR<br></span>
             <span class="section-title"><a href= "<?php echo htmlspecialchars(SITE_URL . "menu.php"); ?>">Let us customise for YOU<a></span>
-            
-                
-                
             </div>
         </section>
         <!-- About us -->
         <section class="about section bd-container" id="about">
+            <div class="line">   
+                
+                <img class="egg filter-green" src="images/egg1.svg">
+            
+            </div>
             <div class="about_container bd-grid">
                 <div class="about_data">
                     <span class="section-title">About Us</span>
@@ -307,13 +317,12 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
         </div>
     </footer>
     
-
-
-<!-- main js here -->
-    <script src="js/main.js"></script>
 <!-- bootstrap jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
+<!-- main js here -->
+<script src="js/main.js"></script>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
     <?php
