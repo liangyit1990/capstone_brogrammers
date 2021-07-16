@@ -109,45 +109,57 @@ $win.on('scroll', function(){
     $sunny.css('transform', 'rotate(' + top + 'deg )');
 });
 
-// $(".clear-cart").click(function(){
-//     console.log('hello');
-//     // var deleteCartUserId = $(this).data('id');
+$(".clear-cart").click(function(){
+    if($(".count").text() == 0){
+        swal("Cart is already empty!", {
+            buttons: false,
+            timer: 2000,
+          });
 
-//     // swal({
-//     //     title: `Are you sure you want to empty cart?`,
-//     //     text: "Once emptied, all your cart items will be removed",
-//     //     icon: "warning",
-//     //     buttons: true,
-//     //     dangerMode: true,
-//     //     })
+    } else {
+        var deleteCartUserId = $(this).data('id');
+         
 
-//     //     .then((willDelete) => {
-//     //       //Proceed to delete if user press okay, else do nothing
-//     //         if (willDelete) {
-//     //             swal("Poof! Cart has been emptied!", {
-//     //             icon: "success",
-//     //             });
-//     //             $.ajax({
-//     //             url: 'deletecart.php', //action
-//     //             method: 'POST', //method
-//     //             data:{
-//     //                 deleteCartUserId:deleteCartUserId
-//     //             },
-//     //             success:function(data){
-//     //                 if(data == 1){
-//     //                     $(".count").text("0");
-//     //                 } else {
-//     //                     alert(data);
-//     //             }
-//     //         }
-//     //     });
-//     //         } 
-//     //         });
+        swal({
+            title: `Are you sure you want to empty cart?`,
+            text: "Once emptied, all your cart items will be removed",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+
+            .then((willDelete) => {
+            //Proceed to delete if user press okay, else do nothing
+                if (willDelete) {
+                    swal("Poof! Cart has been emptied!", {
+                    icon: "success",
+                    });
+                    $.ajax({
+                    url: 'deletecart.php', //action
+                    method: 'POST', //method
+                    data:{
+                        deleteCartUserId:deleteCartUserId
+                    },
+                    success:function(data){
+                        console.log(data);
+                        if(data == 1){
+                            $(".count").text("0");
+                        } else {
+                            alert(data);
+                    }
+                }
+            });
+                } 
+                });
+        }
+    
 
 
 
 
-// })
+})
+
+
 
 //payment
 

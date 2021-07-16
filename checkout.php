@@ -77,7 +77,7 @@ foreach($address as $address_result) {
                 <div class="col-md-5 col-lg-4 order-md-last">
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-primary">Your cart</span>
-                    <span class="badge bg-primary rounded-pill"><?php echo $totalCartItem ?></span>
+                    <span class="badge bg-primary rounded-pill cartItemNo"><?php echo $totalCartItem ?></span>
                     </h4>
                     <ul class="list-group mb-3">
                         <?php 
@@ -161,7 +161,7 @@ foreach($address as $address_result) {
                             <strong><?php echo number_format((float)$totalcartprice, 2, '.', ''); ?></strong>
                         </li>
                     </ul>
-                    <button type="button" class="btn btn-primary btn-sm clearCart" id="clearCart" value="clearCart" data-id="" data-bs-toggle="modal" data-bs-target="" >Clear Cart</button>
+                    <button type="button" class="btn btn-primary btn-sm clearCart" id="clearCart" data-id="<?php echo $_COOKIE["users_id"] ?>" wait >Clear Cart</button>
                     <a href="<?php echo SITE_URL; ?>"><button type="button" class="btn btn-primary btn-sm backtohome" id="backtohome" value="backtohome" data-id="" data-bs-toggle="modal" data-bs-target="" >Back to Home</button></a>
 
 
@@ -256,12 +256,13 @@ foreach($address as $address_result) {
                     
                     <input type="hidden" name="amount" value="<?php echo number_format((float)$totalcartprice, 2, '.', '') * 100; ?>">
                     <input type="hidden" name="product_name" value="Calorice - Order#<?php echo $orderCount?>">
+                    
 
                     <hr class="my-4">
                     <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="pk_test_51JC3VwF77heEa3oFtz0HzRPEOVUxvY1thI3QJlIi4QY4DLd6U7NiwR3DMJZlNqjTLg9iVamxN9AvcheBkGJ3WzJX00PnoxuKvI"
-                    data-amount=<?php echo number_format((float)$totalcartprice, 2, '.', ''); ?>
+                    data-amount=<?php echo number_format((float)$totalcartprice, 2, '.', '') * 100; ?>
                     data-name="C A L O R I C E"
                     data-currency="sgd"
                     data-locale="auto">
@@ -299,18 +300,68 @@ foreach($address as $address_result) {
         
 
 
-    <!-- main js here -->
-        <script src="js/main.js"></script>
+    
     <!-- bootstrap jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- main js here -->
+    <script src="js/main.js"></script>
         <script>
         <?php
         if($_GET['logoutSuccess'] == 1){
             echo 'swal("Logged Out.", "You have logged out successfully.", "success");';
         }
         ?>
+
+        $(".clearCart").click(function(){
+            if($(".cartItemNo").text() == 0){
+                swal("Cart is already empty!", {
+                    buttons: false,
+                    timer: 2000,
+                });
+
+                } else {
+                var deleteCartUserId = $(this).data('id');
+                
+
+                swal({
+                    title: `Are you sure you want to empty cart?`,
+                    text: "Once emptied, all your cart items will be removed",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    })
+
+                    .then((willDelete) => {
+                    //Proceed to delete if user press okay, else do nothing
+                        if (willDelete) {
+                            swal("Poof! Cart has been emptied!", {
+                            icon: "success",
+                            });
+                            $.ajax({
+                            url: 'deletecart.php', //action
+                            method: 'POST', //method
+                            data:{
+                                deleteCartUserId:deleteCartUserId
+                            },
+                            success:function(data){
+                                console.log(data);
+                                if(data == 1){
+                                    $(".cartItemNo").text("0");
+                                    $(".list-group-item").remove();
+                                } else {
+                                    alert(data);
+                            }
+                        }
+                    });
+                        } 
+                        });
+                }
+    
+
+        })
+
         </script>
 </body>
 </html>
