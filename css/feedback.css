@@ -230,7 +230,7 @@ img{
 
 .contact-in{
     width:50%;
-    height:1000px;
+    height:1200px;
     margin:auto;
     display: flex;
     flex-wrap:wrap;
@@ -238,7 +238,7 @@ img{
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px #666;
     justify-content: center;
-    
+    padding: 1em;
 }
 
 /* Google map */

@@ -14,6 +14,22 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>Transaction Completed!</title>
+    <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+        .success-container {
+            width:50%;
+            position:absolute;
+            top:30%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            color:#bdc3c7;
+            font-weight:bold;
+            font-family: "Poppins", sans-serif;
+        }
+    </style>
+=======
     <link rel="icon" href="images/logo.png">
     <!-- scroll reveal here
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script> -->
@@ -27,6 +43,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 
     
     <title><?php echo SITE_NAME; ?></title>
+>>>>>>> a610f768a9e8566708587ae8104f4da2c0f6013a
 </head>
 <body>
       <section class="success-container">

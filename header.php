@@ -46,7 +46,7 @@ if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])){
                 <!-- <div class="item-count">0</div> -->
                 
             </div>
-            <button class="clear-cart">CLEAR</button>
+            <button class="clear-cart" data-id="<?php echo $_COOKIE["users_id"] ?>">CLEAR</button>
             
             <div class="nav_toggle" id="nav-toggle">
                 

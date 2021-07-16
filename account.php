@@ -243,6 +243,11 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                                                             <label for="line2">Address Line 2</label>
                                                             <input type="text" class="form-control line2" id="line2" placeholder="" name="line2" value="">
                                                         </div>
+                                                        <div class="form-group col-12">
+                                                            <label for="unitNo">Unit Number<span class="redasterisk">*</span></label>
+                                                            <input type="text" class="form-control unitNo" id="unitNo" placeholder="" name="unitNo" value="">
+                                                        </div>
+
                                                         <div class="form-group col-md-6">
                                                             <label for="country">Country<span class="redasterisk">*</span></label>
                                                             <select class="form-control country" id="country" placeholder="" name="country" value="">
@@ -293,7 +298,26 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                                     
                                     
                                 </div>
-                                <div class="col-4">1</div>
+
+                                <div class="col-4">
+                                    <div class="row">
+                                        <h5>Anselm Sim</h5>
+                                        <p>BLK 237 Bukit Panjang Ring Road</p>
+                                        <p>Line 2</p>
+                                        <p>#13-75</p>
+                                        <p>Singapore 670237</p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <button type="button" class="btn btn-primary btn-sm editAdd" id="editUser" value="editUser" data-id="<?php echo $_COOKIE['users_id']; ?>" data-bs-toggle="modal" data-bs-target="#addressinfo<?php echo $getUserResult['users_id']; ?>" >View/Edit</button>
+              
+                                        </div>
+                                        <div class="col-3">
+                                            <button type="button" class="btn btn-danger btn-sm deleteAdd" data-id="<?php echo $_COOKIE['users_id']; ?>" data-name="<?php echo $_COOKIE['users_name']; ?>">Delete</button>
+
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-4">2</div>
                                 <div class="col-4">3</div>
                                 <!-- <div class="col-4">
@@ -484,6 +508,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
             var company = $(".company").val();
             var line1 = $(".line1").val();
             var line2 = $(".line2").val();
+            var unitNo = $(".unitNo").val();
             var country = $(".country").val();
             var zipCode = $(".zipCode").val();
             $.ajax({
@@ -495,6 +520,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                 company: company,
                 line1: line1,
                 line2: line2,
+                unitNo: unitNo,
                 country: country, 
                 zipCode: zipCode
                 },
@@ -511,13 +537,55 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                             window.location = "account.php#addresses";
                             });
 
-                    } else if (data == "Please enter all the required fields!"){
-                        swal("Oops...", "Please enter all the required fields!", "error");
+                    } else if (data == "Please enter all the required fields"){
+                        swal("Oops...", "Please enter all the required fields", "error");
+                    } else if (data == "Please enter a different address"){
+                        swal("Oops...", "Please enter a different address", "error");
                     } 
                     
                 }
             })
         })
+
+        // $(".deleteAdd").click(function(){
+        //     var thisBtn = this;
+        //     var deleteId = $(this).data('id');
+        //     var deleteName = $(this).data('name');
+        //     var userid = `.userdata${deleteId}`;
+        //     //Alert message before confirm to delete
+        //     swal({
+        //     title: `Are you sure you want to delete ${deleteName}`,
+        //     text: "Once deleted, you will not be able to recover this user!",
+        //     icon: "warning",
+        //     buttons: true,
+        //     dangerMode: true,
+        //     })
+        //     .then((willDelete) => {
+        //     //Proceed to delete if user press okay, else do nothing
+        //     if (willDelete) {
+        //         swal("Poof! User has been deleted!", {
+        //         icon: "success",
+        //         });
+        //         //Ajax to delete user from database
+        //         $.ajax({
+        //         url: 'deleteuser.php', //action
+        //         method: 'POST', //method
+        //         data:{
+        //             deleteId:deleteId
+        //         },
+        //         success:function(data){
+                    
+        //             if(data == 1){
+        //             $(thisBtn).closest('.userdata').remove();
+        //             } else {
+        //                     alert(data);
+        //                 }
+        //         }
+        //         });
+        //     } 
+        //     });
+                
+        // });
 
 
         });

@@ -25,8 +25,8 @@
     background-color: var(--primary-color-alt);
 }
 
-.bentodiv {
-    padding: 1em;
+.bentodiv, .drinksdiv, .gravydiv {
+    padding: 2em 1em;
 }
 
 .addbuttonrow {
