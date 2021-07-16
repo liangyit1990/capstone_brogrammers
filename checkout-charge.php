@@ -1,4 +1,8 @@
 <?php
+include "config/config.php";
+include "config/db.php";
+include "config/functions.php"; 
+
     require_once "stripe-php-master/init.php";
 
     $stripeDetails = array(
@@ -24,6 +28,25 @@
     ]);
 
     if($charge){
+
+      $getUserBatchQuery = DB::query("SELECT cartbatch_no FROM cartbatch WHERE users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
+      $getUserBatchCount = DB::count();
+
+
+      DB::update("cart", [
+        'cart_status' => 1
+        
+      ], "users_id=%i", $_COOKIE['users_id']);      
+
+      DB::update("cartbatch", [
+        'cartbatch_status' => 1
+        
+      ], "users_id=%i", $_COOKIE['users_id']);     
+
+
+
+
+      $totalprice = $amount / 100;
       header("Location:success.php?amount=$amount");
     }
 ?>

@@ -109,7 +109,7 @@ $win.on('scroll', function(){
     $sunny.css('transform', 'rotate(' + top + 'deg )');
 });
 
-$(".clear-cart, .clearCart").click(function(){
+$(".clear-cart").click(function(){
     if($(".count").text() == 0){
         swal("Cart is already empty!", {
             buttons: false,
@@ -158,6 +158,8 @@ $(".clear-cart, .clearCart").click(function(){
 
 
 })
+
+
 
 //payment
 
