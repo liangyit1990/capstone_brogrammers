@@ -101,11 +101,11 @@ themeButton.addEventListener('click', () => {
 })
 
 // scroll animation
-var $sunny = $('.sunny, .egg');
+var $sunny = $('.sunny, .egg, .rotate_01');
 var $win = $(window);
 
 $win.on('scroll', function(){
-    var top = $win.scrollTop()/3;
+    var top = $win.scrollTop()/2;
     $sunny.css('transform', 'rotate(' + top + 'deg )');
 });
 
