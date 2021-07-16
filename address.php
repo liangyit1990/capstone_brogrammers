@@ -17,7 +17,7 @@ if(isset($_POST['zipCode'])) {
     $unitNo = validateData($_POST['unitNo']);   
     $country = validateData($_POST['country']);
     $zipCode = validateData($_POST['zipCode']);
-    $checkAddress = DB::query("SELECT * FROM addresses WHERE users_id=%i AND addresses_unitNo=%s  AND addresses_zipCode=%s  " , $_COOKIE['users_id'], $unitNo, $zipCode);
+    $checkAddress = DB::query("SELECT * FROM addresses WHERE users_id=%i AND addresses_unitNo=%s  AND addresses_zipCode=%s" , $_COOKIE['users_id'], $unitNo, $zipCode);
     $checkAddressCount = DB::count();
     
     if($checkAddressCount == 0) {
@@ -34,11 +34,8 @@ if(isset($_POST['zipCode'])) {
         echo 1;                
     } else {
         echo "Please enter a different address";
+        }
     }
-
-     
-
-}
 }
 
 

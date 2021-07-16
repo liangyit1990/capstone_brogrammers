@@ -27,6 +27,10 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
     }
 }
 
+$address = DB::query('SELECT * FROM addresses WHERE users_id=%i', $_COOKIE['users_id']);
+foreach($address as $address_result) {
+    // $return_address = $address_result['users_email'];
+}
 
 
 ?>
@@ -200,6 +204,15 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                         <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
                         <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
                         </div>
+                        
+                        <div class="col-md-4">
+                        <label for="unitNo" class="form-label">Unit Number</label>
+                        <input type="text" class="form-control" id="unitNo" placeholder="1234 Main St" value="" required="">
+                        <div class="invalid-feedback">
+                            Please enter your unit number.
+                        </div>
+                        </div>
+
 
                         <div class="col-md-5">
                         <label for="country" class="form-label">Country</label>
