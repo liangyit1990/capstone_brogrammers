@@ -276,7 +276,7 @@ foreach($updateUserPassword as $updateUserPassword_result) {
 
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary saveAddress" name="saveAddress">Save</button>
+                                                    <button type="button" class="btn btn-primary saveAddress" name="saveAddress" value="saveAddress">Save</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -511,6 +511,18 @@ foreach($updateUserPassword as $updateUserPassword_result) {
             var unitNo = $(".unitNo").val();
             var country = $(".country").val();
             var zipCode = $(".zipCode").val();
+
+            // console.log(`User Id : ${users_id}`);
+            // console.log(`Full name : ${fullName}`);
+            // console.log(`Company : ${company}`);
+            // console.log(`line1 : ${line1}`);
+            // console.log(`line2 : ${line2}`);
+            // console.log(`unitNo : ${unitNo}`);
+            // console.log(`country : ${country}`);
+            // console.log(`Zip code : ${zipCode}`);
+            // console.log(`saveAddress : ${saveAddress}`);
+           
+
             $.ajax({
                 url: 'address.php',
                 method: 'POST',
@@ -522,10 +534,10 @@ foreach($updateUserPassword as $updateUserPassword_result) {
                 line2: line2,
                 unitNo: unitNo,
                 country: country, 
-                zipCode: zipCode
+                zipCode: zipCode,
                 },
                 success:function(data){
-                    // console.log(data);
+                    console.log(data);
                     if(data == 1){
                             swal({
                             title: "Nice",
