@@ -302,6 +302,7 @@ foreach($address as $address_result) {
                                     
                                     
                                 </div>
+                                
                                 <?php 
                                     $address = DB::query("SELECT * FROM addresses WHERE users_id=%i " , $_COOKIE['users_id']);
                                         foreach($address as $address_result){
@@ -329,14 +330,10 @@ foreach($address as $address_result) {
                                                 </div>
                                             </div>
                                         </div>';
+
                                         // start of modal for individual address box
                                         echo '
-                                        <div class="modal fade" id="addressinfo';
-                                        
-                                        echo $address_result['addresses_id'];
-
-
-                                        echo'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="addressinfo'; echo $address_result['addresses_id']; echo'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -351,54 +348,38 @@ foreach($address as $address_result) {
                                                         <div class="form-group col-12">
                                                             <label for="fullName">Full Name<span class="redasterisk">*</span></label>
                                                             <input type="text" class="form-control fullName' . $address_result['addresses_id']; echo'" placeholder="" name="fullName" value="';
-
                                                             echo $address_result['addresses_fullName'];
-
                                                             echo'">
                                                         </div>
                                                         <div class="form-group col-12">
                                                             <label for="companyName">Company/Organization</label>
                                                             <input type="text" class="form-control company' . $address_result['addresses_id']; echo'" placeholder="" name="companyName" value="';
-
                                                             echo $address_result['addresses_companyName'];
-
                                                             echo'">
                                                         </div>
                                                         <div class="form-group col-12">
                                                             <label for="line1">Address Line 1<span class="redasterisk">*</span></label>
                                                             <input type="text" class="form-control line1' . $address_result['addresses_id']; echo'" placeholder="" name="line1" value="';
-
                                                             echo $address_result['addresses_line1'];
-
                                                             echo'">
                                                         </div>
                                                         <div class="form-group col-12">
                                                             <label for="line2">Address Line 2</label>
                                                             <input type="text" class="form-control line2' . $address_result['addresses_id']; echo'" placeholder="" name="line2" value="';
-
-
                                                             echo $address_result['addresses_line2'];
-
-
                                                             echo'">
                                                         </div>
                                                         <div class="form-group col-12">
                                                             <label for="unitNo">Unit Number<span class="redasterisk">*</span></label>
                                                             <input type="text" class="form-control unitNo' . $address_result['addresses_id']; echo'" placeholder="" name="unitNo" value="';
-
                                                             echo $address_result['addresses_unitNo'];
-
-
                                                             echo'">
                                                         </div>
 
                                                         <div class="form-group col-md-6">
                                                             <label for="country">Country<span class="redasterisk">*</span></label>
                                                             <select class="form-control country' . $address_result['addresses_id']; echo'" placeholder="" name="country" value="';
-
                                                             echo $address_result['addresses_country'];
-
-
                                                             echo'">
                                                                 <option value="Singapore">Singapore</option>
                                                                 <option value="Malaysia">Malaysia</option>
@@ -407,15 +388,10 @@ foreach($address as $address_result) {
                                                         <div class="form-group col-md-6">
                                                             <label for="zipCode">Zip Code<span class="redasterisk">*</span></label>
                                                             <input type="text" class="form-control zipCode' . $address_result['addresses_id']; echo'" placeholder="" name="zipCode" value="';
-
                                                             echo $address_result['addresses_zipCode'];
-
-
                                                             echo'">
                                                             <input type="text" class="form-control hiddenusersid d-none" name="users_id" value="';
-
                                                             echo $_COOKIE['users_id'];
-
                                                             echo'">
                                                         </div>
 
@@ -428,17 +404,14 @@ foreach($address as $address_result) {
 
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary saveAddressChanges" name="saveAddressChanges" data-id="';
 
-                                                        echo $address_result['addresses_id'];
-                                                                
-                                                        echo '>Save Changes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        ';     
+                                                        <button type="button" class="btn btn-primary saveAddressChanges" name="saveAddressChanges" 
+                                                        
+                                                        data-id="';
+                                                        echo $address_result['addresses_id'];                                                            
+                                                        echo '
+                                                        
+                                                        >Save Changes</button></div></div></div></div>';     
                                         }
                                 
                                 ?>
