@@ -44,6 +44,27 @@ include "config/functions.php";
 
         <div class="row bentodiv">
             <h1 class="text-center">Bento</h1>
+            <p class="text-center">
+                Description: Our Bentos are...
+            </p>
+            <div>
+                <div class="sortbyoptions"><b>Show Only:</b>
+                    <select class="drinksoptionsbox">
+                        <option><span>-</span></option>
+                        <option>Chicken</option>
+                        <option>Seafood</option>
+                        <option>Others</option>
+                    </select>
+                    <br>
+                    <b>Sort By:</b>
+                    <select class="drinkssort">
+                        <option><span class="text-center">-</span></option>
+                        <option>Price: High to Low</option>
+                        <option>Price: Low to High</option>
+                        <option>Alphabetically</option>
+                    </select>
+                </div>
+            </div>
 
             <?php
                 $bento = DB::query('SELECT * FROM food WHERE food_category = "Bento"');
@@ -65,8 +86,29 @@ include "config/functions.php";
 
 
         </div>
-        <div class="row">
+        <div class="row drinksdiv">
             <h1 class="text-center">Drinks</h1>
+            <p class="text-center">
+                Description
+            </p>
+            <div>
+                <div class="sortbyoptions"><b>Show Only:</b>
+                    <select class="drinksoptionsbox">
+                        <option><span>-</span></option>
+                        <option>Coffee/Tea</option>
+                        <option>Fresh Juice</option>
+                        <option>Others</option>
+                    </select>
+                    <br>
+                    <b>Sort By:</b>
+                    <select class="drinkssort">
+                        <option><span class="text-center">-</span></option>
+                        <option>Price: High to Low</option>
+                        <option>Price: Low to High</option>
+                        <option>Alphabetically</option>
+                    </select>
+                </div>
+            </div>
 
             <?php
                 $drinks = DB::query('SELECT * FROM food WHERE food_subcategory = "drinks"');
@@ -85,8 +127,11 @@ include "config/functions.php";
             ?>
 
         </div>
-        <div class="row">
+        <div class="row gravydiv">
             <h1 class="text-center">Gravy</h1>
+            <p class="text-center">
+                Description
+            </p>
 
             <?php
                 $gravy = DB::query('SELECT * FROM food WHERE food_subcategory = "gravy"');

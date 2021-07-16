@@ -623,11 +623,7 @@ footer a {
     width:350px;
 
 }
-.modal-backdrop{
 
-    z-index: -1;
-    
-}
 
 
 @keyframes fadeIn{

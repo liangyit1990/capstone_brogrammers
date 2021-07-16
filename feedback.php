@@ -22,6 +22,7 @@ include "config/functions.php";
      <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- css here -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/feedback.css">
     <!-- <link rel="stylesheet" href="css/feedback.css"> -->
     <title><?php echo SITE_NAME; ?> - Feedback</title>
@@ -39,11 +40,14 @@ include "config/functions.php";
         <div class="contact-form">
             <h2>Submit your feedback! </h2>
             <form method="post" enctype="multipart/form-data">                
-            
-                <input placeholder="Name" type="text" class="contact-form-txt name" required/>
-                <input placeholder="Email" type="email" class="contact-form-txt email" required/>
-                <input placeholder="Topic" type="text" class="contact-form-txt topic" required/>
-                <textarea placeholder="Message" class="contact-form-textarea message" required></textarea>
+                <label for="name">Name:</label>
+                <input placeholder="Name" type="text" class="contact-form-txt name" name="name" id="name" value="<?php echo ucwords($_COOKIE['users_name']); ?>" required/>
+                <label for="email">Email:</label>
+                <input placeholder="Email" type="email" class="contact-form-txt email" name="email" id="email" value="<?php echo $_COOKIE['users_email']; ?>" required/>
+                <label for="topic">Topic:</label>
+                <input placeholder="Topic" type="text" class="contact-form-txt topic" name="topic" id="topic" required/>
+                <label for="message">Message:</label>
+                <textarea placeholder="Message" class="contact-form-textarea message" name="message" id="message" required></textarea>
                 
 
                 <span>Upload Document</span><input type="file" id="file" name="file" class="form-control" >

@@ -45,6 +45,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- css here -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/checkout.css">
  
     <title><?php echo SITE_NAME; ?></title>
 </head>
@@ -56,12 +57,17 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
         <i class='bx bx-chevron-up-circle scrolltop_icon' ></i>
     </a>
 
+    <!-- header -->
+    <?php 
+    // include "header.php";
+    ?>
+
     
         <div class="container">
             <div>
                 <div class="py-5 ">
                 
-                <h2>Checkout form</h2>
+                <h2>Checkout form</h2><br>
 
                 <div class="row g-5">
                 <div class="col-md-5 col-lg-4 order-md-last">
@@ -151,6 +157,9 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                             <strong><?php echo number_format((float)$totalcartprice, 2, '.', ''); ?></strong>
                         </li>
                     </ul>
+                    <button type="button" class="btn btn-primary btn-sm clearCart" id="clearCart" value="clearCart" data-id="" data-bs-toggle="modal" data-bs-target="" >Clear Cart</button>
+                    <a href="<?php echo SITE_URL; ?>"><button type="button" class="btn btn-primary btn-sm backtohome" id="backtohome" value="backtohome" data-id="" data-bs-toggle="modal" data-bs-target="" >Back to Home</button></a>
+
 
                     <!-- <form class="card p-2">
                     <div class="input-group">
@@ -160,12 +169,12 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                     </form> -->
                 </div>
                 <div class="col-md-7 col-lg-8">
-                    <h4 class="mb-3">Billing address</h4>
+                    
                     <form class="needs-validation" action="checkout-charge.php" method="POST" novalidate="">
                     <div class="row g-3">
                         <div class="col-sm-12">
                         <label for="firstName" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="<?php echo ucwords($_COOKIE['users_name']); ?>" required="">
                         <div class="invalid-feedback">
                             Name is required.
                         </div>
@@ -196,14 +205,14 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                         <label for="country" class="form-label">Country</label>
                         <select class="form-select" id="country" required="">
                             <option value="">Choose...</option>
-                            <option>United States</option>
+                            <option>Singapore</option>
                         </select>
                         <div class="invalid-feedback">
                             Please select a valid country.
                         </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                         <label for="state" class="form-label">State</label>
                         <select class="form-select" id="state" required="">
                             <option value="">Choose...</option>
@@ -212,7 +221,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                         <div class="invalid-feedback">
                             Please provide a valid state.
                         </div>
-                        </div>
+                        </div> -->
 
                         <div class="col-md-3">
                         <label for="zip" class="form-label">Zip</label>
@@ -239,8 +248,8 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                     <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="pk_test_51JC3VwF77heEa3oFtz0HzRPEOVUxvY1thI3QJlIi4QY4DLd6U7NiwR3DMJZlNqjTLg9iVamxN9AvcheBkGJ3WzJX00PnoxuKvI"
-                    data-amount=<?php echo number_format((float)$totalcartprice, 2, '.', '') * 100; ?>
-                    data-name="Calorice"
+                    data-amount=<?php echo number_format((float)$totalcartprice, 2, '.', ''); ?>
+                    data-name="C A L O R I C E"
                     data-currency="sgd"
                     data-locale="auto">
                     </script>

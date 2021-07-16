@@ -281,3 +281,37 @@ if(isset($_POST["upload"])) {
                     <a class="addbutton text-center"><i class='bx bxs-cart-download' ></i>Add</a>
                 </div>
             </div>
+
+
+
+<?php
+    $fullName = $companyName = $line1 = $line2 = $country = $zipCode = $saveAddSuccess = "";
+
+    if(isset($_POST['saveAddress'])){
+        if((empty($_POST['fullName']) || empty($_POST['line1'])) || (empty($_POST['country']) || empty($_POST['zipCode']))){
+            $saveAddError = "Please enter all the required fields!";
+
+            } else{
+                $fullName = validateData($_POST['fullName']);
+                $companyName = validateData($_POST['companyName']);
+                $line1 = validateData($_POST['line1']);
+                $line2 = validateData($_POST['line2']);
+                $country = validateData($_POST['country']);
+                $zipCode = validateData($_POST['zipCode']);
+                DB::insert("addresses", [
+                    'users_id' => $_COOKIE['users_id'],
+                    // 'users_addresses_id' => ,
+                    'addresses_fullName' => $fullName,
+                    'addresses_companyName' => $companyName,
+                    'addresses_line1' => $line1,
+                    'addresses_line2' => $line2,
+                    'addresses_country' => $country,
+                    'addresses_zipCode' => $zipCode,
+
+                ]);
+                header("Location: " . SITE_URL . "account.php#addresses?saveAddSuccess=1");
+        
+            }
+    }
+
+?>

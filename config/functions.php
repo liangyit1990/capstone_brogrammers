@@ -58,4 +58,17 @@ function loginAccountLogout(){
 
 
 
+// function connectName(){
+//     if(isset($_COOKIE['users_name'])){
+//         echo $_COOKIE['users_name'];
+//     }
+// }
+
+// function connectEmail(){
+//     if(isset($_COOKIE['users_email'])){
+//         echo $_COOKIE['users_email'];
+//     }
+// }
+
+
 ?>

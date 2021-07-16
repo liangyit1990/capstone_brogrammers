@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+/* @import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap'); */
+
 /* variables  */
 :root{
     --header-height:3rem;
@@ -14,13 +16,14 @@
 
 
 /* font */
-    --body-font: 'Roboto', sans serif;
-    --biggest-font-size: 2.25rem;
-    --h1-font-size: 1.5rem;
-    --h2-font-size: 1.25rem;
+    /* --body-font: 'Yellowtail', cursive; */
+    --body-font: 'Roboto', san serif;
+    --biggest-font-size: 2.5rem;
+    --h1-font-size: 2rem;
+    --h2-font-size: 1.5rem;
     --h3-font-size: 1rem;
-    --normal-font-size: 0.938rem;
-    --small-font-size:.813rem;
+    --normal-font-size: 1rem;
+    --small-font-size:.0.9rem;
     --smaller-font-size: 0.75rem;
 
 /* font weight */
@@ -65,18 +68,34 @@ html{
     height:48px;
 }
 body{
-    margin: var(--header-height) 0 0 0;
+    margin: auto;
     font-family: var(--body-font);
     font-size:var(--normal-font-size);
-    background-color: var(--body-color);
-    color: var(--text-color);
-    line-height: 1.6;
     width:100%;
-    height: 100vh;
-    display: grid;
-    align-items: center;
+    height:100vh;
+    color:#000;
+    background: linear-gradient(-45deg, #FFE32C, #FFC82A,#F0F8FF, #FFBF00);
+    background-size: 400% 400% ;
+    position: relative;
+    animation: change 8s ease-in-out infinite;
+    
+}
+
+@keyframes change{
+    0%{
+        background-position: 0 50% ;
+    }
+    50%{
+        background-position: 100% 50% ;
+    }
+    100%{
+        background-position: 0 50% ;
+    }
 
 }
+
+
+/* end */
 h1,h2,h3,p,ul{
     margin:0;
 }
@@ -91,9 +110,17 @@ a{
 
 img{
     max-width: 100%;
+    height:300px;
+}
+.img-home{
+    width: auto;
+    height:auto;
+    justify-self: center;
+}
+.img-logo{
+    max-width: 100%;
     height:auto;
 }
-
 /* css for class */
 .section{
     padding: 4rem 0 2rem;
@@ -136,7 +163,7 @@ img{
 }
 .l-header{
     width:100%;
-    
+    z-index: 2;
     position: fixed;
     top:0;
     left:0;
@@ -145,28 +172,6 @@ img{
 
 }
 
-/* cart */
-.count {
-    font-size:13px;
-}
-
-
-/* Nav */
-
-.nav{
-    max-width: 100%;
-    height: var(--header-height);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--body-color);
-    /* margin: 0 0 0 0; */
-
-}
-.brand{
-    justify-content: center;
-    
-}
 /* when screen size is */
 @media screen and (min-width:768px){
     .nav_menu{
@@ -176,135 +181,80 @@ img{
         width: 100%;
         padding:1.5rem 0 1rem;
         text-align: center;
-        background-color: var(--body-color);
+        background-color: var(--primary-color);
         transition:0.4s;
         box-shadow: 0 4px 4px rgba(0, 0, 0, .1);
         border-radius: 0 0 1rem 1rem;
         z-index:var(--z-fixed);
     }
+
+
+/* change background header */
+.scroll-header{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
     
 }
-.nav_item{
-    margin-bottom: var(--mb-2);
 
-}
-
-.nav_link, .nav_logo, .nav_toggle{
-    color:var(--text-color);
-    font-weight: var(--font-medium);
-}
-.nav_cart{
-    color:var(--text-color);
-    font-weight: var(--font-medium);
-    font-size: 1.5rem;
-    cursor:pointer;
-    position:sticky;
-    margin: 0 0 0 auto;
-
-    
-}
-.nav_logo:hover{
-    color:var(--body-color);
-}
-
-.nav_link{
-    transition: 0.3s;
-}
-.nav_link:hover{
-    color:grey;
-
-}
-
-.nav_toggle{
-    font-size: 1.5rem;
-    cursor:pointer;
-    
-}
-/* reveal menu */
-.show-menu{
-    top:var(--header-height);
-    background: var(--body-color);
-    
-
-}
-
-.contact-in{
-    width:50%;
-    height:1200px;
-    margin:auto;
+/* scroll to top */
+.scrolltop{
+    position: fixed;
+    right: 1rem;
+    bottom: -20%;
     display: flex;
-    flex-wrap:wrap;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px #666;
     justify-content: center;
-    padding: 1em;
+    align-items: center;
+    padding: 0.3rem;
+    background: var(--primary-color-alt);
+    border-radius:.4rem;
+    z-index: var(--z-tooltip);
+    transition: 0.4s;
+    visibility: hidden;
+
 }
 
-/* Google map */
-.contact-map{
-    width: 100%;
-    height:auto;
-    flex:50%;
+.scrolltop:hover{
+    background-color: var(--primary-color-alt);
+
 }
-.contact-map iframe{
-    width: 100%;
-    height:200px;
+.scrolltop_icon{
+    font-size: 1.8rem;
+    color: var(--primary-color);
 }
-.contact-form h2{
-    text-align:center;
-    margin-bottom: 10px;
+
+/* show scrolltop */
+.scroll-top{
+    visibility: visible;
+    bottom: 1.5rem;
+    background-color: black;
 }
-/* .contact-form{
-    width:100%;
-    height:auto;
-    flex:50%;
-    padding:30px;
-    text-align:center;
-} */
-.contact-form-txt{
-    width:100%;
-    height:40px;
-    color:var(--text-color);
-    border:1px solid var(--primary-color-alt);
-    border-radius: 50px;
-    outline: none;
-    margin-bottom: 20px;
-    padding: 15px;
+
+
+.button{
+    display:inline-block;
+    background-color: #000;
+    color:#FFF;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition:0.3s;
+    font-family: var(--body-font);
+    width: 40px !important;
     
 }
-.contact-form-txt::placeholder{
-    color: #aaa;
+button.stripe-button-el,
+button.stripe-button-el>span {
+  background-color: #000 !important;
+  background-image: none;
+  font-family: var(--body-font) !important;
+  width: 100% !important;
 }
-.contact-form-textarea{
-    width:100%;
-    height:130px;
-    color:var(--text-color);
-    border:1px solid var(--primary-color-alt);
-    border-radius: 30px;
-    outline: none;
-    margin-bottom: 20px;
-    padding: 15px;
+
+.button:hover{
+    background-color: var(--primary-color-alt);
+}  
+.modal-footer {
+    padding-top: 0rem;
 }
-.contact-form-textarea::placeholder{
-    color: #aaa;
-}
-.form-control{
-    width: 40%;
-    margin-bottom: 20px;
-}
-.contact-form-btn{
-    width:100%;
-    border:none;
-    outline: none;
-    border-radius:50px;
-    background: var(--text-color);
-    color: var(--container-color);
-    text-transform: uppercase;
-    padding:10px 0;
-    cursor: pointer;
-    
-}
+
 /* dark theme */
 body.dark-theme{
     --title-color:#F1F3F2;
@@ -322,7 +272,13 @@ body.dark-theme{
     color: var(--text-color);
     cursor:pointer;
 }
-
+.symbol{
+    position: absolute;
+    top:370px;
+    color: var(--text-color);
+    cursor:pointer;
+}
+/* footer */
 footer i {
     color: var(--text-color);
 }
@@ -330,4 +286,5 @@ footer i {
 footer a {
     color: var(--text-color);
     text-decoration: none;
+}
 }
