@@ -73,13 +73,13 @@ foreach($address as $address_result) {
             <a href="index.php" class="logo"><img class="img-logo" src="images/logo.png" alt=""></a>
                 
             <div class="row1">
-                <a href="#account" ><i class='bx bxs-user-account'></i>Account</a>
+                <a href="account.php" ><i class='bx bxs-user-account'></i>Account</a>
             </div>
             <div class="row1">
-                <a href="#orders" ><i class='bx bxs-dish'></i>Orders</a>
+                <a href="#" onclick="getPage('orders.php')" ><i class='bx bxs-dish'></i>Orders</a>
             </div>
             <div class="row1">
-                <a href="#addresses" ><i class='bx bx-building-house' ></i>Addresses</a>
+                <a href="#" onclick="getPage('address.php')"><i class='bx bx-building-house' ></i>Addresses</a>
             </div>
             <div class="row1">
                 <a href="<?php echo SITE_URL; ?>" ><i class='bx bx-arrow-back' ></i>Back to Home</a>
@@ -94,7 +94,7 @@ foreach($address as $address_result) {
                 <a href="account.php#giftcards">Gift Cards</a>
             </div> -->
         </div>
-        <div class="container accountcontainer">
+        <div class="container accountcontainer viewer" id="viewer">
             <div class="row justify-content-md-center">
                 
                 <div class="container col-xl-9 accountrightbody">
@@ -182,244 +182,6 @@ foreach($address as $address_result) {
                         </div>
 
                     </div>
-
-
-
-                    <!-- Start of Orders Row - WIP -->
-                    <div class="row accrow ordersplacedrow accountpage" id="orders" class="row accountpage">
-                        <div>
-                            <h4 class="accheader">Orders Placed</h4>
-                        </div>
-                        <div>
-                            <div class="date-container">
-                                <div class="date-order">
-                                    <div class="date-header">
-                                        <h5>July 15th, 2021</h5>
-                                    </div>
-                                    <div class="order-id">
-                                        <h6>Order ID:</h6> 
-                                    </div>
-                                </div>
-                                <div class="ship-id">
-                                    <h6><strong>Ship To:</strong></h6> 
-                                </div>
-                                <div class="order-stat">
-                                    <h6><strong>Order Status:</strong></h6> 
-                                </div>
-                                <div class="order-total">
-                                    <h6><strong>Total Price:</strong></h6> 
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Enter an Address</h5>
-                                                <!-- The X -->
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    
-                                                </div>
-
-                                                <div class="modal-body">
-
-                                                    <form class="row g-3" method="POST" action="<?php echo SITE_URL . "account.php#addresses"?>">
-                                                        <div class="form-group col-12">
-                                                            <label for="fullName">Full Name<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control fullName" id="fullName" placeholder="" name="fullName" value="">
-                                                        </div>
-                                                        <!-- <div class="form-group col-md-6">
-                                                            <label for="lastName">Last Name<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control" id="lastName" placeholder="" name="lastName" value="">
-                                                        </div> -->
-                                                        <div class="form-group col-12">
-                                                            <label for="companyName">Company/Organization</label>
-                                                            <input type="text" class="form-control company" id="companyName" placeholder="" name="companyName" value="">
-                                                        </div>
-                                                        <div class="form-group col-12">
-                                                            <label for="line1">Address Line 1<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control line1" id="line1" placeholder="" name="line1" value="">
-                                                        </div>
-                                                        <div class="form-group col-12">
-                                                            <label for="line2">Address Line 2</label>
-                                                            <input type="text" class="form-control line2" id="line2" placeholder="" name="line2" value="">
-                                                        </div>
-                                                        <div class="form-group col-12">
-                                                            <label for="unitNo">Unit Number<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control unitNo" id="unitNo" placeholder="" name="unitNo" value="">
-                                                        </div>
-
-                                                        <div class="form-group col-md-6">
-                                                            <label for="country">Country<span class="redasterisk">*</span></label>
-                                                            <select class="form-control country" id="country" placeholder="" name="country" value="">
-                                                                <option value="Singapore">Singapore</option>
-                                                                <option value="Malaysia">Malaysia</option>
-                                                                <!-- <option value="Item Missing in Package">Item Missing in Package</option>
-                                                                <option value="Damaged Item Received">Damaged Item Received</option>
-                                                                <option value="Wrong Item Received">Wrong Item Received</option> -->
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="zipCode">Zip Code<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control zipCode" id="zipCode" placeholder="" name="zipCode" value="">
-                                                            <input type="text" class="form-control hiddenusersid d-none" name="users_id" value="<?php echo $dBId; ?>">
-                                                        </div>
-
-                                                        <div class="form-group requiredfields">
-                                                            <p>Fields marked with a<span class="redasterisk"> * </span> are required.</p>
-                                                        </div>
-                                                        <!-- <div class="sendmessagebuttoncontainer">
-                                                            <button class="btn"><span class="sendmessagebutton">Send Message</span></button>
-                                                        </div> -->
-                                                    </form>
-
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary saveAddress" name="saveAddress" value="saveAddress">Save</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                    <div class="row accrow addressrow accountpage" id="addresses">
-                        <div>
-                            <h4 class="accheader">My Addresses</h4>
-                            <div class="row">
-                                <div class="col-4 addaddressdiv">
-                                    <div class="row">
-                                        <i class="fa fa-plus" style="font-size: 48px"></i>
-                                    </div>
-                                    <div class="row addbtn">
-                                        <a class="addaddressbutton" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Address</a>
-                                    </div>
-
-                                    
-                                    
-                                </div>
-                                
-                                <?php 
-                                    $address = DB::query("SELECT * FROM addresses WHERE users_id=%i " , $_COOKIE['users_id']);
-                                        foreach($address as $address_result){
-                                            echo '<div class="col-4 responsivenessneeded"><div class="row responsivenessneeded"><h5>';
-                                            echo $address_result['addresses_fullName']; echo '</h5><p>';
-                                            echo $address_result['addresses_line1']; echo '</p><p>';
-                                            echo $address_result['addresses_line2']; echo '</p><p>';
-                                            echo $address_result['addresses_unitNo']; echo '</p><p>';
-                                            echo $address_result['addresses_country'] . " " . $address_result['addresses_zipCode'];
-                                            echo '</p></div>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <button type="button" class="btn btn-primary btn-sm editAdd" value="editAdd" data-bs-toggle="modal" data-bs-target="#addressinfo';
-
-                                                    echo $address_result['addresses_id'];
-
-                                                    echo '">Edit</button>
-                                                </div>
-                                                <div class="col-3">
-                                                    <button type="button" class="btn btn-danger btn-sm deleteAdd" data-id="';
-
-                                            echo $address_result['addresses_id'];
-                                                    
-                                            echo '">Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>';
-
-                                        // start of modal for individual address box
-                                        echo '
-                                        <div class="modal fade" id="addressinfo'; echo $address_result['addresses_id']; echo'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Edit your Address</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    
-                                                </div>
-
-                                                <div class="modal-body">
-
-                                                    <form class="row g-3">
-                                                        <div class="form-group col-12">
-                                                            <label for="fullName">Full Name<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control fullName' . $address_result['addresses_id']; echo'" placeholder="" name="fullName" value="';
-                                                            echo $address_result['addresses_fullName'];
-                                                            echo'">
-                                                        </div>
-                                                        <div class="form-group col-12">
-                                                            <label for="companyName">Company/Organization</label>
-                                                            <input type="text" class="form-control company' . $address_result['addresses_id']; echo'" placeholder="" name="companyName" value="';
-                                                            echo $address_result['addresses_companyName'];
-                                                            echo'">
-                                                        </div>
-                                                        <div class="form-group col-12">
-                                                            <label for="line1">Address Line 1<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control line1' . $address_result['addresses_id']; echo'" placeholder="" name="line1" value="';
-                                                            echo $address_result['addresses_line1'];
-                                                            echo'">
-                                                        </div>
-                                                        <div class="form-group col-12">
-                                                            <label for="line2">Address Line 2</label>
-                                                            <input type="text" class="form-control line2' . $address_result['addresses_id']; echo'" placeholder="" name="line2" value="';
-                                                            echo $address_result['addresses_line2'];
-                                                            echo'">
-                                                        </div>
-                                                        <div class="form-group col-12">
-                                                            <label for="unitNo">Unit Number<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control unitNo' . $address_result['addresses_id']; echo'" placeholder="" name="unitNo" value="';
-                                                            echo $address_result['addresses_unitNo'];
-                                                            echo'">
-                                                        </div>
-
-                                                        <div class="form-group col-md-6">
-                                                            <label for="country">Country<span class="redasterisk">*</span></label>
-                                                            <select class="form-control country' . $address_result['addresses_id']; echo'" placeholder="" name="country" value="';
-                                                            echo $address_result['addresses_country'];
-                                                            echo'">
-                                                                <option value="Singapore">Singapore</option>
-                                                                <option value="Malaysia">Malaysia</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="zipCode">Zip Code<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control zipCode' . $address_result['addresses_id']; echo'" placeholder="" name="zipCode" value="';
-                                                            echo $address_result['addresses_zipCode'];
-                                                            echo'">
-                                                            <input type="text" class="form-control hiddenusersid d-none" name="users_id" value="';
-                                                            echo $_COOKIE['users_id'];
-                                                            echo'">
-                                                        </div>
-
-                                                        <div class="form-group requiredfields">
-                                                            <p>Fields marked with a<span class="redasterisk"> * </span> are required.</p>
-                                                        </div>
-                                                    </form>
-
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                                                        <button type="button" class="btn btn-primary saveAddressChanges" name="saveAddressChanges" data-id=" ';
-                                                        
-                                                        echo $address_result['addresses_id'];
-                                                        
-                                                       echo '">Save Changes</button></div></div></div></div>';     
-                                        }
-                                
-                                ?>
-
-
-                            </div>
-                        </div>
-                    </div>
-
-
             </div>
         </div>
 
@@ -451,7 +213,7 @@ foreach($address as $address_result) {
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <!-- main js here -->
         <script src="js/main.js"></script>
-
+    
     <script>
         
     <?php
