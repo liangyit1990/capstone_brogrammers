@@ -295,8 +295,8 @@ foreach($address as $address_result) {
                                     <div class="row">
                                         <i class="fa fa-plus" style="font-size: 48px"></i>
                                     </div>
-                                    <div class="row">
-                                        <a class="addaddressbutton addbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Address</a>
+                                    <div class="row addbtn">
+                                        <a class="addaddressbutton" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Address</a>
                                     </div>
 
                                     
