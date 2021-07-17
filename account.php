@@ -337,7 +337,7 @@ foreach($address as $address_result) {
             var zipCode = $(".zipCode").val();
 
             $.ajax({
-                url: 'address.php',
+                url: 'addaddress.php',
                 method: 'POST',
                 data: {
                 users_id: users_id,

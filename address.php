@@ -41,6 +41,9 @@ if(isset($_POST['zipCode'])) {
 
 
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -155,9 +158,7 @@ if(isset($_POST['zipCode'])) {
                                     </div>
                                     <div class="row addbtn">
                                         <a class="addaddressbutton" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Address</a>
-                                    </div>
-
-                                    
+                                    </div>                                    
                                     
                                 </div>
                                 
@@ -434,7 +435,7 @@ if(isset($_POST['zipCode'])) {
             var zipCode = $(".zipCode").val();
 
             $.ajax({
-                url: 'address.php',
+                url: 'addaddress.php',
                 method: 'POST',
                 data: {
                 users_id: users_id,
