@@ -76,10 +76,10 @@ foreach($address as $address_result) {
                 <a href="account.php" ><i class='bx bxs-user-account'></i>Account</a>
             </div>
             <div class="row1">
-                <a href="#" onclick="getPage('orders.php')" ><i class='bx bxs-dish'></i>Orders</a>
+                <a href="#orders" onclick="getPage('orders.php')" ><i class='bx bxs-dish'></i>Orders</a>
             </div>
             <div class="row1">
-                <a href="#" onclick="getPage('address.php')"><i class='bx bx-building-house' ></i>Addresses</a>
+                <a href="#addresses" onclick="getPage('address.php')"><i class='bx bx-building-house' ></i>Addresses</a>
             </div>
             <div class="row1">
                 <a href="<?php echo SITE_URL; ?>" ><i class='bx bx-arrow-back' ></i>Back to Home</a>
