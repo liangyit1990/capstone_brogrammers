@@ -295,7 +295,7 @@ foreach($address as $address_result) {
                                     <div class="row">
                                         <i class="fa fa-plus" style="font-size: 48px"></i>
                                     </div>
-                                    <div class="row addbtn">
+                                    <div class="row">
                                         <a class="addaddressbutton addbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Address</a>
                                     </div>
 
@@ -405,13 +405,11 @@ foreach($address as $address_result) {
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                                        <button type="button" class="btn btn-primary saveAddressChanges" name="saveAddressChanges" 
+                                                        <button type="button" class="btn btn-primary saveAddressChanges" name="saveAddressChanges" data-id=" ';
                                                         
-                                                        data-id="';
-                                                        echo $address_result['addresses_id'];                                                            
-                                                        echo '
+                                                        echo $address_result['addresses_id'];
                                                         
-                                                        >Save Changes</button></div></div></div></div>';     
+                                                       echo '">Save Changes</button></div></div></div></div>';     
                                         }
                                 
                                 ?>
