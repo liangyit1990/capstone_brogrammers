@@ -3,6 +3,25 @@ include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
 
+$count = 3;
+
+
+$value = "Rice-1 Egg-1 Sake-2 4.00, Noodle-1 Egg-2 3.50, Rice-1 Egg-2 2.50";
+// Count the numbe rof batch item user has in the cart
+// Use inner join
+// Then use that number to do a while loop
+// and pass food name together with food quantity
+// and also do a subtotal price
+// and pass into the string 
+//price must have comma
+$explode = explode(",", $value);
+foreach($explode as $test){
+     $explodefurther = explode(" ", $test);
+     foreach($explodefurther as $value2) {
+         echo $value2.'<br>';
+     }
+}
+
 
 
 ?>
@@ -18,7 +37,7 @@ include "config/functions.php";
 </head>
 <body>
 
-<button type="button" class="btn btn-primary checkout">Primary</button>
+<!-- <button type="button" class="btn btn-primary checkout">Primary</button> -->
 
 <!-- bootstrap jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
