@@ -85,7 +85,20 @@
     /* align-items: center; */
     flex-direction: column;
 }
-
+.accountaddress{
+    position: absolute;
+    margin-top:500px;
+    right:200px;
+    left:350px;
+    padding-bottom: 50px;
+    /* width:0; */
+    /* opacity: 0; */
+    /* transition: all ease-in 0s; */
+    display:flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+}
 /* .accountpage div{
     opacity: 0;
     top:50px;
