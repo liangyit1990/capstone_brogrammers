@@ -45,7 +45,7 @@ include "config/functions.php";
                             <h4 class="accheader">Orders Placed</h4>
                         </div>
                         <?php 
-                        $getUserOrderQuery = DB::query("SELECT * FROM orders");
+                        $getUserOrderQuery = DB::query("SELECT * FROM orders WHERE users_id=%i",$_COOKIE['users_id']);
                         foreach ($getUserOrderQuery as $getUserOrderResult) {
                             $getUserOrderDetails = DB::query("SELECT * FROM orderdetails 
                                                                 INNER JOIN food 
