@@ -57,6 +57,16 @@
     display:block;
     
 }
+.moon{
+    width: 150px;
+    height:150px;
+    margin-left:auto;
+    margin-right:100px;
+    display:block;
+    
+}
+
+
 .egg {
     width: 150px;
     height:150px;
@@ -65,9 +75,9 @@
     display:block;
     
 }
-/* .filter-green{
-    filter: invert(0%) sepia(93%) saturate(0%) hue-rotate(287deg) brightness(87%) contrast(106%);
-} */
+.filter-moon{
+    filter: invert(93%) sepia(100%) saturate(1979%) hue-rotate(329deg) brightness(105%) contrast(102%);
+}
 
 
 /* when screen size is */

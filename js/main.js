@@ -101,7 +101,7 @@ themeButton.addEventListener('click', () => {
 })
 
 // scroll animation
-var $sunny = $('.sunny, .egg, .rotate_01');
+var $sunny = $('.sunny, .egg, .rotate_01, .moon');
 var $win = $(window);
 
 $win.on('scroll', function () {

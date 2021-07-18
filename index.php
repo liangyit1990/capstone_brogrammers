@@ -59,6 +59,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
         <div class="line">   
             
                 <img class="sunny filter-green" src="images/sun2.svg">
+                <img class="moon filter-moon" src="images/moonny.svg">
                 
             
         </div>
@@ -281,6 +282,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
             <div class="line">   
                 
                 <img class="egg filter-green" src="images/egg1.svg">
+                
             
             </div>
             <div class="about_container bd-grid">
