@@ -45,3 +45,85 @@
     justify-content: center;
 
 } */
+
+/* user account */
+.navi{
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    width: 300px;
+    margin-left: 10px;
+    height:350px;
+    
+}
+
+.row1{
+    padding-top: 10px;
+    padding-bottom:10px;
+    position:initial;
+    
+}
+.row1 a{
+    color: var(--text-color);
+    
+}
+.moon{
+    margin-top: 30px;
+}
+
+.accountpage{
+    position: absolute;
+    top:50px;
+    right:200px;
+    left:350px;
+    padding-bottom: 50px;
+    /* width:0; */
+    /* opacity: 0; */
+    /* transition: all ease-in 0s; */
+    display:flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+}
+
+/* .accountpage div{
+    opacity: 0;
+    top:50px;
+
+} */
+
+
+.feed{
+    display:grid;
+    margin-left: 350px;
+    margin-top:-195px;
+    
+}
+.basicinfo{
+    display: flex;
+    width:350px;
+}
+
+.emailUpdate, .currentpassword, .passwordUpdate, .cfmpasswordUpdate{
+    width:250px;
+}
+
+.passwordrow, .emailrow {
+    margin-top: 30px;
+}
+
+.p{
+    margin-bottom:10px;
+}
+.updateUserEmail, .updateUserPassword{
+    margin-top:5px;
+}
+
+
+.accheader {
+    font-weight: bold;
+}
+
+/* .accountcontainer {
+    padding-top: 1em;
+} */
