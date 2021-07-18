@@ -377,7 +377,9 @@ foreach($address as $address_result) {
         $(".saveAddressChanges").click(function(){
             var saveId = $(this).data('id'); //data-id class
             // var users_id = $(".hiddenusersid").val();
-            var fullName = $(`.fullName${saveId}`).val();
+           var fullName = $(this).parent().parent().find(".fullName").val();
+            // var fullName = $(`.fullName51`).val();
+            // var fullName = $(`.fullName${saveId}`).val();
             var company = $(`.company${saveId}`).val();
             var line1 = $(`.line1${saveId}`).val();
             var line2 = $(`.line2${saveId}`).val();
@@ -385,14 +387,14 @@ foreach($address as $address_result) {
             var country = $(`.country${saveId}`).val();
             var zipCode = $(`.zipCode${saveId}`).val();
             var editAdd = $(".editAdd").val();
-                // console.log(fullName);
-                // console.log(company);
-                // console.log(line1);
-                // console.log(line2);
-                // console.log(unitNo);
-                // console.log(country);
-                // console.log(zipCode);
-                // console.log(editAdd);
+                console.log(fullName);
+                console.log(company);
+                console.log(line1);
+                console.log(line2);
+                console.log(unitNo);
+                console.log(country);
+                console.log(zipCode);
+                console.log(editAdd);
                 
           //Ajax to update users info
           $.ajax({
