@@ -233,7 +233,9 @@ foreach($address as $address_result) {
 
         $(document).ready(function(){
 
+       
         $(".updateUserEmail").click(function(){
+            
             var thisBtn = this;
             var users_id = $(".idUpdate").val();
             var users_emailUpdate = $(".emailUpdate").val();
@@ -325,7 +327,7 @@ foreach($address as $address_result) {
         })
 
         $(".saveAddress").click(function(){
-            
+            console.log('hello');
             var thisBtn = this;
             var users_id = $(".hiddenusersid").val();
             var fullName = $(".fullName").val();

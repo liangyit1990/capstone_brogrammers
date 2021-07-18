@@ -4,39 +4,39 @@ include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
 
-$fullName = $companyName = $line1 = $line2 = $unitNo = $country = $zipCode = $saveAddSuccess = "";
+// $fullName = $companyName = $line1 = $line2 = $unitNo = $country = $zipCode = $saveAddSuccess = "";
 
-if(isset($_POST['zipCode'])) {
-    if((empty($_POST['fullName']) || empty($_POST['line1'])) || (empty($_POST['country']) || empty($_POST['zipCode'])) || empty($_POST['unitNo'])){
-        echo "Please enter all the required fields";
-} else {
-    $fullName = validateData($_POST['fullName']);
-    $company = validateData($_POST['company']);
-    $line1 = validateData($_POST['line1']);
-    $line2 = validateData($_POST['line2']);
-    $unitNo = validateData($_POST['unitNo']);   
-    $country = validateData($_POST['country']);
-    $zipCode = validateData($_POST['zipCode']);
-    $checkAddress = DB::query("SELECT * FROM addresses WHERE users_id=%i AND addresses_unitNo=%s  AND addresses_zipCode=%s" , $_COOKIE['users_id'], $unitNo, $zipCode);
-    $checkAddressCount = DB::count();
+// if(isset($_POST['zipCode'])) {
+//     if((empty($_POST['fullName']) || empty($_POST['line1'])) || (empty($_POST['country']) || empty($_POST['zipCode'])) || empty($_POST['unitNo'])){
+//         echo "Please enter all the required fields";
+// } else {
+//     $fullName = validateData($_POST['fullName']);
+//     $company = validateData($_POST['company']);
+//     $line1 = validateData($_POST['line1']);
+//     $line2 = validateData($_POST['line2']);
+//     $unitNo = validateData($_POST['unitNo']);   
+//     $country = validateData($_POST['country']);
+//     $zipCode = validateData($_POST['zipCode']);
+//     $checkAddress = DB::query("SELECT * FROM addresses WHERE users_id=%i AND addresses_unitNo=%s  AND addresses_zipCode=%s" , $_COOKIE['users_id'], $unitNo, $zipCode);
+//     $checkAddressCount = DB::count();
     
-    if($checkAddressCount == 0) {
-        DB::insert("addresses", [
-                            'users_id' => $_COOKIE['users_id'],
-                            'addresses_fullName' => $fullName,
-                            'addresses_companyName' => $company,
-                            'addresses_line1' => $line1,
-                            'addresses_line2' => $line2,
-                            'addresses_unitNo' => $unitNo,
-                            'addresses_country' => $country,
-                            'addresses_zipCode' => $zipCode,
-                        ]);
-        echo 1;                
-    } else {
-        echo "Please enter a different address";
-        }
-    }
-}
+//     if($checkAddressCount == 0) {
+//         DB::insert("addresses", [
+//                             'users_id' => $_COOKIE['users_id'],
+//                             'addresses_fullName' => $fullName,
+//                             'addresses_companyName' => $company,
+//                             'addresses_line1' => $line1,
+//                             'addresses_line2' => $line2,
+//                             'addresses_unitNo' => $unitNo,
+//                             'addresses_country' => $country,
+//                             'addresses_zipCode' => $zipCode,
+//                         ]);
+//         echo 1;                
+//     } else {
+//         echo "Please enter a different address";
+//         }
+//     }
+// }
 
 
 
@@ -329,101 +329,14 @@ if(isset($_POST['zipCode'])) {
 
     <script type="text/javascript">      
 
+   $('.addaddressbutton').click(function(){
+       cosole.log('hello');
+   })
         $(document).ready(function(){
 
-        $(".updateUserEmail").click(function(){
-            var thisBtn = this;
-            var users_id = $(".idUpdate").val();
-            var users_emailUpdate = $(".emailUpdate").val();
-            $.ajax({
-                url: 'users_update.php',
-                method: 'POST',
-                data: {
-                users_id: users_id,
-                users_emailUpdate: users_emailUpdate 
-                },
-
-                success:function(data){
-                    if(data == 1){
-                        <?php    
-                            echo 'swal({
-                            title: "Nice",
-                            text: "You have successfully changed your email!",
-                            icon: "success",
-                            buttons: false,
-                            timer : 2000,
-                            }).then(function() {
-                            window.location = "account.php";
-                            });';
-                        ?>    
-                    } else if (data == "Please enter an email address to proceed!"){
-                        <?php
-                        echo 'swal("Oops...", "Please enter an email address to proceed!", "error");';
-                        ?>
-                    } else if (data == "Please enter a different email address!"){
-                        <?php
-                        echo 'swal("Oops...", "Please enter a different email address!", "error");';
-                        ?>
-                    } else {
-                        <?php
-                        echo 'swal("Oops...", "You are currently using this email! Please enter a different email address.", "error");';
-                        ?>
-                    }
-                }
-            })
-        })
-
-        $(".updateUserPassword").click(function(){
-            var thisBtn = this;
-            var passwordusers_id = $(".passwordidUpdate").val();
-            var users_currentpassword = $(".currentpassword").val();
-            var users_passwordUpdate = $(".passwordUpdate").val();
-            var users_cfmpasswordUpdate = $(".cfmpasswordUpdate").val();
-            $.ajax({
-                url: 'users_update.php',
-                method: 'POST',
-                data: {
-                passwordusers_id: passwordusers_id,
-                users_currentpassword: users_currentpassword,
-                users_passwordUpdate: users_passwordUpdate,
-                users_cfmpasswordUpdate: users_cfmpasswordUpdate 
-                },
-                success:function(data){
-                    if(data == 2){
-                        <?php    
-                            echo 'swal({
-                            title: "Nice",
-                            text: "You have successfully changed your password!",
-                            icon: "success",
-                            buttons: false,
-                            timer : 2000,
-                            }).then(function() {
-                            window.location = "account.php";
-                            });';
-                        ?>    
-                    } else if (data == "Please fill up all the required fields!"){
-                        <?php
-                        echo 'swal("Oops...", "Please fill up all the required fields!", "error");';
-                        ?>
-                    } else if (data == "Your newly entered passwords do not match! Please try again!"){
-                        <?php
-                        echo 'swal("Oops...", "Your newly entered passwords do not match! Please try again!", "error");';
-                        ?>
-                    } else if (data == "You are currently using this password! Please try another password!"){
-                        <?php
-                        echo 'swal("Oops...", "You are currently using this password! Please try another password!", "error");';
-                        ?>
-                    } else {
-                        <?php
-                        echo 'swal("Oops...", "Your Current Password is Wrong! Please try again!", "error");';
-                        ?>
-                    }
-                }
-            })
-        })
-
-        $(".saveAddress").click(function(){
-            
+        $(document).on('click',$(".saveAddress") , function(event){
+        
+            console.log('hello');
             var thisBtn = this;
             var users_id = $(".hiddenusersid").val();
             var fullName = $(".fullName").val();

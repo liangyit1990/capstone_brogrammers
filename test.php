@@ -3,31 +3,39 @@ include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
 
-$count = 3;
+
+$getUserOrderQuery = DB::query("SELECT * FROM orders");
+foreach ($getUserOrderQuery as $getUserOrderResult) {
+    $getUserOrderDetails = DB::query("SELECT * FROM orderdetails 
+                                        INNER JOIN food 
+                                        ON orderdetails.food_id = food.food_id
+                                        where users_id=%i AND orders_id=%i"  , $_COOKIE['users_id'],$getUserOrderResult['orders_id']);
+    $getUserOrdercount = DB::count();
+    echo 'Order ID:'.$getUserOrderResult['orders_id'].'<br>';
+    
+    foreach($getUserOrderDetails as $getUserOrderDetailsResult ) {
+        
+        
+        // echo 'Item No 1:'.$getUserOrderDetailsResult['orderdetails_group'].'<br>';
+        echo ucwords($getUserOrderDetailsResult['food_name']).' x '.$getUserOrderDetailsResult['orderdetails_qty'].'<br>';
+      
+        
 
 
-$value = "Rice-1 Egg-1 Sake-2 4.00, Noodle-1 Egg-2 3.50, Rice-1 Egg-2 2.50";
-// Count the numbe rof batch item user has in the cart
-// Use inner join
-// Then use that number to do a while loop
-// and pass food name together with food quantity
-// and also do a subtotal price
-// and pass into the string 
-//price must have comma
-$explode = explode(",", $value);
-foreach($explode as $test){
-     $explodefurther = explode(" ", $test);
-     foreach($explodefurther as $value2) {
-         echo $value2.'<br>';
-     }
+
+    }
+    echo '<br>';
 }
+
+// $getUserOrderCount = DB::count();
+// echo $getUserOrderCount;
 
 
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">    
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

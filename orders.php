@@ -3,6 +3,11 @@ include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
 
+$getUserOrderQuery = DB::query("SELECT * FROM orderdetails 
+                                    INNER JOIN order ON orderdetails.order_id = order.order_id
+                                    INNER JOIN food ON orderdetails.food_id = food.food_id
+                                    where users_id=%i AND cart_status=%i"  , $_COOKIE['users_id'],0);
+
 
 ?>
 
