@@ -3,10 +3,6 @@ include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
 
-$getUserOrderQuery = DB::query("SELECT * FROM orderdetails 
-                                    INNER JOIN order ON orderdetails.order_id = order.order_id
-                                    INNER JOIN food ON orderdetails.food_id = food.food_id
-                                    where users_id=%i AND cart_status=%i"  , $_COOKIE['users_id'],0);
 
 
 ?>
@@ -48,28 +44,49 @@ $getUserOrderQuery = DB::query("SELECT * FROM orderdetails
                         <div>
                             <h4 class="accheader">Orders Placed</h4>
                         </div>
+                        <?php 
+                        $getUserOrderQuery = DB::query("SELECT * FROM orders");
+                        foreach ($getUserOrderQuery as $getUserOrderResult) {
+                            $getUserOrderDetails = DB::query("SELECT * FROM orderdetails 
+                                                                INNER JOIN food 
+                                                                ON orderdetails.food_id = food.food_id
+                                                                where users_id=%i AND orders_id=%i"  , $_COOKIE['users_id'],$getUserOrderResult['orders_id']);
+                        ?>
                         <div>
                             <div class="date-container">
                                 <div class="date-order">
                                     <div class="date-header">
-                                        <h5>July 15th, 2021</h5>
+                                        <h5><?php echo $getUserOrderResult['orders_timestamp'] ?></h5>
                                     </div>
                                     <div class="order-id">
-                                        <h6>Order ID:</h6> 
+                                        <h6>Order ID: <?php echo $getUserOrderResult['orders_id'] ?></h6> 
                                     </div>
                                 </div>
-                                <div class="ship-id">
-                                    <h6><strong>Ship To:</strong></h6> 
-                                </div>
                                 <div class="order-stat">
-                                    <h6><strong>Order Status:</strong></h6> 
+                                    <h6><strong>Order details:</strong></h6> 
+                        <?php 
+                        foreach($getUserOrderDetails as $getUserOrderDetailsResult ) {
+                        
+                        ?>
+                        <p><?php echo ucwords($getUserOrderDetailsResult['food_name']).' x '.$getUserOrderDetailsResult['orderdetails_qty']?></p>
+
+                        <?php 
+                        }
+                        ?>
                                 </div>
                                 <div class="order-total">
-                                    <h6><strong>Total Price:</strong></h6> 
+                                    <h6><strong>Total Price: $<?php echo $getUserOrderResult['orders_totalprice'] ?></strong></h6> 
                                 </div>
                                 
                             </div>
                         </div>
+
+
+                        <?php
+                        }
+                        
+                        ?>
+                        
                     </div>
 
 
