@@ -32,9 +32,10 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                ?>
             <h3>Your Transaction has been Successfully Completed</h3>
           <?php
-        //   header("Location: " . SITE_URL . "index.php?TransactionSuccess=1");
+          header("refresh:5;url=" . SITE_URL);
            }
         ?>
+        <p class="redirectpara">You will be redirected to the main page in 5 seconds, if not you can click <a href="<?php echo SITE_URL ?>">here</a> to return to the main page.</p>
       </section>  
 </body>
 </html>

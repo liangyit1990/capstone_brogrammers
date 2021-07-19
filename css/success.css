@@ -86,6 +86,10 @@ h3{
     padding: 5rem 10rem; 
 }
 
+.redirectpara {
+    padding: 1em;
+}
+
 @keyframes change{
     0%{
         background-position: 0 50% ;

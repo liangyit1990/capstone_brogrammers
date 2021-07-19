@@ -20,7 +20,7 @@ include "../config/functions.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+     
    </head>
 <body>
   <!-- Include adminheader -->
@@ -28,9 +28,48 @@ include "../config/functions.php";
   include "adminheader.php";
   ?>
 
-  <div class="home_content">
-    <h1>Welcome Admin</h1>
-  </div>
+  <main class="home_content">
+    <h1><strong>Welcome Admin</strong></h1>
+    <div class="container">
+      <div class="users">
+        <h2>No. of Registered Users:</h2> 
+          <div class="result">
+            <h3>20</h3>
+          </div>
+      </div>
+      <div class="food">
+        <h2>Top 5 Most Popular Food:</h2>
+          <div class="result">
+            <h3>1. Bento</h3>
+            <h3>2. Bento</h3>
+            <h3>3. Bento</h3>
+            <h3>4. Bento</h3>
+            <h3>5. Bento</h3>
+          </div>
+      </div>
+      <div class="orders">
+        <h2>New Orders Today:</h2>
+          <div class="result">
+            <h3>50</h3>
+          </div>
+      </div>
+      <div class="totalsales">
+        <h2>Total Sales:</h2>
+          <div class="result">
+            <h3>200 SGD</h3>
+          </div>
+      </div>
+      <div class="dailysales">
+        <h2>Today sales:</h2>
+          <div class="result">
+            <h3>100 SGD</h3>
+          </div>
+      </div>
+    </div>
+  </main>
+
+  
+
 
  
 
