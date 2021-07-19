@@ -8,7 +8,7 @@ if(isset($_POST['addFoodId'])) {
     if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])) {
 
     $foodId = validateData($_POST['addFoodId']);;
-    $foodQuery = DB::query("SELECT * FROM cart where users_id=%i AND food_id=%i" , $_COOKIE['users_id'],$foodId);
+    $foodQuery = DB::query("SELECT * FROM cart where users_id=%i AND food_id=%i AND cart_status=%i" , $_COOKIE['users_id'],$foodId,0);
     $foodCountCheck = DB::count();
     if($foodCountCheck > 0) {
         foreach($foodQuery as $foodCountResult)

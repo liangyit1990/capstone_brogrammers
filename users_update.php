@@ -68,7 +68,7 @@ if(isset($_POST['users_passwordUpdate'])){
     } 
 } 
 
-if(isset($_POST['zipCode'])){
+if(isset($_POST['saveId'])){
     $fullName = validateData($_POST['fullName']);
     $company = validateData($_POST['company']);
     $line1 = validateData($_POST['line1']);
@@ -91,7 +91,10 @@ if(isset($_POST['zipCode'])){
          
         ], "addresses_id=%i", $_POST['id']);
         echo 3;
-     
+        echo $line1;
+        echo $unitNo;
+        echo $zipCode;
+        
 
 
      //Update values in DB

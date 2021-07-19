@@ -629,7 +629,7 @@ foreach($address as $address_result) {
                         buttons: false,
                         timer : 1750,
                     }).then(function() {
-                        location.reload();
+                        // location.reload();
                             });
 
               
