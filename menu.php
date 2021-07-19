@@ -94,15 +94,16 @@ include "config/functions.php";
             <p class="text-center">
                 <!-- Description -->
             </p>
-            <!-- <div>
-                <div class="sortbyoptions"><b>Show Only:</b>
+
+            <div class="searchmenu">
+                <div class="sortbyoptions">
+                    <b>Show Only:</b>
                     <select class="drinksoptionsbox">
                         <option><span>-</span></option>
                         <option>Coffee/Tea</option>
                         <option>Fresh Juice</option>
                         <option>Others</option>
                     </select>
-                    <br>
                     <b>Sort By:</b>
                     <select class="drinkssort">
                         <option><span class="text-center">-</span></option>
@@ -111,7 +112,7 @@ include "config/functions.php";
                         <option>Alphabetically</option>
                     </select>
                 </div>
-            </div> -->
+            </div>
 
             <?php
                 $drinks = DB::query('SELECT * FROM food WHERE food_subcategory = "drinks"');
@@ -135,6 +136,18 @@ include "config/functions.php";
             <p class="text-center">
                 <!-- Description -->
             </p>
+            <div class="searchmenu">
+                <div class="sortbyoptions">
+                    <b>Sort By:</b>
+                    <select class="drinkssort">
+                        <option><span class="text-center">-</span></option>
+                        <option>Price: High to Low</option>
+                        <option>Price: Low to High</option>
+                        <option>Alphabetically</option>
+                    </select>
+                </div>
+            </div>
+
 
             <?php
                 $gravy = DB::query('SELECT * FROM food WHERE food_subcategory = "gravy"');

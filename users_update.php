@@ -69,38 +69,36 @@ if(isset($_POST['users_passwordUpdate'])){
 } 
 
 if(isset($_POST['zipCode'])){
-    $fullName = validateData($_POST['fullName']);
-    $company = validateData($_POST['company']);
-    $line1 = validateData($_POST['line1']);
-    $line2 = validateData($_POST['line2']);
-    $unitNo = validateData($_POST['unitNo']);
-    $country = validateData($_POST['country']);
-    $zipCode = validateData($_POST['zipCode']);
-    // $saveId = validateData($_POST['saveId']);
-    $editAddress = DB::query("SELECT * FROM addresses WHERE users_id AND addresses_line1=%s AND addresses_unitNo=%s AND addresses_zipCode=%s", $_COOKIE['users_id'], $line1, $unitNo, $zipCode);
-    $editAddCount = DB::count();
-    if($editAddCount == 0) {
-        DB::update("addresses", [
-            'addresses_fullName' => strtolower($fullName),
-            'addresses_companyName' => strtolower($company),
-            'addresses_line1' => strtolower($line1),
-            'addresses_line2' => strtolower($line2),
-            'addresses_unitNo' => strtolower($unitNo),
-            'addresses_country' => $country,
-            'addresses_zipCode' => $zipCode
-         
-        ], "addresses_id=%i", $_POST['id']);
-        echo 3;
-     
 
-
-     //Update values in DB
-
-    } else {
-        echo "No changes detected";
-    }
- }
+        $fullName = validateData($_POST['fullName']);
+        $company = validateData($_POST['company']);
+        $line1 = validateData($_POST['line1']);
+        $line2 = validateData($_POST['line2']);
+        $unitNo = validateData($_POST['unitNo']);
+        $country = validateData($_POST['country']);
+        $zipCode = validateData($_POST['zipCode']);
+        // $saveId = validateData($_POST['saveId']);
+        $editAddress = DB::query("SELECT * FROM addresses WHERE users_id AND addresses_line1=%s AND addresses_unitNo=%s AND addresses_zipCode=%s", $_COOKIE['users_id'], $line1, $unitNo, $zipCode);
+        $editAddCount = DB::count();
+        if($editAddCount == 0) {
+            DB::update("addresses", [
+                'addresses_fullName' => strtolower($fullName),
+                'addresses_companyName' => strtolower($company),
+                'addresses_line1' => strtolower($line1),
+                'addresses_line2' => strtolower($line2),
+                'addresses_unitNo' => strtolower($unitNo),
+                'addresses_country' => $country,
+                'addresses_zipCode' => $zipCode
+            
+            ], "addresses_id=%i", $_POST['id']);
+            echo 3;
+        } else {
+            echo "No changes detected";
+        }
  
+ 
+}
+
 
 
 ?>
