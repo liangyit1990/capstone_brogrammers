@@ -64,12 +64,12 @@ include "config/functions.php";
                                     </div>
                                 </div>
                                 <div class="order-stat">
-                                    <h6><strong>Order details:</strong></h6> 
+                                    <h6><strong>Order details:</strong></h6><br>
                         <?php 
                         foreach($getUserOrderDetails as $getUserOrderDetailsResult ) {
                         
                         ?>
-                        <p><?php echo ucwords($getUserOrderDetailsResult['food_name']).' x '.$getUserOrderDetailsResult['orderdetails_qty']?></p>
+                        <p><?php echo ucwords($getUserOrderDetailsResult['food_name']).' x '.$getUserOrderDetailsResult['orderdetails_qty']?></p><br>
 
                         <?php 
                         }
