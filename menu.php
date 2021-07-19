@@ -261,6 +261,8 @@ include "config/functions.php";
                             buttons: false,
                             timer : 3000,
                         })
+                        cartCount = parseInt($(".count").text()) + 1;
+                        $(".count").text(cartCount);
 
                     
                  } else if(data == 3) {

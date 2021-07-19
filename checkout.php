@@ -248,7 +248,10 @@ foreach($address as $address_result) {
                     $getOrderQuery = DB::query("SELECT * FROM orders");
                     $getOrderCount = DB::count();
                     if($getOrderCount > 0) {
-                        $orderCount = $getOrderCount + 1;
+                        foreach($getOrderQuery as $getOrderResult ) {
+                            $orderCount = $getOrderResult["orders_id"];
+                        }
+                    
                     } else {
                         $orderCount = 1;
                     }
