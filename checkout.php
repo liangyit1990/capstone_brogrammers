@@ -163,6 +163,7 @@ foreach($address as $address_result) {
                     </ul>
                     <button type="button" class="btn btn-primary btn-sm clearCart" id="clearCart" data-id="<?php echo $_COOKIE["users_id"] ?>" wait >Clear Cart</button>
                     <a href="<?php echo SITE_URL; ?>"><button type="button" class="btn btn-primary btn-sm backtohome" id="backtohome" value="backtohome" data-id="" data-bs-toggle="modal" data-bs-target="" >Back to Home</button></a>
+                    <a href="<?php echo SITE_URL . "menu.php" ?>"><button type="button" class="btn btn-primary btn-sm backtomenu" id="backtomenu" value="backtomenu" data-id="" data-bs-toggle="modal" data-bs-target="" >Back to Menu</button></a>
 
 
                     <!-- <form class="card p-2">

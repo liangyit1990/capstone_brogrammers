@@ -248,7 +248,7 @@ include "config/functions.php";
                         text: "Item added Successfully",
                         icon: "success",
                         buttons: false,
-                        timer : 3000,
+                        timer : 1500,
                         })
                         cartCount = parseInt($(".count").text()) + 1;
                         $(".count").text(cartCount);
