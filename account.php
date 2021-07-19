@@ -500,8 +500,7 @@ foreach($address as $address_result) {
                 },
                 success:function(data){
                     if(data == 2){
-                        <?php    
-                            echo 'swal({
+                        swal({
                             title: "Nice",
                             text: "You have successfully changed your password!",
                             icon: "success",
@@ -509,8 +508,7 @@ foreach($address as $address_result) {
                             timer : 2000,
                             }).then(function() {
                             window.location = "account.php";
-                            });';
-                        ?>    
+                            });  
                     } else if (data == "Please fill up all the required fields!"){
                         <?php
                         echo 'swal("Oops...", "Please fill up all the required fields!", "error");';

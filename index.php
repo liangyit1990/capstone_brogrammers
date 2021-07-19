@@ -459,7 +459,17 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                       });
                         
                  } else if(data==2){ //display error msg if user is not logged in
-                    swal("Error", "Please login/register an account to start adding to cart", "error");
+                    // swal("Error", "Please login/register an account to start adding to cart", "error");
+
+                    swal({
+                            title: "Error",
+                            text: "Please login/register an account to start adding to cart",
+                            icon: "error",
+                            buttons: false,
+                            timer : 2000,
+                            }).then(function() {
+                            window.location = "login.php";
+                            });  
                       
                  }
                 
@@ -517,7 +527,18 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                       });
                         
                  } else if (data ==2) {//display error msg if user is not logged in
-                    swal("Error", "Please login/register an account to start adding to cart", "error");
+                    // swal("Error", "Please login/register an account to start adding to cart", "error");
+
+                    swal({
+                            title: "Error",
+                            text: "Please login/register an account to start adding to cart",
+                            icon: "error",
+                            buttons: false,
+                            timer : 2000,
+                            }).then(function() {
+                            window.location = "login.php";
+                            });  
+
                  }
             }   
 

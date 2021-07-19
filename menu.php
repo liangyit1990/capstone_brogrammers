@@ -3,6 +3,8 @@ include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
 
+isAdmin();
+
 ?>
 
 <!DOCTYPE html>
@@ -50,10 +52,10 @@ include "config/functions.php";
             <p class="text-center">
                 <!-- Description: Our Bentos are... -->
             </p>
-            <div class="searchmenu">
+            <!-- <div class="searchmenu">
                 <div class="sortbyoptions">
                     <b>Show Only:</b>
-                    <select class="drinksoptionsbox">
+                    <select class="bentooptionsbox">
                         <option><span>-</span></option>
                         <option>Chicken</option>
                         <option>Seafood</option>
@@ -62,12 +64,12 @@ include "config/functions.php";
                     <b>Sort By:</b>
                     <select class="drinkssort">
                         <option><span class="text-center">-</span></option>
-                        <option>Price: High to Low</option>
-                        <option>Price: Low to High</option>
-                        <option>Alphabetically</option>
+                        <option value="bentoh2l">Price: High to Low</option>
+                        <option value="bentol2h">Price: Low to High</option>
+                        <option value="bentoalph">Alphabetically</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
 
             <?php
                 $bento = DB::query('SELECT * FROM food WHERE food_category = "Bento"');
@@ -95,26 +97,28 @@ include "config/functions.php";
                 <!-- Description -->
             </p>
 
-            <div class="searchmenu">
+            <!-- <div class="searchmenu">
                 <div class="sortbyoptions">
                     <b>Show Only:</b>
                     <select class="drinksoptionsbox">
                         <option><span>-</span></option>
-                        <option>Coffee/Tea</option>
-                        <option>Fresh Juice</option>
+                        <option>Chicken</option>
+                        <option>Seafood</option>
                         <option>Others</option>
                     </select>
                     <b>Sort By:</b>
                     <select class="drinkssort">
                         <option><span class="text-center">-</span></option>
-                        <option>Price: High to Low</option>
-                        <option>Price: Low to High</option>
-                        <option>Alphabetically</option>
+                        <option value="drinksh2l">Price: High to Low</option>
+                        <option value="drinksl2h">Price: Low to High</option>
+                        <option value="drinksalph">Alphabetically</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
 
             <?php
+                
+
                 $drinks = DB::query('SELECT * FROM food WHERE food_subcategory = "drinks"');
                 foreach($drinks as $drinks_result){
                     echo '<div class="col-lg-4 col-sm-6 menubox"><div class="row"><p class="text-center"><img src=" ';
@@ -136,17 +140,17 @@ include "config/functions.php";
             <p class="text-center">
                 <!-- Description -->
             </p>
-            <div class="searchmenu">
+            <!-- <div class="searchmenu">
                 <div class="sortbyoptions">
                     <b>Sort By:</b>
                     <select class="drinkssort">
                         <option><span class="text-center">-</span></option>
-                        <option>Price: High to Low</option>
-                        <option>Price: Low to High</option>
-                        <option>Alphabetically</option>
+                        <option value="gravyh2l">Price: High to Low</option>
+                        <option value="gravyl2h">Price: Low to High</option>
+                        <option value="gravyalph">Alphabetically</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
 
 
             <?php
@@ -266,7 +270,16 @@ include "config/functions.php";
 
                     
                  } else if(data == 3) {
-                    swal("Error", "Please login/register an account to start adding to cart", "error");
+                    // swal("Error", "Please login/register an account to start adding to cart", "error")
+                    swal({
+                            title: "Error",
+                            text: "Please login/register an account to start adding to cart",
+                            icon: "error",
+                            buttons: false,
+                            timer : 2000,
+                            }).then(function() {
+                            window.location = "login.php";
+                            });  
                  }
                         
             }

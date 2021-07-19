@@ -29,12 +29,21 @@ include "../config/functions.php";
   ?>
 
   <main class="home_content">
+    
     <h1><strong>Welcome Admin</strong></h1>
+    
     <div class="container">
       <div class="users">
         <h2>No. of Registered Users:</h2> 
           <div class="result">
-            <h3>20</h3>
+            <h3>
+              <?php 
+              $noofRegUsers = DB::query('SELECT * FROM users WHERE users_permission = 0');
+              $noofRegUsersCount = DB::count();
+              echo $noofRegUsersCount;
+
+              ?>
+            </h3>
           </div>
       </div>
       <div class="food">

@@ -49,6 +49,12 @@ function loginAccountLogout(){
     } 
 }
 
+function isAdmin(){
+    if((isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn']) && $_COOKIE['users_permission'] == 1)) {
+        header("Location: " . SITE_URL . "admin/adminmanagement.php");
+    }
+}
+
 // function cartCounter() {
 //     if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])){
 //         $userCartCount = 0;
