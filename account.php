@@ -314,38 +314,38 @@ foreach($address as $address_result) {
                                                     <form class="row g-3">
                                                         <div class="form-group col-12">
                                                             <label for="fullName">Full Name<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control fullName' . $address_result['addresses_id']; echo'" placeholder="" name="fullName" value="';
+                                                            <input type="text" class="form-control fullName fullName' . $address_result['addresses_id']; echo'" placeholder="" name="fullName" value="';
                                                             echo $address_result['addresses_fullName'];
                                                             echo'">
                                                         </div>
                                                         <div class="form-group col-12">
                                                             <label for="companyName">Company/Organization</label>
-                                                            <input type="text" class="form-control company' . $address_result['addresses_id']; echo'" placeholder="" name="companyName" value="';
+                                                            <input type="text" class="form-control company company' . $address_result['addresses_id']; echo'" placeholder="" name="companyName" value="';
                                                             echo $address_result['addresses_companyName'];
                                                             echo'">
                                                         </div>
                                                         <div class="form-group col-12">
                                                             <label for="line1">Address Line 1<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control line1' . $address_result['addresses_id']; echo'" placeholder="" name="line1" value="';
+                                                            <input type="text" class="form-control line1 line1' . $address_result['addresses_id']; echo'" placeholder="" name="line1" value="';
                                                             echo $address_result['addresses_line1'];
                                                             echo'">
                                                         </div>
                                                         <div class="form-group col-12">
                                                             <label for="line2">Address Line 2</label>
-                                                            <input type="text" class="form-control line2' . $address_result['addresses_id']; echo'" placeholder="" name="line2" value="';
+                                                            <input type="text" class="form-control line2 line2' . $address_result['addresses_id']; echo'" placeholder="" name="line2" value="';
                                                             echo $address_result['addresses_line2'];
                                                             echo'">
                                                         </div>
                                                         <div class="form-group col-12">
                                                             <label for="unitNo">Unit Number<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control unitNo' . $address_result['addresses_id']; echo'" placeholder="" name="unitNo" value="';
+                                                            <input type="text" class="form-control unitNo unitNo' . $address_result['addresses_id']; echo'" placeholder="" name="unitNo" value="';
                                                             echo $address_result['addresses_unitNo'];
                                                             echo'">
                                                         </div>
 
                                                         <div class="form-group col-md-6">
                                                             <label for="country">Country<span class="redasterisk">*</span></label>
-                                                            <select class="form-control country' . $address_result['addresses_id']; echo'" placeholder="" name="country" value="';
+                                                            <select class="form-control country country' . $address_result['addresses_id']; echo'" placeholder="" name="country" value="';
                                                             echo $address_result['addresses_country'];
                                                             echo'">
                                                                 <option value="Singapore">Singapore</option>
@@ -354,7 +354,7 @@ foreach($address as $address_result) {
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="zipCode">Zip Code<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control zipCode' . $address_result['addresses_id']; echo'" placeholder="" name="zipCode" value="';
+                                                            <input type="text" class="form-control zipCode zipCode' . $address_result['addresses_id']; echo'" placeholder="" name="zipCode" value="';
                                                             echo $address_result['addresses_zipCode'];
                                                             echo'">
                                                             <input type="text" class="form-control hiddenusersid d-none" name="users_id" value="';
@@ -584,48 +584,69 @@ foreach($address as $address_result) {
             var saveId = $(this).data('id'); //data-id class
             console.log('hello');
             // var users_id = $(".hiddenusersid").val();
-            var fullName = $(`.fullName${saveId}`).val();
-            var company = $(`.company${saveId}`).val();
-            var line1 = $(`.line1${saveId}`).val();
-            var line2 = $(`.line2${saveId}`).val();
-            var unitNo = $(`.unitNo${saveId}`).val();
-            var country = $(`.country${saveId}`).val();
-            var zipCode = $(`.zipCode${saveId}`).val();
+            var fullName = $(this).parent().parent().find(".fullName").val();
+            var company = $(this).parent().parent().find(".company").val();
+            var line1 = $(this).parent().parent().find(".line1").val();
+            var line2 = $(this).parent().parent().find(".line2").val();
+            var unitNo = $(this).parent().parent().find(".unitNo").val();
+            var country = $(this).parent().parent().find(".country").val();
+            var zipCode = $(this).parent().parent().find(".zipCode").val();
             var editAdd = $(".editAdd").val();
-                // console.log(fullName);
-                // console.log(company);
-                // console.log(line1);
-                // console.log(line2);
-                // console.log(unitNo);
-                // console.log(country);
-                // console.log(zipCode);
-                // console.log(editAdd);
+                console.log(fullName);
+                console.log(company);
+                console.log(line1);
+                console.log(line2);
+                console.log(unitNo);
+                console.log(country);
+                console.log(zipCode);
+                console.log(editAdd);
                 
           //Ajax to update users info
           $.ajax({
-            // url: 'adminedit.php', 
-            // method: 'POST', 
-            // data:{
-            // id:id,
-            // name:name,
-            // email:email,
-            // phone:phone,
-            // address:address,
-            // gender:gender,
-            // permission:permission,
-            // editUser:editUser
-            // },
-            // success:function(data){
-            //   if(data==2){
-            //     swal("Success!", "User Profile Updated", "success");
-            //     var userid = `.userdata${id}`;
-            //     $(userid).find('td').eq(1).text(name);
-            //     $(userid).find('td').eq(2).text(email);
-            //   } else {
-            //       swal("Error!", "Please ensure all sections are filled up", "error");
+            url: 'users_update.php', 
+            method: 'POST', 
+            data:{
+            fullName: fullName,
+            company: company,
+            line1: line1,
+            line2: line2,
+            unitNo: unitNo,
+            country: country,
+            zipCode: zipCode,
+            editAdd: editAdd,
+            saveId: saveId
+            },
+            success:function(data){
+                console.log(data);
+              if(data == 3){
+                // swal("Success!", "Address updated successfully", "success");
+
+
+                swal({
+                        title: "Nice",
+                        text: "Address updated successfully",
+                        icon: "success",
+                        buttons: false,
+                        timer : 1750,
+                    }).then(function() {
+                        location.reload();
+                            });
+
+              
+
+                // var userid = `.userdata${id}`;
+                // $(userid).find('td').eq(1).text(name);
+                // $(userid).find('td').eq(2).text(email);
+              } else if(data="No changes detected"){
+                swal("Oops...", "No changes detected", "error");
+              }
+              
+              
+            //   else {
+            //       swal("Error!", "Please ensure all required fields are entered", "error");
             //   }
                         
-            // }
+            }
           });       
         })
       
