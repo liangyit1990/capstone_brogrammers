@@ -82,7 +82,7 @@ include "config/functions.php";
 
           $getOrderDetailsGroup = DB::query('SELECT * FROM orderdetails WHERE orders_id=%i', $orderID);
           $getOrderDetailsGroupCount = DB::count();
-          if($getOrderDetailsGroupCount = 0 ) {
+          if($getOrderDetailsGroupCount == 0 ) {
               $batchCounter = 1;
           }
 
@@ -124,6 +124,7 @@ include "config/functions.php";
 
       
       header("Location:success.php?amount=$amount");
+      header( "refresh: 3; url= account.php#orders");
 
     }
 ?>

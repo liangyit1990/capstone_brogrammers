@@ -582,6 +582,7 @@ foreach($address as $address_result) {
 
         $(".saveAddressChanges").click(function(){
             var saveId = $(this).data('id'); //data-id class
+            console.log('hello');
             // var users_id = $(".hiddenusersid").val();
             var fullName = $(`.fullName${saveId}`).val();
             var company = $(`.company${saveId}`).val();

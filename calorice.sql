@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 18, 2021 at 04:11 AM
+-- Generation Time: Jul 19, 2021 at 01:31 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -79,15 +79,6 @@ CREATE TABLE `cart` (
   `cart_status` smallint(6) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `users_id`, `food_id`, `cart_foodqty`, `cart_status`) VALUES
-(14, 15, 45, 1, 1),
-(15, 15, 50, 1, 1),
-(16, 15, 39, 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -102,17 +93,6 @@ CREATE TABLE `cartbatch` (
   `users_id` int(11) NOT NULL,
   `food_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cartbatch`
---
-
-INSERT INTO `cartbatch` (`cartbatch_id`, `cartbatch_no`, `cartbatch_foodqty`, `cartbatch_status`, `users_id`, `food_id`) VALUES
-(29, 1, 1, 1, 15, 36),
-(30, 2, 1, 1, 15, 37),
-(31, 2, 2, 1, 15, 35),
-(32, 2, 1, 1, 15, 48),
-(33, 1, 1, 1, 15, 36);
 
 -- --------------------------------------------------------
 
@@ -218,20 +198,6 @@ CREATE TABLE `orderdetails` (
   `orders_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `orderdetails`
---
-
-INSERT INTO `orderdetails` (`orderdetails_id`, `orderdetails_qty`, `orderdetails_group`, `users_id`, `food_id`, `orders_id`) VALUES
-(28, 1, 1, 15, 36, 5),
-(29, 1, 2, 15, 37, 5),
-(30, 2, 2, 15, 35, 5),
-(31, 1, 2, 15, 48, 5),
-(32, 1, 3, 15, 45, 5),
-(33, 1, 4, 15, 50, 5),
-(34, 1, 1, 15, 36, 6),
-(35, 1, 2, 15, 39, 6);
-
 -- --------------------------------------------------------
 
 --
@@ -244,14 +210,6 @@ CREATE TABLE `orders` (
   `orders_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`orders_id`, `orders_totalprice`, `orders_timestamp`, `users_id`) VALUES
-(5, '22.87', '2021-07-18 04:08:26', 15),
-(6, '12.50', '2021-07-18 04:11:02', 15);
 
 -- --------------------------------------------------------
 
@@ -420,13 +378,13 @@ ALTER TABLE `bento`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cartbatch`
 --
 ALTER TABLE `cartbatch`
-  MODIFY `cartbatch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `cartbatch_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -450,13 +408,13 @@ ALTER TABLE `food`
 -- AUTO_INCREMENT for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `orderdetails_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `orderdetails_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `submission`
