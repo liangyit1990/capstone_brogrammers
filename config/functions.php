@@ -13,6 +13,12 @@ function displayDate($date){
     return date('d M Y', strtotime($date));
 }
 
+
+function displayTime($date){
+    return date('h:i:sa', strtotime($date));
+}
+
+
 function isLoggedIn(){
     if(!isset($_COOKIE['users_id']) || !isset($_COOKIE['isLoggedIn'])){
         header("Location: " . SITE_URL . "login.php");
