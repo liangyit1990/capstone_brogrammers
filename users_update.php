@@ -78,7 +78,7 @@ if(isset($_POST['zipCode'])){
         $country = validateData($_POST['country']);
         $zipCode = validateData($_POST['zipCode']);
         // $saveId = validateData($_POST['saveId']);
-        $editAddress = DB::query("SELECT * FROM addresses WHERE users_id AND addresses_line1=%s AND addresses_unitNo=%s AND addresses_zipCode=%s", $_COOKIE['users_id'], $line1, $unitNo, $zipCode);
+        $editAddress = DB::query("SELECT * FROM addresses WHERE users_id=%i AND addresses_line1=%s AND addresses_unitNo=%s AND addresses_zipCode=%s", $_COOKIE['users_id'], $line1, $unitNo, $zipCode);
         $editAddCount = DB::count();
         if($editAddCount == 0) {
             DB::update("addresses", [
@@ -87,10 +87,10 @@ if(isset($_POST['zipCode'])){
                 'addresses_line1' => strtolower($line1),
                 'addresses_line2' => strtolower($line2),
                 'addresses_unitNo' => strtolower($unitNo),
-                'addresses_country' => $country,
+                'addresses_country' => strtolower($country),
                 'addresses_zipCode' => $zipCode
             
-            ], "addresses_id=%i", $_POST['id']);
+            ], "addresses_id=%i", $_POST['saveId']);
             echo 3;
         } else {
             echo "No changes detected";
