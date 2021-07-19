@@ -86,10 +86,12 @@ foreach($address as $address_result) {
             </div>
             <div class="row1">
                 <a href="<?php echo SITE_URL; ?>logout.php" ><i class='bx bx-log-out'></i>Logout</a>
+            </div class="row1">
+                <div class="moon1">
+                    <i class='bx bx-moon bx-sm symbol' id="theme-button"></i>
+                </div>
             </div>
-            <div class="moon">
-                <i class='bx bx-moon bx-sm symbol' id="theme-button"></i>
-            </div>
+            
             <!-- <div class="row">
                 <a href="account.php#giftcards">Gift Cards</a>
             </div> -->
