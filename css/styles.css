@@ -599,7 +599,7 @@ footer a {
 .date-container{
     display: grid;
     width:100%;
-    height: 250px;
+    
     background:#cdcdcd;
     border-radius: 20px;
     margin-top:10px;
@@ -608,7 +608,7 @@ footer a {
 .date-order{
     display: grid;
     width:100%;
-    height:60px;
+    height:100%;
     background: #000;
     color: #fff;
     padding-left:5px;
