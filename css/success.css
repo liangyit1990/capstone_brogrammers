@@ -102,3 +102,20 @@ h3{
     }
 
 }
+.success-container{
+    animation: transitionIn 1s;
+
+}
+@keyframes transitionIn {
+    from{
+        opacity: 0;
+        transform: rotateX(-10deg);
+
+    }
+    to {
+        opacity: 1;
+        transform: rotateX(0);
+    }
+
+
+}

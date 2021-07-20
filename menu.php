@@ -39,8 +39,8 @@ isAdmin();
 
     <!-- anselm -->
     <div class="panline">   
-                <img class="pan filter-green" src="images/pan.svg">
-        </div>
+            <img class="pan filter-green" src="images/pan.svg">
+    </div>
     <div class="container">
         <div class="row">
             <h1 class="text-center">Customised Menu</h1>

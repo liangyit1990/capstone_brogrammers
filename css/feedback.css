@@ -131,19 +131,8 @@ img{
     gap:1.5rem;
     
 }
-.l-main{
-    padding-top: 50px ;
-}
-.l-header{
-    width:100%;
-    
-    position: fixed;
-    top:0;
-    left:0;
-    
-    background-color:var(--body-color);
 
-}
+
 
 /* cart */
 .count {
@@ -239,6 +228,21 @@ img{
     box-shadow: 0px 0px 10px 0px #666;
     justify-content: center;
     padding: 1em;
+    animation: transitionIn 1s;
+
+}
+@keyframes transitionIn {
+    from{
+        opacity: 0;
+        transform: rotateX(-10deg);
+
+    }
+    to {
+        opacity: 1;
+        transform: rotateX(0);
+    }
+
+
 }
 
 /* Google map */
