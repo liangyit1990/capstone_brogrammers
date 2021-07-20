@@ -305,7 +305,7 @@ img{
 .container {
   display: flex;
   justify-content: space-between;
-  
+  height:200px;
   margin-top: 50px;
   
 }
