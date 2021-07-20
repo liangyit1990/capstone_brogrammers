@@ -34,16 +34,16 @@ include "../config/functions.php";
     
     <div class="container">
       <div class="users">
-        <h2>No. of Registered Users:</h2> 
+        <h4>No. of Registered Users:</h4> 
           <div class="result">
-            <h3>
+            <h5>
               <?php 
               $noofRegUsers = DB::query('SELECT * FROM users WHERE users_permission = 0');
               $noofRegUsersCount = DB::count();
               echo $noofRegUsersCount;
 
               ?>
-            </h3>
+            </h5>
           </div>
       </div>
       <div class="food">
@@ -51,7 +51,7 @@ include "../config/functions.php";
         
 
         ?>
-        <h2>Top 5 Most Popular Food:</h2>
+        <h4>Top 5 Most Popular Food:</h4>
           <div class="result">
             <?php 
             $food_name = Array();
@@ -79,7 +79,7 @@ include "../config/functions.php";
               $count = 1;
               foreach(array_keys($newArray) as $newArrayKeyNames) {
                 
-                  echo "<h3>".$count.".".ucwords($newArrayKeyNames)."</h3>";
+                  echo "<h5>".$count.".".ucwords($newArrayKeyNames)."</h5>";
                   $count++;
               }
             
@@ -87,7 +87,7 @@ include "../config/functions.php";
           </div>
       </div>
       <div class="orders">
-        <h2>Total Orders </h2>
+        <h4>Total Orders </h4>
           <div class="result">
             <?php 
             
@@ -95,11 +95,11 @@ include "../config/functions.php";
             $getTotalOrderCountResult = db::count();
           
             ?>
-            <h3><?php echo $getTotalOrderCountResult ?></h3>
+            <h5><?php echo $getTotalOrderCountResult ?></h5>
           </div>
       </div>
       <div class="totalsales">
-        <h2>Total Sales:</h2>
+        <h4>Total Sales:</h4>
           <div class="result">
             <?php 
             $totalsales = 0;
@@ -109,7 +109,7 @@ include "../config/functions.php";
             
             ?>
 
-            <h3>$<?php echo $totalsales ?></h3>
+            <h5>$<?php echo $totalsales ?></h5>
           </div>
       </div>
       <!-- <div class="dailysales">
@@ -118,7 +118,7 @@ include "../config/functions.php";
             <h3>100 SGD</h3>
           </div>
       </div> -->
-    </div>
+    </div><hr>
   </main>
 
   
