@@ -34,10 +34,10 @@ include "config/functions.php";
         <i class='bx bx-chevron-up-circle scrolltop_icon' ></i>
     </a>
 
-        <div class="container accountcontainer viewer" id="viewer">
+        <div class="accountcontainer viewer" id="viewer">
             <div class="row justify-content-md-center">
                 
-                <div class="container col-xl-9 accountrightbody">
+                <div class="col-xl-9 accountrightbody">
 
                     <!-- Start of Orders Row - WIP -->
                     <div class="row accrow ordersplacedrow accountpage" id="orders">

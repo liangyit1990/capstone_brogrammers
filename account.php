@@ -96,10 +96,10 @@ foreach($address as $address_result) {
                 <a href="account.php#giftcards">Gift Cards</a>
             </div> -->
         </div>
-        <div class="container accountcontainer viewer" id="viewer">
+        <div class="accountcontainer viewer" id="viewer">
             <div class="row justify-content-md-center">
                 
-                <div class="container col-xl-9 accountrightbody">
+                <div class=" col-xl-9 accountrightbody">
                     <!-- Start of Basic Info Row - Contains basic info, send feedback, change email and change password -->
                     <div id="account" class="row accountpage">
                         <div class="row accrow basicinforow">
