@@ -245,8 +245,8 @@ isAdmin();
           
             },
             success:function(data){
-                console.log(data);
-                if(data==1){
+                
+                if(data==1 || data == 2){
                     swal({
                         title: "Hurray!",
                         text: "Item added Successfully",
@@ -256,20 +256,10 @@ isAdmin();
                         })
                         cartCount = parseInt($(".count").text()) + 1;
                         $(".count").text(cartCount);
+                        $(".cartLink").attr("href", "checkout.php");
+                       
                         
-                 } else if (data ==2) {
-                        swal({
-                            title: "Hurray!",
-                            text: "Item added Successfully",
-                            icon: "success",
-                            buttons: false,
-                            timer : 3000,
-                        })
-                        cartCount = parseInt($(".count").text()) + 1;
-                        $(".count").text(cartCount);
-
-                    
-                 } else if(data == 3) {
+                 }  else if(data == 3) {
                     // swal("Error", "Please login/register an account to start adding to cart", "error")
                     swal({
                             title: "Error",

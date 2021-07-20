@@ -42,7 +42,7 @@ if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])){
                 </ul>
             </div>
             <div class="nav_cart cart" id="nav-cart">
-                <div><a href="checkout.php"><i class='bx bx-cart bx-md'></i><span class="count"><?php echo $totalCartCount ?></span></a></div>
+                <div><a class ="cartLink" href="<?php if($totalCartCount == 0) {echo "#";} else { echo "checkout.php";} ?>"><i class='bx bx-cart bx-md'></i><span class="count"><?php echo $totalCartCount ?></span></a></div>
                 <!-- <div class="item-count">0</div> -->
                 
             </div>

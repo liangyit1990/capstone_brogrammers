@@ -150,9 +150,9 @@ $(".clear-cart").click(function () {
                             deleteCartUserId: deleteCartUserId
                         },
                         success: function (data) {
-                            console.log(data);
                             if (data == 1) {
-                                $(".count").text("0");
+                                $(".count").text("0"); 
+                                $(".cartLink").attr("href", "#");
                             } else {
                                 alert(data);
                             }
