@@ -113,7 +113,11 @@ body{
     background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%); */
     color: var(--text-color);
     line-height: 1.6;
+    
 }
+
+
+
 /* animation on calorice */
 .calorice{
     padding-bottom: 15px;
@@ -217,8 +221,23 @@ img {
     gap:1.5rem;
     
 }
-.l-main{
+.l-main, .container{
     padding-top: 50px ;
+    animation: transitionIn 1s;
+
+}
+@keyframes transitionIn {
+    from{
+        opacity: 0;
+        transform: rotateX(-10deg);
+
+    }
+    to {
+        opacity: 1;
+        transform: rotateX(0);
+    }
+
+
 }
 .l-header{
     width:100%;
