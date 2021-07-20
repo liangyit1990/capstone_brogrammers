@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 19, 2021 at 01:31 PM
+-- Generation Time: Jul 20, 2021 at 11:48 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -50,7 +50,8 @@ INSERT INTO `addresses` (`addresses_id`, `users_id`, `addresses_default`, `addre
 (31, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670236'),
 (32, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670236'),
 (33, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670237'),
-(34, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670237');
+(34, 19, 0, 'Anselm Sim', '', 'BLK 237 Bukit Panjang Ring Road', '', '#13-75', 'Singapore', '670237'),
+(35, 15, 0, 'Kenny', '', 'Test Test Test Address', '', '06-74', 'Singapore', '640757');
 
 -- --------------------------------------------------------
 
@@ -79,6 +80,29 @@ CREATE TABLE `cart` (
   `cart_status` smallint(6) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `users_id`, `food_id`, `cart_foodqty`, `cart_status`) VALUES
+(1, 15, 39, 1, 1),
+(2, 15, 38, 1, 1),
+(3, 15, 40, 1, 1),
+(4, 15, 38, 1, 1),
+(5, 15, 40, 1, 1),
+(6, 15, 42, 1, 1),
+(7, 15, 38, 2, 1),
+(8, 15, 43, 1, 1),
+(9, 15, 50, 1, 1),
+(10, 15, 51, 1, 1),
+(11, 15, 48, 1, 1),
+(12, 15, 52, 1, 1),
+(35, 15, 40, 1, 1),
+(36, 15, 39, 1, 1),
+(37, 15, 38, 1, 1),
+(38, 15, 40, 1, 1),
+(39, 15, 51, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -93,6 +117,16 @@ CREATE TABLE `cartbatch` (
   `users_id` int(11) NOT NULL,
   `food_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cartbatch`
+--
+
+INSERT INTO `cartbatch` (`cartbatch_id`, `cartbatch_no`, `cartbatch_foodqty`, `cartbatch_status`, `users_id`, `food_id`) VALUES
+(1, 1, 1, 1, 15, 36),
+(6, 1, 1, 1, 15, 36),
+(7, 1, 2, 1, 15, 1),
+(8, 1, 2, 1, 15, 35);
 
 -- --------------------------------------------------------
 
@@ -133,11 +167,8 @@ CREATE TABLE `feedbackothers` (
 INSERT INTO `feedbackothers` (`feedbackothers_id`, `feedbackothers_name`, `feedbackothers_email`, `feedbackothers_topic`, `feedbackothers_message`, `feedbackothers_file`) VALUES
 (1, 'kenny', 'kenny@gmail.com', 'test topic', 'test message', NULL),
 (2, 'kenny', 'tky@gmail.com', 'test msg', 'test msg 2', NULL),
-(3, 'kenny', 'kenny@gmail.com', 'topic 3', 'msg 3', NULL),
 (4, 'tky', 'tky@gmail.com', 'topic 4', 'topic 4 with attachment', 'submittedfile/100721-soonkueh.jpg'),
-(5, 'tky', 'tky@gmail.com', 'topic 5', 'msg 5', 'submittedfile/100721-soonkueh.jpg1'),
-(6, 'kenny', 'kenny@gmail.com', 'topic 6', 'topic 6', 'submittedfile/100721-1-soonkueh.jpg'),
-(7, 'anselm sim', 'anselmsim@gmail.com', 'abc', 'abc', 'submittedfile/150721-oolong_tea-removebg-preview.png');
+(6, 'kenny', 'kenny@gmail.com', 'topic 6', 'topic 6', 'submittedfile/100721-1-soonkueh.jpg');
 
 -- --------------------------------------------------------
 
@@ -198,6 +229,33 @@ CREATE TABLE `orderdetails` (
   `orders_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `orderdetails`
+--
+
+INSERT INTO `orderdetails` (`orderdetails_id`, `orderdetails_qty`, `orderdetails_group`, `users_id`, `food_id`, `orders_id`) VALUES
+(1, 1, 1, 15, 39, 1),
+(2, 1, 2, 15, 38, 1),
+(3, 1, 3, 15, 40, 1),
+(4, 1, 1, 15, 36, 2),
+(5, 1, 2, 15, 38, 2),
+(6, 1, 3, 15, 40, 2),
+(7, 1, 4, 15, 42, 2),
+(8, 2, 1, 15, 38, 3),
+(9, 1, 2, 15, 43, 3),
+(10, 1, 3, 15, 50, 3),
+(11, 1, 4, 15, 51, 3),
+(12, 1, 5, 15, 48, 3),
+(13, 1, 6, 15, 52, 3),
+(14, 1, 1, 15, 40, 4),
+(15, 1, 2, 15, 39, 4),
+(16, 1, 3, 15, 38, 4),
+(17, 1, 1, 15, 36, 5),
+(18, 2, 1, 15, 1, 5),
+(19, 2, 1, 15, 35, 5),
+(20, 1, 2, 15, 40, 5),
+(21, 1, 3, 15, 51, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -210,6 +268,17 @@ CREATE TABLE `orders` (
   `orders_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`orders_id`, `orders_totalprice`, `orders_timestamp`, `users_id`) VALUES
+(1, '36.00', '2021-07-19 14:29:59', 15),
+(2, '36.50', '2021-07-20 02:42:35', 15),
+(3, '46.26', '2021-07-20 02:43:09', 15),
+(4, '36.00', '2021-07-20 05:39:40', 15),
+(5, '28.07', '2021-07-20 05:40:40', 15);
 
 -- --------------------------------------------------------
 
@@ -248,12 +317,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`users_id`, `users_name`, `users_email`, `users_password`, `users_address`, `users_phone`, `users_age`, `users_gender`, `users_permission`, `users_joindate`) VALUES
-(6, 'ky', 'ky@gmail.com', '$2y$10$HtGb5WNwO6SBkoY2B/bZOe6QVePW.8ywqgMhmI8LeTV67zy3pQyGu', '', '', NULL, 0, 1, '2021-07-06 08:31:17'),
+(6, 'kys', 'ky@gmail.com', '$2y$10$HtGb5WNwO6SBkoY2B/bZOe6QVePW.8ywqgMhmI8LeTV67zy3pQyGu', '', '', NULL, 0, 1, '2021-07-20 06:08:18'),
 (8, 'hy', 'hy@gmail.com', '$2y$10$93fTm7vsxDe8B1WY/1w/YO2j36KvcHEnlRy..VYXy02gxWy5fjgVy', NULL, NULL, NULL, NULL, 0, '2021-07-08 11:45:23'),
 (15, 'tky', 'tky@gmail.com', '$2y$10$CpUgeO/P9NEE4rComYRp7ObDZLkwCe6vAtYP8WijdlCfLPnVWesgu', '', '', NULL, 0, 0, '2021-07-09 10:59:02'),
-(16, 'kenny', 'kenny@outlook.com', '$2y$10$EtHv/A7Sx1EKJlnh8JefyO5wv443goMi5nEfFAWm1dSByiGzZw2mm', NULL, NULL, NULL, NULL, 0, '2021-07-10 08:34:49'),
-(17, 'james', 'james@james.com', '$2y$10$fV.Gr2sveaRd0asxWJ7Us..eM9skXH.tYLXHV7jrc76eFtjV2X23u', NULL, NULL, NULL, NULL, 0, '2021-07-13 10:40:25'),
-(19, 'anselm sim', 'anselmsim@gmail.com', '$2y$10$JXp5Vzx0DBRgySHpup3RIeRlxDAWlUokaVtXE01BLepDAlPpeC27K', '', '', NULL, 1, 0, '2021-07-15 18:25:00');
+(16, 'kenny', 'kenny@outlook.com', '$2y$10$EtHv/A7Sx1EKJlnh8JefyO5wv443goMi5nEfFAWm1dSByiGzZw2mm', NULL, NULL, NULL, NULL, 0, '2021-07-10 08:34:49');
 
 -- --------------------------------------------------------
 
@@ -366,7 +433,7 @@ ALTER TABLE `vouchers`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `addresses_id` int(128) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `addresses_id` int(128) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `bento`
@@ -378,13 +445,13 @@ ALTER TABLE `bento`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `cartbatch`
 --
 ALTER TABLE `cartbatch`
-  MODIFY `cartbatch_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cartbatch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -408,13 +475,13 @@ ALTER TABLE `food`
 -- AUTO_INCREMENT for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `orderdetails_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderdetails_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `submission`
@@ -426,7 +493,7 @@ ALTER TABLE `submission`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `vouchers`
