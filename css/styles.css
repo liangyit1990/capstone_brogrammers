@@ -76,8 +76,18 @@
     
 }
 .filter-moon{
-    filter: invert(81%) sepia(28%) saturate(1084%) hue-rotate(341deg) brightness(104%) contrast(101%);
+    filter: invert(84%) sepia(32%) saturate(986%) hue-rotate(336deg) brightness(101%) contrast(103%);
 }
+
+.egg1 {
+    width: 150px;
+    height:150px;
+    margin-left:200px;
+    margin-right:auto;
+    display:block;
+    
+}
+
 
 
 /* when screen size is */

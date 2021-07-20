@@ -281,8 +281,8 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
         <section class="about section bd-container" id="about">
             <div class="line">   
                 
-                <img class="egg filter-green" src="images/egg1.svg">
-                
+                <img class="egg filter-moon" src="images/egg1.svg">
+                <img class="egg1 filter-green" src="images/egg1.svg">
             
             </div>
             <div class="about_container bd-grid">

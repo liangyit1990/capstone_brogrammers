@@ -46,7 +46,7 @@ isAdmin();
             <h1 class="text-center">Customised Menu</h1>
 
         </div>
-
+    
         <div class="row bentodiv">
             <h1 class="text-center">Bento</h1>
             <p class="text-center">
@@ -86,11 +86,9 @@ isAdmin();
                     ';
                     
                 }
-            ?>
-
-
-
+            ?>    
         </div>
+        
         <div class="row drinksdiv">
             <h1 class="text-center">Drinks</h1>
             <p class="text-center">
