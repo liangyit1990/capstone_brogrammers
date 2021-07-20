@@ -117,6 +117,22 @@ $win.on('scroll', function () {
     $pan.css('transform', 'translate(' + top + 'px )');
 });
 
+var $drinks = $('.drinks');
+var $win = $(window);
+
+$win.on('scroll', function () {
+    var top = $win.scrollTop()/4 ;
+    $drinks.css('transform', 'translate(' + top + 'px )');
+});
+
+var $gravy = $('.gravy');
+var $win = $(window);
+
+$win.on('scroll', function () {
+    var top = $win.scrollTop()/3 ;
+    $gravy.css('transform', 'translate(' + top + 'px )');
+});
+
 
 $(".clear-cart").click(function () {
     if ($(".count").text() == 0) {

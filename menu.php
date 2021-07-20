@@ -89,6 +89,9 @@ isAdmin();
             ?>    
         </div>
         
+        <div class="panline">   
+            <img class="drinks filter-green" src="images/drinks.svg">
+        </div>
         <div class="row drinksdiv">
             <h1 class="text-center">Drinks</h1>
             <p class="text-center">
@@ -132,6 +135,9 @@ isAdmin();
                 }
             ?>
 
+        </div>
+        <div class="panline">   
+            <img class="gravy filter-green" src="images/sauce.svg">
         </div>
         <div class="row gravydiv">
             <h1 class="text-center">Gravy</h1>
