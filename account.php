@@ -130,11 +130,11 @@ foreach($address as $address_result) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 accsendfeedbackbox feed ">
+                            <div class="col-lg-6  feed ">
                                 <div class="row">
                                     <h4 class="accheader">Send Feedback</h4>
                                 </div>
-                                <div class="row">
+                                <div class="row align">
                                     <div class="col-12">
                                         <p>Found something about the site that you don't like? Click here to send us feedback.</p><br>
                                     </div>

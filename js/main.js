@@ -15,17 +15,17 @@ showMenu('nav-toggle', 'nav-menu')
 
 // when one of the nav_link is clicked, remove the show-menu
 
-const navLink = document.querySelectorAll('.nav_link')
+// const navLink = document.querySelectorAll('.nav_link')
 
-function linkAction() {
-    const navMenu = document.getElementById('nav-menu')
-    navMenu.classList.remove('show-menu')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
+// function linkAction() {
+//     const navMenu = document.getElementById('nav-menu')
+//     navMenu.classList.remove('show-menu')
+// }
+// navLink.forEach(n => n.addEventListener('click', linkAction))
 
 // scroll to active section
 
-const sections = document.querySelectorAll('section[id]')
+// const sections = document.querySelectorAll('section[id]')
 
 
 // function scrollActive(){

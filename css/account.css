@@ -112,6 +112,11 @@
     margin-top:-195px;
     
 }
+
+.align{
+    margin-bottom: 30px;
+}
+
 .basicinfo{
     display: flex;
     width:350px;
