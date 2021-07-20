@@ -82,12 +82,12 @@ if(isset($_POST['zipCode'])){
         $editAddCount = DB::count();
         if($editAddCount == 0) {
             DB::update("addresses", [
-                'addresses_fullName' => strtolower($fullName),
-                'addresses_companyName' => strtolower($company),
-                'addresses_line1' => strtolower($line1),
-                'addresses_line2' => strtolower($line2),
-                'addresses_unitNo' => strtolower($unitNo),
-                'addresses_country' => strtolower($country),
+                'addresses_fullName' => $fullName,
+                'addresses_companyName' => $company,
+                'addresses_line1' => $line1,
+                'addresses_line2' => $line2,
+                'addresses_unitNo' => $unitNo,
+                'addresses_country' => $country,
                 'addresses_zipCode' => $zipCode
             
             ], "addresses_id=%i", $_POST['saveId']);
