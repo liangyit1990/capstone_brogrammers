@@ -58,9 +58,9 @@ include "../config/functions.php";
               <td class="feedbackemail"><?php echo $getFBResult['feedbackothers_email']; ?></td>
               <td class="feedbacketopic"><?php echo ucwords($getFBResult['feedbackothers_topic']); ?></td>
               <td class="feedbackmsg"><?php echo ucfirst($getFBResult['feedbackothers_message']); ?></td>
-              <td class="feedbackfile"><a href="../<?php echo $getFBResult['feedbackothers_file']; ?>" target="_blank"><?php if($getFBResult['feedbackothers_file'] == null) { echo "-";} else { echo "Attachment";} ?></a></td>
+              <td class="feedbackfile"><a href="../<?php echo $getFBResult['feedbackothers_file']; ?>" target="_blank"><?php if($getFBResult['feedbackothers_file'] == null) { echo "";} else { echo "Attachment";} ?></a></td>
               <td><button type="button" class="btn btn-primary btn-sm viewFeedback"  value="viewFeedback" data-id="<?php echo $getFBResult['feedbackothers_id']; ?>" data-bs-toggle="modal" data-bs-target="#feedbackinfo<?php echo $getFBResult['feedbackothers_id']; ?>" >View</button>
-                  <button type="button" class="btn btn-danger btn-sm deleteFeedback" data-id="<?php echo $getFBResult['feedbackothers_id']; ?>" data-name="<?php echo $getFBResult['feedbackothers_name']; ?>">Delete</button>
+                  <button type="button" class="btn btn-danger btn-sm deleteFeedback" data-id="<?php echo $getFBResult['feedbackothers_id']; ?>" data-name="<?php echo $getFBResult['feedbackothers_name']; ?>" data-file="<?php echo $getFBResult['feedbackothers_file']; ?>">Delete</button>
               </td>  
             </tr>
             <!-- Modals for each user's View/Edit button -->
@@ -99,7 +99,7 @@ include "../config/functions.php";
                           <textarea class="form-control address" id="exampleFormControlTextarea1<?php echo $getFBResult['feedbackothers_id'];?>" rows="5" id="msg<?php echo $getFBResult['feedbackothers_id'] ?>"><?php echo $getFBResult['feedbackothers_message'] ?></textarea>
                           <div class="input-group-append">
                             <div class="input-group-text">
-                              <i class="bi bi-house-door-fill"></i>
+                              <i class="bi bi-chat-dots-fill"></i>
                             </div>
                           </div>
                         </div>
@@ -152,23 +152,63 @@ include "../config/functions.php";
     $("#btn").click(function(){
     $(".sidebar").toggleClass("active");
     })
+
+    $(".deleteFeedback").click(function(){
+    var thisBtn = this;
+    var deleteId = $(this).data('id');
+    var deleteFile = $(this).data('file');
+    var feedbackid = `.feedbackdata${deleteId}`;
+    console.log(deleteFile);
+    //Alert message before confirm to delete
+    swal({
+      title: `Are you sure you want to delete Feedback No.${deleteId}`,
+      text: "Once deleted, you will not be able to recover this message!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      //Proceed to delete if user press okay, else do nothing
+      if (willDelete) {
+          swal("Poof! Message has been deleted!", {
+          icon: "success",
+        });
+        //Ajax to delete user from database
+        $.ajax({
+          url: 'deletemsg.php', //action
+          method: 'POST', //method
+          data:{
+            deleteId:deleteId,
+            deleteFile:deleteFile
+          },
+          success:function(data){
+            
+            if(data == 1){
+              $(thisBtn).closest('.feedbackdata').remove();
+            } else {
+                    alert(data);
+                  }
+          }
+        });
+      } 
+    });
+                
   });
+
+
+
+
+
+
+
+  });
+
+
+
 
 </script>
 
-  <!-- <script>
-   let btn = document.querySelector("#btn");
-   let sidebar = document.querySelector(".sidebar");
-   let searchBtn = document.querySelector(".bx-search");
-
-   btn.onclick = function() {
-     sidebar.classList.toggle("active");
-   }
-   searchBtn.onclick = function() {
-     sidebar.classList.toggle("active");
-   }
-
-  </script> -->
+  
 
 </body>
 </html>
