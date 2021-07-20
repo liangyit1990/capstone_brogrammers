@@ -47,33 +47,77 @@ include "../config/functions.php";
           </div>
       </div>
       <div class="food">
+        <?php 
+        
+
+        ?>
         <h2>Top 5 Most Popular Food:</h2>
           <div class="result">
-            <h3>1. Bento</h3>
-            <h3>2. Bento</h3>
-            <h3>3. Bento</h3>
-            <h3>4. Bento</h3>
-            <h3>5. Bento</h3>
+            <?php 
+            $food_name = Array();
+            $food_qty = Array();
+            $getOrdersQuery = DB::query("SELECT * FROM orderdetails
+                                            INNER JOIN food
+                                            ON orderdetails.food_id = food.food_id
+                                            ");
+            foreach($getOrdersQuery as $getOrdersResult) {
+                
+                array_push($food_name, $getOrdersResult['food_name']);
+                array_push($food_qty, $getOrdersResult['orderdetails_qty']);
+            
+            }
+            
+            $result = array_unique($food_name);
+            $result = array_combine($result, array_fill(0, count($result), 0));
+            
+            foreach($food_name as $k=>$v) {
+                $result[$v] += $food_qty[$k];
+              }
+            
+              arsort($result);
+              $newArray = array_slice($result, 0, 5, true);
+              $count = 1;
+              foreach(array_keys($newArray) as $newArrayKeyNames) {
+                
+                  echo "<h3>".$count.".".ucwords($newArrayKeyNames)."</h3>";
+                  $count++;
+              }
+            
+            ?>
           </div>
       </div>
       <div class="orders">
-        <h2>New Orders Today:</h2>
+        <h2>Total Orders </h2>
           <div class="result">
-            <h3>50</h3>
+            <?php 
+            
+            $getTotalOrderCount = db::query("SELECT * FROM orders");
+            $getTotalOrderCountResult = db::count();
+          
+            ?>
+            <h3><?php echo $getTotalOrderCountResult ?></h3>
           </div>
       </div>
       <div class="totalsales">
         <h2>Total Sales:</h2>
           <div class="result">
-            <h3>200 SGD</h3>
+            <?php 
+            $totalsales = 0;
+            foreach ($getTotalOrderCount as $getTotalResult ) {
+                $totalsales += $getTotalResult['orders_totalprice'];
+            }
+            
+            ?>
+
+            <h3>$<?php echo $totalsales ?></h3>
           </div>
       </div>
-      <div class="dailysales">
+      <!-- <div class="dailysales">
         <h2>Today sales:</h2>
           <div class="result">
             <h3>100 SGD</h3>
           </div>
-      </div>
+      </div> -->
     </div>
   </main>
 

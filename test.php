@@ -4,28 +4,66 @@ include "config/db.php";
 include "config/functions.php"; 
 
 
-$getUserOrderQuery = DB::query("SELECT * FROM orders");
-foreach ($getUserOrderQuery as $getUserOrderResult) {
-    $getUserOrderDetails = DB::query("SELECT * FROM orderdetails 
-                                        INNER JOIN food 
-                                        ON orderdetails.food_id = food.food_id
-                                        where users_id=%i AND orders_id=%i"  , $_COOKIE['users_id'],$getUserOrderResult['orders_id']);
-    $getUserOrdercount = DB::count();
-    echo 'Order ID:'.$getUserOrderResult['orders_id'].'<br>';
+
+
+
+
+$getTotalOrderCount = db::query("SELECT * FROM orders");
+$getTotalOrderCount1 = db::count();
+echo $getTotalOrderCount1;
+// $food_name = Array();
+// $food_qty = Array();
+// $getOrdersQuery = DB::query("SELECT * FROM orderdetails
+//                                 INNER JOIN food
+//                                 ON orderdetails.food_id = food.food_id
+//                                 ");
+// foreach($getOrdersQuery as $getOrdersResult) {
     
-    foreach($getUserOrderDetails as $getUserOrderDetailsResult ) {
-        
-        
-        // echo 'Item No 1:'.$getUserOrderDetailsResult['orderdetails_group'].'<br>';
-        echo ucwords($getUserOrderDetailsResult['food_name']).' x '.$getUserOrderDetailsResult['orderdetails_qty'].'<br>';
-      
-        
+//     array_push($food_name, $getOrdersResult['food_name']);
+//     array_push($food_qty, $getOrdersResult['orderdetails_qty']);
+
+// }
+
+// $a = array_unique($food_name);
+// $a = array_combine($a, array_fill(0, count($a), 0));
+
+// foreach($food_name as $k=>$v) {
+//     $a[$v] += $food_qty[$k];
+//   }
+
+//   arsort($a);
+//   $newArray = array_slice($a, 0, 5, true);
+//   foreach(array_keys($newArray) as $newArrayKeyNames) {
+//       echo $newArrayKeyNames."<br>";
+//   }
 
 
 
-    }
-    echo '<br>';
-}
+
+
+
+
+
+
+
+
+// $foodarray = array();
+// $getFoodlist = DB::query("SELECT food_id from food");
+// foreach($getFoodlist as $getFoodListResult) {
+//   $getOrdersQuery = DB::query("SELECT * FROM orderdetails
+//   INNER JOIN food 
+//   ON orderdetails.food_id = food.food_id
+//   WHERE food.food_id=%i
+//   ", $getFoodListResult["food_id"] );
+//   foreach($getOrdersQuery as $getOrdersResult) {
+
+
+
+        
+//   }
+  
+  
+// }
 
 // $getUserOrderCount = DB::count();
 // echo $getUserOrderCount;
@@ -111,96 +149,7 @@ include "config/functions.php";
 </head>
 
 <body>
-    <!-- scroll to top -->
-    <a href="#" class="scrolltop " id="scroll-top">
-        <i class='bx bx-chevron-up-circle scrolltop_icon' ></i>
-    </a>
-
-        <div class="container accountcontainer viewer" id="viewer">
-            <div class="row justify-content-md-center">
-                
-                <div class="container col-xl-9 accountrightbody">
-
-                    <!-- Start of Orders Row - WIP -->
-                    <div class="row accrow ordersplacedrow accountpage" id="orders">
-                        <!-- <div>
-                            <h4 class="accheader">Orders Placed</h4>
-                        </div>
-                        <?php 
-                        $getUserOrderQuery = DB::query("SELECT * FROM orders");
-                        foreach ($getUserOrderQuery as $getUserOrderResult) {
-                            $getUserOrderDetails = DB::query("SELECT * FROM orderdetails 
-                                                                INNER JOIN food 
-                                                                ON orderdetails.food_id = food.food_id
-                                                                where users_id=%i AND orders_id=%i"  , $_COOKIE['users_id'],$getUserOrderResult['orders_id']);
-                            $getUserOrdercount = DB::count();
-                        ?>  
-
-                        <div>
-                            <div class="date-container">
-                                <div class="date-order">
-                                    <div class="date-header">
-                                        <h5><?php echo $getUserOrderResult['orders_timestamp']  ?></h5>
-                                    </div>
-                                    <div class="order-id">
-                                        <h6>Order ID: <?php echo $getUserOrderResult['orders_id'] ?></h6> 
-                                    </div>
-                                </div>
-                                <div class="order-stat">
-                                    <h6><strong>Order Details:</strong></h6> 
-                                
-                            <?php 
-                            foreach($getUserOrderDetails as $getUserOrderDetailsResult ) {
-                            
-                            
-                            ?>
-                            <p><?php echo ucwords($getUserOrderDetailsResult['food_name']).' x '.$getUserOrderDetailsResult['orderdetails_qty'] ?></p>
-
-
-                            
-
-
-                        <?php 
-                            
-                            }
-                            ?>
-                            </div>
-                            <div class="order-total">
-                                    <h6><strong>Total Price:<?php echo $getUserOrderResult['orders_totalprice'] ?></strong></h6> 
-                            </div>
-                            <?php
-                            
-                        }
-                        
-                        ?> -->
-                        
-                        <div>
-                            <div class="date-container">
-                                <div class="date-order">
-                                    <div class="date-header">
-                                        <h5>July 15th, 2021</h5>
-                                    </div>
-                                    <div class="order-id">
-                                        <h6>Order ID:</h6> 
-                                    </div>
-                                </div>
-                                <div class="ship-id">
-                                    <h6><strong>Ship To:</strong></h6> 
-                                </div>
-                                <div class="order-stat">
-                                    <h6><strong>Order Details:</strong></h6> 
-                                </div>
-                                <div class="order-total">
-                                    <h6><strong>Total Price:</strong></h6> 
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-
-
-            </div>
-        </div>
+    
 
 
     
