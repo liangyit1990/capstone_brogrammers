@@ -144,7 +144,7 @@ isAdmin();
             <p class="text-center">
                 <!-- Description -->
             </p>
-            <!-- <div class="searchmenu">
+            <div class="searchmenu">
                 <div class="sortbyoptions">
                     <b>Sort By:</b>
                     <select class="drinkssort">
@@ -154,10 +154,11 @@ isAdmin();
                         <option value="gravyalph">Alphabetically</option>
                     </select>
                 </div>
-            </div> -->
+            </div>
 
 
             <?php
+
                 $gravy = DB::query('SELECT * FROM food WHERE food_subcategory = "gravy"');
                 foreach($gravy as $gravy_result){
                     echo '<div class="col-lg-4 col-sm-6 menubox"><div class="row"><p class="text-center"><img src=" ';
