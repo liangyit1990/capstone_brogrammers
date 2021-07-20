@@ -19,7 +19,9 @@
     transition:0.3s;
     font-family: var(--body-font);
     cursor:pointer;
+    width:200px;
 }
+
 
 .searchmenu{
     max-width: 100%;
@@ -45,6 +47,7 @@
 
 .addbuttonrow {
     padding-top: 0.5em;
+    justify-content: center;
 }
 
 /* scroll animation */

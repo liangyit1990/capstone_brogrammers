@@ -24,7 +24,7 @@ body{
   left: 0;
   height: 100%;
   width: 78px;
-  background: #FFE32C;
+  background: #FFc845;
   padding: 6px 14px;
   z-index: 99;
   transition: all 0.5s ease;
@@ -129,7 +129,7 @@ body{
 }
 .sidebar ul li .bx-search:hover{
   background: #1d1b31;
-  color: #FFE32C;
+  color: #FFc845;
 }
 .sidebar ul li a{
   color: #000;
@@ -266,10 +266,10 @@ body{
   background-color: #fff;
 }
 .add:hover{
-  background-color: #FFE32C;
+  background-color: #FFc845;
 }
 button:hover{
-  background-color: #FFE32C;
+  background-color: #FFc845;
 }
 button {
   border-radius: 5px;

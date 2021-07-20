@@ -6,12 +6,12 @@
 :root{
     --header-height:3rem;
     /* colors */
-    --primary-color: #FFE32C;
+    --primary-color: #ffc845;
     --primary-color-alt: #FFC82A;
     --title-color:#393939;
     --text-color:#000000;
     --text-color-light:#A6A6A6;
-    --body-color:#FFE32C;
+    --body-color:#ffc845;
     --container-color:#FFFFFF;
 
 
@@ -76,7 +76,7 @@
     
 }
 .filter-moon{
-    filter: invert(93%) sepia(100%) saturate(1979%) hue-rotate(329deg) brightness(105%) contrast(102%);
+    filter: invert(81%) sepia(28%) saturate(1084%) hue-rotate(341deg) brightness(104%) contrast(101%);
 }
 
 
