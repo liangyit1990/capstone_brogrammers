@@ -176,13 +176,13 @@ include "../config/functions.php";
                     <h5>Name: <?php echo ucwords($getOrderResult['users_name']);  ?></h5>
                     <h5>Date: <?php echo displayDate($getOrderResult['orders_timestamp']) . ", " . displayTime($getOrderResult['orders_timestamp']); ?></h5>
                     <h5><u>Order Details</u></h5>
-                    <ol>
+                    
                     <?php 
                     foreach($getOrderDetails as $getOrderDetailsResult ){
                       echo "<span>". ucwords($getOrderDetailsResult['food_name']). " x " . $getOrderDetailsResult['orderdetails_qty']."</span></br>";
                     }
                     ?>
-                    </ol>
+                    
                     <h5>Total Price :$<?php echo $getOrderResult['orders_totalprice']?></h5>
 
                   </div>
