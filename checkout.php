@@ -29,7 +29,13 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 
 $address = DB::query('SELECT * FROM addresses WHERE users_id=%i AND addresses_default = 1', $_COOKIE['users_id']);
 foreach($address as $address_result) {
-    // $return_address = $address_result['users_email'];
+    $defaultfullName = $address_result['addresses_fullName'];
+    $defaultline1 = $address_result['addresses_line1'];
+    $defaultline2 = $address_result['addresses_line2'];
+    $defaultunitNo = $address_result['addresses_unitNo'];
+    $defaultcountry = $address_result['addresses_country'];
+    $defaultzipCode = $address_result['addresses_zipCode'];
+    // $defaultId = $address_result['addresses_default'];
 }
 
 
@@ -179,7 +185,7 @@ foreach($address as $address_result) {
                     <div class="row g-3">
                         <div class="col-sm-12">
                         <label for="firstName" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="<?php echo ucwords($_COOKIE['users_name']); ?>" required="">
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="<?php echo ucwords($defaultfullName); ?>" required="">
                         <div class="invalid-feedback">
                             Name is required.
                         </div>
@@ -187,7 +193,9 @@ foreach($address as $address_result) {
 
                         <div class="col-12">
                         <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                        <input type="email" class="form-control" id="email">
+                        <!-- placeholder="you@example.com" -->
+
                         <div class="invalid-feedback">
                             Please enter a valid email address for shipping updates.
                         </div>
@@ -195,7 +203,7 @@ foreach($address as $address_result) {
 
                         <div class="col-12">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="<?php echo ucwords($defaultline1); ?>" required="">
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
@@ -203,12 +211,12 @@ foreach($address as $address_result) {
 
                         <div class="col-12">
                         <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="<?php echo ucwords($defaultline2); ?>">
                         </div>
                         
                         <div class="col-md-4">
                         <label for="unitNo" class="form-label">Unit Number</label>
-                        <input type="text" class="form-control" id="unitNo" placeholder="1234 Main St" value="" required="">
+                        <input type="text" class="form-control" id="unitNo" placeholder="1234 Main St" value="<?php echo ucwords($defaultunitNo); ?>" required="">
                         <div class="invalid-feedback">
                             Please enter your unit number.
                         </div>
@@ -217,10 +225,12 @@ foreach($address as $address_result) {
 
                         <div class="col-md-5">
                         <label for="country" class="form-label">Country</label>
-                        <select class="form-select" id="country" required="">
+                        <input type="text" class="form-control" id="country" placeholder="" value="<?php echo ucwords($defaultcountry); ?>">
+
+                        <!-- <select class="form-select" id="country" required="" value="">
                             <option value="">Choose...</option>
                             <option>Singapore</option>
-                        </select>
+                        </select> -->
                         <div class="invalid-feedback">
                             Please select a valid country.
                         </div>
@@ -239,7 +249,7 @@ foreach($address as $address_result) {
 
                         <div class="col-md-3">
                         <label for="zip" class="form-label">Zip</label>
-                        <input type="text" class="form-control" id="zip" placeholder="" required="">
+                        <input type="text" class="form-control" id="zip" placeholder="" value="<?php echo ucwords($defaultzipCode); ?>" required="">
                         <div class="invalid-feedback">
                             Zip code required.
                         </div>

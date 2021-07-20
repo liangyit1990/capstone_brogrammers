@@ -3,6 +3,8 @@ include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
 
+isLoggedIn();
+
 $name = DB::query('SELECT * FROM users WHERE users_id=%i', $_COOKIE['users_id']);
 foreach($name as $name_result) {
     $return_name = $name_result['users_name'];
@@ -283,19 +285,25 @@ foreach($address as $address_result) {
                                             echo $address_result['addresses_country'] . " " . $address_result['addresses_zipCode'];
                                             echo '</p></div>
                                             <div class="row">
-                                                <div class="col-3">
+                                                <div class="col-4">
                                                     <button type="button" class="btn btn-primary btn-sm editAdd" value="editAdd" data-bs-toggle="modal" data-bs-target="#addressinfo';
 
                                                     echo $address_result['addresses_id'];
 
                                                     echo '">Edit</button>
                                                 </div>
-                                                <div class="col-3">
+                                                <div class="col-4">
                                                     <button type="button" class="btn btn-danger btn-sm deleteAdd" data-id="';
 
                                             echo $address_result['addresses_id'];
                                                     
                                             echo '">Delete</button>
+                                                </div>
+                                                <div class="col-4 form-check">
+                                                    <input class="form-check-input makeDefault" type="checkbox" value="" data-id="' . $address_result['addresses_id'] . '" id="flexCheckDefault' . $address_result['addresses_id'] . '">
+                                                    <label class="form-check-label" for="flexCheckDefault' . $address_result['addresses_id'] . '">
+                                                        Default
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>';
@@ -651,9 +659,6 @@ foreach($address as $address_result) {
         })
       
 
-
-
-
         $(".deleteAdd").click(function(){
             var thisBtn = this;
             var deleteId = $(this).data('id'); //data-id class
@@ -701,6 +706,49 @@ foreach($address as $address_result) {
             } 
             });
                 
+        });
+
+        $(".makeDefault").click(function(){
+            var makeDefault = this;
+            var defaultId = $(this).data('id');
+            swal({
+            title: `Are you sure you want to make this your default address?`,
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((makeDefault) => {
+            //Proceed to make default if user press okay, else do nothing
+            if (makeDefault) {
+
+                //Ajax to make default on database
+                $.ajax({
+                url: 'makedefault.php', //action
+                method: 'POST', //method
+                data:{
+                    defaultId:defaultId
+                },
+
+                success:function(data){
+                    
+                    if(data == 1){
+
+                        swal("Address deleted successfully", {
+                        icon: "success",
+                        timer : 2000
+
+                        }).then(function() {
+                                location.reload();
+                        });
+
+                    } 
+                    
+                    // else {
+                    //         alert(data);
+                    //     }
+                }
+                });
+            } 
+            });
         });
 
 
