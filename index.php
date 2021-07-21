@@ -304,7 +304,13 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 
     <!-- footer -->
     <footer class="footer section bd-container">
-        <div class="footer_container bd-grid">
+        <section class="footer_container bd-grid">
+
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+            <div class="wave wave4"></div>
+
             <div class="footer_content">
                 <a href="index.php" class="footer_logo">CALORICE</a>
                 
@@ -316,7 +322,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 
                 </div> 
             </div>
-        </div>
+        </section>
     </footer>
     
 <!-- bootstrap jquery -->
