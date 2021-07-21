@@ -170,7 +170,45 @@ foreach($address as $address_result) {
                     <button type="button" class="btn btn-primary btn-sm clearCart" id="clearCart" data-id="<?php echo $_COOKIE["users_id"] ?>" wait >Clear Cart</button>
                     <a href="<?php echo SITE_URL; ?>"><button type="button" class="btn btn-primary btn-sm backtohome" id="backtohome" value="backtohome" data-id="" data-bs-toggle="modal" data-bs-target="" >Back to Home</button></a>
                     <a href="<?php echo SITE_URL . "menu.php" ?>"><button type="button" class="btn btn-primary btn-sm backtomenu" id="backtomenu" value="backtomenu" data-id="" data-bs-toggle="modal" data-bs-target="" >Back to Menu</button></a>
+                    <br>
+                    <br>
+                    <h4 class="d-flex"><span class="text-primary">Your addresses</span></h4>
+                    <?php 
+                        $addressCheckOut = DB::query("SELECT * FROM addresses WHERE users_id=%i " , $_COOKIE['users_id']);
+                        foreach($addressCheckOut as $addressCheckOut_result){
+                            if($addressCheckOut_result['addresses_default']==1){
+                                echo '
+                                <div class="row checkoutaddressbox"><div class="col-12"><p>
+                                ' . $addressCheckOut_result['addresses_fullName'] . '</p></div><div class="col-12"><p>
+                                ' . $addressCheckOut_result['addresses_line1'] . '</p></div><div class="col-12"><p>
+                                ' . $addressCheckOut_result['addresses_line2'] . '</p></div><div class="col-12"><p>
+                                ' . $addressCheckOut_result['addresses_unitNo'] . '</p></div><div class="row"><div class="col-7"><p>
+                                ' . $addressCheckOut_result['addresses_country'] . " " . $addressCheckOut_result['addresses_zipCode'] . '</p></div><div class="col-5">
+                                <button type="button" class="btn btn-primary btn-sm usethisaddress" id="usethisaddress" value="usethisaddress" disabled>Default Address</button>
 
+                                </div></div></div>';
+                            } else {
+                                echo '
+                                <div class="row checkoutaddressbox"><div class="col-12"><p>
+                                ' . $addressCheckOut_result['addresses_fullName'] . '</p></div><div class="col-12"><p>
+                                ' . $addressCheckOut_result['addresses_line1'] . '</p></div><div class="col-12"><p>
+                                ' . $addressCheckOut_result['addresses_line2'] . '</p></div><div class="col-12"><p>
+                                ' . $addressCheckOut_result['addresses_unitNo'] . '</p></div><div class="row"><div class="col-7"><p>
+                                ' . $addressCheckOut_result['addresses_country'] . " " . $addressCheckOut_result['addresses_zipCode'] . '</p></div><div class="col-5">
+                                <button type="button" class="btn btn-primary btn-sm usethisaddress" id="usethisaddress" value="usethisaddress" data-id="
+                                ' .  $addressCheckOut_result['addresses_id'] . '" data-line1="' . $addressCheckOut_result['addresses_line1'] . '" data-line2="' . $addressCheckOut_result['addresses_line2'] . '" data-unitNo="' . $addressCheckOut_result['addresses_unitNo'] . '" data-country="' . $addressCheckOut_result['addresses_country'] . '" data-zipCode="' . $addressCheckOut_result['addresses_zipCode'] . '">Use This Address</button></div></div></div>';
+
+                            }
+
+                        }
+                
+                    ?>
+                    <!-- <div>
+                        <h5>Address</h5>
+                    </div>
+                    <div>
+                        <h5>Address</h5>
+                    </div> -->
 
                     <!-- <form class="card p-2">
                     <div class="input-group">
@@ -185,7 +223,7 @@ foreach($address as $address_result) {
                     <div class="row g-3">
                         <div class="col-sm-12">
                         <label for="firstName" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="<?php echo ucwords($defaultfullName); ?>" required="">
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="<?php echo ucwords($defaultfullName); ?>" required="">
                         <div class="invalid-feedback">
                             Name is required.
                         </div>
@@ -203,7 +241,7 @@ foreach($address as $address_result) {
 
                         <div class="col-12">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="<?php echo ucwords($defaultline1); ?>" required="">
+                        <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" value="<?php echo ucwords($defaultline1); ?>" required="">
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
@@ -211,12 +249,12 @@ foreach($address as $address_result) {
 
                         <div class="col-12">
                         <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="<?php echo ucwords($defaultline2); ?>">
+                        <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment or suite" value="<?php echo ucwords($defaultline2); ?>">
                         </div>
                         
                         <div class="col-md-4">
                         <label for="unitNo" class="form-label">Unit Number</label>
-                        <input type="text" class="form-control" id="unitNo" placeholder="1234 Main St" value="<?php echo ucwords($defaultunitNo); ?>" required="">
+                        <input type="text" class="form-control" id="unitNo" name="unitNo" placeholder="1234 Main St" value="<?php echo ucwords($defaultunitNo); ?>" required="">
                         <div class="invalid-feedback">
                             Please enter your unit number.
                         </div>
@@ -225,7 +263,7 @@ foreach($address as $address_result) {
 
                         <div class="col-md-5">
                         <label for="country" class="form-label">Country</label>
-                        <input type="text" class="form-control" id="country" placeholder="" value="<?php echo ucwords($defaultcountry); ?>">
+                        <input type="text" class="form-control" id="country" name="country" placeholder="" value="<?php echo ucwords($defaultcountry); ?>">
 
                         <!-- <select class="form-select" id="country" required="" value="">
                             <option value="">Choose...</option>
@@ -248,8 +286,8 @@ foreach($address as $address_result) {
                         </div> -->
 
                         <div class="col-md-3">
-                        <label for="zip" class="form-label">Zip</label>
-                        <input type="text" class="form-control" id="zip" placeholder="" value="<?php echo ucwords($defaultzipCode); ?>" required="">
+                        <label for="zip" class="form-label">Zip Code</label>
+                        <input type="text" class="form-control" id="zip" name="zip" placeholder="" value="<?php echo ucwords($defaultzipCode); ?>" required="">
                         <div class="invalid-feedback">
                             Zip code required.
                         </div>
@@ -375,6 +413,40 @@ foreach($address as $address_result) {
     
 
         })
+
+        $(".usethisaddress").click(function(){
+            var usethisaddress = this;
+            var useId = $(this).data('id');
+            var address = $(this).data('line1');
+            var address2 = $(this).data('line2');
+
+            var unitNo = $(this).data('unitno');
+
+            var country = $(this).data('country');
+            var zip = $(this).data('zipCode');
+            swal({
+            title: `Are you sure you want to use this address?`,
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((use) => {
+            if (use) {
+                console.log(unitNo);
+                console.log(country);
+                // $('#firstName').val();
+                $('#address').val(address);
+                $('#address2').val(address2);
+                $('#unitNo').val(unitNo);
+                $('#country').val(country);
+                $('#zip').val(zipCode);
+                
+            } 
+    
+
+        })
+    })
+
+
 
         </script>
 </body>
