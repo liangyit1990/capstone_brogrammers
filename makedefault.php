@@ -16,6 +16,8 @@ if(isset($_POST['defaultId'])){
         'addresses_default' =>1,
     
     ], "addresses_id=%i", $_POST['defaultId']);
+    
+    echo 1;
     //make checkbox disabled
 
 } 

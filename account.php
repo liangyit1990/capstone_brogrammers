@@ -113,7 +113,7 @@ foreach($address as $address_result) {
                                     <div class="col-lg-6">
                                         <h5>Name</h5>
                                         <p><?php 
-                                        echo $return_name;
+                                        echo ucwords($return_name);
                                         ?>
                                         </p><br>
                                     </div>
@@ -276,117 +276,234 @@ foreach($address as $address_result) {
                                 
                                 <?php 
                                     $address = DB::query("SELECT * FROM addresses WHERE users_id=%i " , $_COOKIE['users_id']);
+
                                         foreach($address as $address_result){
-                                            echo '<div class="col-4 responsivenessneeded"><div class="row responsivenessneeded"><h5>';
-                                            echo $address_result['addresses_fullName']; echo '</h5><p>';
-                                            echo $address_result['addresses_line1']; echo '</p><p>';
-                                            echo $address_result['addresses_line2']; echo '</p><p>';
-                                            echo $address_result['addresses_unitNo']; echo '</p><p>';
-                                            echo $address_result['addresses_country'] . " " . $address_result['addresses_zipCode'];
-                                            echo '</p></div>
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <button type="button" class="btn btn-primary btn-sm editAdd" value="editAdd" data-bs-toggle="modal" data-bs-target="#addressinfo';
-
-                                                    echo $address_result['addresses_id'];
-
-                                                    echo '">Edit</button>
-                                                </div>
-                                                <div class="col-4">
-                                                    <button type="button" class="btn btn-danger btn-sm deleteAdd" data-id="';
-
-                                            echo $address_result['addresses_id'];
-                                                    
-                                            echo '">Delete</button>
-                                                </div>
-                                                <div class="col-4 form-check">
-                                                    <input class="form-check-input makeDefault" type="checkbox" value="" data-id="' . $address_result['addresses_id'] . '" id="flexCheckDefault' . $address_result['addresses_id'] . '">
-                                                    <label class="form-check-label" for="flexCheckDefault' . $address_result['addresses_id'] . '">
-                                                        Default
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>';
-
-                                        // start of modal for individual address box
-                                        echo '
-                                        <div class="modal fade" id="addressinfo'; echo $address_result['addresses_id']; echo'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Edit your Address</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    
-                                                </div>
-
-                                                <div class="modal-body">
-
-                                                    <form class="row g-3">
-                                                        <div class="form-group col-12">
-                                                            <label for="fullName">Full Name<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control fullName fullName' . $address_result['addresses_id']; echo'" placeholder="" name="fullName" value="';
-                                                            echo $address_result['addresses_fullName'];
-                                                            echo'">
-                                                        </div>
-                                                        <div class="form-group col-12">
-                                                            <label for="companyName">Company/Organization</label>
-                                                            <input type="text" class="form-control company company' . $address_result['addresses_id']; echo'" placeholder="" name="companyName" value="';
-                                                            echo $address_result['addresses_companyName'];
-                                                            echo'">
-                                                        </div>
-                                                        <div class="form-group col-12">
-                                                            <label for="line1">Address Line 1<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control line1 line1' . $address_result['addresses_id']; echo'" placeholder="" name="line1" value="';
-                                                            echo $address_result['addresses_line1'];
-                                                            echo'">
-                                                        </div>
-                                                        <div class="form-group col-12">
-                                                            <label for="line2">Address Line 2</label>
-                                                            <input type="text" class="form-control line2 line2' . $address_result['addresses_id']; echo'" placeholder="" name="line2" value="';
-                                                            echo $address_result['addresses_line2'];
-                                                            echo'">
-                                                        </div>
-                                                        <div class="form-group col-12">
-                                                            <label for="unitNo">Unit Number<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control unitNo unitNo' . $address_result['addresses_id']; echo'" placeholder="" name="unitNo" value="';
-                                                            echo $address_result['addresses_unitNo'];
-                                                            echo'">
-                                                        </div>
-
-                                                        <div class="form-group col-md-6">
-                                                            <label for="country">Country<span class="redasterisk">*</span></label>
-                                                            <select class="form-control country country' . $address_result['addresses_id']; echo'" placeholder="" name="country" value="';
-                                                            echo $address_result['addresses_country'];
-                                                            echo'">
-                                                                <option value="Singapore">Singapore</option>
-                                                                <option value="Malaysia">Malaysia</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="zipCode">Zip Code<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control zipCode zipCode' . $address_result['addresses_id']; echo'" placeholder="" name="zipCode" value="';
-                                                            echo $address_result['addresses_zipCode'];
-                                                            echo'">
-                                                            <input type="text" class="form-control hiddenusersid d-none" name="users_id" value="';
-                                                            echo $_COOKIE['users_id'];
-                                                            echo'">
-                                                        </div>
-
-                                                        <div class="form-group requiredfields">
-                                                            <p>Fields marked with a<span class="redasterisk"> * </span> are required.</p>
-                                                        </div>
-                                                    </form>
-
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                                                        <button type="button" class="btn btn-primary saveAddressChanges" name="saveAddressChanges" data-id=" ';
-                                                        
+                                            if($address_result['addresses_default']==1){
+                                                echo '<div class="col-4 responsivenessneeded"><div class="row responsivenessneeded"><h5>';
+                                                echo $address_result['addresses_fullName']; echo '</h5><p>';
+                                                echo $address_result['addresses_line1']; echo '</p><p>';
+                                                echo $address_result['addresses_line2']; echo '</p><p>';
+                                                echo $address_result['addresses_unitNo']; echo '</p><p>';
+                                                echo $address_result['addresses_country'] . " " . $address_result['addresses_zipCode'];
+                                                echo '</p></div>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <button type="button" class="btn btn-primary btn-sm editAdd" value="editAdd" data-bs-toggle="modal" data-bs-target="#addressinfo';
+    
                                                         echo $address_result['addresses_id'];
+    
+                                                        echo '">Edit</button>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <button type="button" class="btn btn-danger btn-sm deleteAdd" data-id="';
+    
+                                                echo $address_result['addresses_id'];
                                                         
-                                                       echo '">Save Changes</button></div></div></div></div>';     
+                                                echo '">Delete</button>
+                                                        </div>
+                                                        <div class="col-4 form-check">
+                                                            <input class="form-check-input makeDefault" type="checkbox" value="" data-id="' . $address_result['addresses_id'] . '" id="flexCheckCheckedDisabled' . $address_result['addresses_id'] . '" checked disabled>
+                                                            <label class="form-check-label" for="flexCheckCheckedDisabled' . $address_result['addresses_id'] . '">
+                                                                Default
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>';
+    
+                                                // start of modal for individual address box
+                                                echo '
+                                                <div class="modal fade" id="addressinfo'; echo $address_result['addresses_id']; echo'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Edit your Address</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            
+                                                        </div>
+    
+                                                        <div class="modal-body">
+    
+                                                            <form class="row g-3">
+                                                                <div class="form-group col-12">
+                                                                    <label for="fullName">Full Name<span class="redasterisk">*</span></label>
+                                                                    <input type="text" class="form-control fullName fullName' . $address_result['addresses_id']; echo'" placeholder="" name="fullName" value="';
+                                                                    echo $address_result['addresses_fullName'];
+                                                                    echo'">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="companyName">Company/Organization</label>
+                                                                    <input type="text" class="form-control company company' . $address_result['addresses_id']; echo'" placeholder="" name="companyName" value="';
+                                                                    echo $address_result['addresses_companyName'];
+                                                                    echo'">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="line1">Address Line 1<span class="redasterisk">*</span></label>
+                                                                    <input type="text" class="form-control line1 line1' . $address_result['addresses_id']; echo'" placeholder="" name="line1" value="';
+                                                                    echo $address_result['addresses_line1'];
+                                                                    echo'">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="line2">Address Line 2</label>
+                                                                    <input type="text" class="form-control line2 line2' . $address_result['addresses_id']; echo'" placeholder="" name="line2" value="';
+                                                                    echo $address_result['addresses_line2'];
+                                                                    echo'">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="unitNo">Unit Number<span class="redasterisk">*</span></label>
+                                                                    <input type="text" class="form-control unitNo unitNo' . $address_result['addresses_id']; echo'" placeholder="" name="unitNo" value="';
+                                                                    echo $address_result['addresses_unitNo'];
+                                                                    echo'">
+                                                                </div>
+    
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="country">Country<span class="redasterisk">*</span></label>
+                                                                    <select class="form-control country country' . $address_result['addresses_id']; echo'" placeholder="" name="country" value="';
+                                                                    echo $address_result['addresses_country'];
+                                                                    echo'">
+                                                                        <option value="Singapore">Singapore</option>
+                                                                        <option value="Malaysia">Malaysia</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="zipCode">Zip Code<span class="redasterisk">*</span></label>
+                                                                    <input type="text" class="form-control zipCode zipCode' . $address_result['addresses_id']; echo'" placeholder="" name="zipCode" value="';
+                                                                    echo $address_result['addresses_zipCode'];
+                                                                    echo'">
+                                                                    <input type="text" class="form-control hiddenusersid d-none" name="users_id" value="';
+                                                                    echo $_COOKIE['users_id'];
+                                                                    echo'">
+                                                                </div>
+    
+                                                                <div class="form-group requiredfields">
+                                                                    <p>Fields marked with a<span class="redasterisk"> * </span> are required.</p>
+                                                                </div>
+                                                            </form>
+    
+                                                            </div>
+    
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    
+                                                                <button type="button" class="btn btn-primary saveAddressChanges" name="saveAddressChanges" data-id=" ';
+                                                                
+                                                                echo $address_result['addresses_id'];
+                                                                
+                                                            echo '">Save Changes</button></div></div></div></div>';     
+    
+                                            } else {
+                                                echo '<div class="col-4 responsivenessneeded"><div class="row responsivenessneeded"><h5>';
+                                                echo $address_result['addresses_fullName']; echo '</h5><p>';
+                                                echo $address_result['addresses_line1']; echo '</p><p>';
+                                                echo $address_result['addresses_line2']; echo '</p><p>';
+                                                echo $address_result['addresses_unitNo']; echo '</p><p>';
+                                                echo $address_result['addresses_country'] . " " . $address_result['addresses_zipCode'];
+                                                echo '</p></div>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <button type="button" class="btn btn-primary btn-sm editAdd" value="editAdd" data-bs-toggle="modal" data-bs-target="#addressinfo';
+    
+                                                        echo $address_result['addresses_id'];
+    
+                                                        echo '">Edit</button>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <button type="button" class="btn btn-danger btn-sm deleteAdd" data-id="';
+    
+                                                echo $address_result['addresses_id'];
+                                                        
+                                                echo '">Delete</button>
+                                                        </div>
+                                                        <div class="col-4 form-check">
+                                                            <input class="form-check-input makeDefault" type="checkbox" value="" data-id="' . $address_result['addresses_id'] . '" id="flexCheckDefault' . $address_result['addresses_id'] . '">
+                                                            <label class="form-check-label" for="flexCheckDefault' . $address_result['addresses_id'] . '">
+                                                                Default
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>';
+    
+                                                // start of modal for individual address box
+                                                echo '
+                                                <div class="modal fade" id="addressinfo'; echo $address_result['addresses_id']; echo'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Edit your Address</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            
+                                                        </div>
+    
+                                                        <div class="modal-body">
+    
+                                                            <form class="row g-3">
+                                                                <div class="form-group col-12">
+                                                                    <label for="fullName">Full Name<span class="redasterisk">*</span></label>
+                                                                    <input type="text" class="form-control fullName fullName' . $address_result['addresses_id']; echo'" placeholder="" name="fullName" value="';
+                                                                    echo $address_result['addresses_fullName'];
+                                                                    echo'">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="companyName">Company/Organization</label>
+                                                                    <input type="text" class="form-control company company' . $address_result['addresses_id']; echo'" placeholder="" name="companyName" value="';
+                                                                    echo $address_result['addresses_companyName'];
+                                                                    echo'">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="line1">Address Line 1<span class="redasterisk">*</span></label>
+                                                                    <input type="text" class="form-control line1 line1' . $address_result['addresses_id']; echo'" placeholder="" name="line1" value="';
+                                                                    echo $address_result['addresses_line1'];
+                                                                    echo'">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="line2">Address Line 2</label>
+                                                                    <input type="text" class="form-control line2 line2' . $address_result['addresses_id']; echo'" placeholder="" name="line2" value="';
+                                                                    echo $address_result['addresses_line2'];
+                                                                    echo'">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="unitNo">Unit Number<span class="redasterisk">*</span></label>
+                                                                    <input type="text" class="form-control unitNo unitNo' . $address_result['addresses_id']; echo'" placeholder="" name="unitNo" value="';
+                                                                    echo $address_result['addresses_unitNo'];
+                                                                    echo'">
+                                                                </div>
+    
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="country">Country<span class="redasterisk">*</span></label>
+                                                                    <select class="form-control country country' . $address_result['addresses_id']; echo'" placeholder="" name="country" value="';
+                                                                    echo $address_result['addresses_country'];
+                                                                    echo'">
+                                                                        <option value="Singapore">Singapore</option>
+                                                                        <option value="Malaysia">Malaysia</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="zipCode">Zip Code<span class="redasterisk">*</span></label>
+                                                                    <input type="text" class="form-control zipCode zipCode' . $address_result['addresses_id']; echo'" placeholder="" name="zipCode" value="';
+                                                                    echo $address_result['addresses_zipCode'];
+                                                                    echo'">
+                                                                    <input type="text" class="form-control hiddenusersid d-none" name="users_id" value="';
+                                                                    echo $_COOKIE['users_id'];
+                                                                    echo'">
+                                                                </div>
+    
+                                                                <div class="form-group requiredfields">
+                                                                    <p>Fields marked with a<span class="redasterisk"> * </span> are required.</p>
+                                                                </div>
+                                                            </form>
+    
+                                                            </div>
+    
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    
+                                                                <button type="button" class="btn btn-primary saveAddressChanges" name="saveAddressChanges" data-id=" ';
+                                                                
+                                                                echo $address_result['addresses_id'];
+                                                                
+                                                            echo '">Save Changes</button></div></div></div></div>';     
+    
+                                            }
+
                                         }
                                 
                                 ?>
@@ -732,7 +849,11 @@ foreach($address as $address_result) {
                     
                     if(data == 1){
 
-                        swal("Address deleted successfully", {
+                        // $(this).closest("makeDefault").prop('id', 'flexCheckCheckedDisabled');
+                        // $('#flexCheckCheckedDisabled').attr("disabled", true);
+                        // $('#flexCheckCheckedDisabled').attr("checked", true);
+
+                        swal("Address set to default successfully", {
                         icon: "success",
                         timer : 2000
 
