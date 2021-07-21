@@ -39,6 +39,7 @@ include "../config/functions.php";
             <th scope="col">Feedback ID</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Time Stamp</th>
             <th scope="col">Topic</th>
             <th scope="col">Message</th>
             <th scope="col">File</th>
@@ -58,6 +59,7 @@ include "../config/functions.php";
               <td class="feedbackid"><?php echo $getFBResult['feedbackothers_id']; ?></td>
               <td class="feedbackname"><?php echo $getFBResult['feedbackothers_name']; ?></td>
               <td class="feedbackemail"><?php echo $getFBResult['feedbackothers_email']; ?></td>
+              <td class="feedbackemail"><?php echo displayDate($getFBResult['feedbackothers_timestamp']) . ", " . displayTime($getFBResult['feedbackothers_timestamp']); ?></td>
               <td class="feedbacketopic"><?php echo ucwords($getFBResult['feedbackothers_topic']); ?></td>
               <td class="feedbackmsg"><?php echo ucfirst($getFBResult['feedbackothers_message']); ?></td>
               <td class="feedbackfile"><a href="../<?php echo $getFBResult['feedbackothers_file']; ?>" target="_blank"><?php if($getFBResult['feedbackothers_file'] == null) { echo "";} else { echo "Attachment";} ?></a></td>
@@ -123,9 +125,13 @@ include "../config/functions.php";
         </tbody>
         <tfoot>
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col">Feedback ID</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Time Stamp</th>
+            <th scope="col">Topic</th>
+            <th scope="col">Message</th>
+            <th scope="col">File</th>
             <th scope="col">Action</th>
           </tr>
         </tfoot>
