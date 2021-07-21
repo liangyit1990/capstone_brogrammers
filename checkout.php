@@ -402,6 +402,9 @@ foreach($address as $address_result) {
                                 if(data == 1){
                                     $(".cartItemNo").text("0");
                                     $(".list-group-item").remove();
+                                    setTimeout(function(){
+                                            window.location.href = 'index.php';
+                                         }, 2000);
                                 } else {
                                     alert(data);
                             }
