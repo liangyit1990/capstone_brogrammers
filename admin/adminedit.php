@@ -12,7 +12,6 @@ if(isset($_POST['editUser'])){
       $name = validateData($_POST['name']);
       $email = validateData($_POST['email']);
       $phone = validateData($_POST['phone']);
-      $address = validateData($_POST['address']);
       $permission = validateData($_POST['permission']);
       $gender = validateData($_POST['gender']);
 
@@ -21,7 +20,6 @@ if(isset($_POST['editUser'])){
          'users_name' => strtolower($name),
          'users_email' => strtolower($email),
          'users_phone' => $phone,
-         'users_address' => strtolower($address),
          'users_permission' => $permission,
          'users_gender' => $gender
       

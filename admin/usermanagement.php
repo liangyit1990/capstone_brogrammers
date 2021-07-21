@@ -115,15 +115,6 @@ include "../config/functions.php";
                             </label>
                           </div>
                         </div>
-                        <!--Input value for Address -->
-                        <div class="input-group mt-3">
-                          <textarea class="form-control address" id="exampleFormControlTextarea1<?php echo $getUserResult['users_id'];?>" rows="3" id="address<?php echo $getUserResult['users_id'];?>" name="newadd" ><?php echo $getUserResult['users_address'] ?></textarea>
-                          <div class="input-group-append">
-                            <div class="input-group-text">
-                              <i class="bi bi-house-door-fill"></i>
-                            </div>
-                          </div>
-                        </div>
                         <!--Input value for permission -->
                         <div class="input-group mt-3">
                           <div class="form-check form-switch">
@@ -300,7 +291,6 @@ $(document).ready(function(){
     var name = $(this).parent().parent().find(".name").val();
     var email = $(this).parent().parent().find(".email").val();
     var phone = $(this).parent().parent().find(".phone").val();
-    var address = $(this).parent().parent().find(".address").val();
     var permissionchecked = $(this).parent().parent().find(".permission").prop("checked");
     //Check for value of radio buttons for gender
     var genderchecked = $(`input[name='gender${id}']:checked`).val();
@@ -316,15 +306,7 @@ $(document).ready(function(){
     } else {
       var permission = 0;
     }
-          // console.log(id);
-          // console.log(name);
-          // console.log(email);
-          // console.log(phone);
-          // console.log(address);
-          // console.log(genderchecked);
-          // console.log(gender);
-          // console.log(permission);
-          // console.log(editUser);
+ 
           
     //Ajax to update users info
     $.ajax({
@@ -335,7 +317,6 @@ $(document).ready(function(){
       name:name,
       email:email,
       phone:phone,
-      address:address,
       gender:gender,
       permission:permission,
       editUser:editUser
@@ -362,10 +343,6 @@ $(document).ready(function(){
     var cfmpassword = $(".newcfmpassword").val();
     var addbtn = $(".addbtn").val();
 
-    // console.log(name);
-    // console.log(email);
-    // console.log(password);
-    // console.log(cfmpassword);
 
     $.ajax({
       url: 'admininsert.php', //action
