@@ -241,7 +241,7 @@ foreach($address as $address_result) {
 
                         <div class="col-12">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" value="<?php echo ucwords($defaultline1); ?>" required="">
+                        <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" value="<?php echo ucwords($defaultline1); ?>" required>
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>

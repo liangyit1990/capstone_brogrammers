@@ -175,6 +175,8 @@ include "../config/functions.php";
                     
                     <h5>Name: <?php echo ucwords($getOrderResult['users_name']);  ?></h5>
                     <h5>Date: <?php echo displayDate($getOrderResult['orders_timestamp']) . ", " . displayTime($getOrderResult['orders_timestamp']); ?></h5>
+
+                    <h5>Address: <?php echo $getOrderResult['orders_address'] ?></h5>
                     <h5><u>Order Details</u></h5>
                     
                     <?php 

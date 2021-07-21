@@ -17,8 +17,9 @@ include "config/functions.php";
     $token_card_type = $_POST["stripeTokenType"];
     // $phone           = $_POST["phone"];
     $email           = $_POST["stripeEmail"];
-    $address         = $_POST["address"];
+    // $address         = $_POST["address"];
     $amount          = $_POST["amount"]; 
+    $address         = $_POST["address"] . ", " . $_POST["address2"] . " " . $_POST["unitNo"] . ", " . $_POST["country"] . " " . $_POST["zip"];
     $desc            = $_POST["product_name"];
     $charge = \Stripe\Charge::create([
       "amount" => $amount,
@@ -33,10 +34,10 @@ include "config/functions.php";
           date_default_timezone_set('Singapore');
           
           DB::insert("orders", [
-              'orders_totalprice' => $totalprice,
-              'users_id' => $_COOKIE['users_id'],
-              'orders_timestamp' => date("Y-m-d H:i:s")       
-
+            'orders_totalprice' => $totalprice,
+            'users_id' => $_COOKIE['users_id'],
+            'orders_timestamp' => date("Y-m-d H:i:s"),       
+            'orders_address' => $address
               
           ]);
 

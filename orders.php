@@ -57,7 +57,7 @@ include "config/functions.php";
                                 <div class="date-order">
                                     <div class="date-header">
                                         <h5><?php echo displayDate($getUserOrderResult['orders_timestamp']) . ", " . displayTime($getUserOrderResult['orders_timestamp']) ?></h5>
-                                    
+                                        <h5>Address: <?php echo $getUserOrderResult['orders_address']?></h5>
                                     </div>
                                     <div class="order-id">
                                         <h6>Order ID: <?php echo $getUserOrderResult['orders_id'] ?></h6> 
