@@ -1,4 +1,119 @@
+a{
+    transition: all 0.5s;
+    text-decoration: none;
+    color: #000;
+}
+.card img{
+    width:100%;
+    transition: all 0.5s;
+}
 
+section{
+    padding:50px 0;
+    margin-top:20px;
+    text-align: center;
+
+}
+
+.contain{
+    max-width:1200px;
+    width:100%;
+    margin:0 auto;
+
+}
+
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    margin:30px 15px 0 15px;
+
+}
+
+header{
+    width: 70%;
+    margin: 0 auto;
+}
+header h1{
+    margin: 0;
+    font-size:50;
+    color: rgba(52, 73, 94, 1);
+    font-weight: 500;
+}
+
+.card{
+    position: relative;
+    overflow: hidden;
+    max-height:580px;
+    height:100%;
+    box-shadow:0 2px 10px #ccc;
+    transition: all 0.5s;
+
+}
+.card:hover{
+    box-shadow:0 2px 10px #ccc;
+    transition: all 0.5s;
+
+}
+
+.card:hover img{
+    transform: scale(1.1);
+    transition:all 0.4s;
+
+}
+
+.blogcontent{
+    position: absolute;
+    left: 0;
+    bottom: -45px;
+    width: 100%;
+    color: #000;
+    padding: 10px 5px;
+    background: linear-gradient(45deg, rgb(255,200,69) 0%, rgba(144,192,229, 0.4)100%);
+    transition: all 0.5s;
+}
+
+.blogcontent h3{
+    font-size: 20px;
+    font-weight:500;
+    margin:0;
+
+}
+
+.blogcontent h3 span{
+    display: block;
+    font-size:60%;
+    margin-top:5px;
+    font-weight:600;
+    color:rgba(52, 73, 94, 1);
+}
+
+.card:hover .blogcontent{
+    bottom:0;
+    transition: all 0.5s;
+
+}
+
+.blogcontent a{
+    font-size: 14px;
+    font-weight:500;
+}
+.blogcontent .btn-click{
+    display: block;
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius:3px;
+    font-weight: 400;
+}
+.blogcontent .btn-click:hover{
+    background: #000;
+    transition: all 0.5s;
+    text-decoration: none;
+}
+
+.blogcontent a:hover{
+    text-decoration:underline;
+}
 
 
 .menu_img{
@@ -62,9 +177,9 @@
     justify-content:space-between;
 }
 .pan{
-    width: 150px;
-    height:150px;
-    margin-left:100px;
+    width: 100px;
+    height:100px;
+    margin-left:0;
     margin-right:auto;
     display:block;
     margin-top:60px;

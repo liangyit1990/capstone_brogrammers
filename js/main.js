@@ -109,19 +109,19 @@ $win.on('scroll', function () {
     $sunny.css('transform', 'rotate(' + top + 'deg )');
 });
 
-var $pan = $('.pan');
-var $win = $(window);
+// var $pan = $('.pan');
+// var $win = $(window);
 
-$win.on('scroll', function () {
-    var top = $win.scrollTop() ;
-    $pan.css('transform', 'translate(' + top + 'px )');
-});
+// $win.on('scroll', function () {
+//     var top = $win.scrollTop()/2 ;
+//     $pan.css('transform', 'translate(' + top + 'px )');
+// });
 
 var $drinks = $('.drinks');
 var $win = $(window);
 
 $win.on('scroll', function () {
-    var top = $win.scrollTop()/4 ;
+    var top = $win.scrollTop()/9 ;
     $drinks.css('transform', 'translate(' + top + 'px )');
 });
 
@@ -129,7 +129,7 @@ var $gravy = $('.gravy');
 var $win = $(window);
 
 $win.on('scroll', function () {
-    var top = $win.scrollTop()/3 ;
+    var top = $win.scrollTop()/6 ;
     $gravy.css('transform', 'translate(' + top + 'px )');
 });
 
