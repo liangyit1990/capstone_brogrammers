@@ -52,15 +52,15 @@ isAdmin();
             <p class="text-center">
                 <!-- Description: Our Bentos are... -->
             </p>
-            <div class="searchmenu">
+            <!-- <div class="searchmenu">
                 <div class="sortbyoptions">
-                    <!-- <b>Show Only:</b>
+                    <b>Show Only:</b>
                     <select class="bentooptionsbox">
                         <option><span>-</span></option>
                         <option>Chicken</option>
                         <option>Seafood</option>
                         <option>Others</option>
-                    </select> -->
+                    </select>
                     <b>Sort By:</b>
                     <select class="drinkssort">
                         <option><span class="text-center">-</span></option>
@@ -69,7 +69,7 @@ isAdmin();
                         <option class="bentoalph" value="bentoalph">Alphabetically</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
 
             <?php
                 $bento = DB::query('SELECT * FROM food WHERE food_category = "Bento"');
@@ -98,15 +98,15 @@ isAdmin();
                 <!-- Description -->
             </p>
 
-            <div class="searchmenu">
+            <!-- <div class="searchmenu">
                 <div class="sortbyoptions">
-                    <!-- <b>Show Only:</b>
+                    <b>Show Only:</b>
                     <select class="drinksoptionsbox">
                         <option><span>-</span></option>
                         <option>Chicken</option>
                         <option>Seafood</option>
                         <option>Others</option>
-                    </select> -->
+                    </select>
                     <b>Sort By:</b>
                     <select class="drinkssort">
                         <option><span class="text-center">-</span></option>
@@ -115,7 +115,7 @@ isAdmin();
                         <option class="drinksalph" value="drinksalph">Alphabetically</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
 
             <?php
                 
@@ -144,9 +144,8 @@ isAdmin();
         <div class="row gravydiv" id="gravydiv">
             <h1 class="text-center">Gravy</h1>
             <p class="text-center">
-                <!-- Description -->
             </p>
-            <div class="searchmenu">
+            <!-- <div class="searchmenu">
                 <div class="sortbyoptions">
                     <b>Sort By:</b>
                     <select class="gravySort" id="gravySort" onchange="gravySort();">
@@ -156,7 +155,7 @@ isAdmin();
                         <option class="gravyalph" value="gravyalph">Alphabetically</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
 
 
             <?php
@@ -275,35 +274,8 @@ isAdmin();
 
     });
 
-    // document.getElementById('gravySort').addEventListener('select', sortOption);
 
-    // function gravySort () {
-    //     var value = document.getElementById("gravySort").value;
-    //     if(value == "gravyalph") {
-    //         var node = document.createElement("DIV");
-    //         node.classList.add('col-lg-4');
-    //         node.classList.add('col-sm-6');
-    //         node.classList.add('menubox');
-    //         var textnode = document.createTextNode("<?php 
-    //                         $gravyalph = DB::query('SELECT * FROM food WHERE food_subcategory = "gravy" ORDER BY food_name');
-    //                         foreach($gravyalph as $gravyalph_result){
-    //                             echo '<div class="row"><p class="text-center"><img src=" ';
-    //                             echo SITE_URL . "admin/" . $gravyalph_result['food_img'];
-    //                             echo '" alt="" class="menu_img"></p></div><div class="row namerow"><h4 class="text-center">';
-    //                             echo ucwords($gravyalph_result['food_name']);
-    //                             echo '</h4></div><div class="row pricerow"><span class="text-center">';
-    //                             echo "SGD" . $gravyalph_result['food_price'];
-    //                             echo '</span></div><div class="row caloriesrow"><span class="text-center">';
-    //                             echo $gravyalph_result['food_calories'] . "Cal";
-    //                             echo '</span></div><div class="row addbuttonrow"><a class="addbutton text-center" data-id="'.$gravyalph_result['food_id'].'"><i class="bx bxs-cart-download"></i>Add</a></div>';
-    //                         }
-            
-    //         ?>
-    //         ");
-    //         node.appendChild(textnode);
-    //         document.getElementById("gravydiv").appendChild(node);
-    //     }
-    // }
+
 
 </script>
 
