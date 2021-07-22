@@ -74,7 +74,7 @@ isAdmin();
             <p>Monday - Sunday  </p> 
             <p>11am - 9pm  </p> 
         </div>          
-    </div>
+    </div><hr>
 
 
 <!-- footer -->

@@ -13,12 +13,12 @@
                 </div>
 
                 <div class="column">                 
-                    <h5>Location</h5>
+                    <h6>Location</h6>
                     <p>Paya Lebar Square Mall,</p>
                     <p>L2-130</p>
                 </div>
                 <div class="column">
-                    <h5>Links</h5>
+                    <h6>Links</h6>
                     <ul>
                         <li><a href="<?php echo htmlspecialchars(SITE_URL); ?>#home">Home</a></li>
                         <li><a href="<?php echo htmlspecialchars(SITE_URL) . "menu.php" ?>">Menu</a></li>
@@ -26,7 +26,7 @@
                     </ul>
                 </div>
                 <div class= "column">
-                    <h5>Social Media</h5>
+                    <h6>Social Media</h6>
                     <div class="social_icons">
                         <a href="" class="footer_social"><i class='bx bxl-facebook' ></i></a>
                         <a href="" class="footer_social"><i class='bx bxl-instagram' ></i></a>

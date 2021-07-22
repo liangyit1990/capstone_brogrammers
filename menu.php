@@ -176,7 +176,7 @@ isAdmin();
                 }
             ?>
 
-        </div>
+        </div><hr>
 
     </div>
 

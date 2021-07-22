@@ -335,11 +335,8 @@ foreach($address as $address_result) {
 
 
     <!-- footer -->
-    <?php 
-    include "footer.php";
     
-    ?>
-        
+    
 
 
     

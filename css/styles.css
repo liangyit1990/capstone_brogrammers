@@ -731,17 +731,17 @@ footer a {
     text-decoration: none;
 }
 
-ul li{
+.column ul li{
     list-style: none;
     margin-bottom: 3px;
-    font-size: 13px;
+    font-size: 10px;
 
 }
 ul li a{
     text-decoration: none;
 }
 .column p{
-    font-size: 13px;
+    font-size: 11px;
 }
 .social_icons .bx{
     width:40px;
