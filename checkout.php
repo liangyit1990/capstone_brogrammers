@@ -223,7 +223,7 @@ foreach($address as $address_result) {
                     <div class="row g-3">
                         <div class="col-sm-12">
                         <label for="firstName" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="<?php echo ucwords($defaultfullName); ?>" required="">
+                        <input type="text" class="form-control fullname" id="firstName" name="firstName"  value="<?php echo ucwords($defaultfullName); ?>" required>
                         <div class="invalid-feedback">
                             Name is required.
                         </div>
@@ -241,7 +241,7 @@ foreach($address as $address_result) {
 
                         <div class="col-12">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" value="<?php echo ucwords($defaultline1); ?>" required>
+                        <input type="text" class="form-control address" id="address" name="address"  value="<?php echo ucwords($defaultline1); ?>" required>
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
@@ -249,12 +249,12 @@ foreach($address as $address_result) {
 
                         <div class="col-12">
                         <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment or suite" value="<?php echo ucwords($defaultline2); ?>">
+                        <input type="text" class="form-control" id="address2" name="address2"  value="<?php echo ucwords($defaultline2); ?>">
                         </div>
                         
                         <div class="col-md-4">
                         <label for="unitNo" class="form-label">Unit Number</label>
-                        <input type="text" class="form-control" id="unitNo" name="unitNo" placeholder="1234 Main St" value="<?php echo ucwords($defaultunitNo); ?>" required="">
+                        <input type="text" class="form-control unitno" id="unitNo" name="unitNo"  value="<?php echo ucwords($defaultunitNo); ?>" required="">
                         <div class="invalid-feedback">
                             Please enter your unit number.
                         </div>
@@ -263,15 +263,15 @@ foreach($address as $address_result) {
 
                         <div class="col-md-5">
                         <label for="country" class="form-label">Country</label>
-                        <input type="text" class="form-control" id="country" name="country" placeholder="" value="<?php echo ucwords($defaultcountry); ?>">
+                        <input type="text" class="form-control country" id="country" name="country" placeholder="" value="<?php echo ucwords($defaultcountry); ?>">
 
                         <!-- <select class="form-select" id="country" required="" value="">
                             <option value="">Choose...</option>
                             <option>Singapore</option>
                         </select> -->
-                        <div class="invalid-feedback">
+                        <!-- <div class="invalid-feedback">
                             Please select a valid country.
-                        </div>
+                        </div> -->
                         </div>
 
                         <!-- <div class="col-md-4">
@@ -287,7 +287,7 @@ foreach($address as $address_result) {
 
                         <div class="col-md-3">
                         <label for="zip" class="form-label">Zip Code</label>
-                        <input type="text" class="form-control" id="zip" name="zip" placeholder="" value="<?php echo ucwords($defaultzipCode); ?>" required="">
+                        <input type="text" class="form-control zipcode" id="zip" name="zip" placeholder="" value="<?php echo ucwords($defaultzipCode); ?>" required="">
                         <div class="invalid-feedback">
                             Zip code required.
                         </div>
@@ -313,6 +313,7 @@ foreach($address as $address_result) {
                     <hr class="my-4">
 
                     <script
+                    
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button" id="stripe-button"
                     data-key="pk_test_51JC3VwF77heEa3oFtz0HzRPEOVUxvY1thI3QJlIi4QY4DLd6U7NiwR3DMJZlNqjTLg9iVamxN9AvcheBkGJ3WzJX00PnoxuKvI"
                     data-amount=<?php echo number_format((float)$totalcartprice, 2, '.', '') * 100; ?>
@@ -335,8 +336,22 @@ foreach($address as $address_result) {
 
 
     <!-- footer -->
-    
-    
+    <footer class="footer section bd-container">
+            <div class="footer_container bd-grid">
+                <div class="footer_content">
+                    <a href="index.php" class="footer_logo">CALORICE</a>
+                    
+                    <div>
+                        <a href="" class="footer_social"><i class='bx bxl-facebook' ></i></a>
+                        <a href="" class="footer_social"><i class='bx bxl-instagram' ></i></a>
+                        <a href="" class="footer_social"><i class='bx bxl-twitter' ></i></a>
+                        
+
+                    </div> 
+                </div>
+            </div>
+        </footer>
+        
 
 
     
@@ -352,6 +367,24 @@ foreach($address as $address_result) {
             echo 'swal("Logged Out.", "You have logged out successfully.", "success");';
         }
         ?>
+
+        $("input[type='text'],input[type='email'] ").change( function() {
+        if($(".fullname").val() == 0 || $(".address").val() == 0 || $(".address").val() == 0 || $(".unitno").val() == 0 || $(".country").val() == 0 || $(".zipcode").val() == 0    ) {
+            document.getElementsByClassName("stripe-button-el")[0].disabled=true;
+            swal({
+                    title: "Alert!",
+                    text: "Please fill up all the required sections",
+                    icon: "error",
+                    buttons: false,
+                    timer: 3000,
+                    });
+        } else {
+            document.getElementsByClassName("stripe-button-el")[0].disabled=false;
+        }
+                });
+        
+        
+      
 
         $(".clearCart").click(function(){
             if($(".cartItemNo").text() == 0){
