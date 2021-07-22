@@ -20,10 +20,9 @@
                 <div class="column">
                     <h5>Links</h5>
                     <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Menu</a></li>
-                        <li><a href="">Contact Us</a></li>
-                        <li><a href="">Login</a></li>
+                        <li><a href="<?php echo htmlspecialchars(SITE_URL); ?>#home">Home</a></li>
+                        <li><a href="<?php echo htmlspecialchars(SITE_URL) . "menu.php" ?>">Menu</a></li>
+                        <li><a href="<?php echo htmlspecialchars(SITE_URL . "feedback.php"); ?>">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class= "column">
