@@ -59,8 +59,6 @@ include "config/functions.php";
                   $totalBatchOrderCount = $totalBatchOrderResult['cartbatch_no'];
               }
 
-              echo $totalBatchOrderCount;
-
               $batchCounter = 1;
               while($batchCounter <= $totalBatchOrderCount) {
                   $getUserBatchQuery = DB::query("SELECT * FROM cartbatch 
