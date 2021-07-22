@@ -209,21 +209,10 @@ isAdmin();
     </main> -->
 
     <!-- footer -->
-    <footer class="footer section bd-container">
-        <div class="footer_container bd-grid">
-            <div class="footer_content">
-                <a href="index.php" class="footer_logo">CALORICE</a>
-                
-                <div>
-                    <a href="" class="footer_social"><i class='bx bxl-facebook' ></i></a>
-                    <a href="" class="footer_social"><i class='bx bxl-instagram' ></i></a>
-                    <a href="" class="footer_social"><i class='bx bxl-twitter' ></i></a>
-                    
-
-                </div> 
-            </div>
-        </div>
-    </footer>
+    <?php 
+    include "footer.php";
+    
+    ?>
     
 
 

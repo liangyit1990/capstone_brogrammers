@@ -3,14 +3,17 @@ include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
 
+$getuseraddress = DB::queryFirstRow("SELECT * FROM addresses WHERE users_id = %i",15);
+
+   $fullAddress = $getuseraddress['addresses_line1']." ".$getuseraddress['addresses_line2']. " ". $getuseraddress['addresses_unitNo']. " ". $getuseraddress['addresses_country']. " ". $getuseraddress['addresses_zipCode'];
+    echo $fullAddress;
+    // echo $fulladdress;
 
 
 
-
-
-$getTotalOrderCount = db::query("SELECT * FROM orders");
-$getTotalOrderCount1 = db::count();
-echo $getTotalOrderCount1;
+// $getTotalOrderCount = db::query("SELECT * FROM orders");
+// $getTotalOrderCount1 = db::count();
+// echo $getTotalOrderCount1;
 // $food_name = Array();
 // $food_qty = Array();
 // $getOrdersQuery = DB::query("SELECT * FROM orderdetails
