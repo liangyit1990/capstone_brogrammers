@@ -51,7 +51,7 @@ isAdmin();
                 <div class="card">
                     <img src="images/ricebox.jpeg" alt="">
                     <div class="blogcontent">
-                        <h3>Bento</h3>
+                        <h3><strong>Bento</strong></h3>
                         <p>< <a href="#">510 Cal</a></p>
                         <a href="#bento" class="btn-click">Click here</a>
                     </div>
@@ -59,7 +59,7 @@ isAdmin();
                 <div class="card">
                     <img src="images/drinks.jpeg" alt="">
                     <div class="blogcontent">
-                        <h3>Drinks</h3>
+                        <h3><strong>Drinks<strong></h3>
                         <p>< <a href="">80 Cal</a></p>
                         <a href="#drinks" class="btn-click">Click here</a>
                     </div>
@@ -67,7 +67,7 @@ isAdmin();
                 <div class="card">
                     <img src="images/gravy.jpeg" alt="">
                     <div class="blogcontent">
-                        <h3>Gravy</h3><br>
+                        <h3><strong>Gravy<strong></h3><br>
                         
                         <a href="#gravy" class="btn-click">Click here</a>
                     </div>
