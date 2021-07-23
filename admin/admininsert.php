@@ -36,12 +36,12 @@ if(isset($_POST['addbtn'])){
         }
     }
 
-
+    //Check if password is empty
     if(empty($_POST['password'])){
         $passwordChecked = 1;
         
     }else{  
-       
+       //Validate values for password
         $password = validateData($_POST['password']);
         $cfmpassword = validateData($_POST['cfmpassword']);
         $passwordChecked = 0;
