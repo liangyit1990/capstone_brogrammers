@@ -305,21 +305,24 @@ img{
 .container {
   display: flex;
   justify-content: space-between;
-  height:200px;
+  height:220px;
   margin-top: 50px;
+  
   
 }
 .users, .food, .orders, .totalsales, .dailysales {
   border: none;
   height: 100%;
   border-radius: 5px;
+  padding-top: 15px;
   
   
   
 }
 
 .users, .food, .orders, .totalsales, .dailysales p{
-  font-size: 12px;
+  font-size: 0.9vw ;
+  font-weight: bold;
 }
 
 .users, .food, .orders, .totalsales, .dailysales h4{
