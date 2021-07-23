@@ -186,7 +186,7 @@ foreach($address as $address_result) {
                                 ' . $addressCheckOut_result['addresses_country'] . " " . $addressCheckOut_result['addresses_zipCode'] . '</p></div><div class="col-5">
                                 <button type="button" class="btn btn-primary btn-sm usethisaddress" id="usethisaddress" value="usethisaddress" disabled>Default Address</button>
 
-                                </div></div></div>';
+                                </div></div></div><hr>';
                             } else {
                                 echo '
                                 <div class="row checkoutaddressbox"><div class="col-12"><p>
