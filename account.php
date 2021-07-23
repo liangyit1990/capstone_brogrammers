@@ -132,9 +132,10 @@ foreach($address as $address_result) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6  feed ">
-                                <div class="row">
+                            <div class="col-lg-6  basicinfobox ">
+                                <div class="row basicinfo">
                                     <h4 class="accheader">Send Feedback</h4>
+                                    <hr>
                                 </div>
                                 <div class="row align">
                                     <div class="col-12">
