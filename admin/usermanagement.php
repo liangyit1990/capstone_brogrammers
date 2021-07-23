@@ -335,6 +335,8 @@ $(document).ready(function(){
     });       
   })
 
+
+  //Ajax to add new users
   $(".addbtn").click(function(){ 
 
     var name = $(".newname").val();

@@ -32,7 +32,7 @@ include "config/functions.php";
 
           $totalprice = $amount / 100;
           date_default_timezone_set('Singapore');
-          
+          //insert orders into DB
           DB::insert("orders", [
             'orders_totalprice' => $totalprice,
             'users_id' => $_COOKIE['users_id'],
@@ -46,20 +46,21 @@ include "config/functions.php";
               $orderID = $totalOrderResult['orders_id'];
           }
 
-              
+         //Count how many cartbatch items user has 
           $getUserBatchQuery = DB::query("SELECT * FROM cartbatch 
                                               INNER JOIN food 
                                               ON cartbatch.food_id = food.food_id
                                               where users_id=%i AND cartbatch_status=%i"  , $_COOKIE['users_id'],0);
           $totalBatchOrderCount = DB::count();
 
-
+          //If cartbatch item >1, then count how many different batches of foods
           if($totalBatchOrderCount > 0) {
               foreach($getUserBatchQuery as $totalBatchOrderResult ) {
                   $totalBatchOrderCount = $totalBatchOrderResult['cartbatch_no'];
               }
 
               $batchCounter = 1;
+              //While loop to add cartbatch items into orderdetails
               while($batchCounter <= $totalBatchOrderCount) {
                   $getUserBatchQuery = DB::query("SELECT * FROM cartbatch 
                                               INNER JOIN food 
@@ -78,18 +79,18 @@ include "config/functions.php";
                   $batchCounter++;
               }
           }
-
+          //See if there is any order b/f from cartbatch above
           $getOrderDetailsGroup = DB::query('SELECT * FROM orderdetails WHERE orders_id=%i', $orderID);
           $getOrderDetailsGroupCount = DB::count();
           if($getOrderDetailsGroupCount == 0 ) {
               $batchCounter = 1;
           }
-
+          
           $getUserCartQuery = DB::query("SELECT * FROM cart 
                                                 INNER JOIN food 
                                                   ON cart.food_id = food.food_id
                                                   where users_id=%i AND cart_status=%i"  , $_COOKIE['users_id'],0);
-
+            //Add all cart items into orderdetails
           foreach($getUserCartQuery as $getUserCartResult ) {
               DB::insert("orderdetails", [
                                   'orderdetails_qty' => $getUserCartResult['cart_foodqty'],
@@ -103,11 +104,10 @@ include "config/functions.php";
                                   
           }
 
+    
+     
 
-      $getUserBatchQuery = DB::query("SELECT cartbatch_no FROM cartbatch WHERE users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
-      $getUserBatchCount = DB::count();
-
-
+    //Update cart status to 0
       DB::update("cart", [
         'cart_status' => 1
         
@@ -123,7 +123,7 @@ include "config/functions.php";
 
       
       header("Location:success.php?amount=$amount");
-      header( "refresh: 3; url= account.php#orders");
+      
 
     }
 ?>

@@ -3,6 +3,7 @@ include "config/config.php";
 include "config/db.php";
 include "config/functions.php"; 
 
+//Count the number of items user has in the cart if user is logged in
 if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 
     $getuserQuery = DB::query("SELECT cartbatch_no FROM cartbatch WHERE users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
@@ -27,6 +28,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
     }
 }
 
+//Retrieve user default address
 $address = DB::query('SELECT * FROM addresses WHERE users_id=%i AND addresses_default = 1', $_COOKIE['users_id']);
 foreach($address as $address_result) {
     $defaultfullName = $address_result['addresses_fullName'];
@@ -35,7 +37,7 @@ foreach($address as $address_result) {
     $defaultunitNo = $address_result['addresses_unitNo'];
     $defaultcountry = $address_result['addresses_country'];
     $defaultzipCode = $address_result['addresses_zipCode'];
-    // $defaultId = $address_result['addresses_default'];
+    
 }
 
 
@@ -68,9 +70,7 @@ foreach($address as $address_result) {
     </a>
 
     <!-- header -->
-    <?php 
-    // include "header.php";
-    ?>
+    
 
     
         <div class="container">
@@ -134,34 +134,7 @@ foreach($address as $address_result) {
                         
                         ?>
                         
-                        <!-- <li class="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                            <h6 class="my-0">Product name</h6>
-                            <small class="text-muted">Brief description</small>
-                            </div>
-                            <span class="text-muted">$12</span>
-                        </li> -->
-                        <!-- <li class="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                            <h6 class="my-0">Second product</h6>
-                            <small class="text-muted">Brief description</small>
-                            </div>
-                            <span class="text-muted">$8</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                            <h6 class="my-0">Third item</h6>
-                            <small class="text-muted">Brief description</small>
-                            </div>
-                            <span class="text-muted">$5</span>
-                        </li> -->
-                        <!-- <li class="list-group-item d-flex justify-content-between bg-light">
-                            <div class="text-success">
-                            <h6 class="my-0">Promo code</h6>
-                            <small>EXAMPLECODE</small>
-                            </div>
-                            <span class="text-success">-</span>
-                        </li> -->
+                        
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (SGD)</span>
                             <strong><?php echo number_format((float)$totalcartprice, 2, '.', ''); ?></strong>
@@ -203,19 +176,7 @@ foreach($address as $address_result) {
                         }
                 
                     ?>
-                    <!-- <div>
-                        <h5>Address</h5>
-                    </div>
-                    <div>
-                        <h5>Address</h5>
-                    </div> -->
-
-                    <!-- <form class="card p-2">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Promo code">
-                        <button type="submit" class="btn btn-secondary">Redeem</button>
-                    </div>
-                    </form> -->
+                    
                 </div>
                 <div class="col-md-7 col-lg-8">
                     
@@ -232,7 +193,7 @@ foreach($address as $address_result) {
                         <div class="col-12">
                         <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
                         <input type="email" class="form-control" id="email">
-                        <!-- placeholder="you@example.com" -->
+                        
 
                         <div class="invalid-feedback">
                             Please enter a valid email address for shipping updates.
@@ -264,26 +225,7 @@ foreach($address as $address_result) {
                         <div class="col-md-5">
                         <label for="country" class="form-label">Country</label>
                         <input type="text" class="form-control country" id="country" name="country" placeholder="" value="<?php echo ucwords($defaultcountry); ?>">
-
-                        <!-- <select class="form-select" id="country" required="" value="">
-                            <option value="">Choose...</option>
-                            <option>Singapore</option>
-                        </select> -->
-                        <!-- <div class="invalid-feedback">
-                            Please select a valid country.
-                        </div> -->
                         </div>
-
-                        <!-- <div class="col-md-4">
-                        <label for="state" class="form-label">State</label>
-                        <select class="form-select" id="state" required="">
-                            <option value="">Choose...</option>
-                            <option>California</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please provide a valid state.
-                        </div>
-                        </div> -->
 
                         <div class="col-md-3">
                         <label for="zip" class="form-label">Zip Code</label>
@@ -311,7 +253,7 @@ foreach($address as $address_result) {
                     
 
                     <hr class="my-4">
-
+                    <!-- Stripe payment button -->
                     <script
                     
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button" id="stripe-button"
@@ -322,7 +264,7 @@ foreach($address as $address_result) {
                     data-locale="auto">
                     </script>
 
-                    <!-- <button class="w-100 btn btn-primary btn-lg checkout"  >Continue to checkout</button> -->
+                   
                     </form>
                     
                 </div>
@@ -344,7 +286,7 @@ foreach($address as $address_result) {
             echo 'swal("Logged Out.", "You have logged out successfully.", "success");';
         }
         ?>
-
+        //Disable the payment button if any of the required field is empty
         $("input[type='text'],input[type='email'] ").change( function() {
         if($(".fullname").val() == "" || $(".address").val() == "" || $(".address").val() == "" || $(".unitno").val() == "" || $(".country").val() == "" || $(".zipcode").val() == ""  ) {
             document.getElementsByClassName("stripe-button-el")[0].disabled=true;
@@ -360,12 +302,12 @@ foreach($address as $address_result) {
         }
 
                 });
-        
+        //Disable the payment button if cart is empty
         if($(".cartItemNo").text() == 0) {
             document.getElementsByClassName("stripe-button-el")[0].disabled=true;
         }
       
-
+        //Clear cart based on userID via AJAX
         $(".clearCart").click(function(){
             if($(".cartItemNo").text() == 0){
                 swal("Cart is already empty!", {
@@ -398,7 +340,7 @@ foreach($address as $address_result) {
                                 deleteCartUserId:deleteCartUserId
                             },
                             success:function(data){
-                                console.log(data);
+                               
                                 if(data == 1){
                                     $(".cartItemNo").text("0");
                                     $(".list-group-item").remove();
@@ -417,6 +359,7 @@ foreach($address as $address_result) {
 
         })
 
+        //On click will fill form with selected address values
         $(".usethisaddress").click(function(){
             var usethisaddress = this;
             var useId = $(this).data('id');
@@ -434,9 +377,8 @@ foreach($address as $address_result) {
             })
             .then((use) => {
             if (use) {
-                console.log(unitNo);
-                console.log(country);
-                // $('#firstName').val();
+               
+               
                 $('#address').val(address);
                 $('#address2').val(address2);
                 $('#unitNo').val(unitNo);
@@ -448,9 +390,7 @@ foreach($address as $address_result) {
 
         })
 
-        // $("#stripe-button").click(function(){
-        //     console.log("stripe");
-        // })
+        
     })
 
 

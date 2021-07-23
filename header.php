@@ -34,7 +34,7 @@ if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])){
                     <li class="nav-item"><a href="<?php echo htmlspecialchars(SITE_URL . "feedback.php"); ?>" class="nav_link">Contact Us</a></li>
                     
                     
-                    <!-- <li class="nav-item"><a class="nav_link" data-bs-toggle="modal" data-bs-target="#register">Login/Register</a></li> -->
+                    
                     <?php
                     loginAccountLogout();
                     ?>
@@ -43,7 +43,7 @@ if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])){
             </div>
             <div class="nav_cart cart" id="nav-cart">
                 <div><a class ="cartLink" href="<?php if($totalCartCount == 0) {echo "#";} else { echo "checkout.php";} ?>"><i class='bx bx-cart bx-md'></i><span class="count"><?php echo $totalCartCount ?></span></a></div>
-                <!-- <div class="item-count">0</div> -->
+                
                 
             </div>
             <button class="clear-cart" data-id="<?php echo $_COOKIE["users_id"] ?>">CLEAR</button>

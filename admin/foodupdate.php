@@ -26,7 +26,7 @@ if(isset($_POST['name'])){
 
     
    
-}
+    }
 
     
     
@@ -111,5 +111,8 @@ if(isset($_POST['name'])){
 
  
    exit;
+
+} else {
+    header("Location: " . SITE_URL);
 }
 ?>

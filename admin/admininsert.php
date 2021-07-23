@@ -87,6 +87,8 @@ if(isset($_POST['addbtn'])){
     }
 
 
-} 
+} else {
+    header("Location: " . SITE_URL);
+}
 ?>
 

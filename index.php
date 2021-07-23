@@ -343,7 +343,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
             count_price = parseFloat($(`.price${i}`).text()) * parseInt($(`.ricebaseqty${i}`).val());
             //Get the individual calories * number of quantity entered
             count_calories = parseInt($(`.calories${i}`).text()) * parseInt($(`.ricebaseqty${i}`).val());
-            console.log(count_price);
+            
             if(count_calories == 0) {
                 sub_calories = "-";
             } else {
@@ -390,8 +390,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
             //Amend the html text to reflect latest subcategory values
             $(`.nsubcalories${x}`).text(noodlesub_calories);
 
-            // console.log(noodlecount_price);
-            // console.log(noodlecount_calories);
+   
             x++;
        }
        // Change to reflect latest total calories and total price

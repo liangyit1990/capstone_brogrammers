@@ -20,11 +20,10 @@ if(isset($_POST['defaultId'])){
     echo 1;
     //make checkbox disabled
 
-} 
+} else {
+    header("Location: " . SITE_URL);
+}
 
-// else {
-//     DB::delete("addresses", "addresses_id=%i", $_POST['deleteId']); //delete users with specific id from DB
-//     echo 1;
-// }
+
 
 ?>

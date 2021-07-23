@@ -205,10 +205,7 @@ foreach($address as $address_result) {
                                                             <label for="fullName">Full Name<span class="redasterisk">*</span></label>
                                                             <input type="text" class="form-control fullName" id="fullName" placeholder="" name="fullName" value="">
                                                         </div>
-                                                        <!-- <div class="form-group col-md-6">
-                                                            <label for="lastName">Last Name<span class="redasterisk">*</span></label>
-                                                            <input type="text" class="form-control" id="lastName" placeholder="" name="lastName" value="">
-                                                        </div> -->
+                    
                                                         <div class="form-group col-12">
                                                             <label for="companyName">Company/Organization</label>
                                                             <input type="text" class="form-control company" id="companyName" placeholder="" name="companyName" value="">
@@ -231,9 +228,7 @@ foreach($address as $address_result) {
                                                             <select class="form-control country" id="country" placeholder="" name="country" value="">
                                                                 <option value="Singapore">Singapore</option>
                                                                 <option value="Malaysia">Malaysia</option>
-                                                                <!-- <option value="Item Missing in Package">Item Missing in Package</option>
-                                                                <option value="Damaged Item Received">Damaged Item Received</option>
-                                                                <option value="Wrong Item Received">Wrong Item Received</option> -->
+                                                              
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-6">
@@ -245,9 +240,7 @@ foreach($address as $address_result) {
                                                         <div class="form-group requiredfields">
                                                             <p>Fields marked with a<span class="redasterisk"> * </span> are required.</p>
                                                         </div>
-                                                        <!-- <div class="sendmessagebuttoncontainer">
-                                                            <button class="btn"><span class="sendmessagebutton">Send Message</span></button>
-                                                        </div> -->
+                                                      
                                                     </form>
 
                                                 </div>
@@ -565,7 +558,7 @@ foreach($address as $address_result) {
 
         $(document).ready(function(){
 
-       
+       //Ajax to update user email
         $(".updateUserEmail").click(function(){
             
             var thisBtn = this;
@@ -609,6 +602,7 @@ foreach($address as $address_result) {
             })
         })
 
+        //Ajax to update user password
         $(".updateUserPassword").click(function(){
             var thisBtn = this;
             var passwordusers_id = $(".passwordidUpdate").val();
@@ -656,8 +650,9 @@ foreach($address as $address_result) {
             })
         })
 
+        //Ajax to save user new address
         $(".saveAddress").click(function(){
-            console.log('hello');
+            
             var thisBtn = this;
             var users_id = $(".hiddenusersid").val();
             var fullName = $(".fullName").val();
@@ -682,7 +677,7 @@ foreach($address as $address_result) {
                 zipCode: zipCode,
                 },
                 success:function(data){
-                    console.log(data);
+                    
                     if(data == 1){
                             swal({
                             title: "Nice",
@@ -692,7 +687,7 @@ foreach($address as $address_result) {
                             timer : 2000,
                             }).then(function() {
                                 location.reload();
-                            // window.location = "account.php#addresses";
+                            
                             });
 
                     } else if (data == "Please enter all the required fields"){
@@ -705,11 +700,11 @@ foreach($address as $address_result) {
             })
         })
 
-
+        //Ajax to save user updates to address
         $(".saveAddressChanges").click(function(){
             var saveId = $(this).data('id'); //data-id class
-            console.log('hello');
-            // var users_id = $(".hiddenusersid").val();
+            
+           
             var fullName = $(this).parent().parent().find(".fullName").val();
             var company = $(this).parent().parent().find(".company").val();
             var line1 = $(this).parent().parent().find(".line1").val();
@@ -718,14 +713,7 @@ foreach($address as $address_result) {
             var country = $(this).parent().parent().find(".country").val();
             var zipCode = $(this).parent().parent().find(".zipCode").val();
             var editAdd = $(".editAdd").val();
-                console.log(fullName);
-                console.log(company);
-                console.log(line1);
-                console.log(line2);
-                console.log(unitNo);
-                console.log(country);
-                console.log(zipCode);
-                console.log(editAdd);
+                
                 
           //Ajax to update users info
           $.ajax({
@@ -743,7 +731,7 @@ foreach($address as $address_result) {
             saveId: saveId
             },
             success:function(data){
-                console.log(data);
+                
               if(data == 3){
                 // swal("Success!", "Address updated successfully", "success");
 

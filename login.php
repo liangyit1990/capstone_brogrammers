@@ -111,15 +111,6 @@ if(isset($_POST['login'])){
 
 
 
-    // if(empty($_POST['email'])){
-    //     $emailError = "Email is required.";
-    // }else{  
-    //     $email = validateData($_POST['email']);      
-    //     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-    //         $emailError = "Invalid email format.";
-    //         $email = "";
-    //     }
-    // }
 
 }
 

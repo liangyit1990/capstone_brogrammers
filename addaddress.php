@@ -6,6 +6,7 @@ include "config/functions.php";
 
 $fullName = $companyName = $line1 = $line2 = $unitNo = $country = $zipCode = $saveAddSuccess = "";
 
+//Check for input of zipcode
 if(isset($_POST['zipCode'])) {
     if((empty($_POST['fullName']) || empty($_POST['line1'])) || (empty($_POST['country']) || empty($_POST['zipCode'])) || empty($_POST['unitNo'])){
         echo "Please enter all the required fields";
@@ -36,6 +37,8 @@ if(isset($_POST['zipCode'])) {
         echo "Please enter a different address";
         }
     }
+} else {
+    header("Location: " . SITE_URL);
 }
 
 

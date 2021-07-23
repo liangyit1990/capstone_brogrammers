@@ -75,34 +75,16 @@ isAdmin();
             </main>
         </div>
         </menu>
-        <!-- <div class="panline">   
-            <img class="pan filter-green" src="images/pan.svg">
-        </div> -->
+        
         <div class="row bentodiv" id="bento">
             <h1 class="text-center">Bento</h1>
             <p class="text-center">
                 <!-- Description: Our Bentos are... -->
             </p>
-            <!-- <div class="searchmenu">
-                <div class="sortbyoptions">
-                    <b>Show Only:</b>
-                    <select class="bentooptionsbox">
-                        <option><span>-</span></option>
-                        <option>Chicken</option>
-                        <option>Seafood</option>
-                        <option>Others</option>
-                    </select>
-                    <b>Sort By:</b>
-                    <select class="drinkssort">
-                        <option><span class="text-center">-</span></option>
-                        <option class="bentoh2l" value="bentoh2l">Price: High to Low</option>
-                        <option class="bentol2h" value="bentol2h">Price: Low to High</option>
-                        <option class="bentoalph" value="bentoalph">Alphabetically</option>
-                    </select>
-                </div>
-            </div> -->
+          
 
             <?php
+                //Populate Bento from DB
                 $bento = DB::query('SELECT * FROM food WHERE food_category = "Bento"');
                 foreach($bento as $bento_result){
                     echo '<div class="col-lg-4 col-sm-6 menubox"><div class="row"><p class="text-center"><img src=" ';
@@ -120,37 +102,17 @@ isAdmin();
             ?>    
         </div>
         
-        <!-- <div class="panline">   
-            <img class="drinks filter-green" src="images/drinks.svg">
-        </div> -->
+        
         <div class="row drinksdiv" id="drinks">
             <h1 class="text-center" >Drinks</h1>
             <p class="text-center">
                 <!-- Description -->
             </p>
 
-            <!-- <div class="searchmenu">
-                <div class="sortbyoptions">
-                    <b>Show Only:</b>
-                    <select class="drinksoptionsbox">
-                        <option><span>-</span></option>
-                        <option>Chicken</option>
-                        <option>Seafood</option>
-                        <option>Others</option>
-                    </select>
-                    <b>Sort By:</b>
-                    <select class="drinkssort">
-                        <option><span class="text-center">-</span></option>
-                        <option class="drinksh2l" value="drinksh2l">Price: High to Low</option>
-                        <option class="drinksl2h" value="drinksl2h">Price: Low to High</option>
-                        <option class="drinksalph" value="drinksalph">Alphabetically</option>
-                    </select>
-                </div>
-            </div> -->
 
             <?php
                 
-
+                //Populate drinks from DB
                 $drinks = DB::query('SELECT * FROM food WHERE food_subcategory = "drinks"');
                 foreach($drinks as $drinks_result){
                     echo '<div class="col-lg-4 col-sm-6 menubox"><div class="row"><p class="text-center"><img src=" ';
@@ -168,29 +130,17 @@ isAdmin();
 
         </div>
 
-        <!-- <div class="panline">   
-            <img class="gravy filter-green" src="images/sauce.svg">
-        </div> -->
+ 
 
         <div class="row gravydiv" id="gravy">
             <h1 class="text-center">Gravy</h1>
             <p class="text-center">
             </p>
-            <!-- <div class="searchmenu">
-                <div class="sortbyoptions">
-                    <b>Sort By:</b>
-                    <select class="gravySort" id="gravySort" onchange="gravySort();">
-                        <option><span class="text-center">-</span></option>
-                        <option class="gravyh2l" value="gravyh2l">Price: High to Low</option>
-                        <option class="gravyl2h" value="gravyl2h">Price: Low to High</option>
-                        <option class="gravyalph" value="gravyalph">Alphabetically</option>
-                    </select>
-                </div>
-            </div> -->
+    
 
 
             <?php
-
+                //Populate gravy from DB
                 $gravy = DB::query('SELECT * FROM food WHERE food_subcategory = "gravy"');
                 foreach($gravy as $gravy_result){
                     echo '<div class="col-lg-4 col-sm-6 menubox"><div class="row"><p class="text-center"><img src=" ';
@@ -211,32 +161,7 @@ isAdmin();
     </div>
 
 
-    <!-- <main class="l-main">
-        
-        <section class="menu section bd-container" id="menu">
-            <h1>Menu</h1>
-            <div class="menu_container bd-grid">
-                <div class="menu_content">
-                    <img src="images/ebifrybento.png" alt="" class="menu_img">
-                    <h3 class="menu_name">Ebi Fry Bento</h3>
-                    <span class="menu_price">SGD 6</span>
-                    <span class="menu_calorie">510 Cal</span>
-                    <a class="button menu_button add-cart cart1"><i class='bx bxs-cart-download' ><span class="addandbase"> Add</span></i></a>
-                </div>
-                <div class="menu_content">
-                    <img src="images/chickenkaraagebento.png" alt="" class="menu_img">
-                    <h3 class="menu_name">Karaage Bento</h3>
-                    <span class="menu_price">SGD 6</span>
-                    <span class="menu_calorie">530 Cal</span>
-                    <a class="button menu_button add-cart cart2"><i class='bx bxs-cart-download' ><span class="addandbase"> Add</i></a>
-                </div>
-                
-                
-            </div>
-        </section>
-
-
-    </main> -->
+    
 
     <!-- footer -->
     <?php 
@@ -260,6 +185,8 @@ isAdmin();
       }
     ?>
 
+
+    //Add to cart on click via AJAX
     $('.addbutton').click(function(){
         var addFoodId = $(this).data('id');
         
@@ -286,7 +213,7 @@ isAdmin();
                        
                         
                  }  else if(data == 3) {
-                    // swal("Error", "Please login/register an account to start adding to cart", "error")
+                    
                     swal({
                             title: "Error",
                             text: "Please login/register an account to start adding to cart",

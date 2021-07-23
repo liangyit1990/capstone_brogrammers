@@ -27,6 +27,8 @@ if(isset($_POST['editUser'])){
      //Display success msg
      echo 2;
    }
+} else {
+   header("Location: " . SITE_URL);
 }
 
 ?>

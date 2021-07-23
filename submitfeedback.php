@@ -93,10 +93,7 @@ if(isset($_POST['name'])){
         ]);
     
         echo 1;
-        // echo $name;
-        // echo ($priceChecked);
-        // echo ($nameChecked);
-        // echo ($caloriesChecked);
+
          } else {
              //Else only insert data values to DB
             DB::insert("feedbackothers", [
@@ -116,5 +113,7 @@ if(isset($_POST['name'])){
 
  
    exit;
+} else {
+    header("Location: " . SITE_URL);
 }
 ?>

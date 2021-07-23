@@ -92,5 +92,8 @@ if(isset($_FILES['file']['name'])){
 
  
    exit;
+   
+} else {
+    header("Location: " . SITE_URL);
 }
 ?>

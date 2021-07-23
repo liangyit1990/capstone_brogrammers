@@ -93,6 +93,7 @@ isAdmin();
 <script>
 $(document).ready(function(){
 
+    //To make sure the proper type of files are being uploaded
     $("#file").change(function() {
     var file = this.files[0];
     var fileType = file.type;
@@ -103,7 +104,7 @@ $(document).ready(function(){
        
     }
   });
-
+    //Submission and validation of feedback form via AJAX
     $(".contact-form-btn").click(function(){
         
         var fd = new FormData();
@@ -112,13 +113,7 @@ $(document).ready(function(){
         var email = $('.email').val();
         var topic = $('.topic').val();
         var message = $('.message').val();
-
-        console.log(name);
-        console.log(email);
-        console.log(topic);
-        console.log(message);
-        console.log(files);
-        
+       
         
 
            fd.append('file',files[0]);
@@ -146,7 +141,7 @@ $(document).ready(function(){
                  }else if (data == 2) {
                     swal("Error!", "Please fill up all the sections correctly", "error");
                  } 
-                console.log(data);
+                
               }
            });
         
