@@ -161,12 +161,7 @@ if(isset($_POST['login'])){
         <div class="form-container sign-up-container">
             <form action="<?php echo htmlspecialchars(SITE_URL . "login.php"); ?>" method="post">
                 <h1>Create Account</h1>
-                <div class="social-container" id="register">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account for registration</span>
+                
                 <input type="text" placeholder="Name" name="name" value="<?php echo $_POST['name'] ?>">
                 <input type="email" placeholder="Email" name="email" value="<?php echo $_POST['email'] ?>">
                 <input id="Password" type="password" placeholder="Password" name="password">
@@ -177,12 +172,7 @@ if(isset($_POST['login'])){
         <div class="form-container sign-in-container">
             <form action="<?php echo htmlspecialchars(SITE_URL . "login.php"); ?>" method="post">
                 <h1>Sign in</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account</span>
+                
 
                 <input type="email" placeholder="Email" name="loginemail">
                 <input type="password" placeholder="Password" name="loginpassword">

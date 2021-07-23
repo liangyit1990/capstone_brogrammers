@@ -285,3 +285,38 @@ footer a {
 .swal-overlay {
 	background-color: rgba(225, 200, 42, 0.45);
   } */
+@media screen and (max-width:450px){
+
+	p {
+		font-size: 10px;
+		font-weight: 100;
+		line-height: 20px;
+		letter-spacing: 0.5px;
+		margin: 20px 0 30px;
+	}
+	
+	span {
+		font-size: 9px;
+	}
+	
+	a {
+		color: #333;
+		font-size: 10px;
+		text-decoration: none;
+		margin: 15px 0;
+	}
+	
+	button {
+		border-radius: 10px;
+		border: 0.5px solid #FFc845;
+		background-color: #000;
+		color: #FFFFFF;
+		font-size: 8px;
+		font-weight: bold;
+		padding: 6px 10px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		transition: transform 80ms ease-in;
+	}
+	
+}

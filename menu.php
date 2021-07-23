@@ -36,18 +36,49 @@ isAdmin();
     <?php 
     include "header.php";
     ?>
-
-    <!-- anselm -->
-    <div class="panline">   
-            <img class="pan filter-green" src="images/pan.svg">
-    </div>
+    
     <div class="container">
+
         <div class="row">
             <h1 class="text-center">Customised Menu</h1>
 
         </div>
-    
-        <div class="row bentodiv">
+        
+        <menu>
+        <div class="contain">
+            
+            <main>
+                <div class="card">
+                    <img src="images/ricebox.jpeg" alt="">
+                    <div class="blogcontent">
+                        <h3><strong>Bento</strong></h3>
+                        <p>< <a href="#">510 Cal</a></p>
+                        <a href="#bento" class="btn-click">Click here</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/drinks.jpeg" alt="">
+                    <div class="blogcontent">
+                        <h3><strong>Drinks<strong></h3>
+                        <p>< <a href="">80 Cal</a></p>
+                        <a href="#drinks" class="btn-click">Click here</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/gravy.jpeg" alt="">
+                    <div class="blogcontent">
+                        <h3><strong>Gravy<strong></h3><br>
+                        
+                        <a href="#gravy" class="btn-click">Click here</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+        </menu>
+        <!-- <div class="panline">   
+            <img class="pan filter-green" src="images/pan.svg">
+        </div> -->
+        <div class="row bentodiv" id="bento">
             <h1 class="text-center">Bento</h1>
             <p class="text-center">
                 <!-- Description: Our Bentos are... -->
@@ -89,11 +120,11 @@ isAdmin();
             ?>    
         </div>
         
-        <div class="panline">   
+        <!-- <div class="panline">   
             <img class="drinks filter-green" src="images/drinks.svg">
-        </div>
-        <div class="row drinksdiv">
-            <h1 class="text-center">Drinks</h1>
+        </div> -->
+        <div class="row drinksdiv" id="drinks">
+            <h1 class="text-center" >Drinks</h1>
             <p class="text-center">
                 <!-- Description -->
             </p>
@@ -137,11 +168,11 @@ isAdmin();
 
         </div>
 
-        <div class="panline">   
+        <!-- <div class="panline">   
             <img class="gravy filter-green" src="images/sauce.svg">
-        </div>
+        </div> -->
 
-        <div class="row gravydiv" id="gravydiv">
+        <div class="row gravydiv" id="gravy">
             <h1 class="text-center">Gravy</h1>
             <p class="text-center">
             </p>
