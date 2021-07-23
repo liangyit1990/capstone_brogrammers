@@ -49,7 +49,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                     <!-- <img class="rotate_01" src="images/donut-icon.png"> -->
                     <!-- <img src="images/watermelon.png" class="rotate_01"> -->
                     <img src="images/food bowl.png" class="rotate_01">
-                    <h2 class="home_subtitle">Control your calorie intake</h2>
+                    <h2 class="home_subtitle">Control your calories intake</h2>
                     <a href='#menu'class="button">VIEW MENU</a>
                     
                 </div>
