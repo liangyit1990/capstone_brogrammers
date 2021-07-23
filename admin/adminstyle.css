@@ -294,7 +294,7 @@ img{
 
 .adminlogout {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
 }
 
 .form-check{
@@ -310,10 +310,21 @@ img{
   
 }
 .users, .food, .orders, .totalsales, .dailysales {
-  border: solid;
+  border: none;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   
+  
+  
+}
+
+.users, .food, .orders, .totalsales, .dailysales p{
+  font-size: 12px;
+}
+
+.users, .food, .orders, .totalsales, .dailysales h4{
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .users, .orders, .dailysales {
@@ -322,4 +333,9 @@ img{
 
 .food, .totalsales{
   background-color: #ffc845;
+}
+
+/* modal for admin */
+.modal-body{
+  text-align: left !important;
 }

@@ -39,7 +39,7 @@ adminloggedIn();
       <div class="users">
         <h4>No. of Registered Users:</h4> 
           <div class="result">
-            <h5>
+            <h1>
               <?php 
               //Count the number of registered users (excluding admin)
               $noofRegUsers = DB::query('SELECT * FROM users WHERE users_permission = 0');
@@ -47,7 +47,7 @@ adminloggedIn();
               echo $noofRegUsersCount;
 
               ?>
-            </h5>
+            </h1>
           </div>
       </div>
       <div class="food">
@@ -85,7 +85,7 @@ adminloggedIn();
               $count = 1;
               foreach(array_keys($newArray) as $newArrayKeyNames) {
                 
-                  echo "<h5>".$count.".".ucwords($newArrayKeyNames)."</h5>";
+                  echo "<p>".$count.".".ucwords($newArrayKeyNames)."</p>";
                   $count++;
               }
             
@@ -101,7 +101,7 @@ adminloggedIn();
             $getTotalOrderCountResult = db::count();
           
             ?>
-            <h5><?php echo $getTotalOrderCountResult ?></h5>
+            <h1><?php echo $getTotalOrderCountResult ?></h1>
           </div>
       </div>
       <div class="totalsales">
@@ -115,7 +115,7 @@ adminloggedIn();
             
             ?>
 
-            <h5>$<?php echo $totalsales ?></h5>
+            <h3>$<?php echo $totalsales ?></h3>
           </div>
       </div>
  
