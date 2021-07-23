@@ -17,6 +17,7 @@ if(isset($_POST['login'])){
         if (filter_var($loginemail, FILTER_VALIDATE_EMAIL)) { //validates email legitimacy
             // is a valid email address
             $userQuery = DB::query("SELECT * FROM users WHERE users_email=%s", $loginemail);
+
             $userPermission = DB::query("SELECT * FROM users WHERE users_email=%s", $loginemail);
             $userCount = DB::count(); 
             if($userCount == 1){ //user exist in database
@@ -50,7 +51,7 @@ if(isset($_POST['login'])){
               }
                 
                 
-            } elseif($userCount > 1) {
+            } else if($userCount > 1) {
                 $loginerror = "Login error. Please contact the website administrator";
                 // echo $loginerror;
             } else {
