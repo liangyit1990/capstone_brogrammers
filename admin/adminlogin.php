@@ -166,23 +166,7 @@ if(isset($_POST['login'])){
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
   <?php
-  //if there is an error
-//   if($registererror != ""){
-//     echo 'swal("Opps...", "'. $registererror .'", "error");';
-//   }
-
-//   //if register is successful
-//   if($registerSuccess == 1){
-//     echo 'swal({
-//       title: "Register successfully!",
-//       text: "Logging in now...",
-//       icon: "success",
-//       buttons: false,
-//       timer : 2000,
-//       }).then(function() {
-//       window.location = "index.php";
-//      });';
-//   }
+  
 
   if($loginerror != ""){ 
     echo 'swal("Oops", "' . $loginerror . '", "error");';
