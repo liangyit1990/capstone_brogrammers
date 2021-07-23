@@ -286,9 +286,9 @@ foreach($address as $address_result) {
             echo 'swal("Logged Out.", "You have logged out successfully.", "success");';
         }
         ?>
-        //Disable the payment button if any of the required field is empty
+        //Disable the payment button if any of the required field is empty or cart is empty
         $("input[type='text'],input[type='email'] ").change( function() {
-        if($(".fullname").val() == "" || $(".address").val() == "" || $(".address").val() == "" || $(".unitno").val() == "" || $(".country").val() == "" || $(".zipcode").val() == ""  ) {
+        if($(".fullname").val() == "" || $(".address").val() == "" || $(".address").val() == "" || $(".unitno").val() == "" || $(".country").val() == "" || $(".zipcode").val() == "" || $(".cartItemNo").text() == 0   ) {
             document.getElementsByClassName("stripe-button-el")[0].disabled=true;
             swal({
                     title: "Alert!",
@@ -302,8 +302,8 @@ foreach($address as $address_result) {
         }
 
                 });
-        //Disable the payment button if cart is empty
-        if($(".cartItemNo").text() == 0) {
+        //Disable the payment button if cart is empty or address not filled in the beginning
+        if($(".cartItemNo").text() == 0 || $(".address").val() == "" ) {
             document.getElementsByClassName("stripe-button-el")[0].disabled=true;
         }
       
