@@ -4,7 +4,7 @@ include "../config/db.php";
 include "../config/functions.php"; 
 
 
-
+isLoggedInasUser();
 
 // Start of Login PHP Code
 $loginemail = $loginpassword = $loginerror = $loginsuccess = "";

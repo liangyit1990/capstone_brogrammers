@@ -25,6 +25,11 @@ function isLoggedIn(){
     }
 }
 
+function isLoggedInasUser() {
+        if($_COOKIE["isLoggedIn"]){
+            header('Location: ' . site_url . 'index.php');
+        }
+}
 
 
 
