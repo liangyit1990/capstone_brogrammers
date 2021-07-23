@@ -172,7 +172,7 @@ isAdmin();
             <img class="gravy filter-green" src="images/sauce.svg">
         </div> -->
 
-        <div class="row gravydiv" id="gravydiv gravy">
+        <div class="row gravydiv" id="gravy">
             <h1 class="text-center">Gravy</h1>
             <p class="text-center">
             </p>

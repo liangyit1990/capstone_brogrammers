@@ -260,17 +260,17 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
             <div class="menu_container bd-grid">
                 <div class="menu_content">
                     <img src="images/bento_menu_rice2.png" alt="" class="menu_img">
-                    <h3 class="menu_name">Rice</h3>
-                    <span class="menu_price">SGD 0.50</span>
-                    <span class="menu_calorie">130 Cal</span>
+                    <h3 class="menu_name"><strong>Rice</strong></h3>
+                    <span class="menu_price"><strong>SGD 0.50</strong></span>
+                    <span class="menu_calorie"><strong>130 Cal</strong></span>
                     <a class="button menu_button addbtn" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
                     
                 </div>
                 <div class="menu_content">
                     <img src="images/bento_menu_noodles.png" alt="" class="menu_img">
-                    <h3 class="menu_name">Noodle</h3>
-                    <span class="menu_price">SGD 0.50</span>
-                    <span class="menu_calorie">174 Cal</span>
+                    <h3 class="menu_name"><strong>Noodle</strong></h3>
+                    <span class="menu_price"><strong>SGD 0.50</strong></span>
+                    <span class="menu_calorie"><strong>174 Cal</strong></span>
                     <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
                     
                 </div>

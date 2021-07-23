@@ -288,7 +288,7 @@ a{
     
 }
 /* when screen size is */
-@media screen and (min-width:768px){
+@media screen and (min-width:769px){
 
     /* .nav_logo{
         display: none;
@@ -520,14 +520,14 @@ a{
 
 
 .menu_name, .menu_price{
-    font-weight: var(--font-semi-bold);
+    
     color: var(--title-color);
 }
 .menu_name{
-    font-size:var(--normal-font-size);
+    font-size:var(--h2-font-size);
 }
 .menu_price{
-    font-size:var(--small-font-size);
+    font-size:var(--h3-font-size);
 }
 
 .menu_button{
@@ -801,7 +801,7 @@ ul li a{
 }
 
 
-@media screen and (max-width:767px){
+@media screen and (max-width:768px){
     .nav_logo{
        display: none;
    }
@@ -864,6 +864,7 @@ ul li a{
     .menu_content{
         width:250px;
         height:auto;
+        justify-self: center;
     }
 
     .menu_button{
@@ -897,6 +898,10 @@ ul li a{
        overflow: hidden;
        
    }
+   /* modal */
+   .img-fluid{
+    display:none;
+}
    
 
 }
@@ -964,18 +969,23 @@ ul li a{
     .menu_container {
         grid-template-columns: 1fr;
         justify-content: center;
-        z-index: 1;
+        align-content: center;
+        z-index: 1; 
     }
     .menu_content{
-        width:250px;
+        width:200px;
         height:auto;
+        justify-self: center;
     }
-
+    .menu_img {
+        width: 150px;
+        height: 200px;
+    }
     .menu_button{
         margin-left:auto;
         margin-right: auto;
     }
-
+    
     .sunny{
         width: 100px;
         height:100px;
@@ -985,12 +995,10 @@ ul li a{
         height:100px;
     }
     .egg{
-        width: 100px;
-        height:100px;
+        display: none;
     }
     .egg1{
-        width: 100px;
-        height:100px;
+        display: none;
     }
    /* footer */
    .footer{
@@ -1000,9 +1008,24 @@ ul li a{
        width:100%;
        height:150px;
        overflow: hidden;
-       
+       font-size: 20%;
    }
-   
+   .social_icons .bx{
+    width:40px;
+    height:5px;
+    border-radius:50%;
+    /* text-align: center; */
+    line-height: 40px;
+    font-size: 13px;
+    }
+    .footer_logo{
+        font-size: 12px;
+    }
+
+    /* modal */
+    .img-fluid{
+        display:none;
+    }
 
 }
 
