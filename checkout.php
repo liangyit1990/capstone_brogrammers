@@ -331,30 +331,7 @@ foreach($address as $address_result) {
 
 
 
-</div>
-
-
-
-    <!-- footer -->
-    <footer class="footer section bd-container">
-            <div class="footer_container bd-grid">
-                <div class="footer_content">
-                    <a href="index.php" class="footer_logo">CALORICE</a>
-                    
-                    <div>
-                        <a href="" class="footer_social"><i class='bx bxl-facebook' ></i></a>
-                        <a href="" class="footer_social"><i class='bx bxl-instagram' ></i></a>
-                        <a href="" class="footer_social"><i class='bx bxl-twitter' ></i></a>
-                        
-
-                    </div> 
-                </div>
-            </div>
-        </footer>
-        
-
-
-    
+</div>    
     <!-- bootstrap jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
