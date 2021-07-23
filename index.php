@@ -66,17 +66,7 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
 
         </section>
         <!-- Menu -->
-        <section class="menu section bd-container" id="menu">
-            <span class="section-title">Customise your meal</span>
-            <span class="section-subtitle">Choose Your Base</span>
-            <div class="menu_container bd-grid">
-                <div class="menu_content">
-                    <img src="images/bento_menu_rice2.png" alt="" class="menu_img">
-                    <h3 class="menu_name">Rice</h3>
-                    <span class="menu_price">SGD 0.50</span>
-                    <span class="menu_calorie">130 Cal</span>
-                    <a class="button menu_button addbtn" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
-                    <div class="modal fade" id="ricecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="ricecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
                             <div class="modal-content">
                             <div class="modal-header border-bottom-0">
@@ -171,13 +161,6 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="menu_content">
-                    <img src="images/bento_menu_noodles.png" alt="" class="menu_img">
-                    <h3 class="menu_name">Noodle</h3>
-                    <span class="menu_price">SGD 0.50</span>
-                    <span class="menu_calorie">174 Cal</span>
-                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
                     <div class="modal fade" id="noodlecart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
                             <div class="modal-content">
@@ -271,6 +254,25 @@ if(isset($_COOKIE["isLoggedIn"]) && (isset($_COOKIE['users_id']))) {
                             </div>
                         </div>
                     </div>
+        <section class="menu section bd-container" id="menu">
+            <span class="section-title">Customise your meal</span>
+            <span class="section-subtitle">Choose Your Base</span>
+            <div class="menu_container bd-grid">
+                <div class="menu_content">
+                    <img src="images/bento_menu_rice2.png" alt="" class="menu_img">
+                    <h3 class="menu_name">Rice</h3>
+                    <span class="menu_price">SGD 0.50</span>
+                    <span class="menu_calorie">130 Cal</span>
+                    <a class="button menu_button addbtn" data-bs-toggle="modal" data-bs-target="#ricecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
+                    
+                </div>
+                <div class="menu_content">
+                    <img src="images/bento_menu_noodles.png" alt="" class="menu_img">
+                    <h3 class="menu_name">Noodle</h3>
+                    <span class="menu_price">SGD 0.50</span>
+                    <span class="menu_calorie">174 Cal</span>
+                    <a class="button menu_button" data-bs-toggle="modal" data-bs-target="#noodlecart"><i class='bx bxs-cart-download' ><span class="addandbase"> Base</span></i></a>
+                    
                 </div>
             </div>
             <span class="section-subtitle"><br>OR<br></span>
