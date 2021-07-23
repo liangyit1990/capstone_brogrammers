@@ -252,7 +252,7 @@ include "../config/functions.php";
 <script>
 $(document).ready(function(){
 
-  $('#myTable').DataTable();
+
   
   $("#btn").click(function(){
     $(".sidebar").toggleClass("active");
