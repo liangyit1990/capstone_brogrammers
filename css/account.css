@@ -119,7 +119,7 @@
 
 .basicinfo{
     display: flex;
-    width:350px;
+    /* width:350px; */
 }
 
 .emailUpdate, .currentpassword, .passwordUpdate, .cfmpasswordUpdate{

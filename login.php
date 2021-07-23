@@ -159,14 +159,14 @@ if(isset($_POST['login'])){
     
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="<?php echo htmlspecialchars(SITE_URL . "login.php"); ?>" method="post">
+            <form>
                 <h1>Create Account</h1>
                 
-                <input type="text" placeholder="Name" name="name" value="<?php echo $_POST['name'] ?>">
-                <input type="email" placeholder="Email" name="email" value="<?php echo $_POST['email'] ?>">
-                <input id="Password" type="password" placeholder="Password" name="password">
-                <input id="Password" type="password" placeholder="Retype Password" name="cfmPassword">
-                <button type="submit" name="register">Sign Up</button>
+                <input type="text" placeholder="Name" name="name" class="name" value="<?php echo $_POST['name'] ?>">
+                <input type="email" placeholder="Email" name="email" class="email" value="<?php echo $_POST['email'] ?>">
+                <input type="password" placeholder="Password" class="password" name="password">
+                <input type="password" placeholder="Retype Password" class="cfmPassword" name="cfmPassword">
+                <button type="button" name="register" data-name="register" class="registerandlogin">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
@@ -226,37 +226,19 @@ if(isset($_POST['login'])){
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
+<script type="text/javascript">
   <?php
-  //if there is an error
-  if($registererror != ""){
-    echo 'swal("Opps...", "'. $registererror .'", "error");';
-  }
-
-  //if register is successful
-  if($registerSuccess == 1){
-    echo 'swal({
-      title: "Your registration is successful!",
-      text: "Please wait while we log you in...",
-      icon: "success",
-      buttons: false,
-      timer : 3000,
-      }).then(function() {
-      window.location = "index.php";
-     });';
-  }
 
   if($loginerror != ""){ 
     echo 'swal("Oops", "' . $loginerror . '", "error");';
     }
 
-    if($loginerror == "Password is incorrect! Please try again"){
+  if($loginerror == "Password is incorrect! Please try again"){
     echo 'swal("Oops", "' . $loginerror . '", "error");';
 
     }
 
     if($loginsuccess == 1){ 
-   //  echo 'swal("Yes!", "Login is successful!", "success");';
     echo 'swal({
      title: "Nice!",
      text: "Logging in now...",
@@ -267,8 +249,51 @@ if(isset($_POST['login'])){
      window.location = "index.php";
     });';
     }
-
   ?>
+
+  $(".registerandlogin").click(function(){
+            var name = $(".name").val();
+            var email = $(".email").val();
+            var password = $(".password").val();
+            var cfmPassword = $(".cfmPassword").val();
+            var register = $(this).data('name');
+            
+            $.ajax({
+                url: 'register.php',
+                method: 'POST',
+                data: {
+                name: name,
+                email: email,
+                password: password,
+                cfmPassword: cfmPassword,
+                register: register
+                },
+
+                success:function(data){
+                    if(data == 1){
+                      swal({
+                        title: "Your registration is successful!",
+                        text: "Please wait while we log you in...",
+                        icon: "success",
+                        buttons: false,
+                        timer : 2500,
+                        }).then(function() {
+                        window.location = "index.php";
+                          });
+                    } else if (data == "Please fill up all the fields."){
+                        swal("Oops...", "Please fill up all the fields.", "error");
+                    } else if (data == "The email you entered has already been used! Please try another email."){
+                      swal("Oops...", "The email you entered has already been used! Please try another email.", "error");
+                    } else if (data == "Your passwords do not match! Please try again") {
+                      swal("Oops...", "Your passwords do not match! Please try again", "error");
+                    } else if (data == "Please enter a valid email.") {
+                      swal("Oops...", "Please enter a valid email.", "error");
+                    }
+                  }
+            })
+          })
+
+
 </script>
 
 </body>
