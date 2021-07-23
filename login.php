@@ -93,7 +93,7 @@ if(isset($_POST['login'])){
                 } else {
                   $loginerror = "Password is incorrect! Please try again";
                 }
-            }elseif($userCount > 1) {
+            } elseif($userCount > 1) {
                 $loginerror = "Login error. Please contact the website administrator";
                 // echo $loginerror;
             } else {
@@ -103,7 +103,7 @@ if(isset($_POST['login'])){
           } else {
             // is not a valid email address
 
-            $loginerror = "You are an admin! Please login as an admin!";
+            $loginerror = "You are an admin! Please login as an admin! abc";
             $loginemail = "";
             $loginpassword = "";
           }
