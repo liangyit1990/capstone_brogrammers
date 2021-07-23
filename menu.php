@@ -44,7 +44,7 @@ isAdmin();
 
         </div>
         
-        <section>
+        <menu>
         <div class="contain">
             
             <main>
@@ -74,7 +74,7 @@ isAdmin();
                 </div>
             </main>
         </div>
-        </section>
+        </menu>
         <!-- <div class="panline">   
             <img class="pan filter-green" src="images/pan.svg">
         </div> -->
