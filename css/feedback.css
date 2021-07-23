@@ -335,3 +335,14 @@ footer a {
     color: var(--text-color);
     text-decoration: none;
 }
+
+@media screen and (max-width:450px){
+    .contact-in{
+        width:80%;
+    
+    }
+    .form-control {
+        width: 80%;
+        
+    }
+}
