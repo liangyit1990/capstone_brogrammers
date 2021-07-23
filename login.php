@@ -16,41 +16,47 @@ if(isset($_POST['login'])){
 
         if (filter_var($loginemail, FILTER_VALIDATE_EMAIL)) { //validates email legitimacy
             // is a valid email address
-            $userQuery = DB::query("SELECT * FROM users WHERE users_email=%s AND users_permission=0", $loginemail);
+            $userQuery = DB::query("SELECT * FROM users WHERE users_email=%s", $loginemail);
+            $userPermission = DB::query("SELECT * FROM users WHERE users_email=%s", $loginemail);
             $userCount = DB::count(); 
             if($userCount == 1){ //user exist in database
-                foreach($userQuery as $userResult){
+              foreach($userPermission as $userPermissionResult ) {
+                if($userPermissionResult['users_permission'] == 1) {
+                  $loginerror = "You are an admin! Please login as an admin";
+                } 
+                else {
+                  foreach($userQuery as $userResult){
                     $dbId = $userResult['users_id'];
                     $dbPermission = $userResult['users_permission'];
                     $dbName = $userResult['users_name'];
                     $dbEmail = $userResult['users_email'];
                     $dbPassword = $userResult['users_password'];
                     // $wcId = $dbId;
+                  }
+                    if(password_verify($loginpassword, $dbPassword)){
+                      setcookie("users_id", $dbId, time() + (86400 * 30)); // 86400 = 1 day
+                      setcookie("users_permission", $dbPermission, time() + (86400 * 30)); // 86400 = 1 day
+                      setcookie("users_name", $dbName, time() + (86400 * 30)); // 86400 = 1 day
+                      setcookie("users_email", $dbEmail, time() + (86400 * 30)); // 86400 = 1 day
+                      setcookie("isLoggedIn", 1, time() + (86400 * 30)); // 86400 = 1 day
+                      $loginsuccess = 1;
+                  } else {
+                    $loginerror = "Password is incorrect! Please try again";
+                  }
+
+                
+               
                 }
-                if(password_verify($loginpassword, $dbPassword)){
-                    setcookie("users_id", $dbId, time() + (86400 * 30)); // 86400 = 1 day
-                    setcookie("users_permission", $dbPermission, time() + (86400 * 30)); // 86400 = 1 day
-                    setcookie("users_name", $dbName, time() + (86400 * 30)); // 86400 = 1 day
-                    setcookie("users_email", $dbEmail, time() + (86400 * 30)); // 86400 = 1 day
-                    setcookie("isLoggedIn", 1, time() + (86400 * 30)); // 86400 = 1 day
-                    $loginsuccess = 1;
-                } else {
-                  $loginerror = "Password is incorrect! Please try again";
-                }
+              }
+                
+                
             } elseif($userCount > 1) {
                 $loginerror = "Login error. Please contact the website administrator";
                 // echo $loginerror;
             } else {
-                $loginerror = "You are an admin! Please login as an admin";
-                // echo $loginerror;
+              $loginerror = "This email doesn't exist. ";
             }
-          } else {
-            // is not a valid email address
-
-            $loginerror = "You are an admin! Please login as an admin! abc";
-            $loginemail = "";
-            $loginpassword = "";
-          }
+          } 
     }
 
 
