@@ -155,7 +155,9 @@ include "../config/functions.php";
 <script>
   $(document).ready(function(){
 
-    $('#myTable').DataTable();
+    $('#myTable').DataTable( {
+        "order": [[ 0, "desc" ]]
+    } );
 
     $("#btn").click(function(){
     $(".sidebar").toggleClass("active");
