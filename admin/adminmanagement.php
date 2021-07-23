@@ -37,7 +37,7 @@ include "../config/functions.php";
       <div class="users">
         <h4>No. of Registered Users:</h4> 
           <div class="result">
-            <h5>
+            <h1>
               <?php 
               //Count the number of registered users (excluding admin)
               $noofRegUsers = DB::query('SELECT * FROM users WHERE users_permission = 0');
@@ -45,7 +45,7 @@ include "../config/functions.php";
               echo $noofRegUsersCount;
 
               ?>
-            </h5>
+            </h1>
           </div>
       </div>
       <div class="food">
@@ -83,7 +83,7 @@ include "../config/functions.php";
               $count = 1;
               foreach(array_keys($newArray) as $newArrayKeyNames) {
                 
-                  echo "<h5>".$count.".".ucwords($newArrayKeyNames)."</h5>";
+                  echo "<p>".$count.".".ucwords($newArrayKeyNames)."</p>";
                   $count++;
               }
             
@@ -99,7 +99,7 @@ include "../config/functions.php";
             $getTotalOrderCountResult = db::count();
           
             ?>
-            <h5><?php echo $getTotalOrderCountResult ?></h5>
+            <h1><?php echo $getTotalOrderCountResult ?></h1>
           </div>
       </div>
       <div class="totalsales">
@@ -113,7 +113,7 @@ include "../config/functions.php";
             
             ?>
 
-            <h5>$<?php echo $totalsales ?></h5>
+            <h3>$<?php echo $totalsales ?></h3>
           </div>
       </div>
  
