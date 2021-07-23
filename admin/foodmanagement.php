@@ -253,19 +253,19 @@ include "../config/functions.php";
 $(document).ready(function(){
 
 
-  
+  //Toggle sidebar
   $("#btn").click(function(){
     $(".sidebar").toggleClass("active");
   });
-
+  //Refresh window on closing of modal
   $('#addFood').on('hidden.bs.modal', function() {
     location.reload();
   })
-
+  //Refresh window on closing of modal
   $('.foodinfo').on('hidden.bs.modal', function() {
     location.reload();
   })
-
+  //Ensure the correct file type is being uploaded
   $("#file, .imgreplace").change(function() {
     var file = this.files[0];
     var fileType = file.type;
@@ -279,6 +279,7 @@ $(document).ready(function(){
     }
   });
 
+  //Ajax to pass through files and values
   $(".submitBtn").click(function(){
         
         var fd = new FormData();
@@ -327,6 +328,7 @@ $(document).ready(function(){
 
   });
 
+  //Delete food based on the respective delete button clicked
   $(".deleteFood").click(function(){
             
     var thisBtn = this;
@@ -369,7 +371,7 @@ $(document).ready(function(){
       });            
   });
 
-
+        //Take input values and update DB using AJAX
         $(".updateBtn").click(function(){
           
         
@@ -385,13 +387,6 @@ $(document).ready(function(){
         var subcategory = $(this).parent().parent().find(".subcategory").val();
         var img = $(this).parent().parent().find(".originalimg").attr('src');
         
-        // console.log(id);
-        // console.log(imgpath);
-        // console.log(name);    
-        // console.log(price);
-        // console.log(calories);
-        // console.log(category);
-        // console.log(subcategory);
             
            replace.append('file',files[0]);
            replace.append('id',id);
@@ -423,10 +418,8 @@ $(document).ready(function(){
                       .then((value) => {
                         location.reload();
                       });
-                  // console.log(imgpath);
-
-                }
-                // console.log(data);
+                  
+                } 
                 
               }
             });

@@ -11,6 +11,7 @@ $uploadOk = 0;
 if(isset($_POST['name'])){
     /* Getting file name */
 
+    //Check if there is any file uploaded
    if(isset($_FILES['file']['name'])) {
         $filename = $_FILES['file']['name'];
         $location = "uploads/".$filename;
@@ -91,11 +92,6 @@ if(isset($_POST['name'])){
             echo 5;
         } 
     
-        // echo 2;
-        // echo $name;
-        // echo ($priceChecked);
-        // echo ($nameChecked);
-        // echo ($caloriesChecked);
     } else {
         DB::update("food", [
             'food_name' => strtolower($name),

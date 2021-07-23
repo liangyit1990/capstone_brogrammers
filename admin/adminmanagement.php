@@ -39,6 +39,7 @@ include "../config/functions.php";
           <div class="result">
             <h5>
               <?php 
+              //Count the number of registered users (excluding admin)
               $noofRegUsers = DB::query('SELECT * FROM users WHERE users_permission = 0');
               $noofRegUsersCount = DB::count();
               echo $noofRegUsersCount;
@@ -55,6 +56,7 @@ include "../config/functions.php";
         <h4>Top 5 Most Popular Food:</h4>
           <div class="result">
             <?php 
+            //Create array for foodname and qty
             $food_name = Array();
             $food_qty = Array();
             $getOrdersQuery = DB::query("SELECT * FROM orderdetails
@@ -62,12 +64,12 @@ include "../config/functions.php";
                                             ON orderdetails.food_id = food.food_id
                                             ");
             foreach($getOrdersQuery as $getOrdersResult) {
-                
+                //Push values food name and qty into each array
                 array_push($food_name, $getOrdersResult['food_name']);
                 array_push($food_qty, $getOrdersResult['orderdetails_qty']);
             
             }
-            
+            //Make foodname as key to foodqty, and combine values with duplicate keys
             $result = array_unique($food_name);
             $result = array_combine($result, array_fill(0, count($result), 0));
             
@@ -76,6 +78,7 @@ include "../config/functions.php";
               }
             
               arsort($result);
+              //Slice and leave the top 5 foods
               $newArray = array_slice($result, 0, 5, true);
               $count = 1;
               foreach(array_keys($newArray) as $newArrayKeyNames) {
@@ -91,7 +94,7 @@ include "../config/functions.php";
         <h4>Total Orders </h4>
           <div class="result">
             <?php 
-            
+            //Count the total number of oders
             $getTotalOrderCount = db::query("SELECT * FROM orders");
             $getTotalOrderCountResult = db::count();
           
@@ -113,14 +116,9 @@ include "../config/functions.php";
             <h5>$<?php echo $totalsales ?></h5>
           </div>
       </div>
-      <!-- <div class="dailysales">
-        <h2>Today sales:</h2>
-          <div class="result">
-            <h3>100 SGD</h3>
-          </div>
-      </div> -->
+ 
     </div><hr>
-
+     
     <table id="myTable" class="table table-hover">
         <thead>
             <tr>
@@ -133,7 +131,7 @@ include "../config/functions.php";
         </thead>
        
         <tbody>
-        <!--Retrieve user infro from database -->
+        <!--Retrieve user info from database -->
         <?php 
         $getOrderQuery = DB::query("SELECT * FROM orders 
                                     INNER JOIN users
@@ -241,19 +239,7 @@ include "../config/functions.php";
 
 </script>
 
-  <!-- <script>
-   let btn = document.querySelector("#btn");
-   let sidebar = document.querySelector(".sidebar");
-   let searchBtn = document.querySelector(".bx-search");
 
-   btn.onclick = function() {
-     sidebar.classList.toggle("active");
-   }
-   searchBtn.onclick = function() {
-     sidebar.classList.toggle("active");
-   }
-
-  </script> -->
 
 </body>
 </html>

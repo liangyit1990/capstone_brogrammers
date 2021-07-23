@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 21, 2021 at 01:34 PM
+-- Generation Time: Jul 23, 2021 at 12:44 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -46,9 +46,6 @@ CREATE TABLE `addresses` (
 --
 
 INSERT INTO `addresses` (`addresses_id`, `users_id`, `addresses_default`, `addresses_fullName`, `addresses_companyName`, `addresses_line1`, `addresses_line2`, `addresses_unitNo`, `addresses_country`, `addresses_zipCode`) VALUES
-(36, 19, 0, 'Anselm Sim', '', '1st address', 'Gyarados avenue', '#1-1', 'Singapore', '670237'),
-(37, 19, 0, 'Anselm Sim', '', '2nd address', '', '#2-2', 'Singapore', '670237'),
-(38, 19, 1, 'Anselm Sim Test', '', '3rd Address', 'test line 3', '#3-3', 'Singapore', '670237'),
 (39, 15, 1, 'Kenny', '', 'Test Test Test Address', '', '06-74', 'Singapore', '640757');
 
 -- --------------------------------------------------------
@@ -70,33 +67,9 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `users_id`, `food_id`, `cart_foodqty`, `cart_status`) VALUES
-(1, 19, 38, 1, 1),
-(2, 19, 39, 6, 1),
-(3, 19, 40, 4, 1),
-(12, 19, 41, 1, 1),
-(13, 19, 46, 3, 1),
-(14, 19, 48, 1, 1),
-(16, 19, 39, 1, 1),
-(17, 19, 40, 1, 1),
-(18, 19, 51, 1, 1),
-(19, 19, 45, 1, 1),
-(20, 19, 47, 1, 1),
-(22, 19, 38, 1, 1),
-(23, 19, 39, 1, 1),
-(24, 19, 40, 1, 1),
-(25, 19, 43, 1, 1),
-(26, 19, 42, 1, 1),
-(27, 19, 41, 1, 1),
-(28, 19, 45, 1, 1),
-(29, 19, 46, 1, 1),
-(30, 19, 51, 1, 1),
-(31, 19, 47, 1, 1),
-(32, 19, 48, 1, 1),
-(37, 19, 40, 1, 1),
-(38, 19, 46, 1, 1),
-(39, 19, 43, 1, 0),
-(48, 15, 39, 1, 0),
-(49, 15, 40, 1, 0);
+(50, 15, 40, 2, 1),
+(51, 15, 40, 1, 1),
+(52, 15, 39, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -118,7 +91,9 @@ CREATE TABLE `cartbatch` (
 --
 
 INSERT INTO `cartbatch` (`cartbatch_id`, `cartbatch_no`, `cartbatch_foodqty`, `cartbatch_status`, `users_id`, `food_id`) VALUES
-(1, 1, 1, 1, 15, 36);
+(1, 1, 1, 1, 15, 36),
+(2, 1, 1, 1, 15, 36),
+(3, 1, 1, 1, 15, 37);
 
 -- --------------------------------------------------------
 
@@ -205,12 +180,7 @@ INSERT INTO `food` (`food_id`, `food_name`, `food_category`, `food_subcategory`,
 (46, 'carrot juice', 'ala carte', 'drinks', 0, NULL, '2.50', 150, 'uploads/carrotjuice.png'),
 (47, 'curry gravy', 'ala carte', 'gravy', 0, NULL, '2.99', 300, 'uploads/gravycurry.png'),
 (48, 'braised soy gravy', 'ala carte', 'gravy', 0, NULL, '2.29', 250, 'uploads/gravybraisedsoy.png'),
-(49, 'mushroom gravy', 'ala carte', 'gravy', 0, NULL, '4.99', 375, 'uploads/gravymushroom.png'),
-(50, 'lemon ginger green tea', 'ala carte', 'drinks', 0, NULL, '1.99', 45, 'uploads/lemon_ginger_green_tea-removebg-preview.png'),
-(51, 'black tea', 'ala carte', 'drinks', 0, NULL, '2.40', 35, 'uploads/black_tea-removebg-preview.png'),
-(52, 'oolong tea', 'ala carte', 'drinks', 0, NULL, '1.49', 60, 'uploads/oolong_tea-removebg-preview.png'),
-(53, 'red tea', 'ala carte', 'drinks', 0, NULL, '1.99', 77, 'uploads/red_tea-removebg-preview.png'),
-(54, 'teriyaki chicken bento', 'bento', 'meat', 0, NULL, '15.50', 600, 'uploads/Teriyaki Chicken Bento.png');
+(50, 'lemon ginger green tea', 'ala carte', 'drinks', 0, NULL, '1.99', 45, 'uploads/lemon_ginger_green_tea-removebg-preview.png');
 
 -- --------------------------------------------------------
 
@@ -232,31 +202,12 @@ CREATE TABLE `orderdetails` (
 --
 
 INSERT INTO `orderdetails` (`orderdetails_id`, `orderdetails_qty`, `orderdetails_group`, `users_id`, `food_id`, `orders_id`) VALUES
-(1, 1, 1, 19, 38, 1),
-(2, 1, 2, 19, 39, 1),
-(3, 1, 3, 19, 40, 1),
-(4, 1, 1, 19, 41, 2),
-(5, 1, 2, 19, 46, 2),
-(6, 1, 1, 19, 48, 3),
-(7, 1, 1, 19, 39, 4),
-(8, 1, 2, 19, 40, 4),
-(9, 1, 3, 19, 51, 4),
-(10, 1, 4, 19, 45, 4),
-(11, 1, 5, 19, 47, 4),
-(12, 1, 1, 19, 38, 5),
-(13, 1, 2, 19, 39, 5),
-(14, 1, 3, 19, 40, 5),
-(15, 1, 4, 19, 43, 5),
-(16, 1, 5, 19, 42, 5),
-(17, 1, 6, 19, 41, 5),
-(18, 1, 7, 19, 45, 5),
-(19, 1, 8, 19, 46, 5),
-(20, 1, 9, 19, 51, 5),
-(21, 1, 10, 19, 47, 5),
-(22, 1, 11, 19, 48, 5),
-(23, 1, 1, 19, 40, 6),
-(24, 1, 1, 19, 46, 7),
-(25, 1, 1, 15, 36, 8);
+(25, 1, 1, 15, 36, 8),
+(26, 1, 1, 15, 36, 9),
+(27, 2, 2, 15, 40, 9),
+(28, 1, 1, 15, 40, 10),
+(29, 1, 1, 15, 37, 11),
+(30, 1, 1, 15, 39, 12);
 
 -- --------------------------------------------------------
 
@@ -277,14 +228,11 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orders_id`, `orders_totalprice`, `orders_timestamp`, `orders_address`, `users_id`) VALUES
-(1, '34.50', '2021-07-19 13:43:46', '', 19),
-(2, '14.10', '2021-07-19 14:08:41', '', 19),
-(3, '2.29', '2021-07-19 14:15:14', '', 19),
-(4, '41.89', '2021-07-19 14:30:50', '', 19),
-(5, '94.68', '2021-07-19 14:32:33', '', 19),
-(6, '10.90', '2021-07-21 10:49:44', '3rd Address Test Line 3 #3-3 Singapore ', 19),
-(7, '2.50', '2021-07-21 10:53:51', '2nd address  #2-2 Singapore 670237', 19),
-(8, '0.50', '2021-07-21 12:49:33', ',  ,  ', 15);
+(8, '0.50', '2021-07-21 12:49:33', ',  ,  ', 15),
+(9, '22.30', '2021-07-22 12:36:47', 'Test Test Test Address,  06-74, Singapore 640757', 15),
+(10, '10.90', '2021-07-22 13:04:18', 'Test Test Test Address,  06-74, Singapore 640757', 15),
+(11, '0.50', '2021-07-22 13:20:56', 'Test Test Test Address,  06-74, Singapore 640757', 15),
+(12, '12.10', '2021-07-22 14:47:26', 'Test Test Test Address,  06-74, Singapore 640757', 15);
 
 -- --------------------------------------------------------
 
@@ -325,9 +273,7 @@ INSERT INTO `users` (`users_id`, `users_name`, `users_email`, `users_password`, 
 (6, 'ky', 'ky@gmail.com', '$2y$10$HtGb5WNwO6SBkoY2B/bZOe6QVePW.8ywqgMhmI8LeTV67zy3pQyGu', '91869647', NULL, 1, 1, '2021-07-21 13:17:32'),
 (8, 'hy', 'hy@gmail.com', '$2y$10$93fTm7vsxDe8B1WY/1w/YO2j36KvcHEnlRy..VYXy02gxWy5fjgVy', NULL, NULL, NULL, 0, '2021-07-08 11:45:23'),
 (15, 'tky', 'tky@gmail.com', '$2y$10$CpUgeO/P9NEE4rComYRp7ObDZLkwCe6vAtYP8WijdlCfLPnVWesgu', '', NULL, 0, 0, '2021-07-09 10:59:02'),
-(16, 'kenny', 'kenny@outlook.com', '$2y$10$EtHv/A7Sx1EKJlnh8JefyO5wv443goMi5nEfFAWm1dSByiGzZw2mm', NULL, NULL, NULL, 0, '2021-07-10 08:34:49'),
-(17, 'james', 'james@james.com', '$2y$10$fV.Gr2sveaRd0asxWJ7Us..eM9skXH.tYLXHV7jrc76eFtjV2X23u', NULL, NULL, NULL, 0, '2021-07-13 10:40:25'),
-(19, 'anselm sim', 'anselmsim@gmail.com', '$2y$10$KcO0sXOqhRcqwhvR43RR3uVG5Z2dUJlH83GB64Yj6sx3ucgrcyOE.', '', NULL, 1, 0, '2021-07-19 15:26:19');
+(16, 'kenny', 'kenny@outlook.com', '$2y$10$EtHv/A7Sx1EKJlnh8JefyO5wv443goMi5nEfFAWm1dSByiGzZw2mm', NULL, NULL, NULL, 0, '2021-07-10 08:34:49');
 
 -- --------------------------------------------------------
 
@@ -441,13 +387,13 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `cartbatch`
 --
 ALTER TABLE `cartbatch`
-  MODIFY `cartbatch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cartbatch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -471,13 +417,13 @@ ALTER TABLE `food`
 -- AUTO_INCREMENT for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `orderdetails_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `orderdetails_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `submission`

@@ -168,7 +168,7 @@ include "../config/functions.php";
     var deleteId = $(this).data('id');
     var deleteFile = $(this).data('file');
     var feedbackid = `.feedbackdata${deleteId}`;
-    console.log(deleteFile);
+    
     //Alert message before confirm to delete
     swal({
       title: `Are you sure you want to delete Feedback No.${deleteId}`,

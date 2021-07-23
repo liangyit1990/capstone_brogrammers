@@ -4,8 +4,7 @@ include "../config/db.php";
 include "../config/functions.php"; 
 
 
-// Start of Register PHP Code
-// $name = $email = $password = $cfmPassword = $registererror = $registerSuccess = "";
+
 
 // Start of Login PHP Code
 $loginemail = $loginpassword = $loginerror = $loginsuccess = "";
@@ -64,16 +63,6 @@ if(isset($_POST['login'])){
 
 
 
-    // if(empty($_POST['email'])){
-    //     $emailError = "Email is required.";
-    // }else{  
-    //     $email = validateData($_POST['email']);      
-    //     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-    //         $emailError = "Invalid email format.";
-    //         $email = "";
-    //     }
-    // }
-
 }
 
 
@@ -123,38 +112,16 @@ if(isset($_POST['login'])){
         </div>
         <div class="overlay-container">
             <div class="overlay">
-                <!-- <div class="overlay-panel overlay-left">
-                    
-                    <h1>Welcome back Admin</h1>
-                    <p>Stay in touch and login here</p>
-                    <button class="ghost" id="signIn">Sign In</button>
-                </div> -->
+               
                 <div class="overlay-panel overlay-right">
                     <h1>Hello Admin!</h1>
-                    <!-- <p></p> -->
-                    <!-- <button class="ghost" id="signUp">Sign Up</button> -->
+                  
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- footer
-    <footer class="footer section bd-container">
-        <div class="footer_container bd-grid">
-            <div class="footer_content">
-                
-                <a href="index.php" class="footer_logo">CALORICE</a>
-                
-                <div>
-                    <a href="" class="footer_social"><i class='bx bxl-facebook' ></i></a>
-                    <a href="" class="footer_social"><i class='bx bxl-instagram' ></i></a>
-                    <a href="" class="footer_social"><i class='bx bxl-twitter' ></i></a>
-                    
-
-                </div> 
-            </div>
-        </div>
-    </footer> -->
+    
 <body>
 
 
