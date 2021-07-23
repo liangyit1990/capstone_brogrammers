@@ -369,7 +369,7 @@ foreach($address as $address_result) {
         ?>
 
         $("input[type='text'],input[type='email'] ").change( function() {
-        if($(".fullname").val() == 0 || $(".address").val() == 0 || $(".address").val() == 0 || $(".unitno").val() == 0 || $(".country").val() == 0 || $(".zipcode").val() == 0    ) {
+        if($(".fullname").val() == "" || $(".address").val() == "" || $(".address").val() == "" || $(".unitno").val() == "" || $(".country").val() == "" || $(".zipcode").val() == ""  ) {
             document.getElementsByClassName("stripe-button-el")[0].disabled=true;
             swal({
                     title: "Alert!",
@@ -381,9 +381,12 @@ foreach($address as $address_result) {
         } else {
             document.getElementsByClassName("stripe-button-el")[0].disabled=false;
         }
+
                 });
         
-        
+        if($(".cartItemNo").text() == 0) {
+            document.getElementsByClassName("stripe-button-el")[0].disabled=true;
+        }
       
 
         $(".clearCart").click(function(){
