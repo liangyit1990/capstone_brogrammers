@@ -26,6 +26,8 @@ function isLoggedIn(){
 }
 
 
+
+
 function loginAccountLogout(){
     // if($_COOKIE['users_permission'] == 1){
     //     echo '
@@ -55,32 +57,14 @@ function isAdmin(){
     }
 }
 
-// function cartCounter() {
-//     if(isset($_COOKIE['users_id']) && isset($_COOKIE['isLoggedIn'])){
-//         $userCartCount = 0;
-//         $userCartQuery = DB::query("SELECT cartbatch_no FROM cartbatch where users_id=%i AND cartbatch_status=%i" , $_COOKIE['users_id'],0);
-//         foreach($userCartQuery as $userCartResult){
-//             if($userCartCount < $userResult['cartbatch_no']){
-//                 $userCartCount = $userResult['cartbatch_no'];
-//             } 
-//         }
-        
-//     }
-// }
+function adminloggedIn() {
+    if(!($_COOKIE["isLoggedIn"] && ($_COOKIE["users_permission"] == 1))){
+        header('Location: ' . SITE_URL . 'index.php');
+    
+    } 
+}
 
 
-
-// function connectName(){
-//     if(isset($_COOKIE['users_name'])){
-//         echo $_COOKIE['users_name'];
-//     }
-// }
-
-// function connectEmail(){
-//     if(isset($_COOKIE['users_email'])){
-//         echo $_COOKIE['users_email'];
-//     }
-// }
 
 
 ?>
