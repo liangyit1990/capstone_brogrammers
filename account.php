@@ -122,13 +122,13 @@ foreach($address as $address_result) {
                                         <p><?php 
                                         echo $return_email;
                                         ?>
-                                        </p>
+                                        </p><br>
                                     </div>
                                     <div class="col-12">
                                         <h5>Member Since</h5>
                                         <p><?php 
                                         echo displayDate($return_memberSince);
-                                        ?></p>
+                                        ?></p><br>
                                     </div>
                                 </div>
                             </div>
