@@ -14,7 +14,9 @@ if(!isset($_POST['foodId'])){
         echo 2;
     } 
     else { 
-
+        DB::delete("cartbatch", "food_id=%?", $_POST['foodId']);//delete users with specific id from DB
+        DB::delete("cart", "food_id=%?", $_POST['foodId']);//delete users with specific id from DB
+        DB::delete("orderdetails", "food_id=%?", $_POST['foodId']); 
         DB::delete("food", "food_id=%?", $_POST['foodId']); //delete foods with specific id from DB
         //Display succcess msg
         echo 1;
